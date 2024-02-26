@@ -21,12 +21,12 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>EVSE</functionalProfileCategory>
-      <functionalProfileType>EMS Current Limit</functionalProfileType>
+      <functionalProfileType>EMS_Current_Limit</functionalProfileType>
       <levelOfOperation>4</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>2</secondaryVersionNumber>
-        <subReleaseVersionNumber>1</subReleaseVersionNumber>
+        <secondaryVersionNumber>3</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
     <legibleDescription>
