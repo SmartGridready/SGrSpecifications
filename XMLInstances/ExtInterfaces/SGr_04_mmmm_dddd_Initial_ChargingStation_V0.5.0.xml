@@ -1028,6 +1028,11 @@
               <genericAttributeList>
                 <genericAttributeListElement>
                   <name>Precision</name>
+                  <dataType>
+                    <float32/>
+                  </dataType>
+                  <value>0</value>
+                  <unit>PERCENT</unit>
                 </genericAttributeListElement>
               </genericAttributeList>
               <modbusDataPointConfiguration>
