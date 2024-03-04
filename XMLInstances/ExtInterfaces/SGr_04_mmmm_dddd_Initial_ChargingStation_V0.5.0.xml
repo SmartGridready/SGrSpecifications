@@ -29,6 +29,11 @@
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+        <modbusTcp>
+          <port>0</port>
+          <address>0.0.0.0</address>
+          <slaveId>1</slaveId>
+        </modbusTcp>
         <firstRegisterAddressIsOne>false
         </firstRegisterAddressIsOne>
         <bitOrder>BigEndian</bitOrder>
