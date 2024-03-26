@@ -836,4 +836,82 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </restriction>
   </simpleType>
 
+  <complexType name="JMESPathMappingRecord">
+    <sequence>
+      <element name="from" type="string"/>
+      <element name="to" type="string"/>
+      <element name="name" minOccurs="0" type="string"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="JMESPathMapping">
+    <sequence>
+      <element name="mapping" maxOccurs="unbounded" type="sgr:JMESPathMappingRecord" />
+    </sequence>
+  </complexType>
+
+  <complexType name="PlaintextFilterType">
+    <sequence>
+      <element name="matchesRegex" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="JMESPathFilterType">
+    <sequence>
+      <element name="query" type="string" />
+      <element name="matchesRegex" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="XPathFilterType">
+    <sequence>
+      <element name="query" type="string" />
+      <element name="matchesRegex" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="RegexFilterType">
+    <sequence>
+      <element name="query" type="string" />
+      <element name="matchesRegex" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="MessageFilter">
+    <choice>
+      <element name="plaintextFilter" type="sgr:PlaintextFilterType" />
+      <element name="jmespathFilter" type="sgr:JMESPathFilterType" />
+      <element name="xpapathFilter" type="sgr:XPathFilterType" />
+      <element name="regexFilter" type="sgr:RegexFilterType" />
+    </choice>
+  </complexType>
+
+  <complexType name="MessageQueryType" >
+    <sequence>
+      <sequence>
+        <element name="queryType" type="sgr:ResponseQueryType" />
+        <element name="expression" type="string" />
+      </sequence>
+    </sequence>
+  </complexType>
+
+  <simpleType name="ResponseQueryType">
+    <restriction base="string">
+      <enumeration value="JMESPathExpression" />
+      <enumeration value="XPathExpression" />
+      <enumeration value="RegularExpression" />
+      <enumeration value="JMESPathMapping" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="ResponseQuery">
+    <sequence>
+      <element name="queryType" type="sgr:ResponseQueryType" />
+      <choice minOccurs="0">
+        <element name="query" type="string" />
+        <element name="jmesPathMappings" type="sgr:JMESPathMapping" />
+      </choice>
+    </sequence>
+  </complexType>
+
 </schema>

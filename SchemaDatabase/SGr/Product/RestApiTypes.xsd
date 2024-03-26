@@ -5,6 +5,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
 
+  <include schemaLocation="../Generic/BaseTypes.xsd" />
+
   <complexType name="RestApiInterfaceDescription">
     <annotation>
       <documentation>Modbus interface properties</documentation>
@@ -117,36 +119,4 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </restriction>
   </simpleType>
 
-  <simpleType name="ResponseQueryType">
-    <restriction base="string">
-      <enumeration value="JMESPathExpression" />
-      <enumeration value="XPathExpression" />
-      <enumeration value="RegularExpression" />
-      <enumeration value="JMESPathMapping" />
-    </restriction>
-  </simpleType>
-
-  <complexType name="JMESPathMappingRecord">
-    <sequence>
-      <element name = "from" type="string"/>
-      <element name = "to" type="string"/>
-      <element name="name" minOccurs="0" maxOccurs="1" type="string"/>
-    </sequence>
-  </complexType>
-
-  <complexType name="JMESPathMapping">
-    <sequence>
-      <element name="mapping" minOccurs="1" maxOccurs="unbounded" type="sgr:JMESPathMappingRecord" />
-    </sequence>
-  </complexType>
-
-  <complexType name="ResponseQuery">
-    <sequence>
-      <element name="queryType" type="sgr:ResponseQueryType" />
-      <choice>
-        <element name="query" type="string" />
-        <element name="jmesPathMappings" type="sgr:JMESPathMapping" />
-      </choice>
-    </sequence>
-  </complexType>  
 </schema>

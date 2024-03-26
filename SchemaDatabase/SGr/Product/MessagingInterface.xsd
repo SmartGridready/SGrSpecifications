@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source
+https://github.com/SmartgridReady/SGrSpecifications  -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+        elementFormDefault="qualified"
+        targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
+
+  <include schemaLocation="../Generic/DataPoint.xsd" />
+  <include schemaLocation="../Generic/FunctionalProfile.xsd" />
+  <include schemaLocation="MessagingTypes.xsd" />
+
+  <complexType name="MessagingDataPoint">
+    <complexContent>
+      <extension base="sgr:DataPointBase">
+        <sequence>
+          <element name="messagingDataPointConfiguration" type="sgr:MessagingDataPointConfiguration" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="MessageDataPointList">
+    <annotation>
+      <documentation>List of data points</documentation>
+    </annotation>
+    <sequence>
+      <element name="dataPointListElement" type="sgr:MessagingDataPoint" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  <complexType name="MessagingFunctionalProfile">
+    <complexContent>
+      <extension base="sgr:FunctionalProfileBase">
+        <sequence>
+          <element name="dataPointList" type="sgr:MessageDataPointList" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="MessagingFunctionalProfileList">
+    <annotation>
+      <documentation>List of functional profiles</documentation>
+    </annotation>
+    <sequence>
+      <element name="functionalProfileListElement" type="sgr:MessagingFunctionalProfile"
+               maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  <complexType name="MessagingInterface">
+    <annotation>
+      <documentation>Container for a modbus device</documentation>
+    </annotation>
+    <sequence>
+      <sequence>
+        <element name="messagingInterfaceDescription" type="sgr:MessagingInterfaceDescription" />
+        <element name="functionalProfileList" type="sgr:MessagingFunctionalProfileList" />
+      </sequence>
+    </sequence>
+  </complexType>
+</schema>

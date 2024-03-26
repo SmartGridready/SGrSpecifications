@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source
+https://github.com/SmartgridReady/SGrSpecifications  -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+        elementFormDefault="qualified"
+        targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
+
+  <include schemaLocation="../Generic/BaseTypes.xsd" />
+
+  <complexType name="MessagingInterfaceDescription">
+    <annotation>
+      <documentation>Messaging interface properties</documentation>
+    </annotation>
+    <sequence>
+      <element name="platform" type="sgr:MessagingPlatformType" />
+      <element name="messageBrokerList" type="sgr:MessageBrokerList" />
+      <element name="clientId" minOccurs="0" type="string" />
+      <element name="messageBrokerAuthentication" minOccurs="0" type="sgr:MessageBrokerAuthentication"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="MessageBrokerAuthentication">
+    <choice>
+      <element name="basicAuthentication" type="sgr:MessageBrokerAuthenticationBasic" />
+      <element name="clientCertificateAuthentication" type="sgr:MessageBrokerAuthenticationClientCertificate" />
+    </choice>
+  </complexType>
+
+  <simpleType name="MessagingPlatformType">
+    <annotation>
+      <documentation>Type of the messaging platform</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="MQTT5" />
+      <enumeration value="Kafka" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="MessageBrokerList">
+    <sequence>
+      <element name="messageBrokerListElement" maxOccurs="unbounded" type="sgr:MessageBrokerListElement" />
+    </sequence>
+  </complexType>
+
+  <complexType name="MessageBrokerListElement">
+    <sequence>
+      <element name="host" type="string" />
+      <element name="port" type="string" />
+    </sequence>
+  </complexType>
+
+  <simpleType name="MessageBrokerAuthenticationMethod">
+    <restriction base="string">
+      <enumeration value="NoSecurityScheme" />
+      <enumeration value="Basic" />
+      <enumeration value="ClientCertificate" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="MessageBrokerAuthenticationBasic">
+    <sequence>
+      <element name="username" type="string" />
+      <element name="password" type="string" />
+    </sequence>
+  </complexType>
+  
+  <complexType name="MessageBrokerAuthenticationClientCertificate">
+    <sequence>
+      <element name="keystorePath" type="string" />
+      <element name="keystorePassword" type="string" />
+      <element name="truststorePath" type="string" />
+      <element name="truststorePassword" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="OutMessage">
+    <sequence>
+      <element name="topic" type="string" />
+      <element name="template" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="InMessage">
+    <sequence>
+      <element name="topic" type="string" />
+      <element name="filter" minOccurs="0" type="sgr:MessageFilter" />
+      <element name="responseQuery" minOccurs="0" type="sgr:ResponseQuery" />
+    </sequence>
+  </complexType>
+
+  <complexType name="MessagingDataPointConfiguration">
+    <sequence>
+      <element name="messagingDataType"  type="sgr:MessagingDataType" />
+      <element name="readCmdMessage"    minOccurs="0" type="sgr:OutMessage" />
+      <element name="writeCmdMessage"   minOccurs="0" type="sgr:OutMessage" />
+      <element name="inMessage" minOccurs="0" type="sgr:InMessage" />
+    </sequence>
+  </complexType>
+
+  <complexType name="MessagingDataType">
+    <annotation>
+      <documentation>
+        Messaging API specific data types.
+        <ul>
+          <li>number: message payload is a plain number</li>
+          <li>string: message payload us a plain string</li>
+          <li>JSON_array: message payload is a JSON array</li>
+          <li>JSON_object: message payload is a JSON object</li>
+        </ul>
+      </documentation>
+    </annotation>
+    <choice>
+      <element name="number" type="sgr:EmptyType" />
+      <element name="string" type="sgr:EmptyType" />
+      <element name="JSON_array" type="sgr:EmptyType"  />
+      <element name="JSON_object" type="sgr:EmptyType"   />
+    </choice>
+  </complexType>
+
+</schema>

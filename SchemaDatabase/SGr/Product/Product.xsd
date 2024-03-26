@@ -11,6 +11,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <include schemaLocation="ContactInterface.xsd" />
   <include schemaLocation="ModbusInterface.xsd" />
   <include schemaLocation="RestApiInterface.xsd" />
+  <include schemaLocation="MessagingInterface.xsd" />
 
   <complexType name="ConfigurationDescription">
     <complexContent>
@@ -116,6 +117,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="restApiInterface" type="sgr:RestApiInterface" />
       <element name="contactInterface" type="sgr:ContactInterface" />
       <element name="genericInterface" type="sgr:GenericInterface" />
+      <element name="messagingInterface" type="sgr:MessagingInterface" />
     </choice>
   </complexType>
 
