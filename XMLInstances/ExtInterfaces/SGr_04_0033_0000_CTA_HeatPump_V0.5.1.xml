@@ -169,7 +169,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpModeCmdFb</dataPointName>
+                <dataPointName>HPOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
@@ -251,7 +251,7 @@
                   <manufName>CTA_HeatPump_FSM</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Status Code Betriebsart gem. Liste, eher als OpState führen?</textElement>
+                  <textElement>Status Code Betriebsart gem. Liste</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -266,7 +266,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpState</dataPointName>
+                <dataPointName>HPOpState_ToBeDeleted</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
@@ -320,9 +320,8 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Status Code Kältekreis gemäss Liste
-                      </br>
-                      <font color="red">Dies ist wohl ein interner Status des Kältekreises. Brauchen wir das überhaupt für die externe Ansteuerung?</font>
+                      <font color="red">Status Code Kältekreis gemäss Liste
+                      </br>Dies ist wohl ein interner Status des Kältekreises. Brauchen wir das überhaupt für die externe Ansteuerung?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -535,7 +534,11 @@
                   <manufName>CTA_DWRequest</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>VD-Drehzahl in % bei TWW (Trinkwarmwasser) Ladung (Empfehlung 38%. Es sollte jedenfalls nicht zu lange auf dem Maximum von 100% gefahren werden.)</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <font color="red">VD-Drehzahl in % bei TWW (Trinkwarmwasser) Ladung (Empfehlung 38%. Es sollte jedenfalls nicht zu lange auf dem Maximum von 100% gefahren werden.)</font>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>

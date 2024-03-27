@@ -1068,7 +1068,8 @@
                       Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert)
                       </br>
                       <font color="red">Was heisst Grundwert? Müssen wir ev. Chris fragen, er hat das ja getestet. Oder den Hersteller.
-                                        Es ist entscheidend, ob es sich um den tatsächlichen Sollwert handelt oder nur der Fusspunkt der Heizkurve.</font>
+                                        Es ist entscheidend, ob es sich um den tatsächlichen Sollwert handelt oder nur der Fusspunkt der Heizkurve.
+                                        <br>Mit Hersteller klären. Offensichtlich wurde es noch nie getestet, sondern eine Selbstdeklaration.</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -1462,10 +1463,11 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Solltemperatur Handbetrieb: Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
+                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
                       </br>
                       <font color="red">Warum kommt hier jetzt "Handbetrieb"? Kann dieser Sollwert nicht immer gesetzt werden?
-                                        Bei HeatCoolCtrl1 steht dieser Satz nicht (wohl noch ein Relikt?)</font>
+                                        Bei HeatCoolCtrl1 steht dieser Satz nicht (wohl noch ein Relikt?).
+                                        <br>Klären: Solltemperatur Handbetrieb</font>
                     ]]>     
                   </textElement>
                   <language>de</language>
@@ -1870,7 +1872,8 @@
                     <![CDATA[
                       Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
                       </br> 
-                      <font color="red">Fusspunkt oder effektiver Sollwert?</font>
+                      <font color="red">Fusspunkt oder effektiver Sollwert?
+                                        <br>Mit Hersteller klären.</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2166,7 +2169,8 @@
                         </br>
                         <font color="red">Was heisst SmartGrid (Offset)? Ich denke, das sollte wie folgt heissen:
                                           "Offset für den Warmwasser-Sollwert. Mit diesem kann der tatsächliche Sollwert
-                                          nach oben (+) oder unten (-) geschoben werden." Bitte durch Hersteller prüfen lassen.</font>
+                                          nach oben (+) oder unten (-) geschoben werden."
+                                          <br>Mit Hersteller klären.</font>
                       ]]>         
                     </textElement>
                     <language>de</language>
@@ -2220,7 +2224,8 @@
                       Normal-Warmwassertemperatur: Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.
                       </br>
                       <font color="red">Was heisst Normal-Warmwassertemperatur?
-                                        Vorschlag: "Setzen des Warmwasser-Sollwertes für den Komfortbetrieb (HOV_DHW_CONST_OP)". Bitte durch Hersteller prüfen lassen.</font>
+                                        Vorschlag: "Setzen des Warmwasser-Sollwertes für den Komfortbetrieb (HOV_DHW_CONST_OP)".
+                                        <br>Mit Hersteller klären.</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2271,7 +2276,8 @@
                     <![CDATA[
                       Spar-Warmwassertemperatur: Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.
                       </br>
-                      <font color="red">"Setzen des Warmwasser-Sollwertes für den Eco-Betrieb (HOV_DHW_ECO_OP)". Bitte durch Hersteller prüfen lassen.</font>
+                      <font color="red">"Setzen des Warmwasser-Sollwertes für den Eco-Betrieb (HOV_DHW_ECO_OP)".
+                                        <br>Mit Hersteller klären.</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2454,7 +2460,8 @@
                   <![CDATA[
                     Smart-Grid (Offset) Puffer-Soll.Heizen
                     </br>
-                    <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Heizmodus (+ Anhebung, - Absenkung)" Bitte durch Hersteller prüfen.</font>
+                    <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Heizmodus (+ Anhebung, - Absenkung)"
+                                        <br>Mit Hersteller klären.</font>
                   ]]>         
                 </textElement>
                 <language>de</language>
@@ -2506,7 +2513,8 @@
                     <![CDATA[
                       Smart-Grid (Offset) Puffer-Soll.Kühlen
                       </br>
-                      <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Kühlmodus (+ Anhebung, - Absenkung)" Bitte durch Hersteller prüfen.</font>
+                      <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Kühlmodus (+ Anhebung, - Absenkung)"
+                                        <br>Mit Hersteller klären.</font>
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -2989,8 +2997,9 @@
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
                   
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
-                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
-                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
+                  <font color="red">Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
+                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.
+                  <br>Mit Hersteller klären</font></p>
                   „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
                   Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                 ]]>
@@ -3109,8 +3118,10 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
+                      <font color="red">
                       <i>Feedback of the current running override possibility of the heat pump</i>
                       </p>Smart Grid via system bus (Rücklesung)
+                      </font>
                     ]]>
                   </textElement>
                   <language>en</language>
@@ -3118,21 +3129,34 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
+                      <font color="red">
                       Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe
                       </br>
-                      <font color="red">Warum heisst er hier plötzlich SGReadyState (kommt aus dem Funktionsprofil)?
-                                       Oben war doch OpModeCmd? Was ist der Unterschied dieser beiden Datenpunkte? Braucht es diesen überhaupt noch?</font>
+                      Warum heisst er hier plötzlich SGReadyState (kommt aus dem Funktionsprofil)?
+                      Oben war doch OpModeCmd? Was ist der Unterschied dieser beiden Datenpunkte? Braucht es diesen überhaupt noch?
+                      <br>Mit Hersteller klären. 
+                      </font>
                     ]]>         
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Smart Grid via bus de données (Valeur de relecture)
+                  <textElement>
+                    <![CDATA[
+                      <font color="red">
+                      Smart Grid via bus de données (Valeur de relecture)
+                      </font>
+                    ]]>         
                   </textElement>
                   <language>fr</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Smart Grid tramite bus di sistema (Valore di rilettura)
+                  <textElement>
+                    <![CDATA[
+                      <font color="red">
+                      Smart Grid tramite bus di sistema (Valore di rilettura)
+                      </font>
+                    ]]>         
                   </textElement>
                   <language>it</language>
                 </legibleDescription>
@@ -3280,7 +3304,8 @@
                   </p>
                   <font color="red">Die entscheidende Frage ist hier, ob ein geeichter Zähler (MID) in der Wärmepumpe verbaut ist oder nicht.
                                     Wenn ja, kann dieser Datenpunkt tatsächlich für Abrechnungszwecke verwendet werden, sonst sicher nicht!
-                                    Beim Monitoring ist die Angabe der Genauigkeit entscheidend. Berechnete Werte reichen nach aktuellem Minergie-Reglement nicht!</font>
+                                    Beim Monitoring ist die Angabe der Genauigkeit entscheidend. Berechnete Werte reichen nach aktuellem Minergie-Reglement nicht!
+                                    <br>Mit Hersteller klären, ob ein Zähler eingebaut ist.</font>
                 ]]> 
               </textElement>
               <language>de</language>
