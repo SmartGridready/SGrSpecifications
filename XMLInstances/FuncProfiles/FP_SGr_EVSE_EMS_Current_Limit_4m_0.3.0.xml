@@ -77,7 +77,7 @@
             <![CDATA[
               The maximum current allowed for the charging station at this moment.
               <p>If the device requires different datapoints for writing and reading, the data direction of this data point
-              can be changed to W and the data point <em>EMSCurrentLimitFeedback</em> can be used to define a datapoint for reading the maximum current.</p>
+              can be changed to W and the data point <em>EMSCurrentLimit.Feedback</em> can be used to define a datapoint for reading the maximum current.</p>
             ]]>
           </textElement>
           <language>en</language>
@@ -87,7 +87,7 @@
             <![CDATA[
               Der aktuell maximal zulässige Strom für die Ladestation.
               <p>Wenn das Gerät unterschiedliche Datenpunkte zum Schreiben und Lesen benötigt, kann die Datenrichtung dieses Datenpunkts
-              in W geändert werden, und über den Datenpunkt <em>EMSCurrentLimitFeedback</em> kann ein Datenpunkt zum Auslesen des Maximalstroms definiert werden.</p>
+              in W geändert werden, und über den Datenpunkt <em>EMSCurrentLimit.Feedback</em> kann ein Datenpunkt zum Auslesen des Maximalstroms definiert werden.</p>
             ]]>
           </textElement>
           <language>de</language>
@@ -198,7 +198,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>EMSCurrentLimitFeedback</dataPointName>
+        <dataPointName>EMSCurrentLimit.Feedback</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -239,7 +239,7 @@
             <![CDATA[
               In the event of a communication interruption with the EMS, the EVSE automatically adjusts its current limit to the Safe Current value.
               <p>If the device requires different datapoints for writing and reading, the data direction of this data point
-              can be changed to W and the data point <em>SafeCurrentFeedback</em> can be used to define a datapoint for reading the safe current.</p>
+              can be changed to W and the data point <em>SafeCurrent.Feedback</em> can be used to define a datapoint for reading the safe current.</p>
               <p>This datapoint should only be used if the devices requires different datapoints to write and to read the safe current.</p>
             ]]>
           </textElement>
@@ -250,7 +250,7 @@
             <![CDATA[
               Im Falle eines Kommunikationsunterbruchs mit dem EMS passt die EVSE ihre Strombegrenzung automatisch an den sicheren Stromwert an.
               <p>Wenn das Gerät unterschiedliche Datenpunkte zum Schreiben und Lesen benötigt, kann die Datenrichtung dieses Datenpunkts
-              in W geändert werden, und über den Datenpunkt <em>SafeCurrentFeedback</em> kann ein Datenpunkt zum Auslesen des sicheren Stroms definiert werden.</p>
+              in W geändert werden, und über den Datenpunkt <em>SafeCurrent.Feedback</em> kann ein Datenpunkt zum Auslesen des sicheren Stroms definiert werden.</p>
               <p>Dieser Datenpunkt sollte nur verwendet werden, wenn die Geräte zum Schreiben und Lesen des sicheren Stroms unterschiedliche Datenpunkte benötigen.</p>
             ]]>
           </textElement>
@@ -362,7 +362,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>SafeCurrentFeedback</dataPointName>
+        <dataPointName>SafeCurrent.Feedback</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -397,9 +397,9 @@
           <textElement>
             <![CDATA[
               The <em>MaxReceiveTimeSec</em> datapoint signifies the timeout for the stability fallback.
-              If the EVSE does not receive communication within the specified <em>MaxReceiveTimeSec</em>', it will automatically limit the current to the <em>SafeCurrent</em> value.
+              If the EVSE does not receive communication within the specified <em>MaxReceiveTimeSec</em>, it will automatically limit the current to the <em>SafeCurrent</em> value.
               <p>If the device requires different datapoints for writing and reading, the data direction of this data point
-              can be changed to W and the data point <em>MaxReceiveTimeSecFeedback</em> can be used to define a datapoint for reading the timeout.</p>
+              can be changed to W and the data point <em>MaxReceiveTimeSec.Feedback</em> can be used to define a datapoint for reading the timeout.</p>
               <p>This datapoint should only be used if the devices requires different datapoints to write and to read the timeout.</p>
             ]]>
           </textElement>
@@ -415,7 +415,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>MaxReceiveTimeSecFeedback</dataPointName>
+        <dataPointName>MaxReceiveTimeSec.Feedback</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
