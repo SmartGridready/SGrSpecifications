@@ -30,13 +30,15 @@ The functional profile covers the following main data points
 			 <em>SafeCurrent</em> value. 
 - **HWCurrentLimit** (optional):  The maximum current allowed for the EVSE is determined by the electrical installation of the charging station and cannot be changed during operation. 
 
-If the controller requires different datapoint to write and read the values, the data direction of
-<em>EMSCurrentLimit</em>, <em>SafeCurrent</em>, and <em>MaxReceiveTimeSec</em> can be changed from RW to W
+If the controller requires different datapoints to write and read the values <em>EMSCurrentLimit</em>, <em>SafeCurrent</em>, and <em>MaxReceiveTimeSec</em>,
+the data direction of can be changed from RW to W
 and an additional sub data point <em>Feedback</em> can be used to read the current value
 
 - <em>EMSCurrentLimit.Feedback</em> for <em>EMSCurrentLimit</em>
 - <em>SafeCurrent.Feedback</em> for <em>SafeCurrent</em>
 - <em>MaxReceiveTimeSec.Feedback</em> for <em>MaxReceiveTimeSec</em>
+
+The [SmoothTransition](../GenericAttributes.md#smooth-transition) things
 
 The SmoothTransition datapoints are utilized to specify the transition process following the reception of a new value for the data points <em>EMSCurrentLimit</em> and <em>SafeCurrent</em>.
 
