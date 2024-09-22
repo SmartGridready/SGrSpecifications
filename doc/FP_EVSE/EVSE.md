@@ -18,7 +18,7 @@ This specific parameter is designed to be easily adjusted by an Energy Manager, 
 
 This functional profile can be utilized in conjunction with the [EVSE State](#evse-state) functional profile.
 
-### Data Points
+### Main Data Points
 
 The functional profile covers the following main data points
 
@@ -30,6 +30,8 @@ The functional profile covers the following main data points
 			 <em>SafeCurrent</em> value. 
 - **HWCurrentLimit** (optional):  The maximum current allowed for the EVSE is determined by the electrical installation of the charging station and cannot be changed during operation. 
 
+### Feedback Sub Data Points
+
 If the controller requires different datapoints to write and read the values <em>EMSCurrentLimit</em>, <em>SafeCurrent</em>, and <em>MaxReceiveTimeSec</em>,
 the data direction of can be changed from RW to W
 and an additional sub data point <em>Feedback</em> can be used to read the current value
@@ -38,11 +40,37 @@ and an additional sub data point <em>Feedback</em> can be used to read the curre
 - <em>SafeCurrent.Feedback</em> for <em>SafeCurrent</em>
 - <em>MaxReceiveTimeSec.Feedback</em> for <em>MaxReceiveTimeSec</em>
 
-The [SmoothTransition](../GenericAttributes.md#smooth-transition) things
+These sub data points should not be used if the controller sets and reads the value from the same
+data point.
 
-The SmoothTransition datapoints are utilized to specify the transition process following the reception of a new value for the data points <em>EMSCurrentLimit</em> and <em>SafeCurrent</em>.
+### SmoothTransition Sub Data Points
 
+The [SmoothTransition](../GenericAttributes.md#smooth-transition) sub data points are utilized
+to specify the transition process following the reception of a new value for the data points <em>EMSCurrentLimit</em> and <em>SafeCurrent</em>.
+The transition process is defined with three sub data points for both main data points
 
+- <em>SmoothTransition_Window</em>: Indicates a time window in which the new operating mode is started randomly. The time window begins with the start command of the operating mode. The value 0 means immediate
+		(see winTms [SmoothTransition](../GenericAttributes.md#smooth-transition)).
+- <em>SmoothTransition_Delay</em>: Specifies how quickly the changes should be made. The corresponding value is gradually changed from the old to the new value in the specified time.
+		(see rmpTms [SmoothTransition](../GenericAttributes.md#smooth-transition)).
+- <em>SmoothTransition_Duration</em>: Determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If set to 0 (standard value), the operating mode remains active until a new command is received.
+		(see rvrtTms [SmoothTransition](../GenericAttributes.md#smooth-transition)).
+
+Accordingly, the sub data points
+
+- for <em>EMSCurrentLimit</em> are
+
+  - <em>EMSCurrentLimit.SmoothTransition_Window</em>
+  - <em>EMSCurrentLimit.SmoothTransition_Delay</em>
+  - <em>EMSCurrentLimit.SmoothTransition_Duration</em>
+
+- for <em>SafeCurrent</em> are
+
+  - <em>SafeCurrent.SmoothTransition_Window</em>
+  - <em>SafeCurrent.SmoothTransition_Delay</em>
+  - <em>SafeCurrent.SmoothTransition_Duration</em>
+
+All six sub data point can be implemented in the device as constant datapoint if the value is constant or as regular datapoint if it can be read from the device.
 
 ## EVSE State
 
