@@ -70,7 +70,7 @@ Accordingly, the sub data points
   - <em>SafeCurrent.SmoothTransition_Delay</em>
   - <em>SafeCurrent.SmoothTransition_Duration</em>
 
-All six sub data point can be implemented in the device as constant datapoint if the value is constant or as regular datapoint if it can be read from the device.
+All six sub data point can be implemented in the device as constant data points if the value is constant or as regular datapoint if it can be read from the device.
 
 ## EVSE State
 
