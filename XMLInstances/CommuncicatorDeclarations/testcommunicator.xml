@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <communicatorFrame xmlns="http://www.smartgridready.com/ns/V0/"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Communicator/SGrCommunicatorFrame.xsd ">
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Communicator/CommunicatorFrame.xsd ">
   <communicatorName>TestCommi</communicatorName>
   <manufacturerName>Ergonomics</manufacturerName>
   <releaseNotes>
@@ -26,12 +26,17 @@
     <isLocalControl>true</isLocalControl>
   </communicatorInformation>
   <functionalProfileListElement>
-    <functionalProfile>
-        <functionalProfileName>Testy</functionalProfileName>
-        <functionalProfileIdentification>
-            
-        </functionalProfileIdentification>
-    </functionalProfile>
+    <functionalProfileName>EVSE</functionalProfileName>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>EVSE</functionalProfileCategory>
+      <functionalProfileType>EVSEState</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
   </functionalProfileListElement>
-
 </communicatorFrame>

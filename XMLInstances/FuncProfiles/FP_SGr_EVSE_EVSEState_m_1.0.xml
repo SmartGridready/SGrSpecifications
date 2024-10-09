@@ -3,12 +3,12 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Draft</state>
+    <state>Published</state>
     <changeLog>
-      <version>0.0.2</version>
+      <version>1.0.0</version>
       <date>2025-05-29</date>
       <author>ag</author>
-      <comment>Finalization</comment>
+      <comment>Finalization and Publishing</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -18,8 +18,8 @@
       <functionalProfileType>EVSEState</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>2</secondaryVersionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
