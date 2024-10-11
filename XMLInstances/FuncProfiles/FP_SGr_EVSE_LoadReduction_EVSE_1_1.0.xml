@@ -28,9 +28,9 @@
         <![CDATA[    
           <img src="ressources/cem_to_evse.svg" style="float:left; padding:0.3em;"/>
           <p>Level 1 funktional profile for wallboxes (Electric Vehicle Supply Equipment "EVSE") with one relay contact. 
-			To implement this funktional profile wallboxes must have a controller which covers the following four operating states:</p>
+			To implement this funktional profile wallboxes must have a controller which covers the following two operating states:</p>
           <ol>
-            <li><strong>Switching state 0 </strong>: Normal operation, charging according to the configured connection power without any restrictions.</li>
+            <li><strong>Switching state 0</strong>: Normal operation, charging according to the configured connection power without any restrictions.</li>
             <li><strong>Switching state 1</strong>: Minimum charging (AC charging at 6 A, DC charging at 10 kW).</li>
           </ol>
           

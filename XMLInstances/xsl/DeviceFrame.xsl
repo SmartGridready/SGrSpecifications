@@ -153,7 +153,7 @@
             <tfoot><tr style="border:hidden;"><td>
                 <!-- Footer-->
                 <div class="documentfooter">
-				    <sup>1)</sup> R read, W write, P persistent, C constant
+				    <sup>1)</sup> data direction: R read, W write, P persistent, C constant
 				</div>
             </td></tr></tfoot>
         </table>

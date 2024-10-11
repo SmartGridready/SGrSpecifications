@@ -126,8 +126,8 @@
                 <div class="documentfooter"> Information and Support at <a
                         href="http://www.smartgridready.ch">www.smartgridready.ch</a> or email <a
                         href="mailto:deklaration@smartgridready.ch">deklaration@smartgridready.ch</a>
-                        <br/><sup>1)</sup> M mandatory, R recommended, O optional
-                        <br/><sup>2)</sup> R read, W write
+                        <br/><sup>1)</sup> presence level: M mandatory, R recommended, O optional
+                        <br/><sup>2)</sup> data direction: R read, W write
                 </div>
             </td></tr></tfoot>
         </table>
