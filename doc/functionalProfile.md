@@ -38,13 +38,13 @@ Each data point is defined by
 
 - a name to identify the data point
 - a data direction defining whether the data can be
-  - R: read
-  - W: written
-  - WR: read and written
+  - `R`: read
+  - `W`: written
+  - `WR`: read and written
 - a presence level
-  - M: mandatory - data point must be present in the product
-  - R: recommended - data point should be present in the product
-  - O: optional - data point can optionally be present in the product
+  - `M`: mandatory - data point must be present in the product
+  - `R`: recommended - data point should be present in the product
+  - `O`: optional - data point can optionally be present in the product
 - the data type of the data point
 - the unit of the data point
 - and a description of the data point
@@ -98,11 +98,11 @@ SGr classifies and identifies any functional profile by the following values
 
 | Element               | Description |
 |-----------------------|-------------|
-| specificationOwnerIdentification          | Identifier of the functional profile owner. |
-| functionalProfileCategory | Functional profile class (see [SGrFunctionalProfileCategory.xsd](../SchemaDatabase/SGr/Generic/BaseType_FunctionalProfileCategory.xsd) ) |
-| functionalProfileType       | Functional profile subclass |
-| levelOfOperation   | Level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ) |
-| versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
+| specificationOwnerIdentification          | identifier of the functional profile owner. |
+| functionalProfileCategory | functional profile class (see [SGrFunctionalProfileCategory.xsd](../SchemaDatabase/SGr/Generic/BaseType_FunctionalProfileCategory.xsd) ) |
+| functionalProfileType       | functional profile subclass |
+| levelOfOperation   | level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ) |
+| versionNumber         | version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
 ## Data Points
 A functional profile mainly defines a set of data points. The attributes of a data point are defined in the next section.
@@ -110,13 +110,13 @@ A functional profile mainly defines a set of data points. The attributes of a da
 # Data Point Attributes
 | Element     | Description |
 |-------------|-------------|
-| datapointName | Name of the data point. Should be unique within the functional profile |
-| dataDirection | R if data point can be read, W for write, P for persistence |
-| presenceLevel | Data point availability: Mandatory, Recommended, Optional |
-| unit | Physical unit of data point |
-| dataType |  Data type of the value for the point type |
-| alternativeNames | A list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
-| legibleDescription | Optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
+| datapointName | name of the data point. Should be unique within the functional profile |
+| dataDirection | `R` if data point can be read, `W` for write, `P` for persistence |
+| presenceLevel | data point availability: Mandatory, Recommended, Optional |
+| unit | physical unit of data point |
+| dataType | data type of the value for the point type |
+| alternativeNames | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| legibleDescription | optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## New Functional Profiles
 
@@ -132,18 +132,18 @@ Functional profile descriptions should be structured as follows:
 - Detailed explanation, including very attribute.
 - Description on how to apply the functional profile concerning presence level (i.e. how to handle recommended and optional data points)
 
-# Attatchment
+# Attachment
 ### Release Notes
 The release note section contains meta data that describe history and current state of the functional profile
 
 | Element   | Description |
 |-----------|-------------|
 | state     | one of Draft, Review, Released, Revoked |
-| remarks   |  Optional, arbitrary text. Can be useful e.g. during draft phase. |
-| changeLog | Optional, can occur multiple times. Contains release notes to the version concerned |
+| remarks   | optional, arbitrary text. Can be useful e.g. during draft phase. |
+| changeLog | optional, can occur multiple times. Contains release notes to the version concerned |
 
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| alternativeNames  | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
 | legibleDescription | optional, can occur multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
