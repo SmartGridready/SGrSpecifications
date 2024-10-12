@@ -3,7 +3,7 @@
 ## Use case
 
 A product description contains information about the device, its supported functional profiles, and how
-the datapoints of the functional profiles can be accessed through the transport layer.
+the data points of the functional profiles can be accessed through the transport layer.
 
 This allows potential controllers to easily integrate, implement, or access any SmartGridready certified product
 through a standardized set of functionality, and thereby greatly simplifies scale-up to support a wide range of products.
@@ -42,9 +42,9 @@ The release note section contains meta data that describe history and current st
 
 ### Configuration
 Values in the product definition can contain place holders e.g. for IP addresses, device ID's, ...
-These place holders are keys enclosed with double braces "{{}}". The values for the keys must be provided during the instantiation of the product.
+These place holders are keys enclosed with double braces `{{}}`. The values for the keys must be provided during the instantiation of the product.
 
-Example: {{ipaddress}}
+Example: `{{ipaddress}}`
 
 The keys should be documented in a list of configuration items. Each item contains
 
@@ -100,11 +100,15 @@ Each functional profile instance contains a list of data points in accordance wi
 | Interface Info| transport-service specific information on how to access the data point |
 | programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 
+### Sub Data Points
+
+Data Points that are defined as Sub Data Points are handled in the same way as the normal data points with all consequences. But a sub data point can only be used in the device if the main data point is also used.
+
 ### Constant Data Points
 
-Additional to the datapoints in the functional profile the product has the concept of constant datapoints that can implement the datapoint of the functional profile and that have a constant value.
+Additional to the data points in the functional profile the product has the concept of constant data points that can implement the data point of the functional profile and that have a constant value.
 
-For this, the data direction "C" is possible in products. In this case, a value must be defined for the datapoint.
+For this, the data direction "C" is possible in products. In this case, a value must be defined for the data point.
 
 ### Generic Attributes
 SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.

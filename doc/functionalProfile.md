@@ -30,37 +30,37 @@ All these values must be used identically in the product to match a functional p
 
 Additionally to this, the definition contains the description of a functional profile in English, German, French, and/or Italian language.
 
-### Datapoints
+### Data Points
 
-The datapoints define dynamic values that can be read from or written to the product.
+The data points define dynamic values that can be read from or written to the product.
 
-Each datapoint is defined by
+Each data point is defined by
 
-- a name to identify the datapoint
+- a name to identify the data point
 - a data direction defining whether the data can be
   - R: read
   - W: written
   - WR: read and written
 - a presence level
-  - M: mandatory - datapoint must be present in the product
-  - R: recommended - datapoint should be present in the product
-  - O: optional - datapoint can optionally be present in the product
+  - M: mandatory - data point must be present in the product
+  - R: recommended - data point should be present in the product
+  - O: optional - data point can optionally be present in the product
 - the data type of the data point
 - the unit of the data point
 - and a description of the data point
 
-If a datapoint is defined as mandatory in the functional profile, it must also be present in the product implementing this functional profile.
+If a data point is defined as mandatory in the functional profile, it must also be present in the product implementing this functional profile.
 
-If no datapoint is mandatory in the functional profile, then at least one datapoint must be recommended and at least one of the recommended datapoints must be present
+If no data point is mandatory in the functional profile, then at least one data point must be recommended and at least one of the recommended data points must be present
 in the product implementing this functional profile.
 
-### Sub Datapoints
+### Sub Data Points
 
-Datapoints that are connected to other datapoints can be modeled as sub datapoints.
+Data Points that are connected to other data points can be modeled as sub data points.
 
-The connection between data point and sub datapoint are defined with naming conventions. If e.g. a datapoint has the name "MainDatapoint" and is connected with a sub datapoint "SubDatapoint" the sub datapoint name has the name "MainDatapoint.SubDatapoint" - this means, the sub datapoint name is appended to the main datapoint name separated with a dot.
+The connection between data point and sub data point are defined with naming conventions. If e.g. a data point has the name "MainDatapoint" and is connected with a sub data point "SubDatapoint" the sub data point name has the name "MainDatapoint.SubDatapoint" - this means, the sub data point name is appended to the main data point name separated with a dot.
 
-An example for a sub datapoint is "Voltage.Precision" as the precision of the datapoint "Voltage".
+An example for a sub data point is "Voltage.Precision" as the precision of the data point "Voltage".
 
 ## Using Functional Profiles for declaration 
 
@@ -75,7 +75,7 @@ For the declaration of the a product the following flow is proposed:
 - Select the functional profiles from the [library](https://library.smartgridready.ch/FunctionalProfileTemplate) that should be implemented by the product.
 - Copy the selected functional profiles into the product and add a name to the functional profile (with this it is possible to implement a
   functional profile more than once with different names).
-- Add a description to the datapoint.
+- Add a description to the data point.
 
 More information can be found on [smartgridready.ch](https://smartgridready.ch/deklaration/product-communicator).
 
@@ -105,17 +105,17 @@ SGr classifies and identifies any functional profile by the following values
 | versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
 ## Data Points
-A functional profile mainly defines a set of datapoints. The attributes of a datapoint are defined in the next section.
+A functional profile mainly defines a set of data points. The attributes of a data point are defined in the next section.
 
 # Data Point Attributes
 | Element     | Description |
 |-------------|-------------|
 | datapointName | Name of the data point. Should be unique within the functional profile |
 | dataDirection | R if data point can be read, W for write, P for persistence |
-| presenceLevel | Datapoint availability: Mandatory, Recommended, Optional |
+| presenceLevel | Data point availability: Mandatory, Recommended, Optional |
 | unit | Physical unit of data point |
 | dataType |  Data type of the value for the point type |
-| alternativeNames | A list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| alternativeNames | A list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
 | legibleDescription | Optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## New Functional Profiles
