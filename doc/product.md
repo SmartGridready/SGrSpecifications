@@ -9,6 +9,7 @@ This allows potential controllers to easily integrate, implement, or access any 
 through a standardized set of functionality, and thereby greatly simplifies scale-up to support a wide range of products.
 
 ## General Structure
+
 The schema of the product description is structured on three levels:
 - Device information concerning manufacturer and product data, and the basic configuration of the transport layer
 - A list of supported functional profiles
@@ -39,6 +40,15 @@ The release note section contains meta data that describe history and current st
 | DeviceCategory   | Device Category |
 | SoftwareRevision | Software revision of device |
 
+### Configuration
+| Element          | Description |
+|------------------|-------------|
+| Name             | Device Name |
+| Manufacturer     | Manufacturer |
+| specificationOwnerIdentification | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
+| Type             | local or cloud device |
+| DeviceCategory   | Device Category |
+| SoftwareRevision | Software revision of device |
 
 ### Device Attributes
 
@@ -82,6 +92,18 @@ Each functional profile instance contains a list of data points in accordance wi
 Additional to the datapoints in the functional profile the product has the concept of constant datapoints that can implement the datapoint of the functional profile and that have a constant value.
 
 For this, the data direction "C" is possible in products. In this case, a value must be defined for the datapoint.
+
+### Generic Attributes
+SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
+
+The generic attributes (see [GenericAttributes](GenericAttributes.md)) contain static characteristics of the product.
+
+The generic attributes are a list of elements defined by
+
+- name
+- data type
+- value
+- description
 
 ## File Naming Schema
 File names for Products Definitions (EID's) should have the following file naming conventions:

@@ -15,7 +15,6 @@ The functional profiles are located on [library.smartgridready.ch](https://libra
 A functional profile is structured into the following elements
 
 - Definition of the functional profile with identification and description
-- Generic attributes defining static characteristics of the product
 - Data points defining access points to data of the product
 
 ### Definition
@@ -55,8 +54,6 @@ If a datapoint is defined as mandatory in the functional profile, it must also b
 If no datapoint is mandatory in the functional profile, then at least one datapoint must be recommended and at least one of the recommended datapoints must be present
 in the product implementing this functional profile.
 
-Like the generic attributes for the functional profile also the datapoints can have local generic attributes.
-
 ### Sub Datapoints
 
 Datapoints that are connected to other datapoints can be modeled as sub datapoints.
@@ -78,7 +75,6 @@ For the declaration of the a product the following flow is proposed:
 - Select the functional profiles from the [library](https://library.smartgridready.ch/FunctionalProfileTemplate) that should be implemented by the product.
 - Copy the selected functional profiles into the product and add a name to the functional profile (with this it is possible to implement a
   functional profile more than once with different names).
-- Fill in the values for the generic attributes as well as the configuration of the datapoints.
 - Add a description to the datapoint.
 
 More information can be found on [smartgridready.ch](https://smartgridready.ch/deklaration/product-communicator).
@@ -108,9 +104,6 @@ SGr classifies and identifies any functional profile by the following values
 | levelOfOperation   | Level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ) |
 | versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
-## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributes](GenericAttributes.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
-
 ## Data Points
 A functional profile mainly defines a set of datapoints. The attributes of a datapoint are defined in the next section.
 
@@ -124,24 +117,6 @@ A functional profile mainly defines a set of datapoints. The attributes of a dat
 | dataType |  Data type of the value for the point type |
 | alternativeNames | A list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
 | legibleDescription | Optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
-
-## Generic Attributes
-SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
-Any attribute defined on the functional profile level is mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
-The generic attributes in the functional profile can be empty or examples - the actual values are defined in the product XML (they are not read from the product).
-
-tbd update:
-
-The generic attributes (see [GenericAttributes](GenericAttributes.md)) contain static characteristics of the product. All generic attributes defined in the functional profile must also later be defined in product.
-
-The generic attributes are a list of elements defined by
-
-- name
-- data type
-- value
-- description
-
-The value of generic attributes is optional in the functional profile. The declared product must define the actual value.
 
 ## New Functional Profiles
 
