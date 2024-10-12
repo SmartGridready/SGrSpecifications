@@ -41,14 +41,27 @@ The release note section contains meta data that describe history and current st
 | SoftwareRevision | Software revision of device |
 
 ### Configuration
+Values in the product definition can contain place holders e.g. for IP addresses, device ID's, ...
+These place holders are keys enclosed with double braces "{{}}". The values for the keys must be provided during the instantiation of the product.
+
+Example: {{ipaddress}}
+
+The keys should be documented in a list of configuration items. Each item contains
+
 | Element          | Description |
 |------------------|-------------|
-| Name             | Device Name |
-| Manufacturer     | Manufacturer |
-| specificationOwnerIdentification | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
-| Type             | local or cloud device |
-| DeviceCategory   | Device Category |
-| SoftwareRevision | Software revision of device |
+| name             | Key Name |
+| dataType         | The data type of this value|
+| defaultValue     | Optional default value  |
+| configurationDescription | Description of the configuration item - can be repeated for each language|
+
+Each configurationDescription element contains
+
+| Element          | Description |
+|------------------|-------------|
+| textElement      | Description of the configuration item |
+| language         | The language |
+| label | short label to be displayed during the configuration of the device |
 
 ### Device Attributes
 
