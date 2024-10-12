@@ -15,7 +15,6 @@ The functional profiles are located on [library.smartgridready.ch](https://libra
 A functional profile is structured into the following elements
 
 - Definition of the functional profile with identification and description
-- Generic attributes defining static characteristics of the product
 - Data points defining access points to data of the product
 
 ### Definition
@@ -31,39 +30,37 @@ All these values must be used identically in the product to match a functional p
 
 Additionally to this, the definition contains the description of a functional profile in English, German, French, and/or Italian language.
 
-### Datapoints
+### Data Points
 
-The datapoints define dynamic values that can be read from or written to the product.
+The data points define dynamic values that can be read from or written to the product.
 
-Each datapoint is defined by
+Each data point is defined by
 
-- a name to identify the datapoint
+- a name to identify the data point
 - a data direction defining whether the data can be
-  - R: read
-  - W: written
-  - WR: read and written
+  - `R`: read
+  - `W`: written
+  - `WR`: read and written
 - a presence level
-  - M: mandatory - datapoint must be present in the product
-  - R: recommended - datapoint should be present in the product
-  - O: optional - datapoint can optionally be present in the product
+  - `M`: mandatory - data point must be present in the product
+  - `R`: recommended - data point should be present in the product
+  - `O`: optional - data point can optionally be present in the product
 - the data type of the data point
 - the unit of the data point
 - and a description of the data point
 
-If a datapoint is defined as mandatory in the functional profile, it must also be present in the product implementing this functional profile.
+If a data point is defined as mandatory in the functional profile, it must also be present in the product implementing this functional profile.
 
-If no datapoint is mandatory in the functional profile, then at least one datapoint must be recommended and at least one of the recommended datapoints must be present
+If no data point is mandatory in the functional profile, then at least one data point must be recommended and at least one of the recommended data points must be present
 in the product implementing this functional profile.
 
-Like the generic attributes for the functional profile also the datapoints can have local generic attributes.
+### Sub Data Points
 
-### Sub Datapoints
+Data Points that are connected to other data points can be modeled as sub data points.
 
-Datapoints that are connected to other datapoints can be modeled as sub datapoints.
+The connection between data point and sub data point are defined with naming conventions. If e.g. a data point has the name "MainDatapoint" and is connected with a sub data point "SubDatapoint" the sub data point name has the name "MainDatapoint.SubDatapoint" - this means, the sub data point name is appended to the main data point name separated with a dot.
 
-The connection between data point and sub datapoint are defined with naming conventions. If e.g. a datapoint has the name "MainDatapoint" and is connected with a sub datapoint "SubDatapoint" the sub datapoint name has the name "MainDatapoint.SubDatapoint" - this means, the sub datapoint name is appended to the main datapoint name separated with a dot.
-
-An example for a sub datapoint is "Voltage.Precision" as the precision of the datapoint "Voltage".
+An example for a sub data point is "Voltage.Precision" as the precision of the data point "Voltage".
 
 ## Using Functional Profiles for declaration 
 
@@ -78,8 +75,7 @@ For the declaration of the a product the following flow is proposed:
 - Select the functional profiles from the [library](https://library.smartgridready.ch/FunctionalProfileTemplate) that should be implemented by the product.
 - Copy the selected functional profiles into the product and add a name to the functional profile (with this it is possible to implement a
   functional profile more than once with different names).
-- Fill in the values for the generic attributes as well as the configuration of the datapoints.
-- Add a description to the datapoint.
+- Add a description to the data point.
 
 More information can be found on [smartgridready.ch](https://smartgridready.ch/deklaration/product-communicator).
 
@@ -102,46 +98,25 @@ SGr classifies and identifies any functional profile by the following values
 
 | Element               | Description |
 |-----------------------|-------------|
-| specificationOwnerIdentification          | Identifier of the functional profile owner. |
-| functionalProfileCategory | Functional profile class (see [SGrFunctionalProfileCategory.xsd](../SchemaDatabase/SGr/Generic/BaseType_FunctionalProfileCategory.xsd) ) |
-| functionalProfileType       | Functional profile subclass |
-| levelOfOperation   | Level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ) |
-| versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
-
-## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributes](GenericAttributes.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
+| specificationOwnerIdentification          | identifier of the functional profile owner. |
+| functionalProfileCategory | functional profile class (see [SGrFunctionalProfileCategory.xsd](../SchemaDatabase/SGr/Generic/BaseType_FunctionalProfileCategory.xsd) ) |
+| functionalProfileType       | functional profile subclass |
+| levelOfOperation   | level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ) |
+| versionNumber         | version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
 ## Data Points
-A functional profile mainly defines a set of datapoints. The attributes of a datapoint are defined in the next section.
+A functional profile mainly defines a set of data points. The attributes of a data point are defined in the next section.
 
 # Data Point Attributes
 | Element     | Description |
 |-------------|-------------|
-| datapointName | Name of the data point. Should be unique within the functional profile |
-| dataDirection | R if data point can be read, W for write, P for persistence |
-| presenceLevel | Datapoint availability: Mandatory, Recommended, Optional |
-| unit | Physical unit of data point |
-| dataType |  Data type of the value for the point type |
-| alternativeNames | A list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
-| legibleDescription | Optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
-
-## Generic Attributes
-SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
-Any attribute defined on the functional profile level is mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
-The generic attributes in the functional profile can be empty or examples - the actual values are defined in the product XML (they are not read from the product).
-
-tbd update:
-
-The generic attributes (see [GenericAttributes](GenericAttributes.md)) contain static characteristics of the product. All generic attributes defined in the functional profile must also later be defined in product.
-
-The generic attributes are a list of elements defined by
-
-- name
-- data type
-- value
-- description
-
-The value of generic attributes is optional in the functional profile. The declared product must define the actual value.
+| datapointName | name of the data point. Should be unique within the functional profile |
+| dataDirection | `R` if data point can be read, `W` for write, `P` for persistence |
+| presenceLevel | data point availability: Mandatory, Recommended, Optional |
+| unit | physical unit of data point |
+| dataType | data type of the value for the point type |
+| alternativeNames | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| legibleDescription | optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## New Functional Profiles
 
@@ -157,18 +132,18 @@ Functional profile descriptions should be structured as follows:
 - Detailed explanation, including very attribute.
 - Description on how to apply the functional profile concerning presence level (i.e. how to handle recommended and optional data points)
 
-# Attatchment
+# Attachment
 ### Release Notes
 The release note section contains meta data that describe history and current state of the functional profile
 
 | Element   | Description |
 |-----------|-------------|
 | state     | one of Draft, Review, Released, Revoked |
-| remarks   |  Optional, arbitrary text. Can be useful e.g. during draft phase. |
-| changeLog | Optional, can occur multiple times. Contains release notes to the version concerned |
+| remarks   | optional, arbitrary text. Can be useful e.g. during draft phase. |
+| changeLog | optional, can occur multiple times. Contains release notes to the version concerned |
 
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| alternativeNames  | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
 | legibleDescription | optional, can occur multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
