@@ -67,10 +67,20 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </sequence>
   </complexType>
 
+  <complexType name="MessagingValueMapping">
+    <annotation>
+      <documentation>Maps from generic interface to device specific values.</documentation>
+    </annotation>
+    <sequence>
+      <element name="mapping" type="sgr:ValueMapping" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
   <complexType name="OutMessage">
     <sequence>
       <element name="topic" type="string" />
       <element name="template" type="string" />
+      <element name="valueMapping" type="sgr:MessagingValueMapping" minOccurs="0" />
     </sequence>
   </complexType>
 
@@ -79,6 +89,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="topic" type="string" />
       <element name="filter" minOccurs="0" type="sgr:MessageFilter" />
       <element name="responseQuery" minOccurs="0" type="sgr:ResponseQuery" />
+      <element name="valueMapping" type="sgr:MessagingValueMapping" minOccurs="0" />
     </sequence>
   </complexType>
 
