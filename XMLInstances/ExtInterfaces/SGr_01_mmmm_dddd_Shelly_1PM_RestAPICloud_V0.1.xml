@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-06-18</date>
+			<date>2024-10-16</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -20,7 +20,7 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly 1PM ist ein 1-phasiges Leistungsmessgerät mit schaltbarem Relais.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API (Gen1) ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -40,10 +40,11 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>https://shelly-01-eu.shelly.cloud</defaultValue>
 			<configurationDescription>
 				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
@@ -56,10 +57,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>deviceId</name>
+			<name>device_id</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>Shelly1PM</defaultValue>
 			<configurationDescription>
 				<textElement>ID of the cloud device.</textElement>
 				<language>en</language>
@@ -72,10 +74,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>authKey</name>
+			<name>auth_key</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue></defaultValue>
 			<configurationDescription>
 				<textElement>Cloud authentication key.</textElement>
 				<language>en</language>
@@ -92,7 +95,7 @@
 		<restApiInterface>
 			<restApiInterfaceDescription>
 				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}</restApiUri>
+				<restApiUri>{{base_uri}}</restApiUri>
 				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
 			</restApiInterfaceDescription>
 			<functionalProfileList>
@@ -180,7 +183,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -192,18 +195,18 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>meters[0].power</query>
+										<query>data.device_status.meters[0].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -294,7 +297,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -306,18 +309,18 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>meters[0].total</query>
+										<query>data.device_status.meters[0].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -373,20 +376,20 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
+										<query>data.device_status.relays[0].ison</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -397,25 +400,25 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
+										</parameter>
+										<parameter>
+											<name>channel</name>
+											<value>0</value>
 										</parameter>
 										<parameter>
 											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
-									</responseQuery>
 									<valueMapping>
 										<mapping>
 											<genericValue>false</genericValue>

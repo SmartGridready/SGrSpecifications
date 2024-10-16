@@ -319,7 +319,9 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int8U/>                    
+                  <boolean>
+                    <falseValue>255</falseValue>
+                  </boolean>
                 </modbusDataType>
                 <address>1534</address>                
                 <registerType>HoldRegister</registerType>

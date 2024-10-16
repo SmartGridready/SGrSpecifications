@@ -38,6 +38,23 @@
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
+      <name>base_uri</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <defaultValue>https://cloud.clemap.com:3032</defaultValue>
+      <configurationDescription>
+        <textElement>Base URI of the CLEMAP cloud.</textElement>
+        <language>en</language>
+        <label>Base URI</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Base URI der CLEMAP Cloud.</textElement>
+        <language>de</language>
+        <label>Base URI</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
       <name>username</name>
       <dataType>
         <string/>
@@ -74,7 +91,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>{{baseUri}}</restApiUri>
+        <restApiUri>{{base_uri}}</restApiUri>
         <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
         <restApiBearer>
           <restApiServiceCall>
@@ -123,6 +140,8 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>50</maximumValue>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
@@ -249,6 +268,8 @@
                   <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <minimumValue>-50</minimumValue>
+                <maximumValue>50</maximumValue>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
@@ -375,6 +396,8 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>99999999</maximumValue>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>

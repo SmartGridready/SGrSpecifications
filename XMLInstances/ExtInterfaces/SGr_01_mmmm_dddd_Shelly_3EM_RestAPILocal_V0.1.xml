@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-06-18</date>
+			<date>2024-10-16</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -20,7 +20,7 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API (Gen1) ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -28,7 +28,7 @@
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>true</isLocalControl>
-		<softwareRevision>1.0.0</softwareRevision>
+		<softwareRevision>1.14.0</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
 		<manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
 		<levelOfOperation>1m</levelOfOperation>
@@ -40,10 +40,11 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>http://192.168.33.1</defaultValue>
 			<configurationDescription>
 				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
@@ -60,7 +61,7 @@
 		<restApiInterface>
 			<restApiInterfaceDescription>
 				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}</restApiUri>
+				<restApiUri>{{base_uri}}</restApiUri>
 				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
 			</restApiInterfaceDescription>
 			<functionalProfileList>
@@ -148,7 +149,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -161,7 +162,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>total_power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -185,7 +186,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -198,7 +199,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -222,7 +223,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -235,7 +236,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -259,7 +260,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -272,7 +273,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -362,7 +363,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -375,7 +376,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>sum([emeters[0].total,emeters[1].total,emeters[2].total])</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -397,7 +398,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -410,7 +411,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -432,7 +433,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -445,7 +446,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -467,7 +468,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -480,7 +481,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -524,7 +525,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -537,7 +538,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -557,7 +558,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -570,7 +571,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -590,7 +591,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -603,7 +604,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -647,7 +648,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -660,7 +661,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -680,7 +681,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -693,7 +694,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -713,7 +714,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -726,7 +727,7 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -796,7 +797,13 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/relay/0?turn={{value}}</requestPath>
+									<requestPath>/relay/0</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>turn</name>
+											<value>{{value}}</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>ison</query>

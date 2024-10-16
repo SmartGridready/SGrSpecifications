@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-06-18</date>
+			<date>2024-10-16</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -20,7 +20,7 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API (Gen1) ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -28,7 +28,7 @@
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
-		<softwareRevision>1.0.0</softwareRevision>
+		<softwareRevision>1.14.0</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
 		<manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
 		<levelOfOperation>1m</levelOfOperation>
@@ -40,10 +40,11 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>https://shelly-01-eu.shelly.cloud</defaultValue>
 			<configurationDescription>
 				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
@@ -56,10 +57,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>deviceId</name>
+			<name>device_id</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>Shelly3EM</defaultValue>
 			<configurationDescription>
 				<textElement>ID of the cloud device.</textElement>
 				<language>en</language>
@@ -72,10 +74,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>authKey</name>
+			<name>auth_key</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue></defaultValue>
 			<configurationDescription>
 				<textElement>Cloud authentication key.</textElement>
 				<language>en</language>
@@ -92,7 +95,7 @@
 		<restApiInterface>
 			<restApiInterfaceDescription>
 				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}</restApiUri>
+				<restApiUri>{{base_uri}}</restApiUri>
 				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
 			</restApiInterfaceDescription>
 			<functionalProfileList>
@@ -180,7 +183,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -192,18 +195,18 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total_power</query>
+										<query>data.device_status.total_power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -227,7 +230,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -235,22 +238,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>data.device_status.emeters[0].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -274,7 +277,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -282,22 +285,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>data.device_status.emeters[1].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -321,7 +324,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -329,22 +332,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>data.device_status.emeters[2].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -434,7 +437,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -446,18 +449,18 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>sum([emeters[0].total,emeters[1].total,emeters[2].total])</query>
+										<query>sum([data.device_status.emeters[0].total,data.device_status.emeters[1].total,data.device_status.emeters[2].total])</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -479,7 +482,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -487,22 +490,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>data.device_status.emeters[0].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -524,7 +527,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -532,22 +535,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>data.device_status.emeters[1].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -569,7 +572,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -577,22 +580,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>data.device_status.emeters[2].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -636,7 +639,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -644,22 +647,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.emeters[0].voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -679,7 +682,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -687,22 +690,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.emeters[1].voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -722,7 +725,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -730,22 +733,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.emeters[2].voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -789,7 +792,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -797,22 +800,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.emeters[0].current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -832,7 +835,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -840,22 +843,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.emeters[1].current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -875,7 +878,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -883,22 +886,22 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.emeters[2].current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -954,20 +957,20 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
+										<query>data.device_status.relays[0].ison</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -978,25 +981,25 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
+										</parameter>
+										<parameter>
+											<name>channel</name>
+											<value>0</value>
 										</parameter>
 										<parameter>
 											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
-									</responseQuery>
 									<valueMapping>
 										<mapping>
 											<genericValue>false</genericValue>

@@ -47,13 +47,31 @@
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address or DHCP name of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse oder DHCP-Name des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.1.51</address>
+          <address>{{address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
@@ -305,7 +323,7 @@
                 <dataPointName>ErrorNrSGr</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <int16U/>
+                  <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
@@ -334,8 +352,9 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                	<boolean>
-                		<falseValue>255</falseValue></boolean>                	
+                  <boolean>
+                    <falseValue>255</falseValue>
+                  </boolean>
                 </modbusDataType>
                 <address>1534</address>                
                 <registerType>HoldRegister</registerType>
@@ -448,7 +467,8 @@
                   <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Solltemperatur Handbetrieb: Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode  "manuell"</textElement>
+                  <textElement>Solltemperatur Handbetrieb: Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode
+  "manuell"</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>

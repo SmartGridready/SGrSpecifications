@@ -100,9 +100,7 @@
             <baudRatesSupported>38400</baudRatesSupported>
             <baudRatesSupported>57600</baudRatesSupported>
             <baudRatesSupported>115200</baudRatesSupported>
-            <baudRatesSupported>230400</baudRatesSupported>
             <byteLenSupported>8</byteLenSupported>
-            <byteLenSupported>7</byteLenSupported>
             <paritySupported>EVEN</paritySupported>
             <paritySupported>NONE</paritySupported>
             <paritySupported>ODD</paritySupported>

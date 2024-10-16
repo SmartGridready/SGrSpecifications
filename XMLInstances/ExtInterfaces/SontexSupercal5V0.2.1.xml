@@ -25,15 +25,24 @@
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>port_name</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>The serial port name when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial port name</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>RTU</modbusInterfaceSelection>
-        <modbusTcp>
-          <port>0</port>
-          <address>1.1.1.1</address>
-          <slaveId>0</slaveId>
-        </modbusTcp>
         <modbusRtu>
           <slaveAddr>16</slaveAddr>
           <portName>{{port_name}}</portName>

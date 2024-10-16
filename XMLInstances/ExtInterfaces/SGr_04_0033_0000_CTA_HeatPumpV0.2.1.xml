@@ -44,13 +44,31 @@
       <uri>https://cta.ch/privatkunden/produkte/oh-i-eco-sw</uri>
     </programmerHints>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address or DHCP name of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse oder DHCP-Name des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.99.55</address>
+          <address>{{address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>

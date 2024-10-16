@@ -95,7 +95,16 @@
     <configurationListElement>
       <name>serial_baudrate</name>
       <dataType>
-        <int32/>
+        <enum>
+          <enumEntry><literal>1200</literal></enumEntry>
+          <enumEntry><literal>2400</literal></enumEntry>
+          <enumEntry><literal>4800</literal></enumEntry>
+          <enumEntry><literal>9600</literal></enumEntry>
+          <enumEntry><literal>19200</literal></enumEntry>
+          <enumEntry><literal>38400</literal></enumEntry>
+          <enumEntry><literal>57600</literal></enumEntry>
+          <enumEntry><literal>115200</literal></enumEntry>
+        </enum>
       </dataType>
       <defaultValue>9600</defaultValue>
       <configurationDescription>
@@ -108,7 +117,6 @@
       <name>serial_databits</name>
       <dataType>
         <enum>
-          <enumEntry><literal>7</literal></enumEntry>
           <enumEntry><literal>8</literal></enumEntry>
         </enum>
       </dataType>
@@ -123,7 +131,6 @@
       <name>serial_stopbits</name>
       <dataType>
         <enum>
-          <enumEntry><literal>0</literal></enumEntry>
           <enumEntry><literal>1</literal></enumEntry>
         </enum>
       </dataType>

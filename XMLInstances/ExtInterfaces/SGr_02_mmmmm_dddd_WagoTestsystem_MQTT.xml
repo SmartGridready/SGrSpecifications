@@ -42,20 +42,141 @@
     <nominalPower>4 Watt</nominalPower>
     <levelOfOperation>4</levelOfOperation>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>broker_host</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <defaultValue>localhost</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker hostname or IP address.</textElement>
+        <language>en</language>
+        <label>Broker Hostname</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
+        <language>de</language>
+        <label>Broker-Hostname</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_port</name>
+      <dataType>
+        <int32/>
+      </dataType>
+      <defaultValue>1883</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TCP port.</textElement>
+        <language>en</language>
+        <label>Broker Port</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TCP-Port.</textElement>
+        <language>de</language>
+        <label>Broker-Port</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls</name>
+      <dataType>
+        <boolean/>
+      </dataType>
+      <defaultValue>true</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS.</textElement>
+        <language>en</language>
+        <label>Broker TLS</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS.</textElement>
+        <language>de</language>
+        <label>Broker-TLS</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls_verify</name>
+      <dataType>
+        <boolean/>
+      </dataType>
+      <defaultValue>false</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS certificate verification.</textElement>
+        <language>en</language>
+        <label>Broker TLS Verification</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
+        <language>de</language>
+        <label>Broker-TLS-Verifizierung</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_username</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>Message broker user name.</textElement>
+        <language>en</language>
+        <label>Broker User</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker User-Name.</textElement>
+        <language>de</language>
+        <label>Broker-User</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_password</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>Message broker password.</textElement>
+        <language>en</language>
+        <label>Broker Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Passwort.</textElement>
+        <language>de</language>
+        <label>Broker-Passwort</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>device_id</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <defaultValue>shellyht</defaultValue>
+      <configurationDescription>
+        <textElement>Device identifier used in MQTT topic.</textElement>
+        <language>en</language>
+        <label>Device ID</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Device-Identifier, in MQTT-Topic verwendet.</textElement>
+        <language>de</language>
+        <label>Device ID</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <messagingInterface>
       <messagingInterfaceDescription>
         <platform>MQTT5</platform>
         <messageBrokerList>
           <messageBrokerListElement>
-            <host>127.0.0.1</host>
-            <port>1833</port>
+            <host>{{broker_host}}</host>
+            <port>{{broker_port}}</port>
+            <tls>{{broker_tls}}</tls>
+            <tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
           </messageBrokerListElement>
         </messageBrokerList>
         <messageBrokerAuthentication>
           <basicAuthentication>
-            <username>admin</username>
-            <password>wago</password>
+            <username>{{broker_username}}</username>
+            <password>{{broker_password}}</password>
           </basicAuthentication>
         </messageBrokerAuthentication>
       </messagingInterfaceDescription>

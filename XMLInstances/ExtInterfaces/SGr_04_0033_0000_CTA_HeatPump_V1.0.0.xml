@@ -306,7 +306,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <boolean />
                 </modbusDataType>
                 <address>2210</address>
                 <registerType>InputRegister</registerType>

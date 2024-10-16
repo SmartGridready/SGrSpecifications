@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-06-18</date>
+			<date>2024-10-16</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -20,7 +20,7 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly Plus 1 ist ein 1-kanaliges Relais.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -40,10 +40,11 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>http://192.168.33.1</defaultValue>
 			<configurationDescription>
 				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
@@ -60,7 +61,7 @@
 		<restApiInterface>
 			<restApiInterfaceDescription>
 				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}</restApiUri>
+				<restApiUri>{{base_uri}}</restApiUri>
 				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
 			</restApiInterfaceDescription>
 			<functionalProfileList>

@@ -34,6 +34,58 @@
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>device_id</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>Identification of the device (UUID).
+        The device ID can be retrieved from the /Devices API endpoint.</textElement>
+        <language>en</language>
+        <label>Identification</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Identifikation des Geräts (UUID).
+        Die Geräte-ID kann vom API-Endpunkt /Devices abgerufen werden.</textElement>
+        <language>de</language>
+        <label>Identifikation</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>username</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>User name for accessing the device.</textElement>
+        <language>en</language>
+        <label>User Name</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Benutzername für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>Benutzername</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>password</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>Password for accessing the device.</textElement>
+        <language>en</language>
+        <label>Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Passwort für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>Passwort</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>

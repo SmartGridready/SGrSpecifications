@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-06-18</date>
+			<date>2024-10-16</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -20,7 +20,7 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly Plus 1 ist ein 1-kanaliges Relais.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud JSON-RPC API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via Cloud JSON-RPC API (Gen2) ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -40,10 +40,11 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>https://shelly-01-eu.shelly.cloud</defaultValue>
 			<configurationDescription>
 				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
@@ -56,10 +57,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>deviceId</name>
+			<name>device_id</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>ShellyPlus1</defaultValue>
 			<configurationDescription>
 				<textElement>ID of the cloud device.</textElement>
 				<language>en</language>
@@ -72,10 +74,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>authKey</name>
+			<name>auth_key</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue></defaultValue>
 			<configurationDescription>
 				<textElement>Cloud authentication key.</textElement>
 				<language>en</language>
@@ -92,7 +95,7 @@
 		<restApiInterface>
 			<restApiInterfaceDescription>
 				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}/{{deviceId}}</restApiUri>
+				<restApiUri>{{base_uri}}</restApiUri>
 				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
 			</restApiInterfaceDescription>
 			<functionalProfileList>
@@ -147,20 +150,20 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>output</query>
+										<query>data.device_status."switch:0".output</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -171,21 +174,35 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/Switch.Set</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
-											<name>on</name>
+											<name>channel</name>
+											<value>0</value>
+										</parameter>
+										<parameter>
+											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
+									<valueMapping>
+										<mapping>
+											<genericValue>false</genericValue>
+											<deviceValue>off</deviceValue>
+										</mapping>
+										<mapping>
+											<genericValue>true</genericValue>
+											<deviceValue>on</deviceValue>
+										</mapping>
+									</valueMapping>
 								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
