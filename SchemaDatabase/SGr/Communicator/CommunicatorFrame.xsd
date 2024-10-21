@@ -17,8 +17,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <complexContent>
       <extension base="sgr:FunctionalProfileDescription">
         <sequence>
-          <element name="genericAttributeList" type="sgr:GenericAttributeListFunctionalProfile" minOccurs="0" />
-          <element name="dataPointListElement" type="sgr:DataPointBase" maxOccurs="unbounded" />
+          <element name="dataPointListElement" type="sgr:DataPointBase" minOccurs="0" maxOccurs="unbounded" />
         </sequence>
       </extension>
     </complexContent>

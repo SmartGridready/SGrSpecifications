@@ -53,7 +53,8 @@ This section provides additional information about product types / groups
 
 | Product Type | Description |
 |-------|-------------|
-| [Heat Pump Appliances](doc/HeatPumpAppliances.md) | Heat pump appliances for heating and cooling. |
+| [Heat Pump Appliances](doc/FP_HeatPumpAppliance/HeatPumpAppliances.md) | Heat pump appliances for heating and cooling. |
+| [EVSE](doc/FP_EVSE/EVSE.md) | Electric Vehicle Supply Equipment. |
 
 ## Glossar (deutsch)
 
