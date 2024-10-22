@@ -84,8 +84,8 @@
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
-              <functionalProfileType>UNDEF</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <functionalProfileType>DeviceInformation</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
