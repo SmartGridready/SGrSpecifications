@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Shelly Pro 4PM Cloud</deviceName>
+	<deviceName>Shelly Pro 4PM MQTT</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
 	<releaseNotes>
@@ -26,7 +26,10 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly Pro 4PM ist ein 1-phasiges 4-Kanal-Leistungsmessgerät.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud JSON-RPC API (Gen2) ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via MQTT ausgelegt.
+		  Mit der vorliegenden EID können Daten via MQTT-Topic "{topic_prefix}/status" empfangen werden.
+          In der Firmware muss MQTT Control aktiviert sein und RPC via MQTT deaktiviert.
+          Schreiben der Relais geht noch nicht, braucht Anpassug der Spezifikation und Library.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -46,140 +49,145 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>base_uri</name>
+			<name>broker_host</name>
 			<dataType>
 				<string/>
 			</dataType>
-			<defaultValue>https://shelly-01-eu.shelly.cloud</defaultValue>
+			<defaultValue>localhost</defaultValue>
 			<configurationDescription>
-				<textElement>Base address for accessing the resource.</textElement>
+				<textElement>Message broker hostname or IP address.</textElement>
 				<language>en</language>
-				<label>Base URI</label>
+				<label>Broker Hostname</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
+				<textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
 				<language>de</language>
-				<label>Basis URI</label>
+				<label>Broker-Hostname</label>
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>device_id</name>
+			<name>broker_port</name>
 			<dataType>
-				<string/>
+				<int32/>
 			</dataType>
-			<defaultValue>ShellyPro4PM</defaultValue>
+			<defaultValue>1883</defaultValue>
 			<configurationDescription>
-				<textElement>ID of the cloud device.</textElement>
+				<textElement>Message broker TCP port.</textElement>
 				<language>en</language>
-				<label>Device ID</label>
+				<label>Broker Port</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>ID des Cloud-Geräts.</textElement>
+				<textElement>Message-Broker TCP-Port.</textElement>
 				<language>de</language>
-				<label>Geräte ID</label>
+				<label>Broker-Port</label>
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>auth_key</name>
+			<name>broker_tls</name>
+			<dataType>
+				<boolean/>
+			</dataType>
+			<defaultValue>false</defaultValue>
+			<configurationDescription>
+				<textElement>Message broker TLS.</textElement>
+				<language>en</language>
+				<label>Broker TLS</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker TLS.</textElement>
+				<language>de</language>
+				<label>Broker-TLS</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>broker_tls_verify</name>
+			<dataType>
+				<boolean/>
+			</dataType>
+			<defaultValue>false</defaultValue>
+			<configurationDescription>
+				<textElement>Message broker TLS certificate verification.</textElement>
+				<language>en</language>
+				<label>Broker TLS Verification</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
+				<language>de</language>
+				<label>Broker-TLS-Verifizierung</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>broker_username</name>
 			<dataType>
 				<string/>
 			</dataType>
 			<defaultValue></defaultValue>
 			<configurationDescription>
-				<textElement>Cloud authentication key.</textElement>
+				<textElement>Message broker user name.</textElement>
 				<language>en</language>
-				<label>Authentication Key</label>
+				<label>Broker User</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Cloud-Authentifizierungs-Key.</textElement>
+				<textElement>Message-Broker User-Name.</textElement>
 				<language>de</language>
-				<label>Authentication Key</label>
+				<label>Broker-User</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>broker_password</name>
+			<dataType>
+				<string/>
+			</dataType>
+			<defaultValue></defaultValue>
+			<configurationDescription>
+				<textElement>Message broker password.</textElement>
+				<language>en</language>
+				<label>Broker Password</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker Passwort.</textElement>
+				<language>de</language>
+				<label>Broker-Passwort</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>topic_prefix</name>
+			<dataType>
+				<string/>
+			</dataType>
+			<defaultValue>shellies/ShellyPro3EM</defaultValue>
+			<configurationDescription>
+				<textElement>MQTT topic prefix.</textElement>
+				<language>en</language>
+				<label>Topic Prefix</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>MQTT-Topic-Präfix.</textElement>
+				<language>de</language>
+				<label>Topic-Präfix</label>
 			</configurationDescription>
 		</configurationListElement>
 	</configurationList>
 	<interfaceList>
-		<restApiInterface>
-			<restApiInterfaceDescription>
-				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{base_uri}}</restApiUri>
-				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
-			</restApiInterfaceDescription>
+		<messagingInterface>
+			<messagingInterfaceDescription>
+				<platform>MQTT5</platform>
+				<messageBrokerList>
+					<messageBrokerListElement>
+						<host>{{broker_host}}</host>
+						<port>{{broker_port}}</port>
+						<tls>{{broker_tls}}</tls>
+						<tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
+					</messageBrokerListElement>
+				</messageBrokerList>
+				<messageBrokerAuthentication>
+					<basicAuthentication>
+						<username>{{broker_username}}</username>
+						<password>{{broker_password}}</password>
+					</basicAuthentication>
+				</messageBrokerAuthentication>
+			</messagingInterfaceDescription>
 			<functionalProfileList>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>DeviceStatus</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
-							<functionalProfileType>DeviceStatus</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>0</primaryVersionNumber>
-								<secondaryVersionNumber>1</secondaryVersionNumber>
-								<subReleaseVersionNumber>0</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								Ermöglicht das Auslesen des Gerätestatus.
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-						<legibleDescription>
-							<textElement>
-								Allows reading the device status.
-							</textElement>
-							<language>en</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>ConnectionStatus</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<boolean />
-								</dataType>
-								<unit>NONE</unit>
-								<legibleDescription>
-									<textElement>Verbindung zur Cloud</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Cloud Connection</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>data.online</query>
-									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
 				<functionalProfileListElement>
 					<functionalProfile>
 						<functionalProfileName>ActivePowerAC_1</functionalProfileName>
@@ -262,33 +270,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:0".apower</query>
+										<query>apower</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -374,33 +367,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:1</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:1".apower</query>
+										<query>apower</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -486,33 +464,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:2</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:2".apower</query>
+										<query>apower</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -598,33 +561,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:3</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:3".apower</query>
+										<query>apower</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -711,33 +659,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:0".aenergy.total</query>
+										<query>aenergy.total</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -824,33 +757,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:1</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:1".aenergy.total</query>
+										<query>aenergy.total</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -937,33 +855,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:2</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:2".aenergy.total</query>
+										<query>aenergy.total</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1050,33 +953,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:3</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:3".aenergy.total</query>
+										<query>aenergy.total</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1117,33 +1005,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:0".voltage</query>
+										<query>voltage</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1184,33 +1057,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:1</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:1".voltage</query>
+										<query>voltage</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1251,33 +1109,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:2</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:2".voltage</query>
+										<query>voltage</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1318,33 +1161,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:3</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:3".voltage</query>
+										<query>voltage</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1385,33 +1213,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:0".current</query>
+										<query>current</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1452,33 +1265,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:1</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:1".current</query>
+										<query>current</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1519,33 +1317,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:2</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:2".current</query>
+										<query>current</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1586,33 +1369,18 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:3</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:3".current</query>
+										<query>current</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1657,71 +1425,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:0".output</query>
+										<query>output</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-								<restApiWriteServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/control</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-										<parameter>
-											<name>channel</name>
-											<value>0</value>
-										</parameter>
-										<parameter>
-											<name>turn</name>
-											<value>{{value}}</value>
-										</parameter>
-									</requestForm>
-									<valueMapping>
-										<mapping>
-											<genericValue>false</genericValue>
-											<deviceValue>off</deviceValue>
-										</mapping>
-										<mapping>
-											<genericValue>true</genericValue>
-											<deviceValue>on</deviceValue>
-										</mapping>
-									</valueMapping>
-								</restApiWriteServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1766,71 +1481,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:1</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:1".output</query>
+										<query>output</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-								<restApiWriteServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/control</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-										<parameter>
-											<name>channel</name>
-											<value>1</value>
-										</parameter>
-										<parameter>
-											<name>turn</name>
-											<value>{{value}}</value>
-										</parameter>
-									</requestForm>
-									<valueMapping>
-										<mapping>
-											<genericValue>false</genericValue>
-											<deviceValue>off</deviceValue>
-										</mapping>
-										<mapping>
-											<genericValue>true</genericValue>
-											<deviceValue>on</deviceValue>
-										</mapping>
-									</valueMapping>
-								</restApiWriteServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1875,71 +1537,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:2</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:2".output</query>
+										<query>output</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-								<restApiWriteServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/control</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-										<parameter>
-											<name>channel</name>
-											<value>2</value>
-										</parameter>
-										<parameter>
-											<name>turn</name>
-											<value>{{value}}</value>
-										</parameter>
-									</requestForm>
-									<valueMapping>
-										<mapping>
-											<genericValue>false</genericValue>
-											<deviceValue>off</deviceValue>
-										</mapping>
-										<mapping>
-											<genericValue>true</genericValue>
-											<deviceValue>on</deviceValue>
-										</mapping>
-									</valueMapping>
-								</restApiWriteServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -1984,71 +1593,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/switch:3</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."switch:3".output</query>
+										<query>output</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-								<restApiWriteServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/control</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-										<parameter>
-											<name>channel</name>
-											<value>3</value>
-										</parameter>
-										<parameter>
-											<name>turn</name>
-											<value>{{value}}</value>
-										</parameter>
-									</requestForm>
-									<valueMapping>
-										<mapping>
-											<genericValue>false</genericValue>
-											<deviceValue>off</deviceValue>
-										</mapping>
-										<mapping>
-											<genericValue>true</genericValue>
-											<deviceValue>on</deviceValue>
-										</mapping>
-									</valueMapping>
-								</restApiWriteServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -2093,33 +1649,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/input:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."input:0".state</query>
+										<query>state</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -2164,33 +1705,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/input:1</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."input:1".state</query>
+										<query>state</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -2235,33 +1761,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/input:2</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."input:2".state</query>
+										<query>state</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -2306,37 +1817,22 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_boolean</dataType>
-								<restApiReadServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/input:3</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>data.device_status."input:3".state</query>
+										<query>state</query>
 									</responseQuery>
-								</restApiReadServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
 			</functionalProfileList>
-		</restApiInterface>
+		</messagingInterface>
 	</interfaceList>
 </DeviceFrame>

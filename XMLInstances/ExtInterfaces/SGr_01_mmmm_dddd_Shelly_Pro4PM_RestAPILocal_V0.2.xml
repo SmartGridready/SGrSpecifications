@@ -9,10 +9,16 @@
 	<releaseNotes>
 		<state>Draft</state>
 		<changeLog>
+			<version>0.1.0</version>
+			<date>2024-10-16</date>
+			<author>Matthias Krebs, FHNW</author>
+			<comment>Draft for Testlab</comment>
+		</changeLog>
+		<changeLog>
 			<version>0.2.0</version>
 			<date>2024-11-21</date>
 			<author>Matthias Krebs, FHNW</author>
-			<comment>Draft for Testlab</comment>
+			<comment>Added digital inputs</comment>
 		</changeLog>
 	</releaseNotes>
 	<deviceInformation>
