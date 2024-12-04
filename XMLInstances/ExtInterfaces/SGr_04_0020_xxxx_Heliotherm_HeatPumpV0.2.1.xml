@@ -562,7 +562,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
@@ -791,7 +791,7 @@
           <dataPointList>
           <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
@@ -999,39 +999,7 @@
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActDomHotWaterTemp</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <legibleDescription>
-                  <textElement>Aktueller Ist-Wert der Temperatur des Brauchwarmwasserspeichers</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Domestic hot water tank temperature</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16 />
-                </modbusDataType>
-                <address>11</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
+           <dataPointListElement>
               <dataPoint>
                 <dataPointName>DomHotWaterTempSetpoint</dataPointName>
                 <dataDirection>W</dataDirection>
@@ -1122,6 +1090,38 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
+          <dataPointListElement>
+          <dataPoint>
+            <dataPointName>ActDomHotWaterTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>DEGREES_CELSIUS</unit>
+            <legibleDescription>
+              <textElement>Aktueller Ist-Wert der Temperatur des Brauchwarmwasserspeichers</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>Domestic hot water tank temperature</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16 />
+            </modbusDataType>
+            <address>11</address>
+            <registerType>InputRegister</registerType>
+            <numberOfRegisters>1</numberOfRegisters>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -1283,7 +1283,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>RoomZoneTempSetpt</dataPointName>
+                <dataPointName>RoomZoneTempSetpoint</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
@@ -1334,7 +1334,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>RoomZoneTempSetpt</dataPointName>
+                <dataPointName>RoomZoneTempSetpoint</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
