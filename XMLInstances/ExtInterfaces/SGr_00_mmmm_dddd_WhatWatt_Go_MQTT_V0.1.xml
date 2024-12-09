@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-12-02</date>
+			<date>2024-12-06</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -200,6 +200,74 @@
 				</messageBrokerAuthentication>
 			</messagingInterfaceDescription>
 			<functionalProfileList>
+				<functionalProfileListElement>
+					<functionalProfile>
+						<functionalProfileName>DeviceId</functionalProfileName>
+						<functionalProfileIdentification>
+							<specificationOwnerIdentification>0</specificationOwnerIdentification>
+							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
+							<functionalProfileType>DeviceInformation</functionalProfileType>
+							<levelOfOperation>m</levelOfOperation>
+							<versionNumber>
+								<primaryVersionNumber>0</primaryVersionNumber>
+								<secondaryVersionNumber>1</secondaryVersionNumber>
+								<subReleaseVersionNumber>1</subReleaseVersionNumber>
+							</versionNumber>
+						</functionalProfileIdentification>
+						<legibleDescription>
+							<textElement>
+								<![CDATA[
+								Functional profile used to read a device ID used to identify a device. <p>
+								Further on, this functional profile that can be used for vendor specific information and data points. <p>
+								It allows the handling of data points, which are valid for the whole device.
+								]]>
+							</textElement>
+							<language>en</language>
+						</legibleDescription>
+						<legibleDescription>
+							<textElement>
+								<![CDATA[
+								Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts. <p>
+								Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden. <p>
+								Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
+								]]>
+							</textElement>
+							<language>de</language>
+						</legibleDescription>
+					</functionalProfile>
+					<dataPointList>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>DeviceId</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<string/>
+								</dataType>
+								<unit>NONE</unit>
+								<legibleDescription>
+									<textElement>Read the device ID.</textElement>
+									<language>en</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Auslesen der Geräte ID.</textElement>
+									<language>de</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>Sys.Id</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+					</dataPointList>
+				</functionalProfileListElement>
 				<functionalProfileListElement>
 					<functionalProfile>
 						<functionalProfileName>ActivePowerAC</functionalProfileName>
