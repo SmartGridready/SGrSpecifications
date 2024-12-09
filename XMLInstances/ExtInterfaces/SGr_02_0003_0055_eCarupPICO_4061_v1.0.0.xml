@@ -4,7 +4,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
   <deviceName>PICO Ladestation</deviceName>
-  <manufacturerName>eCarUp AG, CH-6343 Rotkreuz</manufacturerName>
+  <manufacturerName>eCarUp AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Published</state>
