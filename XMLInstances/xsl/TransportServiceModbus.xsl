@@ -273,6 +273,7 @@
             <xsl:when test="sgr:string">string</xsl:when>
             <xsl:when test="sgr:enum"><xsl:apply-templates select="sgr:enum" /></xsl:when> <!-- TODO Simon: map enum -->
             <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
+            <xsl:when test="sgr:json">JSon</xsl:when>
         </xsl:choose>
     </xsl:template>
 

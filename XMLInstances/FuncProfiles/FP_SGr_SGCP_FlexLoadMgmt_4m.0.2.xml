@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.2.0</version>
+      <date>2024-11-28</date>
+      <author>Ergo AG</author>
+      <comment>Initiale Version</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>FlexLoadMgmt</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>2</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+      <legibleDescription>
+      <textElement>
+        <![CDATA[
+          Der Smart Grid Connection Point soll als bidirektionale Schnittstelle zwischen dem Flexibilitätsmanager und Energiemanager im Stromnetz entwickelt werden.
+          In diesem Dokument werden Anforderungen an den SGCP beschrieben.
+          <p>
+          Die Anforderungen an den SGCP werden in zwei Hauptkategorien unterteilt:
+          <ul>
+            <li>Anforderungen an den Informationsaustausch: Welche Daten der Smart Grid Manager über den SGCP von den angeschlossenen Energieanlagen erhalten kann.</li>
+            <li>Anforderungen an Steuerbefehle: Welche Steuerbefehle der Smart Grid Manager über den SGCP an die Energieanlagen senden kann.</li>
+          </ul>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>Address</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <json>
+             <elem>
+               <key>Street</key>
+               <string/>
+             </elem>
+             <elem>
+               <key>HouseNumber</key>
+               <string/>
+             </elem>
+             <elem>
+               <key>ZipCode</key>
+               <string/>
+             </elem>
+             <elem>
+               <key>City</key>
+               <string/>
+             </elem>
+          </json>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Adresse bestehend aus Strasse, Hausnummer, Postleitzahl und Ort als JSon
+
+</p>JSon-Schema:
+<font size="2"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Adresse des Energiemanagers",
+  "type": "object",
+  "properties": {
+    "Street": {
+      "description": "Strasse",
+      "type": "string"
+    },
+    "HouseNumber": {
+      "description": "Hausnummer",
+      "type": "string"
+    },
+    "ZipCode": {
+      "description": "Postleitzahl",
+      "type": "number"
+    },
+    "City": {
+      "description": "Ort",
+      "type": "string"
+    }
+  },
+  "required": [
+    "street",
+    "postalCode",
+    "city"
+  ]
+}
+</pre></font>
+          
+JSon-Beispiel:
+<font size="2"><pre style="color:blue">
+{
+  "street": "Irgendeinestrasse",
+  "houseNumber": "33a",
+  "postalCode": 8000,
+  "city": "Zuerich"
+}
+</pre></font>
+
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MeterNumber</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <string/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Nummer auf dem Zähler</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MeasuringPointName</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <string/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Messpunktbezeichnung im System</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PVSize</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Grösse PV Anlage (DC seitig)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BatteryCapacity</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Battery Capacity</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HeatpumpPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Leistung Wärmepumpe elektrisch</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AccessRights</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Kunde gibt Zugriffsrecht auf Anlage an VNB, Read oder Write</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PVControl</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>ist PV Reduzierung verfügbar ja oder nein</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EmsAvailable</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>EMS_REACHABLE</literal>
+              <description>erreichbar</description>
+            </enumEntry>
+            <enumEntry>
+              <literal>EMS_NOT_REACHABLE</literal>
+              <description>nicht erreichbar</description>
+            </enumEntry>
+            <enumEntry>
+              <literal>EMS_CONNECTION_FAULT</literal>
+              <description>Fehler</description>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>1 erreichbar, 2 nicht erreichbar, 3 fault</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PVPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Aktuelle Produktionsleistung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MeterPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>aktuelle Leistung am Bilanzzähler (+ Bezug, - Feed-In)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AvailableFlexpos</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>verfügbare Flexibilität positiv (Bezug)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AvailableFlexneg</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>verfügbare Flexibilität negativ (Produktion)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BESSSoc</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <int32/>
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Aktueller Ladestand Speicher in %</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BESSNegCap</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>mögliche Kapazität zum Laden bis Limite</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BESSPosCap</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>mögliche Kapazität zum Entladen bis Limite</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MeterVoltage</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <json>
+             <elem>
+               <key>Voltage1</key>
+               <number/>
+             </elem>
+             <elem>
+               <key>Voltage2</key>
+               <number/>
+             </elem>
+             <elem>
+               <key>Voltage3</key>
+               <number/>
+             </elem>
+          </json>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Feedback aller drei Spannungslevel am Hausanschluss jeweils in Volt
+
+</p>JSon-Schema:
+<font size="2"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Spannung der 3 Phasen gegen den Nullleiter in Volt",
+  "type": "object",
+  "properties": {
+    "Voltage1": {
+      "description": "Spannung Phase 1 in Volt",
+      "type": "number"
+    },
+    "Voltage2": {
+      "description": "Spannung Phase 2 in Volt",
+      "type": "number"
+    },
+    "Voltage3": {
+      "description": "Spannung Phase 3 in Volt",
+      "type": "number"
+    }
+  },
+  "required": [
+    "Value",
+    "Duration"
+  ]
+}
+</pre></font>
+          
+JSon-Beispiel:
+<font size="2"><pre style="color:blue">
+{
+  "Voltage1": 230,
+  "Voltage2": 230,
+  "Voltage3": 230
+}
+</pre></font>
+
+            ]]>
+            </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaximumLoad</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <json>
+             <elem>
+               <key>Maximum</key>
+               <number/>
+             </elem>
+             <elem>
+               <key>Duration</key>
+               <number/>
+             </elem>
+          </json>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Last am Bilanzzähler auf diesen Maximalwert regeln, der Wert muss unter dem Maximum liegen.
+              Die Duration gibt die Dauer der Beschränkung in Minuten an.
+
+</p>JSon-Schema:
+<font size="2"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Einschränkung mit Maximum und Dauer",
+  "type": "object",
+  "properties": {
+    "Maximum": {
+      "description": "Maximalwert in Kilowatt",
+      "type": "number"
+    },
+    "Duration": {
+      "description": "Dauer der Beschränkung in Minuten",
+      "type": "number"
+    }
+  },
+  "required": [
+    "Value",
+    "Duration"
+  ]
+}
+</pre></font>
+          
+JSon-Beispiel:
+<font size="2"><pre style="color:blue">
+{
+  "Maximum": 10,
+  "Duration": 30
+}
+</pre></font>
+
+            ]]>
+            </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaximumLoadActive</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Aktiviert die Beschränkung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaximumFeedIn</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <json>
+             <elem>
+               <key>Maximum</key>
+               <number/>
+             </elem>
+             <elem>
+               <key>Duration</key>
+               <number/>
+             </elem>
+          </json>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Zielwert für die Einspeisung am Bilanzzähle. Der Wert muss unter dem Maximum liegen.
+              Die Duration gibt die Dauer der Beschränkung in Minuten an.
+
+</p>JSon-Schema:
+<font size="2"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Einschränkung mit Maximum und Dauer",
+  "type": "object",
+  "properties": {
+    "Maximum": {
+      "description": "Maximalwert in Kilowatt",
+      "type": "number"
+    },
+    "Duration": {
+      "description": "Dauer der Beschränkung in Minuten",
+      "type": "number"
+    }
+  },
+  "required": [
+    "Value",
+    "Duration"
+  ]
+}
+</pre></font>
+          
+JSon-Beispiel:
+<font size="2"><pre style="color:blue">
+{
+  "Maximum": 10,
+  "Duration": 30
+}
+</pre></font>
+
+            ]]>
+            </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaximumFeedInActive</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Aktiviert die Beschränkung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>

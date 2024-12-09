@@ -247,7 +247,7 @@
         <xsl:choose>
             <xsl:when test="sgr:boolean/sgr:falseValue">boolean (false=<xsl:value-of select="sgr:boolean/sgr:falseValue"/>)</xsl:when>
             <xsl:when test="sgr:boolean/sgr:trueValue">boolean (true=<xsl:value-of select="sgr:boolean/sgr:trueValue"/>)</xsl:when>
-            <xsl:when test="sgr:boolean">original boolean</xsl:when>
+            <xsl:when test="sgr:boolean">boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
             <xsl:when test="sgr:int16">int16</xsl:when>
             <xsl:when test="sgr:int32">int32</xsl:when>
@@ -258,10 +258,11 @@
             <xsl:when test="sgr:int64U">int64U</xsl:when>
             <xsl:when test="sgr:float32">float</xsl:when>
             <xsl:when test="sgr:float64">double</xsl:when>
-            <xsl:when test="sgr:dateTime">date time</xsl:when>
+            <xsl:when test="sgr:dateTime">date time BB</xsl:when>
             <xsl:when test="sgr:string">string</xsl:when>
             <xsl:when test="sgr:enum">enum</xsl:when>
             <xsl:when test="sgr:bitmap">bitmap</xsl:when>
+            <xsl:when test="sgr:json">JSon</xsl:when>
         </xsl:choose>
     </xsl:template>
 
