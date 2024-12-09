@@ -40,6 +40,9 @@
         - I1 = 31.7.0
         - I1 = 51.7.0
         - I1 = 71.7.0
+
+        Als "topic_path" muss der gesamte Topic-Pfad inkl. Präfix eingegeben werden, z.B. "tele/gPlugD_021345/SENSOR".
+        Das Telegramm ist immer "SENSOR" und muss alle Messwerte enthalten.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -47,7 +50,7 @@
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
-		<softwareRevision>1.0.0</softwareRevision>
+		<softwareRevision>14.0.0</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
 		<manufacturerSpecificationIdentification>Gantrisch Energie</manufacturerSpecificationIdentification>
 		<levelOfOperation>m</levelOfOperation>
@@ -217,7 +220,7 @@
 			<functionalProfileList>
 				<functionalProfileListElement>
 					<functionalProfile>
-						<functionalProfileName>SmartmeterID</functionalProfileName>
+						<functionalProfileName>SmartmeterId</functionalProfileName>
 						<functionalProfileIdentification>
 							<specificationOwnerIdentification>0</specificationOwnerIdentification>
 							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
@@ -255,7 +258,6 @@
 							<dataPoint>
 								<dataPointName>DeviceId</dataPointName>
 								<dataDirection>R</dataDirection>
-								<presenceLevel>O</presenceLevel>
 								<dataType>
 									<string/>
 								</dataType>
