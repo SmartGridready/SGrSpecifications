@@ -53,6 +53,7 @@
       <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
+    <testState>Tested</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>

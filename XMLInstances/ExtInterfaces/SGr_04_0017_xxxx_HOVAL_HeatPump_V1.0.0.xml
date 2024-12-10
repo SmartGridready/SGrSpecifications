@@ -42,6 +42,7 @@
       <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
+    <testState>Verified</testState>
     <programmerHints>
       <textElement>TCP ist standardmässig auf DHCP eingestellt. Das sollte für den Betrieb auf eine statische IP-Adresse geändert werden.</textElement>
       <language>de</language>

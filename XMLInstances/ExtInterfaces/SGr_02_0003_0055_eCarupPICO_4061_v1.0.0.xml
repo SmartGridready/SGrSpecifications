@@ -50,6 +50,7 @@
       <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
+    <testState>Verified</testState>
   </deviceInformation>
   <interfaceList>
     <contactInterface>
