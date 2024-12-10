@@ -280,6 +280,16 @@
             </tr>
         </xsl:if>
 
+        <!-- testState (1x opt)-->
+        <xsl:if test="sgr:testState">
+            <tr class="genericDetails">
+                <td>Test State</td>
+                <td>
+                    <xsl:value-of select="sgr:testState" />
+                </td>
+            </tr>
+        </xsl:if>
+
         <!-- generalRemarks (1x opt) -->
         <xsl:if test="sgr:generalRemarks">
             <tr class="genericDetails">
