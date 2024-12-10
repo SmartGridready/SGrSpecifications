@@ -27,8 +27,8 @@
     <levelOfOperation>4</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>3</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <secondaryVersionNumber>2</secondaryVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
   <configurationList>
@@ -55,7 +55,7 @@
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>{{address}}</address>
+          <address>{{tcp_address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>true
@@ -70,11 +70,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatPumpBase</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <secondaryVersionNumber>2</secondaryVersionNumber>
+                <subReleaseVersionNumber>1</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -562,7 +562,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
@@ -701,7 +701,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTempSetpointEnable</dataPointName>
+                <dataPointName>SupplyWaterTempSetpointEnable</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <boolean />
@@ -713,7 +713,7 @@
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Activates following of supply temperature setpoint FlowWaterTempSetpoint in register 109 for  heating loop 1. If 0, setpoint sent to register 109 is not applied. </textElement>
+                  <textElement>Activates following of supply temperature setpoint SupplyWaterTempSetpoint in register 109 for  heating loop 1. If 0, setpoint sent to register 109 is not applied. </textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -791,7 +791,7 @@
           <dataPointList>
           <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
@@ -897,14 +897,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTempSetpoint</dataPointName>
+                <dataPointName>SupplyWaterTempSetpoint</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
-                  <textElement>Sets the supply temperature setpoint for heating loop 2. Only considered if FlowWaterTempSetpointEnable is True</textElement>
+                  <textElement>Sets the supply temperature setpoint for heating loop 2. Only considered if SupplyWaterTempSetpointEnable is True</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -925,14 +925,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTempSetpointEnable</dataPointName>
+                <dataPointName>SupplyWaterTempSetpointEnable</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>Activates following of supply temperature setpoint FlowWaterTempSetpoint in register 114 for  heating loop 1. If 0, setpoint sent to register 114 is not applied. </textElement>
+                  <textElement>Activates following of supply temperature setpoint SupplyWaterTempSetpoint in register 114 for  heating loop 1. If 0, setpoint sent to register 114 is not applied. </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -947,7 +947,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ReturnFlowWaterTemp</dataPointName>
+                <dataPointName>ReturnSupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -999,39 +999,7 @@
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActDomHotWaterTemp</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <legibleDescription>
-                  <textElement>Aktueller Ist-Wert der Temperatur des Brauchwarmwasserspeichers</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Domestic hot water tank temperature</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16 />
-                </modbusDataType>
-                <address>11</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
+           <dataPointListElement>
               <dataPoint>
                 <dataPointName>DomHotWaterTempSetpoint</dataPointName>
                 <dataDirection>W</dataDirection>
@@ -1122,6 +1090,38 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
+          <dataPointListElement>
+          <dataPoint>
+            <dataPointName>ActDomHotWaterTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>DEGREES_CELSIUS</unit>
+            <legibleDescription>
+              <textElement>Aktueller Ist-Wert der Temperatur des Brauchwarmwasserspeichers</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>Domestic hot water tank temperature</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16 />
+            </modbusDataType>
+            <address>11</address>
+            <registerType>InputRegister</registerType>
+            <numberOfRegisters>1</numberOfRegisters>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -1283,7 +1283,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>RoomZoneTempSetpt</dataPointName>
+                <dataPointName>RoomZoneTempSetpoint</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
@@ -1334,7 +1334,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>RoomZoneTempSetpt</dataPointName>
+                <dataPointName>RoomZoneTempSetpoint</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
