@@ -76,7 +76,7 @@
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>{{address}}</address>
+          <address>{{tcp_address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
