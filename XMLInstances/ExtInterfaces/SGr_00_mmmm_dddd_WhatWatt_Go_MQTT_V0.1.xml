@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-12-06</date>
+			<date>2025-01-13</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -25,18 +25,22 @@
           
           Das Topic-Template muss folgendermassen aussehen:
           {
-          	"P_In": ${1_7_0},
-          	"P_Out": ${2_7_0},
           	"E_In": ${1_8_0},
           	"E_Out": ${2_8_0},
-          	"I_P1": ${31_7_0},
-          	"I_P2": ${51_7_0},
-          	"I_P3": ${71_7_0},
-          	"V_P1": ${32_7_0},
-          	"V_P2": ${52_7_0},
-          	"V_P3": ${72_7_0},
+          	"P_In": ${1_7_0},
+          	"P_Out": ${2_7_0},
+          	"P_L1": ${21_7_0},
+          	"P_L2": ${41_7_0},
+          	"P_L3": ${61_7_0},
+          	"I_L1": ${31_7_0},
+          	"I_L2": ${51_7_0},
+          	"I_L3": ${71_7_0},
+          	"V_L1": ${32_7_0},
+          	"V_L2": ${52_7_0},
+          	"V_L3": ${72_7_0},
           	"Meter": {
-          		"DateTime": "${meter.date_time}"
+          		"DateTime": "${meter.date_time}",
+          		"Id": "${meter.id}"
           	},
           	"Sys": {
           		"Id": "${sys.id}"
@@ -58,6 +62,7 @@
 			<secondaryVersionNumber>1</secondaryVersionNumber>
 			<subReleaseVersionNumber>0</subReleaseVersionNumber>
 		</versionNumber>
+		<testState>None</testState>
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
@@ -202,7 +207,7 @@
 			<functionalProfileList>
 				<functionalProfileListElement>
 					<functionalProfile>
-						<functionalProfileName>DeviceId</functionalProfileName>
+						<functionalProfileName>SmartmeterId</functionalProfileName>
 						<functionalProfileIdentification>
 							<specificationOwnerIdentification>0</specificationOwnerIdentification>
 							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
@@ -261,7 +266,7 @@
 									<topic>{{topic_path}}</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>Sys.Id</query>
+										<query>Meter.Id</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
@@ -340,7 +345,7 @@
 								</dataType>
 								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>90000</maximumValue>
+								<maximumValue>30</maximumValue>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -359,6 +364,102 @@
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>P_In</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL1</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 1</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>P_L1</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL2</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 2</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>P_L2</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL3</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 3</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>P_L31</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
@@ -508,7 +609,7 @@
 									<topic>{{topic_path}}</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>V_P1</query>
+										<query>V_L1</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
@@ -536,7 +637,7 @@
 									<topic>{{topic_path}}</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>V_P2</query>
+										<query>V_L2</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
@@ -564,7 +665,7 @@
 									<topic>{{topic_path}}</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>V_P3</query>
+										<query>V_L3</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
@@ -616,7 +717,7 @@
 									<topic>{{topic_path}}</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>I_P1</query>
+										<query>I_L1</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
@@ -644,7 +745,7 @@
 									<topic>{{topic_path}}</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>I_P2</query>
+										<query>I_L2</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
@@ -672,7 +773,7 @@
 									<topic>{{topic_path}}</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>I_P3</query>
+										<query>I_L3</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
