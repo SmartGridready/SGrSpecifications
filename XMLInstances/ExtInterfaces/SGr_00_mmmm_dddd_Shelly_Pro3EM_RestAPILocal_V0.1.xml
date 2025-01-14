@@ -37,7 +37,7 @@
 			<secondaryVersionNumber>1</secondaryVersionNumber>
 			<subReleaseVersionNumber>0</subReleaseVersionNumber>
 		</versionNumber>
-        <testState>Verified</testState>
+		<testState>Verified</testState>
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
