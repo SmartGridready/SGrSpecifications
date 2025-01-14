@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Gantrisch gPlug MQTT</deviceName>
-	<manufacturerName>Gantrisch Energie AG</manufacturerName>
+	<deviceName>WhatWatt Go REST API Local</deviceName>
+	<manufacturerName>WhatWatt</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
 	<releaseNotes>
 		<state>Draft</state>
@@ -19,45 +19,17 @@
 		<legibleDescription>
 			<textElement>
 				<![CDATA[ 
-        Diese EID unterstützt gPlug D/K/M.
-        
-        Folgende Konfigurationsvorgaben müssen erfüllt sein:
-
-        MQTT:
-        - Topic Path = "%prefix%/%topic%/"
-
-        Tasmota Reader:
-        - Telemetrie-Intervall (komplette Daten) = 10 s
-        - Telemtrie (Momentanwerte) deaktiviert
-        - Name des Telemetrie-Datenfelds = "gPlug"
-
-        Folgende Telemetrie-Keys müssen konfiguriert werden (OBIS Code als Referenz):
-        - Ei = 1.8.0
-        - Eo = 2.8.0
-        - Pi = 1.7.0
-        - Po = 2.7.0
-        - P1 = 21.7.0
-        - P2 = 41.7.0
-        - P3 = 61.7.0
-        - V1 = 32.7.0
-        - V2 = 52.7.0
-        - V3 = 72.7.0
-        - I1 = 31.7.0
-        - I2 = 51.7.0
-        - I3 = 71.7.0
-
-        Als "topic_path" muss der gesamte Topic-Pfad inkl. Präfix eingegeben werden, z.B. "tele/gPlugD_021345/SENSOR".
-        Das Telegramm ist immer "SENSOR" und muss alle Messwerte enthalten.
+          whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.
         ]]>
 			</textElement>
 			<language>de</language>
-			<uri>https://gplug.ch/produkte/</uri>
+			<uri>https://whatwatt.ch/de/product</uri>
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
-		<isLocalControl>false</isLocalControl>
-		<softwareRevision>14.0.0</softwareRevision>
+		<isLocalControl>true</isLocalControl>
+		<softwareRevision>1.1.22</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
-		<manufacturerSpecificationIdentification>Gantrisch Energie</manufacturerSpecificationIdentification>
+		<manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
 		<levelOfOperation>m</levelOfOperation>
 		<versionNumber>
 			<primaryVersionNumber>0</primaryVersionNumber>
@@ -68,165 +40,34 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>broker_host</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
-			<defaultValue>localhost</defaultValue>
+			<defaultValue>http://localhost</defaultValue>
 			<configurationDescription>
-				<textElement>Message broker hostname or IP address.</textElement>
+				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
-				<label>Broker Hostname</label>
+				<label>Base URI</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
+				<textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
 				<language>de</language>
-				<label>Broker-Hostname</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_port</name>
-			<dataType>
-				<int32/>
-			</dataType>
-			<defaultValue>1883</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TCP port.</textElement>
-				<language>en</language>
-				<label>Broker Port</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TCP-Port.</textElement>
-				<language>de</language>
-				<label>Broker-Port</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls</name>
-			<dataType>
-				<boolean/>
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS.</textElement>
-				<language>en</language>
-				<label>Broker TLS</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS.</textElement>
-				<language>de</language>
-				<label>Broker-TLS</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls_verify</name>
-			<dataType>
-				<boolean/>
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS certificate verification.</textElement>
-				<language>en</language>
-				<label>Broker TLS Verification</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
-				<language>de</language>
-				<label>Broker-TLS-Verifizierung</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_username</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue></defaultValue>
-			<configurationDescription>
-				<textElement>Message broker user name.</textElement>
-				<language>en</language>
-				<label>Broker User</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker User-Name.</textElement>
-				<language>de</language>
-				<label>Broker-User</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_password</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue></defaultValue>
-			<configurationDescription>
-				<textElement>Message broker password.</textElement>
-				<language>en</language>
-				<label>Broker Password</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker Passwort.</textElement>
-				<language>de</language>
-				<label>Broker-Passwort</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>topic_path</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue>tele/gPlug_012345/SENSOR</defaultValue>
-			<configurationDescription>
-				<textElement>MQTT topic path.</textElement>
-				<language>en</language>
-				<label>Topic Path</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>MQTT-Topic-Pfad.</textElement>
-				<language>de</language>
-				<label>Topic-Pfad</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>field_name</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue>gPlug</defaultValue>
-			<configurationDescription>
-				<textElement>JSON field name containing data</textElement>
-				<language>en</language>
-				<label>JSON field name</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>JSON-Feldname mit Daten</textElement>
-				<language>de</language>
-				<label>JSON-Feldname</label>
+				<label>Basis URI</label>
 			</configurationDescription>
 		</configurationListElement>
 	</configurationList>
 	<interfaceList>
-		<messagingInterface>
-			<messagingInterfaceDescription>
-				<platform>MQTT5</platform>
-				<messageBrokerList>
-					<messageBrokerListElement>
-						<host>{{broker_host}}</host>
-						<port>{{broker_port}}</port>
-						<tls>{{broker_tls}}</tls>
-						<tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
-					</messageBrokerListElement>
-				</messageBrokerList>
-				<messageBrokerAuthentication>
-					<basicAuthentication>
-						<username>{{broker_username}}</username>
-						<password>{{broker_password}}</password>
-					</basicAuthentication>
-				</messageBrokerAuthentication>
-			</messagingInterfaceDescription>
+		<restApiInterface>
+			<restApiInterfaceDescription>
+				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
+				<restApiUri>{{base_uri}}</restApiUri>
+				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
+			</restApiInterfaceDescription>
 			<functionalProfileList>
 				<functionalProfileListElement>
 					<functionalProfile>
-						<functionalProfileName>SmartmeterId</functionalProfileName>
+						<functionalProfileName>DeviceId</functionalProfileName>
 						<functionalProfileIdentification>
 							<specificationOwnerIdentification>0</specificationOwnerIdentification>
 							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
@@ -277,18 +118,23 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<string/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_string</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".SMid</query>
+										<query>meter.id</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -374,18 +220,23 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".Pi</query>
+										<query>report.instantaneous_power.active.positive.total</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -406,18 +257,23 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".P1</query>
+										<query>report.instantaneous_power.active.positive.l1</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -438,18 +294,23 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".P2</query>
+										<query>report.instantaneous_power.active.positive.l2</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -470,18 +331,23 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".P3</query>
+										<query>report.instantaneous_power.active.positive.l3</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -568,18 +434,23 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".Ei</query>
+										<query>report.energy.active.positive.total</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -620,18 +491,23 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".V1</query>
+										<query>report.voltage.l1</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -648,18 +524,23 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".V2</query>
+										<query>report.voltage.l2</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -676,18 +557,23 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".V3</query>
+										<query>report.voltage.l3</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -728,18 +614,23 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".I1</query>
+										<query>report.current.l1</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -756,18 +647,23 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".I2</query>
+										<query>report.current.l2</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -784,22 +680,27 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/api/v1/report</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>"{{field_name}}".I3</query>
+										<query>report.current.l3</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
 			</functionalProfileList>
-		</messagingInterface>
+		</restApiInterface>
 	</interfaceList>
 </DeviceFrame>
