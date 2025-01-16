@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2025-01-13</date>
+			<date>2025-01-15</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -67,7 +67,7 @@
 			<functionalProfileList>
 				<functionalProfileListElement>
 					<functionalProfile>
-						<functionalProfileName>DeviceId</functionalProfileName>
+						<functionalProfileName>SmartmeterId</functionalProfileName>
 						<functionalProfileIdentification>
 							<specificationOwnerIdentification>0</specificationOwnerIdentification>
 							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
@@ -109,6 +109,9 @@
 									<string/>
 								</dataType>
 								<unit>NONE</unit>
+								<alternativeNames>
+									<manufName>96.1.1</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Read the device ID.</textElement>
 									<language>en</language>
@@ -140,7 +143,7 @@
 				</functionalProfileListElement>
 				<functionalProfileListElement>
 					<functionalProfile>
-						<functionalProfileName>ActivePowerAC</functionalProfileName>
+						<functionalProfileName>ActivePowerACIn</functionalProfileName>
 						<functionalProfileIdentification>
 							<specificationOwnerIdentification>0</specificationOwnerIdentification>
 							<functionalProfileCategory>Metering</functionalProfileCategory>
@@ -211,6 +214,9 @@
 								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>30</maximumValue>
+								<alternativeNames>
+									<manufName>1.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -248,6 +254,9 @@
 								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>21.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
 									<language>de</language>
@@ -285,6 +294,9 @@
 								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>41.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
 									<language>de</language>
@@ -322,6 +334,9 @@
 								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>61.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
 									<language>de</language>
@@ -353,7 +368,7 @@
 				</functionalProfileListElement>
 				<functionalProfileListElement>
 					<functionalProfile>
-						<functionalProfileName>ActiveEnergyAC</functionalProfileName>
+						<functionalProfileName>ActiveEnergyACIn</functionalProfileName>
 						<functionalProfileIdentification>
 							<specificationOwnerIdentification>0</specificationOwnerIdentification>
 							<functionalProfileCategory>Metering</functionalProfileCategory>
@@ -425,6 +440,9 @@
 									<float64/>
 								</dataType>
 								<unit>KILOWATT_HOURS</unit>
+								<alternativeNames>
+									<manufName>1.8.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
@@ -486,6 +504,9 @@
 								<unit>VOLTS</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>250</maximumValue>
+								<alternativeNames>
+									<manufName>32.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Spannung Phase 1 gegenüber Nulleiter</textElement>
 									<language>de</language>
@@ -519,6 +540,9 @@
 								<unit>VOLTS</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>250</maximumValue>
+								<alternativeNames>
+									<manufName>52.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Spannung Phase 2 gegenüber Nulleiter</textElement>
 									<language>de</language>
@@ -552,6 +576,9 @@
 								<unit>VOLTS</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>250</maximumValue>
+								<alternativeNames>
+									<manufName>72.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Spannung Phase 3 gegenüber Nulleiter</textElement>
 									<language>de</language>
@@ -609,6 +636,9 @@
 								<unit>AMPERES</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>16</maximumValue>
+								<alternativeNames>
+									<manufName>31.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Stromfluss Phase 1</textElement>
 									<language>de</language>
@@ -642,6 +672,9 @@
 								<unit>AMPERES</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>16</maximumValue>
+								<alternativeNames>
+									<manufName>51.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Stromfluss Phase 2</textElement>
 									<language>de</language>
@@ -675,6 +708,9 @@
 								<unit>AMPERES</unit>
 								<minimumValue>0</minimumValue>
 								<maximumValue>16</maximumValue>
+								<alternativeNames>
+									<manufName>71.7.0</manufName>
+								</alternativeNames>
 								<legibleDescription>
 									<textElement>Stromfluss Phase 3</textElement>
 									<language>de</language>
