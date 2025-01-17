@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2025-01-15</date>
+			<date>2025-01-17</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -32,12 +32,18 @@
         - Name des Telemetrie-Datenfelds = "gPlug"
 
         Folgende Telemetrie-Keys müssen konfiguriert werden (OBIS Code als Referenz):
+        - Pi = 1.7.0
+        - Po = 2.7.0
+        - P1i = 21.7.0
+        - P2i = 41.7.0
+        - P3i = 61.7.0
+        - P1o = 22.7.0
+        - P2o = 42.7.0
+        - P3o = 62.7.0
         - Ei = 1.8.0
         - Eo = 2.8.0
         - Ri = 3.8.0
         - Ro = 4.8.0
-        - Pi = 1.7.0
-        - Po = 2.7.0
         - V1 = 32.7.0
         - V2 = 52.7.0
         - V3 = 72.7.0
@@ -392,6 +398,111 @@
 								</inMessage>
 							</messagingDataPointConfiguration>
 						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL1</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>21.7.0</manufName>
+								</alternativeNames>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 1</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>"{{field_name}}".P1i</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL2</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>41.7.0</manufName>
+								</alternativeNames>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 2</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>"{{field_name}}".P2i</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL3</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>61.7.0</manufName>
+								</alternativeNames>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 3</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>"{{field_name}}".P3i</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
 				<functionalProfileListElement>
@@ -488,6 +599,111 @@
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>"{{field_name}}".Po</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL1</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>22.7.0</manufName>
+								</alternativeNames>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 1</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>"{{field_name}}".P1o</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL2</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>42.7.0</manufName>
+								</alternativeNames>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 2</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>"{{field_name}}".P2o</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>ActivePowerACL3</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>KILOWATTS</unit>
+								<minimumValue>0</minimumValue>
+								<maximumValue>10</maximumValue>
+								<alternativeNames>
+									<manufName>62.7.0</manufName>
+								</alternativeNames>
+								<legibleDescription>
+									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
+									<language>de</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Active power measurement of phase 3</textElement>
+									<language>en</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>{{topic_path}}</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>"{{field_name}}".P3o</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>
