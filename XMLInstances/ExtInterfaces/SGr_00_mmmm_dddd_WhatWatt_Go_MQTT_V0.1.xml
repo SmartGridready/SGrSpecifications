@@ -3,22 +3,22 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>WhatWatt Go MQTT</deviceName>
-	<manufacturerName>WhatWatt</manufacturerName>
-	<specificationOwnerIdentification>0</specificationOwnerIdentification>
-	<releaseNotes>
-		<state>Draft</state>
-		<changeLog>
-			<version>0.1.0</version>
-			<date>2025-01-15</date>
-			<author>Matthias Krebs, FHNW</author>
-			<comment>Draft for Testlab</comment>
-		</changeLog>
-	</releaseNotes>
-	<deviceInformation>
-		<legibleDescription>
-			<textElement>
-				<![CDATA[ 
+  <deviceName>WhatWatt Go MQTT</deviceName>
+  <manufacturerName>WhatWatt</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2025-01-15</date>
+      <author>Matthias Krebs, FHNW</author>
+      <comment>Draft for Testlab</comment>
+    </changeLog>
+  </releaseNotes>
+  <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[ 
           whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.
           
           Der konfigurierte MQTT-Topic-Pfad muss der EID als Parameter mitgegeben werden.
@@ -47,252 +47,252 @@
           	}
           }
         ]]>
-			</textElement>
-			<language>de</language>
-			<uri>https://whatwatt.ch/de/product</uri>
-		</legibleDescription>
-		<deviceCategory>SubMeterElectricity</deviceCategory>
-		<isLocalControl>false</isLocalControl>
-		<softwareRevision>1.1.22</softwareRevision>
-		<hardwareRevision>1.0.0</hardwareRevision>
-		<manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
-		<levelOfOperation>m</levelOfOperation>
-		<versionNumber>
-			<primaryVersionNumber>0</primaryVersionNumber>
-			<secondaryVersionNumber>1</secondaryVersionNumber>
-			<subReleaseVersionNumber>0</subReleaseVersionNumber>
-		</versionNumber>
-		<testState>None</testState>
-	</deviceInformation>
-	<configurationList>
-		<configurationListElement>
-			<name>broker_host</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue>localhost</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker hostname or IP address.</textElement>
-				<language>en</language>
-				<label>Broker Hostname</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
-				<language>de</language>
-				<label>Broker-Hostname</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_port</name>
-			<dataType>
-				<int32/>
-			</dataType>
-			<defaultValue>1883</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TCP port.</textElement>
-				<language>en</language>
-				<label>Broker Port</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TCP-Port.</textElement>
-				<language>de</language>
-				<label>Broker-Port</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls</name>
-			<dataType>
-				<boolean/>
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS.</textElement>
-				<language>en</language>
-				<label>Broker TLS</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS.</textElement>
-				<language>de</language>
-				<label>Broker-TLS</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls_verify</name>
-			<dataType>
-				<boolean/>
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS certificate verification.</textElement>
-				<language>en</language>
-				<label>Broker TLS Verification</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
-				<language>de</language>
-				<label>Broker-TLS-Verifizierung</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_username</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue></defaultValue>
-			<configurationDescription>
-				<textElement>Message broker user name.</textElement>
-				<language>en</language>
-				<label>Broker User</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker User-Name.</textElement>
-				<language>de</language>
-				<label>Broker-User</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_password</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue></defaultValue>
-			<configurationDescription>
-				<textElement>Message broker password.</textElement>
-				<language>en</language>
-				<label>Broker Password</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker Passwort.</textElement>
-				<language>de</language>
-				<label>Broker-Passwort</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>topic_path</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue>whatwatt/whatwattgo</defaultValue>
-			<configurationDescription>
-				<textElement>MQTT topic path.</textElement>
-				<language>en</language>
-				<label>Topic Path</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>MQTT-Topic-Pfad.</textElement>
-				<language>de</language>
-				<label>Topic-Pfad</label>
-			</configurationDescription>
-		</configurationListElement>
-	</configurationList>
-	<interfaceList>
-		<messagingInterface>
-			<messagingInterfaceDescription>
-				<platform>MQTT5</platform>
-				<messageBrokerList>
-					<messageBrokerListElement>
-						<host>{{broker_host}}</host>
-						<port>{{broker_port}}</port>
-						<tls>{{broker_tls}}</tls>
-						<tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
-					</messageBrokerListElement>
-				</messageBrokerList>
-				<messageBrokerAuthentication>
-					<basicAuthentication>
-						<username>{{broker_username}}</username>
-						<password>{{broker_password}}</password>
-					</basicAuthentication>
-				</messageBrokerAuthentication>
-			</messagingInterfaceDescription>
-			<functionalProfileList>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>SmartmeterId</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
-							<functionalProfileType>DeviceInformation</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>0</primaryVersionNumber>
-								<secondaryVersionNumber>1</secondaryVersionNumber>
-								<subReleaseVersionNumber>1</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								<![CDATA[
-								Functional profile used to read a device ID used to identify a device. <p>
-								Further on, this functional profile that can be used for vendor specific information and data points. <p>
-								It allows the handling of data points, which are valid for the whole device.
-								]]>
-							</textElement>
-							<language>en</language>
-						</legibleDescription>
-						<legibleDescription>
-							<textElement>
-								<![CDATA[
-								Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts. <p>
-								Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden. <p>
-								Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
-								]]>
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>DeviceId</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<string/>
-								</dataType>
-								<unit>NONE</unit>
-								<alternativeNames>
-									<manufName>96.1.1</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Read the device ID.</textElement>
-									<language>en</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Auslesen der Geräte ID.</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<string/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>Meter.Id</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>ActivePowerACIn</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>Metering</functionalProfileCategory>
-							<functionalProfileType>ActivePowerAC</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>1</primaryVersionNumber>
-								<secondaryVersionNumber>0</secondaryVersionNumber>
-								<subReleaseVersionNumber>0</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								<![CDATA[	
+      </textElement>
+      <language>de</language>
+      <uri>https://whatwatt.ch/de/product</uri>
+    </legibleDescription>
+    <deviceCategory>SubMeterElectricity</deviceCategory>
+    <isLocalControl>false</isLocalControl>
+    <softwareRevision>1.1.22</softwareRevision>
+    <hardwareRevision>1.0.0</hardwareRevision>
+    <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+    <testState>None</testState>
+  </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>broker_host</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>localhost</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker hostname or IP address.</textElement>
+        <language>en</language>
+        <label>Broker Hostname</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
+        <language>de</language>
+        <label>Broker-Hostname</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_port</name>
+      <dataType>
+        <int32 />
+      </dataType>
+      <defaultValue>1883</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TCP port.</textElement>
+        <language>en</language>
+        <label>Broker Port</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TCP-Port.</textElement>
+        <language>de</language>
+        <label>Broker-Port</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls</name>
+      <dataType>
+        <boolean />
+      </dataType>
+      <defaultValue>false</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS.</textElement>
+        <language>en</language>
+        <label>Broker TLS</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS.</textElement>
+        <language>de</language>
+        <label>Broker-TLS</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls_verify</name>
+      <dataType>
+        <boolean />
+      </dataType>
+      <defaultValue>false</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS certificate verification.</textElement>
+        <language>en</language>
+        <label>Broker TLS Verification</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
+        <language>de</language>
+        <label>Broker-TLS-Verifizierung</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_username</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Message broker user name.</textElement>
+        <language>en</language>
+        <label>Broker User</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker User-Name.</textElement>
+        <language>de</language>
+        <label>Broker-User</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_password</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Message broker password.</textElement>
+        <language>en</language>
+        <label>Broker Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Passwort.</textElement>
+        <language>de</language>
+        <label>Broker-Passwort</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>topic_path</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>whatwatt/whatwattgo</defaultValue>
+      <configurationDescription>
+        <textElement>MQTT topic path.</textElement>
+        <language>en</language>
+        <label>Topic Path</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>MQTT-Topic-Pfad.</textElement>
+        <language>de</language>
+        <label>Topic-Pfad</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
+  <interfaceList>
+    <messagingInterface>
+      <messagingInterfaceDescription>
+        <platform>MQTT5</platform>
+        <messageBrokerList>
+          <messageBrokerListElement>
+            <host>{{broker_host}}</host>
+            <port>{{broker_port}}</port>
+            <tls>{{broker_tls}}</tls>
+            <tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
+          </messageBrokerListElement>
+        </messageBrokerList>
+        <messageBrokerAuthentication>
+          <basicAuthentication>
+            <username>{{broker_username}}</username>
+            <password>{{broker_password}}</password>
+          </basicAuthentication>
+        </messageBrokerAuthentication>
+      </messagingInterfaceDescription>
+      <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>SmartmeterId</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
+              <functionalProfileType>DeviceInformation</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  Functional profile used to read a device ID used to identify a device. <p>
+                  Further on, this functional profile that can be used for vendor specific information and data points. <p>
+                  It allows the handling of data points, which are valid for the whole device.
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts. <p>
+                  Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden. <p>
+                  Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>DeviceId</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <string />
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <manufName>96.1.1</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Read the device ID.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen der Geräte ID.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <string />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Meter.Id</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>ActivePowerACIn</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
+              <functionalProfileType>ActivePowerAC</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
@@ -312,12 +312,12 @@
                   </ul>
                   </p>
                 ]]>
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-						<legibleDescription>
-							<textElement>
-								<![CDATA[	
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the active power.
@@ -334,170 +334,170 @@
                   </ul>
                   </p>
                 ]]>
-							</textElement>
-							<language>en</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>ActivePowerACtot</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>KILOWATTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>30</maximumValue>
-								<alternativeNames>
-									<manufName>1.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Erfassung der gesamten Wirkleistung</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Total active power measurement</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>P_In</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>ActivePowerACL1</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>KILOWATTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>10</maximumValue>
-								<alternativeNames>
-									<manufName>21.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Active power measurement of phase 1</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>P_L1</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>ActivePowerACL2</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>KILOWATTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>10</maximumValue>
-								<alternativeNames>
-									<manufName>41.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Active power measurement of phase 2</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>P_L2</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>ActivePowerACL3</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>KILOWATTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>10</maximumValue>
-								<alternativeNames>
-									<manufName>61.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Active power measurement of phase 3</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>P_L31</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>ActiveEnergyACIn</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>Metering</functionalProfileCategory>
-							<functionalProfileType>ActiveEnergyAC</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>1</primaryVersionNumber>
-								<secondaryVersionNumber>0</secondaryVersionNumber>
-								<subReleaseVersionNumber>0</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								<![CDATA[	
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACtot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>30</maximumValue>
+                <alternativeNames>
+                  <manufName>1.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Wirkleistung</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Total active power measurement</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>P_In</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACL1</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>10</maximumValue>
+                <alternativeNames>
+                  <manufName>21.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Active power measurement of phase 1</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>P_L1</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACL2</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>10</maximumValue>
+                <alternativeNames>
+                  <manufName>41.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Active power measurement of phase 2</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>P_L2</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACL3</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>10</maximumValue>
+                <alternativeNames>
+                  <manufName>61.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Active power measurement of phase 3</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>P_L31</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>ActiveEnergyACIn</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
+              <functionalProfileType>ActiveEnergyAC</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
                               <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                               <strong>Messung der Wirkenergie</strong><br>
                               Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
@@ -517,13 +517,13 @@
                                 <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
                               </ul>
                               </p>
-                            ]]>
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-						<legibleDescription>
-							<textElement>
-								<![CDATA[	
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the energy balance.
@@ -542,281 +542,281 @@
                   </ul>
                   </p>
                 ]]>
-							</textElement>
-							<language>en</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>ActiveEnergyACtot</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64/>
-								</dataType>
-								<unit>KILOWATT_HOURS</unit>
-								<alternativeNames>
-									<manufName>1.8.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Erfassung der gesamten Wirkenergie</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Total energy measurement</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>E_In</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>VoltageAC</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>Metering</functionalProfileCategory>
-							<functionalProfileType>VoltageAC</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>0</primaryVersionNumber>
-								<secondaryVersionNumber>2</secondaryVersionNumber>
-								<subReleaseVersionNumber>2</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								Messung der aktuellen Spannung.
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>VoltageACL1_N</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
-								<alternativeNames>
-									<manufName>32.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Spannung Phase 1 gegenüber Nulleiter</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>V_L1</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>VoltageACL2_N</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
-								<alternativeNames>
-									<manufName>52.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Spannung Phase 2 gegenüber Nulleiter</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>V_L2</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>VoltageACL3_N</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
-								<alternativeNames>
-									<manufName>72.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Spannung Phase 3 gegenüber Nulleiter</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>V_L3</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>CurrentAC</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>Metering</functionalProfileCategory>
-							<functionalProfileType>CurrentAC</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>1</primaryVersionNumber>
-								<secondaryVersionNumber>0</secondaryVersionNumber>
-								<subReleaseVersionNumber>0</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								Messung des aktuellen Stromflusses.
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>CurrentACL1</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>AMPERES</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>16</maximumValue>
-								<alternativeNames>
-									<manufName>31.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Stromfluss Phase 1</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>I_L1</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>CurrentACL2</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>AMPERES</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>16</maximumValue>
-								<alternativeNames>
-									<manufName>51.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Stromfluss Phase 2</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>I_L2</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>CurrentACL3</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>AMPERES</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>16</maximumValue>
-								<alternativeNames>
-									<manufName>71.7.0</manufName>
-								</alternativeNames>
-								<legibleDescription>
-									<textElement>Stromfluss Phase 3</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_path}}</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>I_L3</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
-			</functionalProfileList>
-		</messagingInterface>
-	</interfaceList>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACtot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <manufName>1.8.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Total energy measurement</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>E_In</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>VoltageAC</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
+              <functionalProfileType>VoltageAC</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>2</secondaryVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                Messung der aktuellen Spannung.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>VoltageACL1_N</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>250</maximumValue>
+                <alternativeNames>
+                  <manufName>32.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Spannung Phase 1 gegenüber Nulleiter</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>V_L1</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>VoltageACL2_N</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>250</maximumValue>
+                <alternativeNames>
+                  <manufName>52.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Spannung Phase 2 gegenüber Nulleiter</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>V_L2</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>VoltageACL3_N</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>250</maximumValue>
+                <alternativeNames>
+                  <manufName>72.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Spannung Phase 3 gegenüber Nulleiter</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>V_L3</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>CurrentAC</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
+              <functionalProfileType>CurrentAC</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                Messung des aktuellen Stromflusses.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>CurrentACL1</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>AMPERES</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>16</maximumValue>
+                <alternativeNames>
+                  <manufName>31.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Stromfluss Phase 1</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>I_L1</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>CurrentACL2</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>AMPERES</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>16</maximumValue>
+                <alternativeNames>
+                  <manufName>51.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Stromfluss Phase 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>I_L2</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>CurrentACL3</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>AMPERES</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>16</maximumValue>
+                <alternativeNames>
+                  <manufName>71.7.0</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Stromfluss Phase 3</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>I_L3</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+      </functionalProfileList>
+    </messagingInterface>
+  </interfaceList>
 </DeviceFrame>
