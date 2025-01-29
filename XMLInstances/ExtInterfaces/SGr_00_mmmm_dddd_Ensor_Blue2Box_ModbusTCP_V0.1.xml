@@ -25,8 +25,8 @@
           - Ensor eRS801
           
           Notes:
-          This EID supports all FPs mandatory in upcoming VSE specification.
-          Registers for reactive energy might need to be changed, because the OBIS codes do not match VSE specification.
+          This EID does not yet support all FPs mandatory in upcoming VSE specification.
+          Only FPs delivered by the Ensor eRS801 are defined.
         ]]>
       </textElement>
       <language>en</language>
@@ -801,7 +801,7 @@
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ReactiveEnergyAC</functionalProfileType>
+              <functionalProfileType>ReactiveEnergyAC4Q</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
