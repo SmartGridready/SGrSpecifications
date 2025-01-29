@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Metcom Blue2Box</deviceName>
-  <manufacturerName>Metcom</manufacturerName>
+  <deviceName>Ensor Blue2Box</deviceName>
+  <manufacturerName>Ensor</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -26,11 +26,10 @@
           
           Notes:
           This EID supports all FPs mandatory in upcoming VSE specification.
-          Registers for reactive energy might need to be changed, because the OBIS codes do not match VSE specification.
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://metcom-solutions.com/</uri>
+      <uri>https://www.ensor.com/</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>true</isLocalControl>
