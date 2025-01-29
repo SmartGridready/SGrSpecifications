@@ -25,27 +25,27 @@
           
           Das Topic-Template muss folgendermassen aussehen:
           {
-          	"P_In": ${1_7_0},
-          	"P_Out": ${2_7_0},
-          	"P_L1_In": ${21_7_0},
-          	"P_L2_In": ${41_7_0},
-          	"P_L3_In": ${61_7_0},
-          	"P_L1_Out": ${22_7_0},
-          	"P_L2_Out": ${42_7_0},
-          	"P_L3_Out": ${62_7_0},
-          	"E_In": ${1_8_0},
-          	"E_Out": ${2_8_0},
-          	"R_In": ${3_8_0},
-          	"R_Out": ${4_8_0},
-          	"I_L1": ${31_7_0},
-          	"I_L2": ${51_7_0},
-          	"I_L3": ${71_7_0},
-          	"V_L1": ${32_7_0},
-          	"V_L2": ${52_7_0},
-          	"V_L3": ${72_7_0},
-          	"Meter": {
-          		"Id": "${meter.id}"
-          	}
+            "P_In": ${1_7_0},
+            "P_Out": ${2_7_0},
+            "P_P1_In": ${21_7_0},
+            "P_P2_In": ${41_7_0},
+            "P_P3_In": ${61_7_0},
+            "P_P1_Out": ${22_7_0},
+            "P_P2_Out": ${42_7_0},
+            "P_P3_Out": ${62_7_0},
+            "E_In": ${1_8_0},
+            "E_Out": ${2_8_0},
+            "rE_In": ${3_8_0},
+            "rE_Out": ${4_8_0},
+            "I_P1": ${31_7_0},
+            "I_P2": ${51_7_0},
+            "I_P3": ${71_7_0},
+            "V_P1": ${32_7_0},
+            "V_P2": ${52_7_0},
+            "V_P3": ${72_7_0},
+            "Meter": {
+              "Id": "${meter.id}"
+            }
           }
         ]]>
       </textElement>
@@ -405,7 +405,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>P_L1_In</query>
+                    <query>P_P1_In</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -440,7 +440,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>P_L2_In</query>
+                    <query>P_P2_In</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -475,7 +475,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>P_L3_In</query>
+                    <query>P_P3_In</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -610,7 +610,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>P_L1_Out</query>
+                    <query>P_P1_Out</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -645,7 +645,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>P_L2_Out</query>
+                    <query>P_P2_Out</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -680,7 +680,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>P_L3_Out</query>
+                    <query>P_P3_Out</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -939,7 +939,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>R_In</query>
+                    <query>rE_In</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -996,7 +996,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>R_Out</query>
+                    <query>rE_Out</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1051,7 +1051,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>V_L1</query>
+                    <query>V_P1</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1082,7 +1082,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>V_L2</query>
+                    <query>V_P2</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1113,7 +1113,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>V_L3</query>
+                    <query>V_P3</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1168,7 +1168,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>I_L1</query>
+                    <query>I_P1</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1199,7 +1199,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>I_L2</query>
+                    <query>I_P2</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1230,7 +1230,7 @@
                   <topic>{{topic_path}}</topic>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>I_L3</query>
+                    <query>I_P3</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
