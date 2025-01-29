@@ -134,7 +134,7 @@
                   <requestPath>/api/v1/report</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>meter.id</query>
+                    <query>meter.logical_name</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
