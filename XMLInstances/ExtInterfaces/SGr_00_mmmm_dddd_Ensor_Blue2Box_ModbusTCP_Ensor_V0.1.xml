@@ -812,10 +812,12 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
-                              Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-                              <p>Dieses Funktionsprofil ist für 4-Quadranten-Messung gedacht und ist eine temporäre Speziallösung!</p>
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <p>
+                  Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br />
+                  Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
+                  </p>
+                  <p>Dieses Funktionsprofil ist für 4-Quadranten-Messung gedacht. Es ist ein Entwurf fürs Testlabor, um bestimmte Smartmeter-Daten zu unterstützen.</p>
                 ]]>
               </textElement>
               <language>de</language>
@@ -834,7 +836,7 @@
                   <manufName>5.8.0</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Erfassung der Blindenergie R1</textElement>
+                  <textElement>Erfassung der Blindenergie Quadrant 1</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -865,7 +867,7 @@
                   <manufName>6.8.0</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Erfassung der Blindenergie R2</textElement>
+                  <textElement>Erfassung der Blindenergie Quadrant 2</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -896,7 +898,7 @@
                   <manufName>7.8.0</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Erfassung der Blindenergie R3</textElement>
+                  <textElement>Erfassung der Blindenergie Quadrant 3</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -927,7 +929,7 @@
                   <manufName>8.8.0</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Erfassung der Blindenergie R4</textElement>
+                  <textElement>Erfassung der Blindenergie Quadrant 4</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2025-01-31</date>
+      <author>M.Krebs, FHNW</author>
+      <comment>Draft for Testlab</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>Metering</functionalProfileCategory>
+      <functionalProfileType>ReactiveEnergyAC4Q</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <p>
+          Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br />
+          Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
+          </p>
+          <p>Dieses Funktionsprofil ist für 4-Quadranten-Messung gedacht. Es ist ein Entwurf fürs Testlabor, um bestimmte Smartmeter-Daten zu unterstützen.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactiveEnergyACR1</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Blindenergie Quadrant 1</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactiveEnergyACR2</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Blindenergie Quadrant 2</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactiveEnergyACR3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Blindenergie Quadrant 3</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactiveEnergyACR4</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Blindenergie Quadrant 4</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
