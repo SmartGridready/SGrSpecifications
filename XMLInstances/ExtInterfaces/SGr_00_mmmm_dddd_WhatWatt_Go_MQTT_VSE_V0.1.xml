@@ -19,11 +19,10 @@
     <legibleDescription>
       <textElement>
         <![CDATA[ 
-          whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.
-          
-          Der konfigurierte MQTT-Topic-Pfad muss der EID als Parameter mitgegeben werden.
-          
-          Das Topic-Template muss folgendermassen aussehen:
+          <p>whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.</p>
+          <p>Der konfigurierte MQTT-Topic-Pfad muss der EID als Parameter mitgegeben werden.</p>
+          <p>Das Topic-Template muss folgendermassen aussehen:</p>
+          <pre>
           {
             "P_In": ${1_7_0},
             "P_Out": ${2_7_0},
@@ -47,6 +46,7 @@
               "Id": "${meter.id}"
             }
           }
+          </pre>
         ]]>
       </textElement>
       <language>de</language>
