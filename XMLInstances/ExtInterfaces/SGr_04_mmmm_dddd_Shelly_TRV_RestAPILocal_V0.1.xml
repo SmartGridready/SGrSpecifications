@@ -18,13 +18,13 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
-          Der Shelly TRV ist ein steuerbarer Heizkörper-Thermostat.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API (Gen2) ausgelegt.
+        <![CDATA[
+          <p>Der Shelly TRV ist ein steuerbarer Heizkörper-Thermostat.<br />
+          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API (Gen1) ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.shelly.com/de-ch/products/product-overview/shelly-trv-1</uri>
+      <uri>https://kb.shelly.cloud/knowledge-base/shelly-trv</uri>
     </legibleDescription>
     <deviceCategory>HeatingObject</deviceCategory>
     <isLocalControl>true</isLocalControl>
@@ -68,12 +68,12 @@
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>Thermostat</functionalProfileName>
+            <functionalProfileName>Temperature</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>HeatingCircuit</functionalProfileCategory>
-              <functionalProfileType>Thermostat</functionalProfileType>
-              <levelOfOperation>4m</levelOfOperation>
+              <functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
+              <functionalProfileType>Temperature</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -82,13 +82,13 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Ermöglicht die Steuerung der Zieltemperatur.
+                Ermöglicht Auslesen der Temperaturen.
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                Allows controlling the target temperature.
+                Allows reading temperatures.
               </textElement>
               <language>en</language>
             </legibleDescription>
@@ -131,6 +131,36 @@
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>Thermostat</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>HeatingCircuit</functionalProfileCategory>
+              <functionalProfileType>Thermostat</functionalProfileType>
+              <levelOfOperation>4m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                Ermöglicht Auslesen und Steuern der Zieltemperatur.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                Allows reading and controlling the target temperature.
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>TargetTemperature</dataPointName>
