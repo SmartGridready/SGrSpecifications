@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Shelly Pro 3EM Local</deviceName>
+  <deviceName>Shelly Pro 3EM Local BasicAuth</deviceName>
   <manufacturerName>Shelly</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -19,6 +19,12 @@
       <date>2025-02-10</date>
       <author>Matthias Krebs, FHNW</author>
       <comment>Prepare for Declaration</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.1</version>
+      <date>2025-02-18</date>
+      <author>Matthias Krebs, FHNW</author>
+      <comment>Fixed device name</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -51,7 +57,7 @@
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
