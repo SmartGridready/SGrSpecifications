@@ -3,308 +3,309 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Shelly H&amp;T MQTT</deviceName>
-	<manufacturerName>Shelly</manufacturerName>
-	<specificationOwnerIdentification>0</specificationOwnerIdentification>
-	<releaseNotes>
-		<state>Draft</state>
-		<changeLog>
-			<version>0.1.0</version>
-			<date>2024-10-16</date>
-			<author>Matthias Krebs, FHNW</author>
-			<comment>Draft for Testlab</comment>
-		</changeLog>
-	</releaseNotes>
-	<deviceInformation>
-		<legibleDescription>
-			<textElement>
-				<![CDATA[ 
-          Der Shelly H&T ist ein batteriebetriebener Temperatur- und Luftfeuchtigkeitssensor.
-          Die vorliegende EID ist auf die Ansteuerung via MQTT ausgelegt.
-		  Mit der vorliegenden EID können Daten via MQTT-Topic "shellies/{device_id}/sensor/..." empfangen werden.
+  <deviceName>Shelly H&amp;T MQTT</deviceName>
+  <manufacturerName>Shelly</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2024-10-16</date>
+      <author>Matthias Krebs, FHNW</author>
+      <comment>Draft for Testlab</comment>
+    </changeLog>
+  </releaseNotes>
+  <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[ 
+          <p>Der Shelly H&amp;T ist ein batteriebetriebener Temperatur- und Luftfeuchtigkeitssensor.</p>
+          <p>Die vorliegende EID ist auf die Ansteuerung via MQTT ausgelegt.</p>
+          <p>Mit der vorliegenden EID können Daten via MQTT-Topic <pre>shellies/{device_id}/sensor/...</pre> empfangen werden.</p>
         ]]>
-			</textElement>
-			<language>de</language>
-			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-ht-w</uri>
-		</legibleDescription>
-		<deviceCategory>TemperatureSensor</deviceCategory>
-		<isLocalControl>false</isLocalControl>
-		<softwareRevision>1.0.0</softwareRevision>
-		<hardwareRevision>1.0.0</hardwareRevision>
-		<manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
-		<levelOfOperation>m</levelOfOperation>
-		<versionNumber>
-			<primaryVersionNumber>0</primaryVersionNumber>
-			<secondaryVersionNumber>1</secondaryVersionNumber>
-			<subReleaseVersionNumber>0</subReleaseVersionNumber>
-		</versionNumber>
-	</deviceInformation>
-	<configurationList>
-		<configurationListElement>
-			<name>broker_host</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue>localhost</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker hostname or IP address.</textElement>
-				<language>en</language>
-				<label>Broker Hostname</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
-				<language>de</language>
-				<label>Broker-Hostname</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_port</name>
-			<dataType>
-				<int32/>
-			</dataType>
-			<defaultValue>1883</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TCP port.</textElement>
-				<language>en</language>
-				<label>Broker Port</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TCP-Port.</textElement>
-				<language>de</language>
-				<label>Broker-Port</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls</name>
-			<dataType>
-				<boolean/>
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS.</textElement>
-				<language>en</language>
-				<label>Broker TLS</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS.</textElement>
-				<language>de</language>
-				<label>Broker-TLS</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls_verify</name>
-			<dataType>
-				<boolean/>
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS certificate verification.</textElement>
-				<language>en</language>
-				<label>Broker TLS Verification</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
-				<language>de</language>
-				<label>Broker-TLS-Verifizierung</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_username</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue></defaultValue>
-			<configurationDescription>
-				<textElement>Message broker user name.</textElement>
-				<language>en</language>
-				<label>Broker User</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker User-Name.</textElement>
-				<language>de</language>
-				<label>Broker-User</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_password</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue></defaultValue>
-			<configurationDescription>
-				<textElement>Message broker password.</textElement>
-				<language>en</language>
-				<label>Broker Password</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker Passwort.</textElement>
-				<language>de</language>
-				<label>Broker-Passwort</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>device_id</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<defaultValue>ShellyHT</defaultValue>
-			<configurationDescription>
-				<textElement>Device identifier used in MQTT topic.</textElement>
-				<language>en</language>
-				<label>Device ID</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Device-Identifier, in MQTT-Topic verwendet.</textElement>
-				<language>de</language>
-				<label>Device ID</label>
-			</configurationDescription>
-		</configurationListElement>
-	</configurationList>
-	<interfaceList>
-		<messagingInterface>
-			<messagingInterfaceDescription>
-				<platform>MQTT5</platform>
-				<messageBrokerList>
-					<messageBrokerListElement>
-						<host>{{broker_host}}</host>
-						<port>{{broker_port}}</port>
-						<tls>{{broker_tls}}</tls>
-						<tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
-					</messageBrokerListElement>
-				</messageBrokerList>
-				<messageBrokerAuthentication>
-					<basicAuthentication>
-						<username>{{broker_username}}</username>
-						<password>{{broker_password}}</password>
-					</basicAuthentication>
-				</messageBrokerAuthentication>
-			</messagingInterfaceDescription>
-			<functionalProfileList>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>AmbientTemperature</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
-							<functionalProfileType>AmbientTemperature</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>0</primaryVersionNumber>
-								<secondaryVersionNumber>1</secondaryVersionNumber>
-								<subReleaseVersionNumber>0</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								Ermöglicht das Auslesen von Temperaturen.
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-						<legibleDescription>
-							<textElement>
-								Allows reading temperatures.
-							</textElement>
-							<language>en</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>Temperature</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>DEGREES_CELSIUS</unit>
-								<minimumValue>-40</minimumValue>
-								<maximumValue>60</maximumValue>
-								<legibleDescription>
-									<textElement>Messung der Temperatur</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Temperature measurement</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>shellies/{{device_id}}/sensor/temperature</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query></query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
-				<functionalProfileListElement>
-					<functionalProfile>
-						<functionalProfileName>AmbientHumidity</functionalProfileName>
-						<functionalProfileIdentification>
-							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>Sensor</functionalProfileCategory>
-							<functionalProfileType>AmbientHumidity</functionalProfileType>
-							<levelOfOperation>m</levelOfOperation>
-							<versionNumber>
-								<primaryVersionNumber>0</primaryVersionNumber>
-								<secondaryVersionNumber>1</secondaryVersionNumber>
-								<subReleaseVersionNumber>0</subReleaseVersionNumber>
-							</versionNumber>
-						</functionalProfileIdentification>
-						<legibleDescription>
-							<textElement>
-								Ermöglicht das Auslesen der Feuchtigkeit.
-							</textElement>
-							<language>de</language>
-						</legibleDescription>
-						<legibleDescription>
-							<textElement>
-								Allows reading humidity.
-							</textElement>
-							<language>en</language>
-						</legibleDescription>
-					</functionalProfile>
-					<dataPointList>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>Humidity</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>PERCENT</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>100</maximumValue>
-								<legibleDescription>
-									<textElement>Messung der Feuchtigkeit</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Humidity measurement</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<inMessage>
-									<topic>shellies/{{device_id}}/sensor/humdity</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query></query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-					</dataPointList>
-				</functionalProfileListElement>
-			</functionalProfileList>
-		</messagingInterface>
-	</interfaceList>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.shelly.com/de-ch/products/product-overview/shelly-ht-w</uri>
+    </legibleDescription>
+    <deviceCategory>TemperatureSensor</deviceCategory>
+    <isLocalControl>false</isLocalControl>
+    <softwareRevision>1.0.0</softwareRevision>
+    <hardwareRevision>1.0.0</hardwareRevision>
+    <manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+    <testState>None</testState>
+  </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>broker_host</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>localhost</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker hostname or IP address.</textElement>
+        <language>en</language>
+        <label>Broker Hostname</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
+        <language>de</language>
+        <label>Broker-Hostname</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_port</name>
+      <dataType>
+        <int32 />
+      </dataType>
+      <defaultValue>1883</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TCP port.</textElement>
+        <language>en</language>
+        <label>Broker Port</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TCP-Port.</textElement>
+        <language>de</language>
+        <label>Broker-Port</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls</name>
+      <dataType>
+        <boolean />
+      </dataType>
+      <defaultValue>false</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS.</textElement>
+        <language>en</language>
+        <label>Broker TLS</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS.</textElement>
+        <language>de</language>
+        <label>Broker-TLS</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls_verify</name>
+      <dataType>
+        <boolean />
+      </dataType>
+      <defaultValue>false</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS certificate verification.</textElement>
+        <language>en</language>
+        <label>Broker TLS Verification</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
+        <language>de</language>
+        <label>Broker-TLS-Verifizierung</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_username</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Message broker user name.</textElement>
+        <language>en</language>
+        <label>Broker User</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker User-Name.</textElement>
+        <language>de</language>
+        <label>Broker-User</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_password</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Message broker password.</textElement>
+        <language>en</language>
+        <label>Broker Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Passwort.</textElement>
+        <language>de</language>
+        <label>Broker-Passwort</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>device_id</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>ShellyHT</defaultValue>
+      <configurationDescription>
+        <textElement>Device identifier used in MQTT topic.</textElement>
+        <language>en</language>
+        <label>Device ID</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Device-Identifier, in MQTT-Topic verwendet.</textElement>
+        <language>de</language>
+        <label>Device ID</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
+  <interfaceList>
+    <messagingInterface>
+      <messagingInterfaceDescription>
+        <platform>MQTT5</platform>
+        <messageBrokerList>
+          <messageBrokerListElement>
+            <host>{{broker_host}}</host>
+            <port>{{broker_port}}</port>
+            <tls>{{broker_tls}}</tls>
+            <tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
+          </messageBrokerListElement>
+        </messageBrokerList>
+        <messageBrokerAuthentication>
+          <basicAuthentication>
+            <username>{{broker_username}}</username>
+            <password>{{broker_password}}</password>
+          </basicAuthentication>
+        </messageBrokerAuthentication>
+      </messagingInterfaceDescription>
+      <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>AmbientTemperature</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
+              <functionalProfileType>AmbientTemperature</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                Ermöglicht das Auslesen von Temperaturen.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                Allows reading temperatures.
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>Temperature</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>-40</minimumValue>
+                <maximumValue>60</maximumValue>
+                <legibleDescription>
+                  <textElement>Messung der Temperatur</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Temperature measurement</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>shellies/{{device_id}}/sensor/temperature</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query></query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>AmbientHumidity</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>Sensor</functionalProfileCategory>
+              <functionalProfileType>AmbientHumidity</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                Ermöglicht das Auslesen der Feuchtigkeit.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                Allows reading humidity.
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>Humidity</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>PERCENT</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>100</maximumValue>
+                <legibleDescription>
+                  <textElement>Messung der Feuchtigkeit</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Humidity measurement</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>shellies/{{device_id}}/sensor/humdity</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query></query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+      </functionalProfileList>
+    </messagingInterface>
+  </interfaceList>
 </DeviceFrame>

@@ -56,6 +56,13 @@
     <hardwareRevision>1.0.0</hardwareRevision>
     <brandName>B23</brandName>
     <generalRemarks>generalRemarks</generalRemarks>
+    <levelOfOperation>m</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>2</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+    <testState>None</testState>
   </deviceInformation>
   <genericAttributeList>
     <genericAttributeListElement>
