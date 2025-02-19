@@ -8,7 +8,7 @@
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
-      <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+      <functionalProfileCategory>Metering</functionalProfileCategory>
       <functionalProfileType>ReactiveEnergyBalanceAC</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
