@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>betaABBMeterV0.1.2</deviceName>
+  <deviceName>ABB B23 RTU</deviceName>
   <manufacturerName>ABB</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -68,7 +68,7 @@
     <genericAttributeListElement>
       <name>SpecialQualityRequirement</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
       <value>METAS</value>
       <unit>NONE</unit>
@@ -76,7 +76,7 @@
     <genericAttributeListElement>
       <name>Precision</name>
       <dataType>
-        <float32/>
+        <float32 />
       </dataType>
       <value>2.0</value>
       <unit>PERCENT</unit>
@@ -123,13 +123,13 @@
             <functionalProfileName>VoltageAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -140,14 +140,14 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageL1</dataPointName>
+                <dataPointName>VoltageACL1_N</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <alternativeNames>
-                  <manufName>L1 Spannung</manufName>
+                  <manufName>L1 Spannung gegenüber Nulleiter</manufName>
                 </alternativeNames>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -167,14 +167,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageL2</dataPointName>
+                <dataPointName>VoltageACL2_N</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <alternativeNames>
-                  <manufName>L2 Spannung</manufName>
+                  <manufName>L2 Spannung gegenüber Nulleiter</manufName>
                 </alternativeNames>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -194,14 +194,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageL3</dataPointName>
+                <dataPointName>VoltageACL3_N</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <alternativeNames>
-                  <manufName>L3 Spannung</manufName>
+                  <manufName>L3 Spannung gegenüber Nulleiter</manufName>
                 </alternativeNames>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -221,7 +221,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL1-L2</dataPointName>
+                <dataPointName>VoltageACL1_L2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -248,7 +248,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL1-L3</dataPointName>
+                <dataPointName>VoltageACL1_L3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -275,7 +275,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL2-L3</dataPointName>
+                <dataPointName>VoltageACL2_L3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -381,7 +381,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -409,7 +409,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -437,7 +437,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -465,7 +465,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -518,7 +518,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -546,7 +546,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -574,7 +574,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -602,7 +602,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -655,7 +655,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES_REACTIVE</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -683,7 +683,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES_REACTIVE</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <alternativeNames>
                   <manufName>Totale Blindleistung</manufName>
                 </alternativeNames>
@@ -714,7 +714,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES_REACTIVE</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -742,7 +742,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES_REACTIVE</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -770,13 +770,13 @@
             <functionalProfileName>ApparentPowerAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>ApparentPowerAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -795,7 +795,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -823,7 +823,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -851,7 +851,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -879,7 +879,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>VOLT_AMPERES</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -1041,12 +1041,12 @@
             <functionalProfileName>ReactiveEnergyAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>ReactiveEnergyAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <secondaryVersionNumber>2</secondaryVersionNumber>
                 <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
@@ -1152,16 +1152,16 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActiveEnerBalanceAC</functionalProfileName>
+            <functionalProfileName>ActiveEnergyBalanceAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>ActiveEnergyBalanceAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>2</secondaryVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -1176,7 +1176,7 @@
             <genericAttributeListElement>
               <name>SpecialQualityRequirement</name>
               <dataType>
-                <float32/>
+                <float32 />
               </dataType>
               <value>2014/32/EU : MeasuRIng Instruments Directive, B(Cl.1)</value>
               <unit>NONE</unit>
@@ -1200,7 +1200,7 @@
                 <genericAttributeListElement>
                   <name>Precision</name>
                   <dataType>
-                    <float32/>
+                    <float32 />
                   </dataType>
                   <value>1.0</value>
                   <unit>PERCENT</unit>
@@ -1238,7 +1238,7 @@
                 <genericAttributeListElement>
                   <name>Precision</name>
                   <dataType>
-                    <float32/>
+                    <float32 />
                   </dataType>
                   <value>1.0</value>
                   <unit>PERCENT</unit>
@@ -1277,7 +1277,7 @@
                 <genericAttributeListElement>
                   <name>Precision</name>
                   <dataType>
-                    <float32/>
+                    <float32 />
                   </dataType>
                   <value>1.0</value>
                   <unit>PERCENT</unit>
@@ -1302,13 +1302,11 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ReactiveEnerBalanceAC</functionalProfileName>
+            <functionalProfileName>ReactiveEnergyBalanceAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>ReactiveEnergyBalanceAC</functionalProfileType>
-              <!--ReactiveEnerBalanceAC
-            must be added to FP family-->
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
@@ -1397,27 +1395,25 @@
             <functionalProfileName>PowerQuadrant</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>PowerQuadrant</functionalProfileType>
-              <!--PowerQuadrant
-            must be added to FP family-->
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACtot</dataPointName>
+                <dataPointName>PowerQuadrantACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>NONE</unit>
+                <unit>KILOWATT_HOURS</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1430,12 +1426,12 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACL1</dataPointName>
+                <dataPointName>PowerQuadrantACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>NONE</unit>
+                <unit>KILOWATT_HOURS</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1448,12 +1444,12 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACL2</dataPointName>
+                <dataPointName>PowerQuadrantACL2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>NONE</unit>
+                <unit>KILOWATT_HOURS</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1466,12 +1462,12 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACL3</dataPointName>
+                <dataPointName>PowerQuadrantACL3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>NONE</unit>
+                <unit>KILOWATT_HOURS</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>

@@ -19,12 +19,12 @@
     <legibleDescription>
       <textElement>
         <![CDATA[ 
-          Der Shelly Plus 1 ist ein 1-kanaliges Relais.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.
+          <p>Der Shelly Plus 1 ist ein 1-kanaliges Relais.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.shelly.com/de-ch/products/product-overview/shelly-plus-1</uri>
+      <uri>https://kb.shelly.cloud/knowledge-base/shelly-plus-1</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>true</isLocalControl>

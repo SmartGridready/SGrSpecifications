@@ -19,12 +19,12 @@
     <legibleDescription>
       <textElement>
         <![CDATA[ 
-          Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API (Gen1) ausgelegt.
+          <p>Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API (Gen1) ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.shelly.com/de-ch/products/product-overview/shelly-3em-1</uri>
+      <uri>https://kb.shelly.cloud/knowledge-base//shelly-3em-1</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>true</isLocalControl>
@@ -136,9 +136,10 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>90000</maximumValue>
+                <maximumValue>90</maximumValue>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkleistung</textElement>
                   <language>de</language>
@@ -173,9 +174,10 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30000</maximumValue>
+                <maximumValue>30</maximumValue>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 1</textElement>
                   <language>de</language>
@@ -210,9 +212,10 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30000</maximumValue>
+                <maximumValue>30</maximumValue>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 2</textElement>
                   <language>de</language>
@@ -247,9 +250,10 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30000</maximumValue>
+                <maximumValue>30</maximumValue>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 3</textElement>
                   <language>de</language>
@@ -352,7 +356,8 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATT_HOURS</unit>
+                <unit>KILOWATT_HOURS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkenergie</textElement>
                   <language>de</language>
@@ -387,7 +392,8 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATT_HOURS</unit>
+                <unit>KILOWATT_HOURS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkenergie Phase 1</textElement>
                   <language>de</language>
@@ -422,7 +428,8 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATT_HOURS</unit>
+                <unit>KILOWATT_HOURS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkenergie Phase 2</textElement>
                   <language>de</language>
@@ -457,7 +464,8 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATT_HOURS</unit>
+                <unit>KILOWATT_HOURS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkenergie Phase 3</textElement>
                   <language>de</language>

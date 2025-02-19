@@ -19,8 +19,8 @@
     <legibleDescription>
       <textElement>
         <![CDATA[ 
-          Der Shelly Pro 1PM ist ein 1-phasiges 1-Kanal-Leistungsmessgerät.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.
+          <p>Der Shelly Pro 1PM ist ein 1-phasiges 1-Kanal-Leistungsmessgerät.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -136,9 +136,10 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>4000</maximumValue>
+                <maximumValue>4</maximumValue>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkleistung</textElement>
                   <language>de</language>
@@ -247,7 +248,8 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATT_HOURS</unit>
+                <unit>KILOWATT_HOURS</unit>
+                <unitConversionMultiplicator>0.0001666666666667</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkenergie</textElement>
                   <language>de</language>
