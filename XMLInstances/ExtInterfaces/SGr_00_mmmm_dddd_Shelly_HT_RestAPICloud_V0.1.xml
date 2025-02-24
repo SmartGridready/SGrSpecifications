@@ -102,11 +102,11 @@
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>DeviceStatus</functionalProfileName>
+            <functionalProfileName>DeviceInformation</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
-              <functionalProfileType>DeviceStatus</functionalProfileType>
+              <functionalProfileType>DeviceInformation</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
