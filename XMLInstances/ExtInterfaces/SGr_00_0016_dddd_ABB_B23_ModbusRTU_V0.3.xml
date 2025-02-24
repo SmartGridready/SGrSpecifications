@@ -618,7 +618,7 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>84825</maximumValue>
+                <maximumValue>84.825</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -648,7 +648,7 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>28275</maximumValue>
+                <maximumValue>28.275</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -678,7 +678,7 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>28275</maximumValue>
+                <maximumValue>28.275</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -708,7 +708,7 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>28275</maximumValue>
+                <maximumValue>28.275</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -1095,7 +1095,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>20480</address>
                 <registerType>HoldRegister</registerType>
@@ -1127,7 +1127,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>21600</address>
                 <registerType>HoldRegister</registerType>
@@ -1159,7 +1159,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>21604</address>
                 <registerType>HoldRegister</registerType>
@@ -1191,7 +1191,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>21608</address>
                 <registerType>HoldRegister</registerType>
@@ -1239,7 +1239,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Blindenergie</textElement>
                   <language>de</language>
@@ -1247,7 +1247,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>20482</address>
                 <registerType>HoldRegister</registerType>
@@ -1267,7 +1267,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
                 <legibleDescription>
                   <textElement>Erfassung der Blindenergie Phase 1</textElement>
                   <language>de</language>
@@ -1275,7 +1275,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>21636</address>
                 <registerType>HoldRegister</registerType>
@@ -1295,7 +1295,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
                 <legibleDescription>
                   <textElement>Erfassung der Blindenergie Phase 2</textElement>
                   <language>de</language>
@@ -1303,7 +1303,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>21640</address>
                 <registerType>HoldRegister</registerType>
@@ -1323,7 +1323,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
                 <legibleDescription>
                   <textElement>Erfassung der Blindenergie Phase 3</textElement>
                   <language>de</language>
@@ -1331,7 +1331,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>21644</address>
                 <registerType>HoldRegister</registerType>
@@ -1407,7 +1407,7 @@
               </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>20480</address>
                 <registerType>HoldRegister</registerType>
@@ -1445,7 +1445,7 @@
               </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>20484</address>
                 <registerType>HoldRegister</registerType>
@@ -1526,7 +1526,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>20492</address>
                 <registerType>HoldRegister</registerType>
@@ -1550,7 +1550,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64 />
+                  <int64U />
                 </modbusDataType>
                 <address>20496</address>
                 <registerType>HoldRegister</registerType>
@@ -1612,7 +1612,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>NONE</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1630,7 +1630,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>NONE</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1648,7 +1648,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>NONE</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1666,7 +1666,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>NONE</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
