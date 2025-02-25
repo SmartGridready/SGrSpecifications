@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.bjornvester.xjc' version "${xjcPluginVersion}"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    gradlePluginPortal()
+
+    maven {
+        url "https://nexus.library.smartgridready.ch/repository/maven-releases/"
+        mavenContent {
+            releasesOnly()
+        }
+    }
+    maven {
+        url "https://nexus.library.smartgridready.ch/repository/maven-snapshots/"
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+}
+
+def xsdPath = "../../SchemaDatabase/SGr"
+
+mainClassName = 'validator.CheckDeviceStructure'
+
+java {
+    sourceCompatibility = "${jdkVersion}"
+    targetCompatibility = "${jdkVersion}"
+}
+
+xjc {
+    xsdDir.set(layout.projectDirectory.dir(xsdPath))
+    bindingFiles.setFrom(layout.projectDirectory.dir("src/main/xjb").asFileTree.matching { include("*.xjb") })
+    useJakarta = true
+    addCompilationDependencies = false
+    generateEpisode = false
+}
+
+processResources {
+    from xsdPath
+    exclude '.gitkeep', 'ressources'
+}
+
+dependencies {
+    implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: "${xmlBindVersion}"
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: "${jaxbImplVersion}"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
