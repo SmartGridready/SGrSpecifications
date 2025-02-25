@@ -187,7 +187,7 @@
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
-              <functionalProfileType>AmbientTemperature</functionalProfileType>
+              <functionalProfileType>Temperature</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
@@ -249,7 +249,7 @@
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Sensor</functionalProfileCategory>
-              <functionalProfileType>AmbientHumidity</functionalProfileType>
+              <functionalProfileType>Humidity</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
@@ -278,7 +278,7 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>PERCENT</unit>
+                <unit>PERCENT_RELATIVE_HUMIDITY</unit>
                 <minimumValue>0</minimumValue>
                 <maximumValue>100</maximumValue>
                 <legibleDescription>

@@ -18,21 +18,21 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
-          Der Shelly TRV ist ein steuerbarer Heizkörper-Thermostat.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.
-          Das Setzen der Zieltemperatur ist via Cloud nicht möglich.
+        <![CDATA[
+          <p>Der Shelly TRV ist ein steuerbarer Heizkörper-Thermostat.<br />
+          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.</p>
+          <p>Das Setzen der Zieltemperatur ist via Cloud REST API nicht möglich.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.shelly.com/de-ch/products/product-overview/shelly-trv-1</uri>
+      <uri>https://kb.shelly.cloud/knowledge-base/shelly-trv</uri>
     </legibleDescription>
     <deviceCategory>HeatingObject</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
-    <levelOfOperation>4m</levelOfOperation>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -63,7 +63,7 @@
       <dataType>
         <string />
       </dataType>
-      <defaultValue>ShellyTRV</defaultValue>
+      <defaultValue>000000000000</defaultValue>
       <configurationDescription>
         <textElement>ID of the cloud device.</textElement>
         <language>en</language>
@@ -103,35 +103,88 @@
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>DeviceStatus</functionalProfileName>
+            <functionalProfileName>DeviceInformation</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
-              <functionalProfileType>DeviceStatus</functionalProfileType>
+              <functionalProfileType>DeviceInformation</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+                <subReleaseVersionNumber>1</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Ermöglicht das Auslesen des Gerätestatus.
+                <![CDATA[
+          Functional profile used to read a device ID used to identify a device. <p>
+          Further on, this functional profile that can be used for vendor specific information and data points. <p>
+          It allows the handling of data points, which are valid for the whole device.
+        ]]>
               </textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                Allows reading the device status.
+                <![CDATA[
+          Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts. <p>
+          Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden. <p>
+          Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
+        ]]>
               </textElement>
-              <language>en</language>
+              <language>de</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ConnectionStatus</dataPointName>
+                <dataPointName>DeviceId</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <string />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Read the device ID.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen der Geräte ID.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_string</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>POST</requestMethod>
+                  <requestPath>/device/status</requestPath>
+                  <requestForm>
+                    <parameter>
+                      <name>id</name>
+                      <value>{{device_id}}</value>
+                    </parameter>
+                    <parameter>
+                      <name>auth_key</name>
+                      <value>{{auth_key}}</value>
+                    </parameter>
+                  </requestForm>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>data.device_status.id</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>Online</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <boolean />
@@ -147,7 +200,7 @@
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
+                <dataType>JSON_boolean</dataType>
                 <restApiReadServiceCall>
                   <requestHeader>
                     <header>
@@ -178,12 +231,12 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>Thermostat</functionalProfileName>
+            <functionalProfileName>Temperature</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>HeatingCircuit</functionalProfileCategory>
-              <functionalProfileType>Thermostat</functionalProfileType>
-              <levelOfOperation>4m</levelOfOperation>
+              <functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
+              <functionalProfileType>Temperature</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -192,13 +245,13 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Ermöglicht die Steuerung der Zieltemperatur.
+                Ermöglicht das Auslesen der Temperaturen.
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                Allows controlling the target temperature.
+                Allows reading temperatures.
               </textElement>
               <language>en</language>
             </legibleDescription>
@@ -251,6 +304,36 @@
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>Thermostat</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>HeatingCircuit</functionalProfileCategory>
+              <functionalProfileType>Thermostat</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                Ermöglicht das Auslesen der Zieltemperatur.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                Allows reading the target temperature.
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>TargetTemperature</dataPointName>

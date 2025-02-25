@@ -38,7 +38,7 @@
         <dataType>
           <float64/>
         </dataType>
-        <unit>KILOWATT_HOURS</unit>
+        <unit>NONE</unit>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
@@ -49,7 +49,7 @@
         <dataType>
           <float64/>
         </dataType>
-        <unit>KILOWATT_HOURS</unit>
+        <unit>NONE</unit>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
@@ -60,7 +60,7 @@
         <dataType>
           <float64/>
         </dataType>
-        <unit>KILOWATT_HOURS</unit>
+        <unit>NONE</unit>
       </dataPoint>
     </dataPointListElement>
   </dataPointList>

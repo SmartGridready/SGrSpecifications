@@ -19,12 +19,12 @@
     <legibleDescription>
       <textElement>
         <![CDATA[ 
-          Der Shelly Pro 4PM ist ein 1-phasiges 4-Kanal-Leistungsmessgerät.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.
+          <p>Der Shelly Pro 4PM ist ein 1-phasiges 4-Kanal-Leistungsmessgerät.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.shelly.com/de-ch/products/product-overview/shelly-pro-4pm-1</uri>
+      <uri>https://kb.shelly.cloud/knowledge-base/shelly-pro-4pm</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>true</isLocalControl>

@@ -19,8 +19,8 @@
     <legibleDescription>
       <textElement>
         <![CDATA[ 
-          Der Shelly Pro 4PM ist ein 1-phasiges 4-Kanal-Leistungsmessgerät.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud JSON-RPC API (Gen2) ausgelegt.
+          <p>Der Shelly Pro 4PM ist ein 1-phasiges 4-Kanal-Leistungsmessgerät.
+          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API (Gen1) ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -154,7 +154,7 @@
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
+                <dataType>JSON_string</dataType>
                 <restApiReadServiceCall>
                   <requestHeader>
                     <header>
@@ -199,7 +199,7 @@
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
+                <dataType>JSON_boolean</dataType>
                 <restApiReadServiceCall>
                   <requestHeader>
                     <header>

@@ -78,7 +78,7 @@
       <dataType>
         <string/>
       </dataType>
-      <defaultValue></defaultValue>
+      <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
         <textElement>The IP address</textElement>
         <language>en</language>

@@ -19,12 +19,12 @@
     <legibleDescription>
       <textElement>
         <![CDATA[ 
-          Der Shelly 1 ist ein 1-kanaliges schaltbares Relais.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API (Gen1) ausgelegt.
+          <p>Der Shelly 1 ist ein 1-kanaliges schaltbares Relais.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API (Gen1) ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.shelly.com/de-ch/products/product-overview/shelly-1</uri>
+      <uri>https://kb.shelly.cloud/knowledge-base/shelly-1</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>true</isLocalControl>
