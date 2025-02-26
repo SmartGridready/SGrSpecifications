@@ -2,7 +2,6 @@ package validator;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,7 +11,16 @@ import com.smartgridready.ns.v0.*;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.xml.sax.SAXException;
+
+import javax.xml.XMLConstants;
+
 
 public class CheckDeviceStructure {
     // TODO make paths configurable
@@ -27,10 +35,14 @@ public class CheckDeviceStructure {
     public static void main(String[] args) {
         try {
             // create a JAXBContext capable of handling classes generated from XSD
-            JAXBContext jc = JAXBContext.newInstance(SPEC_PACKAGE);
+            JAXBContext jaxbContext = JAXBContext.newInstance(SPEC_PACKAGE);
 
-            // create an Unmarshaller
-            Unmarshaller u = jc.createUnmarshaller();
+            // create XSD
+            Schema xsd = createXmlSchema();
+
+            // create Unmarshaller
+            Unmarshaller nonValidatingUnmarshaller = createXmlUnmarshaller(jaxbContext);
+            Unmarshaller validatingUnmarshaller = createXmlUnmarshaller(jaxbContext, xsd);
 
             // parse generic attributes
             for (File file : new File(SPEC_PATH + "XMLInstances/GenericAttributes").listFiles(new FilenameFilter() {
@@ -39,8 +51,9 @@ public class CheckDeviceStructure {
                     return name.endsWith(".xml");
                 }
             })) {
+                // does not support validation (schema issue?)
                 @SuppressWarnings("unchecked")
-                JAXBElement<GenericAttributeFrame> jaxbElement = (JAXBElement<GenericAttributeFrame>) u.unmarshal(file);
+                JAXBElement<GenericAttributeFrame> jaxbElement = (JAXBElement<GenericAttributeFrame>) nonValidatingUnmarshaller.unmarshal(file);
                 GenericAttributeFrame gaElement = (GenericAttributeFrame) jaxbElement.getValue();
 
                 String name = gaElement.getName();
@@ -94,7 +107,7 @@ public class CheckDeviceStructure {
                 }
             })) {
                 // TODO why is this no JAXBElement, but GenericAttributeFrame and DeviceFrame are?
-                FunctionalProfileFrame fpElement = (FunctionalProfileFrame) u.unmarshal(file);
+                FunctionalProfileFrame fpElement = (FunctionalProfileFrame) validatingUnmarshaller.unmarshal(file);
 
                 String type = fpElement.getFunctionalProfile().getFunctionalProfileIdentification()
                         .getFunctionalProfileType();
@@ -160,7 +173,7 @@ public class CheckDeviceStructure {
                 }
             })) {
                 @SuppressWarnings("unchecked")
-                JAXBElement<DeviceFrame> jaxbElement = (JAXBElement<DeviceFrame>) u.unmarshal(file);
+                JAXBElement<DeviceFrame> jaxbElement = (JAXBElement<DeviceFrame>) validatingUnmarshaller.unmarshal(file);
                 DeviceFrame eidElement = (DeviceFrame) jaxbElement.getValue();
 
                 String version = getVersionString(eidElement.getDeviceInformation().getVersionNumber());
@@ -533,5 +546,22 @@ public class CheckDeviceStructure {
         return (v != null)
             ? String.join(".", String.valueOf(v.getPrimaryVersionNumber()), String.valueOf(v.getSecondaryVersionNumber()), String.valueOf(v.getSubReleaseVersionNumber()))
             : UNDEFINED_VALUE;
+    }
+
+    private static Schema createXmlSchema() throws SAXException {
+        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        return sf.newSchema(CheckDeviceStructure.class.getClassLoader().getResource("SGrIncluder.xsd"));
+    }
+
+    private static Unmarshaller createXmlUnmarshaller(JAXBContext jaxbContext, Schema validatingSchema) throws JAXBException {
+        Unmarshaller u = jaxbContext.createUnmarshaller();
+        if (validatingSchema != null) {
+            u.setSchema(validatingSchema);
+        }
+        return u;
+    }
+
+    private static Unmarshaller createXmlUnmarshaller(JAXBContext jaxbContext) throws JAXBException {
+        return createXmlUnmarshaller(jaxbContext, null);
     }
 }
