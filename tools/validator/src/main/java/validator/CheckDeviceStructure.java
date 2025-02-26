@@ -223,10 +223,10 @@ public class CheckDeviceStructure {
                     String fpVersion = getVersionString(prof.getFunctionalProfile().getFunctionalProfileIdentification().getVersionNumber());
                     String key = type + "@" + category;
 
-                    FunctionalProfileFrame ok = checkFunctionalProfile(prof, funcProfiles.get(key), true);
+                    FunctionalProfileFrame ok = checkFunctionalProfile(prof.getFunctionalProfile().getFunctionalProfileIdentification(), funcProfiles.get(key), true);
 
                     if (ok == null) {
-                        FunctionalProfileFrame okVersion = checkFunctionalProfile(prof, funcProfiles.get(key), false);
+                        FunctionalProfileFrame okVersion = checkFunctionalProfile(prof.getFunctionalProfile().getFunctionalProfileIdentification(), funcProfiles.get(key), false);
 
                         if (okVersion == null) {
                             System.err.println("==> no matching FP for " + key);
@@ -249,15 +249,85 @@ public class CheckDeviceStructure {
                 System.out.println("-->" + profiles.size());
                 System.out.flush();
             }
+
+            System.out.println();
+            System.out.println();
+            System.out.flush();
+
+            // parse communicators
+            for (File file : new File(SPEC_PATH + "XMLInstances/CommuncicatorDeclarations").listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    return name.endsWith(".xml");
+                }
+            })) {
+                @SuppressWarnings("unchecked")
+                JAXBElement<CommunicatorFrame> jaxbElement = (JAXBElement<CommunicatorFrame>) validatingUnmarshaller.unmarshal(file);
+                CommunicatorFrame comElement = (CommunicatorFrame) jaxbElement.getValue();
+
+                String version = comElement.getCommunicatorInformation().getVersionNumber();
+
+                System.out.println();
+                System.out.println("COM: " + comElement.getCommunicatorName() + ", " + comElement.getManufacturerName() + ", "
+                        + ((comElement.getCommunicatorInformation().getLevelOfOperation() != null) ? comElement.getCommunicatorInformation().getLevelOfOperation().value() : UNDEFINED_VALUE) + ", "
+                        + version + ", "
+                        + ((comElement.getReleaseNotes().getState() != null) ? comElement.getReleaseNotes().getState().value() : UNDEFINED_VALUE) + ", "
+                        + file.getName());
+                System.out.flush();
+
+                if (comElement.getCommunicatorInformation().getLevelOfOperation() == null) {
+                    System.err.println("==> undefined communicator level of operation");
+                }
+                if (comElement.getCommunicatorInformation().getSupportedTransportServices() == null) {
+                    System.err.println("==> undefined communicator transport services");
+                }
+                if (comElement.getReleaseNotes().getState() == null) {
+                    System.err.println("==> undefined device release state");
+                }
+
+                List<CommunicatorFunctionalProfile> profiles = new ArrayList<>();
+
+                if (comElement.getFunctionalProfileListElement() != null) {
+                    profiles.addAll(comElement.getFunctionalProfileListElement());
+                }
+
+                for (CommunicatorFunctionalProfile prof : profiles) {
+                    String type = prof.getFunctionalProfileIdentification()
+                            .getFunctionalProfileType();
+                    String category = (prof.getFunctionalProfileIdentification().getFunctionalProfileCategory() != null)
+                        ? prof.getFunctionalProfileIdentification().getFunctionalProfileCategory().value()
+                        : UNDEFINED_VALUE;
+                    String fpVersion = getVersionString(prof.getFunctionalProfileIdentification().getVersionNumber());
+                    String key = type + "@" + category;
+
+                    FunctionalProfileFrame ok = checkFunctionalProfile(prof.getFunctionalProfileIdentification(), funcProfiles.get(key), true);
+
+                    if (ok == null) {
+                        FunctionalProfileFrame okVersion = checkFunctionalProfile(prof.getFunctionalProfileIdentification(), funcProfiles.get(key), false);
+
+                        if (okVersion == null) {
+                            System.err.println("==> no matching FP for " + key);
+                        } else {
+                            System.err.println("==> no matching FP for " + key + " (at version " + fpVersion + ")");
+                        }
+
+                        ok = okVersion;
+                    } else {
+                        System.out.println("==> ok for " + key);
+                        System.out.flush();
+                    }
+                }
+
+                System.out.println("-->" + profiles.size());
+                System.out.flush();
+            }
         } catch (Throwable t) {
             t.printStackTrace(System.err);
         }
     }
 
-    private static FunctionalProfileFrame checkFunctionalProfile(FunctionalProfileBase device,
+    private static FunctionalProfileFrame checkFunctionalProfile(FunctionalProfileIdentification prod,
             List<FunctionalProfileFrame> fps, boolean checkVersion) {
-        FunctionalProfileIdentification devFpId = device.getFunctionalProfile().getFunctionalProfileIdentification();
-
         if (fps == null) {
             return null;
         }
@@ -265,14 +335,14 @@ public class CheckDeviceStructure {
         for (FunctionalProfileFrame fp : fps) {
             FunctionalProfileIdentification fpFpId = fp.getFunctionalProfile().getFunctionalProfileIdentification();
 
-            if ((devFpId.getVersionNumber().getPrimaryVersionNumber() == fpFpId.getVersionNumber()
+            if ((prod.getVersionNumber().getPrimaryVersionNumber() == fpFpId.getVersionNumber()
                     .getPrimaryVersionNumber()
-                    && devFpId.getVersionNumber().getSecondaryVersionNumber() == fpFpId.getVersionNumber()
+                    && prod.getVersionNumber().getSecondaryVersionNumber() == fpFpId.getVersionNumber()
                             .getSecondaryVersionNumber()
-                    && devFpId.getVersionNumber().getSubReleaseVersionNumber() == fpFpId.getVersionNumber()
+                    && prod.getVersionNumber().getSubReleaseVersionNumber() == fpFpId.getVersionNumber()
                             .getSubReleaseVersionNumber()
                     || !checkVersion)
-                    && devFpId.getLevelOfOperation().equals(devFpId.getLevelOfOperation())) {
+                    && prod.getLevelOfOperation().equals(prod.getLevelOfOperation())) {
                 return fp;
             }
         }
