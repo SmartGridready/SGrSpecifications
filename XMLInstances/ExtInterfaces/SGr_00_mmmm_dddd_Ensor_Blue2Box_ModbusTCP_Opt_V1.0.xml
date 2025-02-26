@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Ensor Blue2Box</deviceName>
+  <deviceName>Ensor Blue2Box for Optimization</deviceName>
   <manufacturerName>Ensor</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -57,6 +57,49 @@
         ]]>
       </textElement>
       <language>en</language>
+      <uri>https://www.ensor.com/</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>
+            Unsere Blue2Box ist ein hochmoderner intelligenter Zählerdaten-Adapter, der Kundendaten in SCADA Modbus TCP oder RTU und anderen Protokollen wie M-Bus bereitstellt. Er ermöglicht auch Funktionen aus dem Bereich Industrie 4.0, indem er nur die P1/DMSR-Schnittstelle des MCS301-Zählers verwendet.
+          </p>
+          <p>
+            <b>Beispiele kompatibler Smart-Meter:</b><br />
+            <ul>
+              <li>Ensor eRS801 STO-10</li>
+            </ul>
+          </p>
+          <p>
+            <b>Hinweise:</b><br />
+            <ul>
+              <li>
+                Diese EID enthält einen Grossteil der obligatorischen Funktionsprofile aus der kommenden Spezifikation der VSE-Kundenschnittstelle:<br />
+                <ul>
+                  <li>Smart Meter ID</li>
+                  <li>Wirkleistung Bezug Total (+P)</li>
+                  <li>Wirkleistung Bezug (L1 - L3) (+P)</li>
+                  <li>Wirkleistung Einspeisung Total (-P)</li>
+                  <li>Wirkleistung Einspeisung (L1 - L3) (-P)</li>
+                  <li>Wirkenergie Bezug Total (+A)</li>
+                  <li>Wirkenergie Einspeisung Total (-A)</li>
+                  <li>Spannung (L1 - L3)</li>
+                  <li>Strom (L1 - L3)</li>
+                </ul>
+              </li>
+              <li>
+                Die folgenden Anwendungsfälle sind abgedeckt:<br />
+                <ul>
+                  <li>Optimierung für lokales Lastmanagement</li>
+                  <li>Optimierung für PV-Eigenverbrauch</li>
+                </ul>
+              </li>
+            </ul>
+          <p>
+        ]]>
+      </textElement>
+      <language>de</language>
       <uri>https://www.ensor.com/</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
