@@ -26,11 +26,12 @@
       <legibleDescription>
       <textElement>
       <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
           
-          <p>Stage 2 functional profile for Load Management Devices (CEM) with a communication interface to the power grid (to power suppliers, pooling providers or similar)
+          <p>Stage 2 functional profile for Energy Menagement Systems (EMS) with a communication interface to the the flexibility manager (to power suppliers, pooling providers or similar)
              that is controllable via two relay contacts.
-             The implementation of the functional profile must include the following four operating states:</p>
+             The implementation of the functional profile must include the following four operating states:
+             (the switching states m:n refer to the first (m) and n=second (n) contact):</p>
           <ol>
             <li>Operating State 1 (Switching state, for terminal solution: 0:0):
               <strong>NormalOperation</strong>:
@@ -56,10 +57,11 @@
     <legibleDescription>
       <textElement>
       <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
           
-          <p>Stufe 2 Funktionsprofil für Lastmanagement Geräte (CEM), welche eine Kommunikationsschnittstelle zum Stromnetz (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
-             die über zwei Relais-Kontakte steuerbar ist. Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
+          <p>Stufe 2 Funktionsprofil für Energiemanagement-Systeme (EMS), welche eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+             die über zwei Relais-Kontakte steuerbar ist. Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:
+             Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden (die Schaltzustände m:n beziehen sich auf den ersten (m) bzw. zweiten (n) Kontakt):</p>
           <ol>
             <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 0:0):
               <strong>Normalbetrieb</strong>:

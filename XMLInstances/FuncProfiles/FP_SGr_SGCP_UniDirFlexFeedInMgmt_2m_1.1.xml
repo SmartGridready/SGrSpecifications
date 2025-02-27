@@ -25,29 +25,29 @@
       <levelOfOperation>2m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
      <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
 			
-			<p>Stage 2m functional profile for Load Management Devices that regulate feed-in and have a communication interface to the power grid (to power suppliers, pooling providers or similar), 
+			<p>Stage 2m functional profile for Energy Menagement Systems (EMS) that regulate feed-in and have a communication interface to the flexibility manager (to power suppliers, pooling providers or similar), 
 				controllable via a data point with various operating modes. The implementation of the functional profile must cover the following four operating states:</p>
 		
 		<p>The following operating states can be set and read through the data point "SGCP_OpModeFeedInCmd":</p>
 		<ol>
 			<li><strong>FI_NORMAL</strong>: In normal operation, the load management optimizes feed-in according to user-defined criteria within the allowed power range.</li>
-			<li><strong>FI_REDUCED</strong>: In reduced operation, feed-in power is reduced by an agreed-upon amount (in percentage, see SGrAttribute 'Curtailment') if possible.</li>
+			<li><strong>FI_REDUCED</strong>: In reduced operation, feed-in power is reduced by an agreed-upon amount in percentage (curtailment) if possible.</li>
 			<li><strong>FI_MAX</strong>: In maximum operation, the load management allows for maximum feed-in power.</li>
-			<li><strong>FI_LOCKED</strong>: In the "locked" operating mode, no energy is allowed to be fed into the grid. The maximum duration of the lockout is defined by the 'Max. Lock Time' attribute.</li>
+			<li><strong>FI_LOCKED</strong>: In the "locked" operating mode, no energy is allowed to be fed into the grid. This can be achieved through a reduction of generation or by disabling storage discharge for a maximum duration (maxLockTimeMinutes).</li>
 		</ol>
 		
 		<p>The current operating mode of the customer's system can be read through the data point "SGCP_OpLoadState."</p>
 		
-		<p>The parameters for the percentage reduction (curtailment), maximum lockout duration (maxLockTimeMinutes), and time windows for defining continuous feed-in changes (smoothTransition) are manually configured during declaration or on the device itself. The optimal path for the declared device is defined during declaration. These parameters are described in the "Table of Attributes" below.</p>
+		<p>The parameters for the percentage reduction (curtailment), maximum lockout duration (maxLockTimeMinutes), and time windows for defining continuous feed-in changes (smoothTransition) are manually configured during declaration or on the device itself. The optimal path for the declared device is defined during declaration.</p>
 
 		  
         ]]>
@@ -57,9 +57,9 @@
 	<legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
 			
-			<p>Stufe 2m Funktionsprofil für Lastmanagement-Geräte, welche die Einspeisung regulieren und eine Kommunikationsschnittstelle zum Stromnetz (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+			<p>Stufe 2m Funktionsprofil für Energiemanagement-Systeme (EMS), welche die Einspeisung regulieren und eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
 			die über einen Datenpunkt mit verschiedenen Betriebsmodi steuerbar ist. 
 			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
           
@@ -69,10 +69,11 @@
             <li><strong>FI_NORMAL</strong>: Im Normalbetrieb optimiert das Lastmanagement die Einspeisung nach den Kriterien des Nutzers.
                 innerhalb des zugelassenen Leistungsbereichs.</li>
             <li><strong>FI_REDUCED</strong>: Im reduzierten Betrieb wird Einspeiseleistung um einen vereinbarten Betrag
-                (in Prozent, siehe SGrAttribut 'Curtailment') gesenkt, falls dies möglich ist. </li>
+                in Prozent (curtailment) gesenkt, falls dies möglich ist. </li>
             <li><strong>FI_MAX</strong>: Im Maximalbetrieb ermöglicht das Lastmanagement eine maximale
                 Einspeiseleistung. </li>
-            <li><strong>FI_LOCKED</strong>: Im Betriebsmodus "gesperrt" darf keine Energie ins Netz eingespeist werden. Die maximale Zeitdauer der Sperrung wird über das Attribut 'Max. Lock Time' definiert.</li>
+            <li><strong>FI_LOCKED</strong>: Im Betriebsmodus "gesperrt" darf keine Energie ins Netz eingespeist werden. Dies kann mittels einer Abregelung der Erzeugung oder dem Abschalten der Speicherentladung
+                während einer maximalen Zeitdauer (maxLockTimeMinutes) erfolgen</li>
           </ol>
 
           <p> Über den Datenpunkt "SGCP_OpLoadState" kann der aktuelle Betriebsmodus der Kundenanlage ausgelesen werden. </p>
@@ -80,8 +81,7 @@
 		  	  <p> Die Parameter für die prozentuale Abregelung (curtailment),  
 			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden 
 			  über die Attribute während der Deklaration oder am Gerät selber manuell konfiguriert. Der optimale Weg für das deklarierte Gerät 
-		  wird bei der Deklaration definiert
-			Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.</p>
+		  wird bei der Deklaration definiert.</p>
 		  
         ]]>
       </textElement>

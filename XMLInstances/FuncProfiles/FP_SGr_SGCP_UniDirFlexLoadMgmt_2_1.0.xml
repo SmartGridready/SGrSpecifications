@@ -32,18 +32,19 @@
      <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
           
-		 <p>Stage 2 functional profile for Load Management Devices (CEM) with a communication interface to the power grid (to power suppliers, pooling providers or similar), 
-   controllable via two relay contacts. The implementation of the functional profile must cover the following four operating states:</p>
+		 <p>Stage 2 functional profile for Energy Menagement Systems (CEM) with a communication interface to the flexibility manager (to power suppliers, pooling providers or similar), 
+   controllable via two relay contacts. The implementation of the functional profile must cover the following four operating states
+   (the switching states m:n refer to the first (m) and n=second (n) contact):</p>
 <ol>
    <li>Operating State 1 (Switching state, for terminal solution: 1:0): <strong>Maximum Consumption</strong>: The load management allows for maximum power consumption.</li>
    <li>Operating State 2 (Switching state, for terminal solution: 0:0): <strong>Normal</strong>: In normal operation, the load management optimizes power consumption according to user-defined criteria.</li>
-   <li>Operating State 3 (Switching state, for terminal solution: 0:1): <strong>Reduced (Desired)</strong>: Power consumption is reduced by an agreed-upon amount (in percentage, see SGrAttribute 'Curtailment') if possible.</li>
-   <li>Operating State 4 (Switching state, for terminal solution: 1:1): <strong>Locked</strong>: In this operating mode, no or a defined minimum energy (SGrAttribute 'Min. Load') is allowed to be drawn from the grid. This can be achieved through a reduction in power consumption during a maximum duration (see SGrAttribute 'Max. Lock Time').</li>
+   <li>Operating State 3 (Switching state, for terminal solution: 0:1): <strong>Reduced (Desired)</strong>: Power consumption is reduced by an agreed-upon amount in percentage (curtailment) if possible.</li>
+   <li>Operating State 4 (Switching state, for terminal solution: 1:1): <strong>Locked</strong>: In this operating mode, no or a defined minimum energy (minLoad) is allowed to be drawn from the grid. This can be achieved through a reduction in power consumption during a maximum duration (maxLockTimeMinutes).</li>
 </ol>
 
-<p>The parameters for the minimum percentage reduction (curtailment), minimum power consumption (minLoad), and the maximum lock time duration (maxLockTimeMinutes), as well as the time windows for defining continuous load changes (smoothTransition), are manually configured on the device itself. These parameters are described in the "Table of Attributes" below.</p>
+<p>The parameters for the minimum percentage reduction (curtailment), minimum power consumption (minLoad), and the maximum lock time duration (maxLockTimeMinutes), as well as the time windows for defining continuous load changes (smoothTransition), are manually configured on the device itself.</p>
 
         ]]>
       </textElement>
@@ -52,25 +53,27 @@
 	<legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
           
-		  <p>Stufe 2 Funktionsprofil für Lastmanagement Geräte (CEM), welche eine Kommunikationsschnittstelle zum Stromnetz (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+		  <p>Stufe 2 Funktionsprofil für Energiemanagement-Systeme (EMS), welche eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
 			die über zwei Relais-Kontakte steuerbar ist. 
-			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
+			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden
+			(die Schaltzustände m:n beziehen sich auf den ersten (m) bzw. zweiten (n) Kontakt):</p>
           <ol>
-             <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0): <strong>Maximaler Verbrauch</strong>: Das Lastmanagement ermöglicht eine maximale
-                Bezugsleistung.</li>
-			<li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:0): <strong>Normal</strong>: Im Normalbetrieb optimiert das Lastmanagement den Strombezug nach den Kriterien des Nutzers.</li>
-            <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung 0:1): <strong>Reduziert (Wunsch)</strong>: Der Lastbezug wird um einen vereinbarten Betrag
-                (in Prozent, siehe SGrAttribut 'Curtailment') gesenkt, falls dies möglich ist</li>
-           
-            <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung 1:1): <strong>Gesperrt</strong>: In diesen Betriebsmodus darf keine oder eine definierte
-                minimale Energie (SGrAttribut 'Min. Load') vom Netz bezogen werden. Dies kann mittels einer Reduktion des Strombezugs
-                während einer maximalen Zeitdauer (siehe SGrAttribut 'Max. Lock Time') erfolgen.</li>
+             <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0):
+                <strong>Maximaler Verbrauch</strong>: Das Lastmanagement ermöglicht eine maximale Bezugsleistung.</li>
+			 <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:0):
+			    <strong>Normal</strong>: Im Normalbetrieb optimiert das Lastmanagement den Strombezug nach den Kriterien des Nutzers.</li>
+             <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung: 0:1):
+                <strong>Reduziert (Wunsch)</strong>: Der Lastbezug wird um einen vereinbarten Betrag in Prozent (curtailment) gesenkt, falls dies möglich ist</li>
+             <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung: 1:1):
+                <strong>Gesperrt</strong>: In diesen Betriebsmodus darf keine oder eine definierte
+                minimale Energie (minLoad) vom Netz bezogen werden. Dies kann mittels einer Reduktion des Strombezugs
+                während einer maximalen Zeitdauer (maxLockTimeMinutes) erfolgen.</li>
           </ol>
 		  	  <p> Die Parameter für den minimal-Wert für die prozentuale Abregelung (curtailment), den Lastbezug (minLoad),  
-			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden am Gerät selber manuell konfiguriert. 
-		  Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.
+			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung
+			  (smoothTransition) werden am Gerät selber manuell konfiguriert. 
         ]]>
       </textElement>
       <language>de</language>
