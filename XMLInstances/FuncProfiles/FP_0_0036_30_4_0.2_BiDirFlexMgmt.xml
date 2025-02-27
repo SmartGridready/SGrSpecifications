@@ -38,12 +38,12 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
-          <strong>Flex Manager</strong><br>
-          Steuerndes Funktionsprofil für die flexible Steuerung des Energieverbrauchs eines Produktes.
+          <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
+          <p><strong>Flex Manager</strong><br>
+          Steuerndes Funktionsprofil für die flexible Steuerung des Energieverbrauchs eines Produktes.</p>
           
           <p>Dieses Funktionsprofil wird in der Regel vom Smart Grid Operator oder Regelenergie
-             Manager (Communicator) verwendet, um z.B. ein Customer Energy Manager (CEM) als Produkt anzusteuern.
+             Manager (Communicator) verwendet, um z.B. ein Energiemanagement-System (EMS) als Produkt anzusteuern.
              Die Steuerung der Anlage erfolgt über die obligatorischen Datenpunkte:
           <ul>
             <li>ReadinessState (Anlage ist bereit für Flexibilität)</li>
@@ -51,7 +51,7 @@
             <li>RunState (Flexibilitätsabruf ist aktiv)</li>
             <li>ActualActivePower (Rückmeldung)</li>
           </ul>
-          Die Schnittstelle ist für beliebige Speichermedien, welche elektrische Flexibilität unterstützen können,
+          Die Schnittstelle ist für beliebige Energiespeicher, welche elektrische Flexibilität unterstützen können,
           nutzbar. Die weiteren Datenpunkte ermöglichen optional Blindleistung, Speicherstands-Anzeige, Lade- und Entladeprofile sowie die
           Angabe des verfügbaren Flexibilitätsbereiches (min/max kW / kVAR). Leistungsangaben sind aus Sicht Bezüger (+ entspricht Energiebezug
           aus dem Netz oder Erhöhung des Bezugs).
@@ -324,7 +324,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>aValCharge</dataPointName>
+        <dataPointName>PercentageCharge</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -342,7 +342,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>aValDischarge</dataPointName>
+        <dataPointName>PercentageDischarge</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
