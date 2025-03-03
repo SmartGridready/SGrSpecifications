@@ -32,18 +32,18 @@
       <legibleDescription>
       <textElement>
       <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_wp_evse.svg"/>
           
-		  <p>Stage 2 functional profile for Load Management Devices (CEM) with a communication interface to the power grid (to power suppliers, pooling providers or similar) that is controllable via two relay contacts.
-			The implementation of the functional profile must include the following four operating states:</p>
+		  <p>Stage 2 functional profile for Energy Menagement Systems (EMS) with a communication interface to the flexibility manager (to power suppliers, pooling providers or similar) that is controllable via two relay contacts.
+			The implementation of the functional profile must include the following four operating states
+            (the switching states m:n refer to the first (m) and n=second (n) contact):</p>
 			<ol>
 			   <li>Operating State 1 (Switching state, for terminal solution: 1:0): <strong>Maximum Feed-in</strong>: The load management allows for maximum feed-in.</li>
 			   <li>Operating State 2 (Switching state, for terminal solution: 0:0): <strong>Normal</strong>: In normal operation, the load management optimizes power feed-in according to user-defined criteria.</li>
-			   <li>Operating State 3 (Switching state, for terminal solution: 0:1): <strong>Reduced (Desired)</strong>: The feed-in power is reduced by an agreed amount (in percentage, see SGrAttribute 'Curtailment') if possible.</li>
-			   <li>Operating State 4 (Switching state, for terminal solution: 1:1): <strong>Locked</strong>: In this operating mode, no or a defined minimum energy (SGrAttribute 'Min. Load') is allowed to be fed into the grid. This can be achieved through a reduction of generation or by disabling storage discharge for a maximum duration (see SGrAttribute 'Max. Lock Time').</li>
+			   <li>Operating State 3 (Switching state, for terminal solution: 0:1): <strong>Reduced (Desired)</strong>: The feed-in power is reduced by an agreed amount in percentage (Curtailment) if possible.</li>
+			   <li>Operating State 4 (Switching state, for terminal solution: 1:1): <strong>Locked</strong>: In this operating mode, no or a defined minimum energy (minLoad) is allowed to be fed into the grid. This can be achieved through a reduction of generation or by disabling storage discharge for a maximum duration (maxLockTimeMinutes).</li>
 			</ol>
-			<p>The parameters for the minimum value of the percentage reduction (curtailment), the maximum lock time duration (maxLockTimeMinutes), and the time windows for defining continuous load changes (smoothTransition) are manually configured on the device itself. 
-				These parameters are described in the "Table of Attributes" below.</p>
+			<p>The parameters for the minimum value of the percentage reduction (curtailment), the maximum lock time duration (maxLockTimeMinutes), and the time windows for defining continuous load changes (smoothTransition) are manually configured on the device itself.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -51,25 +51,24 @@
 	<legibleDescription>
       <textElement>
       <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_wp_evse.svg"/>
           
-		  <p>Stufe 2 Funktionsprofil für Lastmanagement Geräte (CEM), welche eine Kommunikationsschnittstelle zum Stromnetz (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+		  <p>Stufe 2 Funktionsprofil für Energiemanagement-Systeme (EMS), welche eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
 			die über zwei Relais-Kontakte steuerbar ist. 
-			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
+			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden (die Schaltzustände m:n beziehen sich auf den ersten (m) bzw. zweiten (n) Kontakt):</p>
           <ol>
              <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0): <strong>Maximale Einspeisung</strong>: Das Lastmanagement ermöglicht eine maximale
                Einspeisung.</li>
 			<li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:0): <strong>Normal</strong>: Im Normalbetrieb optimiert das Lastmanagement die Stromeinspeisung nach den Kriterien des Nutzers.</li>
             <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung 0:1): <strong>Reduziert (Wunsch)</strong>: Die Einspeiseleistung wird um einen vereinbarten Betrag
-                (in Prozent, siehe SGrAttribut 'Curtailment') gesenkt, falls dies möglich ist. </li>
+                in Prozent (curtailment) gesenkt, falls dies möglich ist. </li>
            
             <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung 1:1): <strong>Gesperrt</strong>: In diesen Betriebsmodus darf keine oder eine definierte
-                minimale Energie (SGrAttribut 'Min. Load') ins Netzeingespeist werden. Dies kann mittels einer Abregelung der Erzeugung oder dem Abschalten der Speicherentladung
-                während einer maximalen Zeitdauer (siehe SGrAttribut 'Max. Lock Time') erfolgen.</li>
+                minimale Energie (minLoad) ins Netzeingespeist werden. Dies kann mittels einer Abregelung der Erzeugung oder dem Abschalten der Speicherentladung
+                während einer maximalen Zeitdauer (maxLockTimeMinutes) erfolgen.</li>
           </ol>
 		  	  <p> Die Parameter für den minimal-Wert für die prozentuale Abregelung (curtailment),   
-			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden am Gerät selber manuell konfiguriert. 
-		  Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.</p>
+			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden am Gerät selber manuell konfiguriert.</p>
         ]]>
       </textElement>
       <language>de</language>
