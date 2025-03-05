@@ -7,10 +7,10 @@
   <manufacturerName>Ensor</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>1.0.0</version>
-      <date>2025-02-03</date>
+      <date>2025-03-05</date>
       <author>Matthias Krebs, FHNW</author>
       <comment>Initial declaration</comment>
     </changeLog>
@@ -20,13 +20,20 @@
       <textElement>
         <![CDATA[
           <p>
-            Our Blue2Box is a cutting-edge technology Meter-Data-Intelligent Adapter that offers Customer Data in SCADA Modbus TCP or RTU and other protocols like M-Bus. Enabling also Industry 4.0 capabilities by using only the MCS301 meter’s P1/DMSR interface.
+            Blue2Box is a cutting-edge technology meter adapter that provides customer data in SCADA Modbus TCP or RTU and other protocols such as M-Bus. By utilizing the meter's DMSR/P1 interface Industry 4.0 functionality is also enabled.
           </p>
           <p>
             <b>Examples of compatible smart meters:</b><br />
             <ul>
-              <li>Ensor eRS801 STO-10</li>
+              <li>Ensor eRS801</li>
+              <li>Ensor eRS301</li>
+              <li>Metcom MCS301</li>
+              <li>Any other DSMR/P1 (from version 5) compatible meter</li>
             </ul>
+          </p>
+          <p>
+            <b>Prerequisites:</b><br />
+            The electricity meters used must also output the defined data points at the DSMR/P1 interface.
           </p>
           <p>
             <b>Notes:</b><br />
@@ -63,13 +70,20 @@
       <textElement>
         <![CDATA[
           <p>
-            Unsere Blue2Box ist ein hochmoderner intelligenter Zählerdaten-Adapter, der Kundendaten in SCADA Modbus TCP oder RTU und anderen Protokollen wie M-Bus bereitstellt. Er ermöglicht auch Funktionen aus dem Bereich Industrie 4.0, indem er nur die P1/DMSR-Schnittstelle des MCS301-Zählers verwendet.
+            Blue2Box ist ein hochmoderner Zählerdaten-Adapter, der Kundendaten in SCADA Modbus TCP oder RTU und anderen Protokollen wie M-Bus bereitstellt. Durch die Nutzung der DMSR/P1-Schnittstelle des Zählers wird auch Industrie 4.0-Funktionalität ermöglicht.
           </p>
           <p>
             <b>Beispiele kompatibler Smart-Meter:</b><br />
             <ul>
-              <li>Ensor eRS801 STO-10</li>
+              <li>Ensor eRS801</li>
+              <li>Ensor eRS301</li>
+              <li>Metcom MCS301</li>
+              <li>Any other DSMR/P1 (from version 5) compatible meter</li>
             </ul>
+          </p>
+          <p>
+            <b>Voraussetzungen:</b><br />
+            Die verwendeten Stromzähler müssen die definierten Datenpunkte auch an der DSMR/P1-Schnittstelle ausgeben.
           </p>
           <p>
             <b>Hinweise:</b><br />
@@ -305,7 +319,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>1.7.0</manufName>
                 </alternativeNames>
@@ -342,7 +355,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>21.7.0</manufName>
                 </alternativeNames>
@@ -379,7 +391,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>41.7.0</manufName>
                 </alternativeNames>
@@ -416,7 +427,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>61.7.0</manufName>
                 </alternativeNames>
@@ -518,7 +528,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -555,7 +564,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>22.7.0</manufName>
                 </alternativeNames>
@@ -592,7 +600,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>42.7.0</manufName>
                 </alternativeNames>
@@ -629,7 +636,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>62.7.0</manufName>
                 </alternativeNames>
@@ -896,7 +902,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
                 </alternativeNames>
@@ -929,7 +934,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
                 </alternativeNames>
@@ -962,7 +966,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
                 </alternativeNames>
@@ -1019,7 +1022,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
                 </alternativeNames>
@@ -1052,7 +1054,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
                 </alternativeNames>
@@ -1085,7 +1086,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
                 </alternativeNames>
