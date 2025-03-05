@@ -3,43 +3,91 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Ensor Blue2Box</deviceName>
+  <deviceName>Ensor Blue2Box for Ensor Smartmeter</deviceName>
   <manufacturerName>Ensor</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
-      <version>0.1.0</version>
-      <date>2025-01-28</date>
+      <version>1.0.0</version>
+      <date>2025-03-05</date>
       <author>Matthias Krebs, FHNW</author>
-      <comment>Draft for initial Declaration</comment>
+      <comment>Initial declaration</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2025-03-05</date>
+      <author>Matthias Krebs, FHNW</author>
+      <comment>Draft for Testlab</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
-          Our Blue2Box is a cutting-edge technology Meter-Data-Intelligent Adapter that offers Customer Data in SCADA Modbus TCP or RTU and other protocols like M-Bus. Enabling also Industry 4.0 capabilities by using only the MCS301 meter’s P1/DMSR interface.
-          
-          Examples:
-          - Ensor eRS801
-          
-          Notes:
-          This EID does not yet support all FPs mandatory in upcoming VSE specification.
-          Only FPs delivered by the Ensor eRS801 are defined.
+        <![CDATA[
+          <p>
+            Blue2Box is a cutting-edge technology meter adapter that provides customer data in SCADA Modbus TCP or RTU and other protocols such as M-Bus. By utilizing the meter's DMSR/P1 interface Industry 4.0 functionality is also enabled.
+          </p>
+          <p>
+            <b>Examples of compatible smart meters:</b><br />
+            <ul>
+              <li>Ensor eRS801</li>
+              <li>Ensor eRS301</li>
+              <li>Metcom MCS301</li>
+              <li>Any other DSMR/P1 (from version 5) compatible meter</li>
+            </ul>
+          </p>
+          <p>
+            <b>Prerequisites:</b><br />
+            The electricity meters used must also output the defined data points at the DSMR/P1 interface.
+          </p>
+          <p>
+            <b>Notes:</b><br />
+            This EID does not yet support all FPs mandatory in upcoming VSE specification.
+            Only FPs delivered by the Ensor eRS801 are defined.
+          <p>
         ]]>
       </textElement>
       <language>en</language>
+      <uri>https://www.ensor.com/</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>
+            Blue2Box ist ein hochmoderner Zählerdaten-Adapter, der Kundendaten in SCADA Modbus TCP oder RTU und anderen Protokollen wie M-Bus bereitstellt. Durch die Nutzung der DMSR/P1-Schnittstelle des Zählers wird auch Industrie 4.0-Funktionalität ermöglicht.
+          </p>
+          <p>
+            <b>Beispiele kompatibler Smart-Meter:</b><br />
+            <ul>
+              <li>Ensor eRS801</li>
+              <li>Ensor eRS301</li>
+              <li>Metcom MCS301</li>
+              <li>Any other DSMR/P1 (from version 5) compatible meter</li>
+            </ul>
+          </p>
+          <p>
+            <b>Voraussetzungen:</b><br />
+            Die verwendeten Stromzähler müssen die definierten Datenpunkte auch an der DSMR/P1-Schnittstelle ausgeben.
+          </p>
+          <p>
+            <b>Hinweise:</b><br />
+            Diese EID enthält noch nicht alle FPs, die in der kommenden VSE-Kundenschnittstelle vorgeschrieben sind.
+            Nur FPs, die vom Ensor eRS801 geliefert werden, sind definiert.
+          <p>
+        ]]>
+      </textElement>
+      <language>de</language>
       <uri>https://www.ensor.com/</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>true</isLocalControl>
     <softwareRevision>0.6.12</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <manufacturerSpecificationIdentification>Metcom</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>Ensor</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
@@ -235,7 +283,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>1.7.0</manufName>
                 </alternativeNames>
@@ -272,7 +319,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>21.7.0</manufName>
                 </alternativeNames>
@@ -309,7 +355,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>41.7.0</manufName>
                 </alternativeNames>
@@ -346,7 +391,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>61.7.0</manufName>
                 </alternativeNames>
@@ -448,7 +492,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -485,7 +528,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>22.7.0</manufName>
                 </alternativeNames>
@@ -522,7 +564,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>42.7.0</manufName>
                 </alternativeNames>
@@ -559,7 +600,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>62.7.0</manufName>
                 </alternativeNames>
@@ -981,7 +1021,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
                 </alternativeNames>
@@ -1014,7 +1053,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
                 </alternativeNames>
@@ -1047,7 +1085,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
                 </alternativeNames>
@@ -1104,7 +1141,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
                 </alternativeNames>
@@ -1137,7 +1173,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
                 </alternativeNames>
@@ -1170,7 +1205,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
                 </alternativeNames>
