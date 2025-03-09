@@ -32,9 +32,9 @@
      <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_ems_to_pv_evse.svg"/>
+          <img src="ressources/fp_ems_to_wp_evse.svg"/>
           
-		 <p>Stage 2 functional profile for Energy Menagement Systems (CEM) with a communication interface to the flexibility manager (to power suppliers, pooling providers or similar), 
+		 <p>Stage 2 functional profile for Energy Management Systems (EMS) with a communication interface to the flexibility manager (to power suppliers, pooling providers or similar), 
    controllable via two relay contacts. The implementation of the functional profile must cover the following four operating states
    (the switching states m:n refer to the first (m) and n=second (n) contact):</p>
 <ol>
@@ -53,7 +53,7 @@
 	<legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_ems_to_pv_evse.svg"/>
+          <img src="ressources/fp_ems_to_wp_evse.svg"/>
           
 		  <p>Stufe 2 Funktionsprofil für Energiemanagement-Systeme (EMS), welche eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
 			die über zwei Relais-Kontakte steuerbar ist. 

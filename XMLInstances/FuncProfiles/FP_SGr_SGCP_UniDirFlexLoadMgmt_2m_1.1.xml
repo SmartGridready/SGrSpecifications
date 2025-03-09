@@ -16,6 +16,12 @@
       <author>Ergo/ag</author>
       <comment>Finalisierung</comment>
     </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2025-03-09</date>
+      <author>Ergo/ag</author>
+      <comment>Textkorrekturen</comment>
+    </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
@@ -33,7 +39,7 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_ems_to_wp_evse.svg"/>
-		<p>Stage 2m functional profile for Energy Menagement Systems (EMS) with a communication interface to the flexibility manager (to power suppliers, pooling providers or similar), 
+		<p>Stage 2m functional profile for Energy Management Systems (EMS) with a communication interface to the flexibility manager (to power suppliers, pooling providers or similar), 
    controllable via a data point with various operating modes. The implementation of the functional profile must cover the following four operating states:</p>  
 		<p>The following operating states can be set and read through the data point "SGCP_OpModeLoadCmd":</p>
 			<ol>

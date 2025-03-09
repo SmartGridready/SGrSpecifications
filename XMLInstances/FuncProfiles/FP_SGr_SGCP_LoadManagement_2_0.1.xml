@@ -28,7 +28,7 @@
       <![CDATA[
           <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
           
-          <p>Stage 2 functional profile for Energy Menagement Systems (EMS) with a communication interface to the the flexibility manager (to power suppliers, pooling providers or similar)
+          <p>Stage 2 functional profile for Energy Management Systems (EMS) with a communication interface to the the flexibility manager (to power suppliers, pooling providers or similar)
              that is controllable via two relay contacts.
              The implementation of the functional profile must include the following four operating states:
              (the switching states m:n refer to the first (m) and n=second (n) contact):</p>
