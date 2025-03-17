@@ -31,7 +31,7 @@
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <programmerHints>
-    	<textElement>Voraussetzungen
+      <textElement>Voraussetzungen
 
 Das Dokument richtet sich an Personen die mit der Spezifikation und dem Betrieb des Modbus-Protokolls
 vertraut sind (z.B. Systemintegratoren). Da über Modbus auch die komplette Steuerung der Wärmepumpe
@@ -41,14 +41,14 @@ Pumpen zwingend vorausgesetzt!
 Durch die Steuerung der Wärmepumpe via Modbus wird in einem gewissen Maße die Eigenintelligenz
 der Wärmepumpe „überschrieben“. Somit obliegt dem Integrator die Verantwortung einen problemlosen
 Betrieb zu gewährleisten!</textElement>
-    	<language>de</language>
+      <language>de</language>
     </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
       <name>tcp_address</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
       <configurationDescription>
         <textElement>IP address or DHCP name of the device</textElement>
@@ -294,8 +294,8 @@ Betrieb zu gewährleisten!</textElement>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
-                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
-                    <language>de</language>
+                  <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -386,10 +386,14 @@ Betrieb zu gewährleisten!</textElement>
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
-                    The register value is accepted if the PV mode is set to Off on the web interface of the RCG X
-                    and a request for external compressor speed specification (register 117) is pending. The compressor speed
-                    is limited by the web controller to a minimum and maximum so that the compressor cannot be damaged.
-                    be damaged. These limits are usually 15% and 60%  and can be set in the web controller.
+                    The register value is accepted if the PV mode is set to Off on the web interface
+                    of the RCG X
+                    and a request for external compressor speed specification (register 117) is
+                    pending. The compressor speed
+                    is limited by the web controller to a minimum and maximum so that the compressor
+                    cannot be damaged.
+                    be damaged. These limits are usually 15% and 60% and can be set in the web
+                    controller.
                     web controller.
                   </textElement>
                   <language>en</language>
@@ -487,7 +491,7 @@ Betrieb zu gewährleisten!</textElement>
                 <dataPointName>PowerCtrlSetpointEnable</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <boolean/>
+                  <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
@@ -660,8 +664,8 @@ Betrieb zu gewährleisten!</textElement>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
-                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
-                    <language>de</language>
+                  <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -802,7 +806,7 @@ Betrieb zu gewährleisten!</textElement>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
-          <dataPointListElement>
+            <dataPointListElement>
               <dataPoint>
                 <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
@@ -889,8 +893,8 @@ Betrieb zu gewährleisten!</textElement>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
-                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
-                    <language>de</language>
+                  <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -1012,7 +1016,7 @@ Betrieb zu gewährleisten!</textElement>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
-           <dataPointListElement>
+            <dataPointListElement>
               <dataPoint>
                 <dataPointName>DomHotWaterTempSetpoint</dataPointName>
                 <dataDirection>RW</dataDirection>
@@ -1078,7 +1082,7 @@ Betrieb zu gewährleisten!</textElement>
                 <dataPointName>DomHotWaterTempSetpointEnable</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <boolean/>
+                  <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
@@ -1103,38 +1107,38 @@ Betrieb zu gewährleisten!</textElement>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
-          <dataPointListElement>
-          <dataPoint>
-            <dataPointName>ActDomHotWaterTemp</dataPointName>
-            <dataDirection>R</dataDirection>
-            <dataType>
-              <float64 />
-            </dataType>
-            <unit>DEGREES_CELSIUS</unit>
-            <legibleDescription>
-              <textElement>Aktueller Ist-Wert der Temperatur des Brauchwarmwasserspeichers</textElement>
-              <language>de</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>Domestic hot water tank temperature</textElement>
-              <language>en</language>
-            </legibleDescription>
-          </dataPoint>
-          <modbusDataPointConfiguration>
-            <modbusDataType>
-              <int16 />
-            </modbusDataType>
-            <address>11</address>
-            <registerType>InputRegister</registerType>
-            <numberOfRegisters>1</numberOfRegisters>
-          </modbusDataPointConfiguration>
-          <modbusAttributes>
-            <scalingFactor>
-              <multiplicator>1</multiplicator>
-              <powerof10>-1</powerof10>
-            </scalingFactor>
-          </modbusAttributes>
-        </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActDomHotWaterTemp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <legibleDescription>
+                  <textElement>Aktueller Ist-Wert der Temperatur des Brauchwarmwasserspeichers</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Domestic hot water tank temperature</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>11</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -1228,8 +1232,9 @@ Betrieb zu gewährleisten!</textElement>
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>When 1, activates following of setpoint HeatBufferTempSetpointOffset for tank temperature. 
-                      If 0, HeatBufferTempSetpointOffset not applied 
+                  <textElement>
+                    When 1, activates following of setpoint HeatBufferTempSetpointOffset for tank temperature. 
+                    If 0, HeatBufferTempSetpointOffset not applied 
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
