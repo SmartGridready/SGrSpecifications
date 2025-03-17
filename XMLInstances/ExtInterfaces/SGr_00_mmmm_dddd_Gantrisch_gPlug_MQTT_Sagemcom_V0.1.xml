@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Gantrisch gPlug MQTT</deviceName>
+  <deviceName>Gantrisch gPlug MQTT Sagemcom</deviceName>
   <manufacturerName>Gantrisch Energie AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -387,7 +387,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>1.7.0</manufName>
                 </alternativeNames>
@@ -428,7 +427,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
                   <manufName>21.7.0</manufName>
@@ -470,7 +468,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
                   <manufName>41.7.0</manufName>
@@ -512,7 +509,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
                   <manufName>61.7.0</manufName>
@@ -619,7 +615,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -660,7 +655,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
                   <manufName>22.7.0</manufName>
@@ -702,7 +696,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
                   <manufName>42.7.0</manufName>
@@ -744,7 +737,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
                   <manufName>62.7.0</manufName>
@@ -1238,7 +1230,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
                 </alternativeNames>
@@ -1275,7 +1266,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
                 </alternativeNames>
@@ -1312,7 +1302,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
                 </alternativeNames>
@@ -1373,7 +1362,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
                 </alternativeNames>
@@ -1410,7 +1398,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
                 </alternativeNames>
@@ -1447,7 +1434,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
                 </alternativeNames>
