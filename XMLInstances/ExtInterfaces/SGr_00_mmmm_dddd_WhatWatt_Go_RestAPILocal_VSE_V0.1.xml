@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>WhatWatt Go REST API Local</deviceName>
+  <deviceName>WhatWatt Go REST API Local VSE</deviceName>
   <manufacturerName>WhatWatt</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -131,10 +131,45 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/api/v1/system</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>meter.logical_name</query>
+                    <query>meter.id</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>DateTime</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <dateTime />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Read the meter timestamp.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen des Meter-Zeitstempels.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_string</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/api/v1/system</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>join("T",[meter.date,meter.time])</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -797,130 +832,6 @@
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>report.energy.active.negative.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>ReactiveEnergyACIn</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ReactiveEnergyAC</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
-                              Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ReactiveEnergyACtot</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
-                <alternativeNames>
-                  <manufName>3.8.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der gesamten Blindenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.reactive.positive.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>ReactiveEnergyACOut</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ReactiveEnergyAC</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
-                              Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ReactiveEnergyACtot</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
-                <alternativeNames>
-                  <manufName>4.8.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der gesamten Blindenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.reactive.negative.total</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
