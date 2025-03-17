@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>BitteGeraetnamenSetzen</deviceName>
+  <deviceName>Heliotherm RCG X</deviceName>
   <manufacturerName>HELIOTHERM Wärmepumpentechnik Ges.m.b.H</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -24,7 +24,7 @@
     <manufacturerSpecificationIdentification>manufacturerSpecificationIdentification</manufacturerSpecificationIdentification>
     <manufacturerLabel>Bite Label des Gateways einsetzen</manufacturerLabel>
     <generalRemarks>vorläufig Ibt/cb</generalRemarks>
-    <levelOfOperation>4</levelOfOperation>
+    <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>2</secondaryVersionNumber>
@@ -125,14 +125,14 @@ Betrieb zu gewährleisten!</textElement>
                       <description>Brauchwasserbereitung und Heizbetrieb mit Aufheiz- und Absenktemperatur lt. Zeitprogramm</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HEL_HP_SUMMER_MODE</literal>
-                      <ordinal>3</ordinal>
-                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HEL_HP_COOLING_OP</literal>
                       <ordinal>2</ordinal>
                       <description>(nur mit Kühlfunktion und WW) Heizungsanlage im Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_SUMMER_MODE</literal>
+                      <ordinal>3</ordinal>
+                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HEL_HP_DURATION_OP</literal>
@@ -216,7 +216,7 @@ Betrieb zu gewährleisten!</textElement>
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>OPERATING MODE of heat pump. 8 to 10 only informational</textElement>
+                  <textElement>Operation mode requested by the heat pump.</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -225,7 +225,7 @@ Betrieb zu gewährleisten!</textElement>
                   <int16 />
                 </modbusDataType>
                 <address>41</address>
-                <registerType>HoldRegister</registerType>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -275,7 +275,7 @@ Betrieb zu gewährleisten!</textElement>
                   <int16 />
                 </modbusDataType>
                 <address>10</address>
-                <registerType>HoldRegister</registerType>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -409,8 +409,8 @@ Betrieb zu gewährleisten!</textElement>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
+                  <multiplicator>5</multiplicator>
+                  <powerof10>-2</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
@@ -473,7 +473,7 @@ Betrieb zu gewährleisten!</textElement>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
                 <address>125</address>
                 <registerType>HoldRegister</registerType>
@@ -503,18 +503,12 @@ Betrieb zu gewährleisten!</textElement>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
                 <address>117</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -594,14 +588,14 @@ Betrieb zu gewährleisten!</textElement>
                       <description>Brauchwasserbereitung und Heizbetrieb mit Aufheiz- und Absenktemperatur lt. Zeitprogramm</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HEL_HP_SUMMER_MODE</literal>
-                      <ordinal>3</ordinal>
-                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HEL_HP_COOLING_OP</literal>
                       <ordinal>2</ordinal>
                       <description>(nur mit Kühlfunktion und WW) Heizungsanlage im Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_SUMMER_MODE</literal>
+                      <ordinal>3</ordinal>
+                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HEL_HP_DURATION_OP</literal>
@@ -736,7 +730,7 @@ Betrieb zu gewährleisten!</textElement>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
                 <address>110</address>
                 <registerType>HoldRegister</registerType>
@@ -823,14 +817,14 @@ Betrieb zu gewährleisten!</textElement>
                       <description>Brauchwasserbereitung und Heizbetrieb mit Aufheiz- und Absenktemperatur lt. Zeitprogramm</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HEL_HP_SUMMER_MODE</literal>
-                      <ordinal>3</ordinal>
-                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HEL_HP_COOLING_OP</literal>
                       <ordinal>2</ordinal>
                       <description>(nur mit Kühlfunktion und WW) Heizungsanlage im Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_SUMMER_MODE</literal>
+                      <ordinal>3</ordinal>
+                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HEL_HP_DURATION_OP</literal>
@@ -955,7 +949,7 @@ Betrieb zu gewährleisten!</textElement>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
                 <address>115</address>
                 <registerType>HoldRegister</registerType>
@@ -1087,25 +1081,19 @@ Betrieb zu gewährleisten!</textElement>
                 <unit>NONE</unit>
                 <legibleDescription>
                   <textElement>
-                    If True, DomHotWaterTempSetpoint ACtive.
+                    If True, DomHotWaterTempSetpoint Active.
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
-                <address>105</address>
+                <address>134</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1241,9 +1229,9 @@ Betrieb zu gewährleisten!</textElement>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
-                <address>103</address>
+                <address>132</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
