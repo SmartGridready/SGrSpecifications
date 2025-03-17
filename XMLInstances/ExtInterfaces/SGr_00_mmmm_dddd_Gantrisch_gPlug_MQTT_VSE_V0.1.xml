@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Gantrisch gPlug MQTT</deviceName>
+  <deviceName>Gantrisch gPlug MQTT VSE</deviceName>
   <manufacturerName>Gantrisch Energie AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -387,7 +387,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>1.7.0</manufName>
                 </alternativeNames>
@@ -428,7 +427,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>21.7.0</manufName>
                 </alternativeNames>
@@ -469,7 +467,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>41.7.0</manufName>
                 </alternativeNames>
@@ -510,7 +507,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>61.7.0</manufName>
                 </alternativeNames>
@@ -616,7 +612,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -657,7 +652,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>22.7.0</manufName>
                 </alternativeNames>
@@ -698,7 +692,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>42.7.0</manufName>
                 </alternativeNames>
@@ -739,7 +732,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>62.7.0</manufName>
                 </alternativeNames>
@@ -989,132 +981,6 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ReactiveEnergyACIn</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ReactiveEnergyAC</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
-                              Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ReactiveEnergyACtot</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
-                <alternativeNames>
-                  <manufName>3.8.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der gesamten Blindenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rEi</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>ReactiveEnergyACOut</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ReactiveEnergyAC</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
-                              Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ReactiveEnergyACtot</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOVOLT_AMPERES_REACTIVE_HOURS</unit>
-                <alternativeNames>
-                  <manufName>4.8.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der gesamten Blindenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rEo</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
             <functionalProfileName>VoltageAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
@@ -1144,7 +1010,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
                 </alternativeNames>
@@ -1181,7 +1046,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
                 </alternativeNames>
@@ -1218,7 +1082,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
                 </alternativeNames>
@@ -1279,7 +1142,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
                 </alternativeNames>
@@ -1316,7 +1178,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
                 </alternativeNames>
@@ -1353,7 +1214,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
                 </alternativeNames>

@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Gantrisch gPlug MQTT</deviceName>
+  <deviceName>Gantrisch gPlug MQTT Landis+Gyr</deviceName>
   <manufacturerName>Gantrisch Energie AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -383,7 +383,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>1.7.0</manufName>
                 </alternativeNames>
@@ -489,7 +488,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -597,6 +595,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>1.8.1</manufName>
                 </alternativeNames>
@@ -704,6 +703,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.8.1</manufName>
                 </alternativeNames>

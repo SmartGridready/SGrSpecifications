@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>WhatWatt Go MQTT</deviceName>
+  <deviceName>WhatWatt Go MQTT Ensor</deviceName>
   <manufacturerName>WhatWatt</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -45,7 +45,8 @@
             "V_P2": ${52_7_0},
             "V_P3": ${72_7_0},
             "Meter": {
-              "Id": "${meter.id}"
+              "Id": "${meter.id}",
+              "DateTime": "${meter.date_time}"
             }
           }
           </pre>
@@ -277,6 +278,36 @@
                 </inMessage>
               </messagingDataPointConfiguration>
             </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>DateTime</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <dateTime />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Read the meter timestamp.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen des Meter-Zeitstempels.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <string />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Meter.DateTime</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -351,7 +382,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>1.7.0</manufName>
                 </alternativeNames>
@@ -386,7 +416,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>21.7.0</manufName>
                 </alternativeNames>
@@ -421,7 +450,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>41.7.0</manufName>
                 </alternativeNames>
@@ -456,7 +484,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>61.7.0</manufName>
                 </alternativeNames>
@@ -556,7 +583,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -591,7 +617,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>22.7.0</manufName>
                 </alternativeNames>
@@ -626,7 +651,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>42.7.0</manufName>
                 </alternativeNames>
@@ -661,7 +685,6 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>10</maximumValue>
                 <alternativeNames>
                   <manufName>62.7.0</manufName>
                 </alternativeNames>
@@ -1069,7 +1092,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
                 </alternativeNames>
@@ -1100,7 +1122,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
                 </alternativeNames>
@@ -1131,7 +1152,6 @@
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>250</maximumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
                 </alternativeNames>
@@ -1186,7 +1206,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
                 </alternativeNames>
@@ -1217,7 +1236,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
                 </alternativeNames>
@@ -1248,7 +1266,6 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <minimumValue>0</minimumValue>
-                <maximumValue>16</maximumValue>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
                 </alternativeNames>
