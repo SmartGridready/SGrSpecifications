@@ -71,8 +71,7 @@ Betrieb zu gewährleisten!</textElement>
           <address>{{tcp_address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
-        <firstRegisterAddressIsOne>true
-        </firstRegisterAddressIsOne>
+        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
         <bitOrder>BigEndian</bitOrder>
       </modbusInterfaceDescription>
       <functionalProfileList>
