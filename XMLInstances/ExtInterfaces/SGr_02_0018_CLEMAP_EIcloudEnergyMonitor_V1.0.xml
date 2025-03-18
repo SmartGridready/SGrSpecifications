@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>CLEMAP Energy Monitor</deviceName>
+  <deviceName>CLEMAP Energy Monitor Cloud</deviceName>
   <manufacturerName>CLEMAP</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -18,7 +18,7 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
+        <![CDATA[
           Der CLEMAP Energy Monitor wird eingesetzt, um den Stromverbrauch bei KMU und industriellen Anwendungen vollständig zu überwachen.
           </p>
           Er wird in Steuerschränke oder Verteilerkästen installiert und fungiert als dezentrale Messstelle.
@@ -44,7 +44,7 @@
     <configurationListElement>
       <name>sensor_id</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
       <configurationDescription>
         <textElement>Identification of the sensor.</textElement>
@@ -60,7 +60,7 @@
     <configurationListElement>
       <name>username</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
       <configurationDescription>
         <textElement>User name for accessing the device.</textElement>
@@ -76,7 +76,7 @@
     <configurationListElement>
       <name>password</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
       <configurationDescription>
         <textElement>Password for accessing the device.</textElement>
@@ -92,7 +92,7 @@
     <configurationListElement>
       <name>baseUri</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
       <configurationDescription>
         <textElement>Base address for accessing the resource.</textElement>
@@ -151,10 +151,10 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
                   
                   <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
@@ -176,7 +176,7 @@
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the active power.
@@ -192,7 +192,7 @@
                     <li>Three-phase devices with measurement of the total active power use all data points</li>
                   </ul>
                   </p>
-                ]]>			
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
