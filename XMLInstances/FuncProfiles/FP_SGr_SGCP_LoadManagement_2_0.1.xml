@@ -68,11 +68,11 @@
                 Keine Vorgabe seitens VNB
                 (normaler Zustand, Ladestation lädt unbeeinflusst gemäss Bedarf)</li>
             <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:1):
-              <strong>Maximale Einspeisung</strong>:
+              <strong>Maximale Ladung</strong>:
                 Wunsch von VNB: Maximale Ladeleistung
                 (Bezug aus dem Netz, je nach Gerät 10 oder 20 kW)</li>
             <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung: 1:0):
-              <strong>Maximale Entladung</strong>:
+              <strong>Maximale Einspeisung</strong>:
                 Wunsch von VNB: Maximale Entladeleistung
                 (Einspeisung ins Netz, je nach Gerät entweder 10 oder 20 kW)</li>
             <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung 1:1):
