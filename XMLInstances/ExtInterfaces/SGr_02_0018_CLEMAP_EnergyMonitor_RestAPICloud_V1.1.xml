@@ -100,6 +100,7 @@
       <dataType>
         <string />
       </dataType>
+      <defaultValue>https://cloud.clemap.com:3032</defaultValue>
       <configurationDescription>
         <textElement>Base address for accessing the resource.</textElement>
         <language>en</language>
