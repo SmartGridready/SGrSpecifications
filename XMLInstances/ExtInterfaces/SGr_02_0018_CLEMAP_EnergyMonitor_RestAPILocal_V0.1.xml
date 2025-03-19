@@ -32,7 +32,7 @@
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <manufacturerSpecificationIdentification>CLEMAP</manufacturerSpecificationIdentification>
-    <levelOfOperation>m</levelOfOperation>
+    <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -78,6 +78,7 @@
       <dataType>
         <string />
       </dataType>
+      <defaultValue>http://localhost:7000</defaultValue>
       <configurationDescription>
         <textElement>Base address for accessing the resource.</textElement>
         <language>en</language>
@@ -413,6 +414,188 @@
                     <query>ActualCurrentL3</query>
                   </responseQuery>
                 </restApiServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>EMS_Current_Limit</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>EVSE</functionalProfileCategory>
+              <functionalProfileType>EMS_Current_Limit</functionalProfileType>
+              <levelOfOperation>4m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+                  The functional profile enables a controller to set a current limitation for a charging station (Electric Vehicle Supply Equipment, EVSE).
+                  <p>The charging station's current limit is dynamically regulated by an external Home Energy Management System (HEMS) with the data point <em>EMSCurrentLimit</em> expressed in amps.
+                    This data point enables real-time monitoring and control of the consumption limit of the charging station.
+                    This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
+                  <p>This functional profile can be utilized in conjunction with the 
+                    <a href="https://library.smartgridready.ch/FP_SGr_EVSE_EVSEState_m_0.2.xml?viewProfile">EVSE State</a>
+                    functional profile to check the current state of the charging station.</p>
+                  <p>
+                    For the data points <em>EMSCurrentLimit</em> and <em>SafeCurrent</em>, 
+                    the <em>SmoothTransition</em> sub data points can be utilized to specify the transition process from an old to a new setpoint following the reception of a new limit value by the charging station.
+                    (See <a href="https://github.com/SmartGridready/SGrSpecifications/blob/Consolidation_of_EVSE_Specification/doc/FP_EVSE/EVSE.md#smoothtransition-sub-data-points">Smooth Transition Sub Data Points</a>.)
+                  </p>
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+                  Das Funktionsprofil ermöglicht es einer Steuerung, eine Strombegrenzung für eine Elektrofahrzeug-Ladestation (Electric Vehicle Supply Equipment, EVSE) festzulegen.
+                  <p>Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Home Energy Management System (HEMS) über den Datenpunkt <em>EMSCurrentLimit</em> geregelt (in Ampere).
+                    Dieser Datenpunkt ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.
+                    Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.</p>
+                  <p>Um den aktuellen Status der Ladestation abzufragen, kann dieses Funktionsprofil in Verbindung mit dem Funktionsprofil
+                    <a href="https://library.smartgridready.ch/FP_SGr_EVSE_EVSEState_m_0.2.xml?viewProfile">EVSE State</a>
+                    verwendet werden.</p>
+                  <p>
+                    Für die Datenpunkte <em>EMSCurrentLimit</em> und <em>SafeCurrent</em> können <em>SmoothTransition</em> Unterdatenpunkte angegeben werden, die den Prozess des
+                    Übergangs von einem alten auf einen neuen Sollwert nach dem Empfang eines neuen Grenzwerts durch die Ladestation näher spezifizieren.
+                    (Siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/Consolidation_of_EVSE_Specification/doc/FP_EVSE/EVSE.md#smoothtransition-sub-data-points">Smooth Transition Sub Data Points</a>.)
+                  </p>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>EMSCurrentLimit</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>AMPERES</unit>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Currently permissible charging current for the charging station.
+                      <p>If the device requires different datapoints for writing and reading, the data direction of this data point
+                      can be changed to write (W) and the data point <em>EMSCurrentLimitFeedback</em> can be used to define a datapoint for reading the maximum current.</p>
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Der aktuell maximal zulässige Strom für die Ladestation.
+                      <p>Wenn das Gerät unterschiedliche Datenpunkte zum Schreiben und Lesen benötigt, kann die Datenrichtung dieses Datenpunkts
+                      in write (W) geändert werden, und über den Datenpunkt <em>EMSCurrentLimitFeedback</em> kann ein Datenpunkt zum Auslesen des Maximalstroms definiert werden.</p>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/v1/flex_management/setting</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>CurrentLimit</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+                <restApiWriteServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                    <header>
+                      <headerName>Content-Type</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>POST</requestMethod>
+                  <requestPath>/v1/flex_management/setting</requestPath>
+                  <requestBody>{"CurrentLimit":{{value}}}</requestBody>
+                </restApiWriteServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SafeCurrent</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>AMPERES</unit>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Fallback value for the maximum current. The charging station uses this value in the event of a communication interruption with the HEMS.
+                      <p>If the device requires different datapoints for writing and reading, the data direction of this data point
+                      can be changed to W and the data point <em>SafeCurrentFeedback</em> can be used to define a datapoint for reading the safe current.</p>
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Rückfallwert für den Maximalstrom. Diesen Wert verwendet die Ladestation bei einem Kommunikationsunterbruch mit dem HEMS.
+                      <p>Wenn das Gerät unterschiedliche Datenpunkte zum Schreiben und Lesen benötigt, kann die Datenrichtung dieses Datenpunkts
+                      in W geändert werden, und über den Datenpunkt <em>SafeCurrentFeedback</em> kann ein Datenpunkt zum Auslesen des sicheren Stroms definiert werden.</p>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/v1/flex_management/setting</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>FallbackCurrentLimit</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+                <restApiWriteServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                    <header>
+                      <headerName>Content-Type</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>POST</requestMethod>
+                  <requestPath>/v1/flex_management/setting</requestPath>
+                  <requestBody>{"FallbackCurrentLimit":{{value}}}</requestBody>
+                </restApiWriteServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
