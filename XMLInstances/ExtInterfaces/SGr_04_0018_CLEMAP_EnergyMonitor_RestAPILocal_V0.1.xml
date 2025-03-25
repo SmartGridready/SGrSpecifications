@@ -103,6 +103,7 @@
           <restBasicUsername>{{username}}</restBasicUsername>
           <restBasicPassword>{{password}}</restBasicPassword>
         </restApiBasic>
+        <restApiVerifyCertificate>false</restApiVerifyCertificate>
       </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
