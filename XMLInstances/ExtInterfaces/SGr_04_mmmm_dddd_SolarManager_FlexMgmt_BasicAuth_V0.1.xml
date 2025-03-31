@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+  <deviceName>SolarManager FlexMgmt BasicAuth</deviceName>
+  <manufacturerName>SolarManager</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2025-03-27</date>
+      <author>Matthias Krebs, FHNW</author>
+      <comment>Demo Project</comment>
+    </changeLog>
+  </releaseNotes>
+  <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          SolarManager EID für Lastmanagement. Der Zugriff erfolgt via Cloud mit Basic-Authentication.
+        ]]>
+        </textElement>
+      <language>de</language>
+      <uri>https://www.solarmanager.ch/</uri>
+    </legibleDescription>
+    <deviceCategory>SGCP</deviceCategory>
+    <isLocalControl>false</isLocalControl>
+    <softwareRevision>1.0.0</softwareRevision>
+    <hardwareRevision>1.0.0</hardwareRevision>
+    <manufacturerSpecificationIdentification>SolarManager</manufacturerSpecificationIdentification>
+    <levelOfOperation>4m</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+    <testState>None</testState>
+  </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>email</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>E-mail as user name for accessing the device.</textElement>
+        <language>en</language>
+        <label>E-mail</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>E-Mail als Benutzername für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>E-Mail</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>password</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Password for accessing the device.</textElement>
+        <language>en</language>
+        <label>Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Passwort für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>Passwort</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>smId</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>SolarManager ID.</textElement>
+        <language>en</language>
+        <label>SM ID</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>SolarManager ID.</textElement>
+        <language>de</language>
+        <label>SM ID</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>baseUri</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>https://cloud.solar-manager.ch</defaultValue>
+      <configurationDescription>
+        <textElement>Base address for accessing the resource.</textElement>
+        <language>en</language>
+        <label>Base URI</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
+        <language>de</language>
+        <label>Basis URI</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
+  <interfaceList>
+    <restApiInterface>
+      <restApiInterfaceDescription>
+        <restApiInterfaceSelection>URI</restApiInterfaceSelection>
+        <restApiUri>{{baseUri}}</restApiUri>
+        <restApiAuthenticationMethod>BasicSecurityScheme</restApiAuthenticationMethod>
+        <restApiBasic>
+          <restBasicUsername>{{email}}</restBasicUsername>
+          <restBasicPassword>{{password}}</restBasicPassword>
+        </restApiBasic>
+      </restApiInterfaceDescription>
+      <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>FlexMgmt</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>FlexMgmt</functionalProfileType>
+              <levelOfOperation>4m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                    <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
+              <h3>Funktionsprofil für Energiemanagement-Systeme (EMS)</h3>
+
+              Funktionsprofil für Energiemanagement-Systeme (EMS), welche über eine bidirektionale Kommunikationsschnittstelle zu einem Flexibilitäts-Manager (z. B. EVU / VNB) verfügen. Die Schnittstelle ermöglicht sowohl das Abrufen aktueller Daten als auch die gezielte Steuerung der Leistung am Netzanschlusspunkt über definierte Datenpunkte. Die Daten werden in drei Kategorien unterteilt:
+              <ul>
+              <li><h3>Einstellungen (Lesen):</h3>
+              Statische Installationsdaten wie Adresse, Zählernummer und installierte Flexibilitäten.</li>
+              <li><h3>Daten (Lesen):</h3>
+              Dynamische Informationen, beispielsweise die aktuelle PV-Produktion oder die Leistung am Netzanschlusspunkt.</li>
+              <li><h3>Leistungsbeschränkung (Steuern):</h3>
+              Zeitlich begrenzte Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).</li>
+              </ul>
+              Die Datenpunkte werden im JSON-Format übertragen, was die gleichzeitige Aktualisierung mehrerer Daten mit einer einzigen Abfrage ermöglicht und so den Netzwerkverkehr reduziert.
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>GetSettings</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <json />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Lesen der statische Installationsdaten wie Adresse, Zählernummer und installierte Flexibilitäten.
+
+        </p>JSon-Schema für das gelieferte JSon-Objekt:
+        <font size="1"><pre style="color:blue">
+        {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Get Settings - aktuelle Einstellungen",
+          "type": "object",
+          "properties": {
+            "Address": {
+              "description": "Adresse des Energiemanagers",
+              "type": "object",
+              "properties": {
+                "Street": {
+                  "description": "Strasse und Hausnummer",
+                  "type": "string"
+                },
+
+                "ZipCode": {
+                  "description": "Postleitzahl",
+                  "type": "string",
+                },
+
+                "City": {
+                  "description": "Ort",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Street", "ZipCode", "City"
+              ]
+            },
+            "MeterNumber": {
+              "description": "Nummer auf dem Zähler",
+              "type": "string"
+            },
+            "MeasuringPointName": {
+              "description": "Messpunktbezeichnung im System",
+              "type": "string"
+            },
+            "AvailableFlexibilities": {
+              "description": "Liste der vorhandenen Flexibilitäten (PV, WP, EV, BESS)",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^PV$|^WP$|^EV$|^BESS$"
+              }
+            },
+            "PVSize": {
+              "description": "Grösse PV Anlage (DC seitig) in [kWp]",
+              "type": "number"
+            },
+            "BatteryCapacity": {
+              "description": "Battery Capacity in [kWh]",
+              "type": "number"
+            },
+            "HeatpumpPower": {
+              "description": "Leistung Wärmepumpe elektrisch in [kW]",
+              "type": "number"
+            },
+            "WriteAccess": {
+              "description": "Kunde gibt Schreibzugriff auf Anlage an VNB",
+              "type": "boolean"
+            },
+            "PVControl": {
+              "description": "ist PV Reduzierung verfügbar ja oder nein",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "Address", "MeterNumber", "MeasuringPointName", "AvailableFlexibilities",
+            "PVSize", "BatteryCapacity", "HeatpumpPower", "WriteAccess", "PVControl"
+          ]
+        }
+        </pre></font>
+                  
+        JSon-Beispiel:
+
+        <font size="1"><pre style="color:blue">
+        {
+          "Address": {
+            "Street": "string",
+            "ZipCode": "string",
+            "City": "string"
+          },
+          "MeterNumber": "string",
+          "MeasuringPointName": "string",
+          "AvailableFlexibilities": [
+            "PV"
+          ],
+          "PVSize": 0,
+          "BatteryCapacity": 0,
+          "HeatpumpPower": 0,
+          "WriteAccess": true,
+          "PVControl": true
+        }
+        </pre></font>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_object</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/v3/externalOverride/sgcp/{{smId}}/settings</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query></query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>GetData</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <json />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Lesen der dynamische Informationen, beispielsweise die aktuelle PV-Produktion oder die Leistung am Netzanschlusspunkt.
+
+        </p>JSon-Schema für das gelieferte JSon-Objekt:
+        <font size="1"><pre style="color:blue">
+        {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Get Data - aktuelle Daten und Flexibilitäten",
+          "type": "object",
+          "properties": {
+            "EmsAvailable": {
+              "description": "Zustand des EMS",
+              "type": "string",
+              "pattern": "^EMS_REACHABLE$|^EMS_NOT_REACHABLE$|^EMS_CONNECTION_FAULT$"
+            },
+            "PVPower": {
+              "description": "Aktuelle Produktionsleistung in [kW]",
+              "type": "number"
+            },
+            "MeterPower": {
+              "description": "Aktuelle Leistung am Bilanzzähler",
+              "description": "(+ Bezug, - Feed-In) in [kW]",
+              "type": "number"
+            },
+            "AvailableFlexPositive": {
+              "description": "verfügbare Flexibilität positiv (Bezug) in [kW]",
+              "type": "number"
+            },
+            "AvailableFlexNegative": {
+              "description": "verfügbare Flexibilität negativ (Produktion) in [kW]",
+              "type": "number"
+            },
+            "BESSSoc": {
+              "description": "Aktueller Ladestand Speicher in [%]",
+              "type": "integer"
+            },
+            "BESSCapacityNegative": {
+              "description": "mögliche Kapazität zum Laden bis Limite in [kWh]",
+              "type": "number"
+            },
+            "BESSCapacityPositive": {
+              "description": "mögliche Kapazität zum Entladen bis Limite in [kWh]",
+              "type": "number"
+            },
+            "MeterVoltage": {
+              "description": "Feedback aller drei Spannungslevel am Hausanschluss",
+              "description": "jeweils in [Volt]",
+              "type": "object",
+              "properties": {
+                "Voltage1": {
+                  "description": "Spannung Phase 1 in [Volt]",
+                  "type": "number"
+                },
+
+                "Voltage2": {
+                  "description": "Spannung Phase 2 in [Volt]",
+                  "type": "number"
+                },
+
+                "Voltage3": {
+                    "description": "Spannung Phase 3 in [Volt]",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "Voltage1", "Voltage2", "Voltage3"
+              ]
+            }
+          },
+          "required": [
+            "EmsAvailable", "PVPower", "MeterPower", "BESSSoc", "MeterVoltage"
+          ]
+        }
+        </pre></font>
+                  
+        JSon-Beispiel:
+
+        <font size="1"><pre style="color:blue">
+        {
+          "EmsAvailable": "EMS_REACHABLE",
+          "PVPower": 0,
+          "MeterPower": 0,
+          "AvailableFlexPositive": 0,
+          "AvailableFlexNegative": 0,
+          "BESSSoc": 0,
+          "BESSCapacityNegative": 0,
+          "BESSCapacityPositive": 0,
+          "MeterVoltage": {
+            "Voltage1": 0,
+            "Voltage2": 0,
+            "Voltage3": 0
+          }
+        }
+        </pre></font>
+
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_object</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/v3/externalOverride/sgcp/{{smId}}/data</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query></query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RestrictPower</dataPointName>
+                <dataDirection>W</dataDirection>
+                <dataType>
+                  <json />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Setzen der zeitlich begrenzten Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).
+
+        </p>JSon-Schema für das zu übergebende JSon-Objekt:
+        <font size="1"><pre style="color:blue">
+        {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Restrict Power - Einschränkungen für die Leistung",
+          "type": "object",
+          "properties": {
+            "MaximumGridPointActive": {
+              "description": "Aktivierung der Leistungsreduktion",
+              "type": "boolean"
+            },
+            "MaximumGridPointPower": {
+              "description": "Maximale Leistung",
+              "type": "object",
+              "properties": {
+                "MaximumPowerKw": {
+                  "description": "Power to restrict in [kW]. Positive values restrict",
+                  "description": "import, negative values restrict export/feed-in",
+                  "type": "number"
+                },
+
+                "DurationInMinutes": {
+                  "description": "Duration in [min]",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "MaximumPowerKw", "DurationInMinutes"
+              ]
+            }
+          },
+          "required": [
+            "MaximumGridPointActive", "MaximumGridPointPower"
+          ]
+        }
+        </pre></font>
+                  
+        JSon-Beispiel:
+
+        <font size="1"><pre style="color:blue">
+        {
+          "MaximumGridPointActive": true,
+          "MaximumGridPointPower": {
+            "MaximumPowerKw": 0,
+            "DurationInMinutes": 0
+          }
+        }
+        </pre></font>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_object</dataType>
+                <restApiWriteServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                    <header>
+                      <headerName>Content-Type</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>POST</requestMethod>
+                  <requestPath>/v3/externalOverride/sgcp/{{smId}}/restrictPower</requestPath>
+                  <requestBody>{{value}}</requestBody>
+                </restApiWriteServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+      </functionalProfileList>
+    </restApiInterface>
+  </interfaceList>
+</DeviceFrame>
