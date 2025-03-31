@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        version="3.0">
+
+    <!-- support enums that have values starting with a digit -->
+    <jaxb:bindings>
+        <jaxb:globalBindings typesafeEnumBase="xs:string" typesafeEnumMemberName="generateName" />
+    </jaxb:bindings>
+</jaxb:bindings>
