@@ -40,20 +40,20 @@
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>username</name>
+      <name>email</name>
       <dataType>
         <string />
       </dataType>
       <defaultValue></defaultValue>
       <configurationDescription>
-        <textElement>User name for accessing the device.</textElement>
+        <textElement>E-mail as user name for accessing the device.</textElement>
         <language>en</language>
-        <label>User Name</label>
+        <label>E-mail</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Benutzername für den Zugriff auf das Gerät.</textElement>
+        <textElement>E-Mail als Benutzername für den Zugriff auf das Gerät.</textElement>
         <language>de</language>
-        <label>Benutzername</label>
+        <label>E-Mail</label>
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
@@ -128,7 +128,7 @@
             </requestHeader>
             <requestMethod>POST</requestMethod>
             <requestPath>/v1/oauth/login</requestPath>
-            <requestBody>{"username":"{{username}}","password":"{{password}}"}</requestBody>
+            <requestBody>{"email":"{{email}}","password":"{{password}}"}</requestBody>
             <responseQuery>
               <queryType>JMESPathExpression</queryType>
               <query>accessToken</query>
