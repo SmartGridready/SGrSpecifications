@@ -486,6 +486,10 @@
                 <restApiWriteServiceCall>
                   <requestHeader>
                     <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                    <header>
                       <headerName>Content-Type</headerName>
                       <value>application/json</value>
                     </header>
