@@ -74,7 +74,7 @@
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
-      <name>smid</name>
+      <name>smId</name>
       <dataType>
         <string />
       </dataType>
@@ -279,7 +279,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/v3/externalOverride/sgcp/{{smid}}/settings</requestPath>
+                  <requestPath>/v3/externalOverride/sgcp/{{smId}}/settings</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query></query>
@@ -407,7 +407,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/v3/externalOverride/sgcp/{{smid}}/data</requestPath>
+                  <requestPath>/v3/externalOverride/sgcp/{{smId}}/data</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query></query>
@@ -491,7 +491,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>POST</requestMethod>
-                  <requestPath>/v3/externalOverride/sgcp/{{smid}}/restrictPower</requestPath>
+                  <requestPath>/v3/externalOverride/sgcp/{{smId}}/restrictPower</requestPath>
                   <requestBody>{{value}}</requestBody>
                 </restApiWriteServiceCall>
               </restApiDataPointConfiguration>
