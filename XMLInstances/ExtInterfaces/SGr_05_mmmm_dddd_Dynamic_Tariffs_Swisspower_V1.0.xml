@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Groupe E Dynamic Tariffs</deviceName>
-  <manufacturerName>Groupe E</manufacturerName>
+  <deviceName>Swisspower Dynamic Tariffs</deviceName>
+  <manufacturerName>Swisspower</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -20,24 +20,66 @@
       <author>SGr/mkr</author>
       <comment>Corrections, prepare for finalization</comment>
     </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2025-04-14</date>
+      <author>SGr/mkr</author>
+      <comment>Added dynamic parameters, prepare for publication</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
-    <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>None</testState>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>metering_code</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Metering point identifier of the customer</textElement>
+        <language>en</language>
+        <label>Metering Code</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Identifikation des Messpunkts beim Kunden</textElement>
+        <language>de</language>
+        <label>Messpunkt</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>token</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Access token for the web service</textElement>
+        <language>en</language>
+        <label>Bearer Token</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Access-Token des Web-Service</textElement>
+        <language>de</language>
+        <label>Bearer Token</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://api.tariffs.groupe-e.ch</restApiUri>
+        <restApiUri>https://esit-test.code-fabrik.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
@@ -295,6 +337,44 @@
                   <json />
                 </dataType>
                 <unit>NONE</unit>
+                                <parameterList>
+                  <parameterListElement>
+                    <name>start_timestamp</name>
+                    <dataType>string</dataType>
+                    <parameterDescription>
+                      <textElement>
+                        Begin of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                      </textElement>
+                      <language>en</language>
+                      <label>Start time stamp</label>
+                    </parameterDescription>
+                    <parameterDescription>
+                      <textElement>
+                        Beginn der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                      </textElement>
+                      <language>de</language>
+                      <label>Start-Zeitpunkt</label>
+                    </parameterDescription>
+                  </parameterListElement>
+                  <parameterListElement>
+                    <name>end_timestamp</name>
+                    <dataType>string</dataType>
+                    <parameterDescription>
+                      <textElement>
+                        End of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                      </textElement>
+                      <language>en</language>
+                      <label>End time stamp</label>
+                    </parameterDescription>
+                    <parameterDescription>
+                      <textElement>
+                        Ende der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                      </textElement>
+                      <language>de</language>
+                      <label>End-Zeitpunkt</label>
+                    </parameterDescription>
+                  </parameterListElement>
+                </parameterList>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
@@ -360,39 +440,30 @@
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>Bearer {{token}}</value>
+                    </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/v1/tariffs</requestPath>
+                  <requestPath>/api/v1/metering_code</requestPath>
                   <requestQuery>
                     <parameter>
+                      <name>metering_code</name>
+                      <value>{{metering_code}}</value>
+                    </parameter>
+                    <parameter>
                       <name>start_timestamp</name>
-                      <value>{{start_timestamp}}</value>
+                      <value>[[start_timestamp]]</value>
                     </parameter>
                     <parameter>
                       <name>end_timestamp</name>
-                      <value>{{end_timestamp}}</value>
+                      <value>[[end_timestamp]]</value>
                     </parameter>
                   </requestQuery>
                   <responseQuery>
-                    <queryType>JMESPathMapping</queryType>
-                    <jmesPathMappings>
-                      <mapping>
-                        <from>[*].start_timestamp</from>
-                        <to>[*].start_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].end_timestamp</from>
-                        <to>[*].end_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].vario_grid</from>
-                        <to>[*].integrated[*].value</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].unit</from>
-                        <to>[*].integrated[*].unit</to>
-                      </mapping>
-                    </jmesPathMappings>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>prices</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
