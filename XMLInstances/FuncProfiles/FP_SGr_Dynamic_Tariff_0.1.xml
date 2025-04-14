@@ -144,20 +144,6 @@
         <dataPointName>TariffSupply</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>M</presenceLevel>
-        <requestParams>
-          <param>
-            <key>startOfInterval</key>
-            <date/>
-          </param>
-          <param>
-            <key>endOfInterval</key>
-            <date/>
-          </param>
-          <param>
-            <key>tariffNames</key>
-            <string/>
-          </param>
-        </requestParams>
         <dataType>
           <json>
             <array>
@@ -184,17 +170,44 @@
           </json>
         </dataType>
         <unit>NONE</unit>
+        <parameterList>
+          <parameterListElement>
+            <name>start_timestamp</name>
+            <dataType>
+              <string/>
+            </dataType>
+            <parameterDescription>
+              <textElement>Begin of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
+              <language>en</language>
+              <label>Period Start Timestamp</label>
+            </parameterDescription>
+          </parameterListElement>
+          <parameterListElement>
+            <name>end_timestamp</name>
+            <dataType>
+              <string/>
+            </dataType>
+            <parameterDescription>
+              <textElement>End of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
+              <language>en</language>
+              <label>Period End Timestamp</label>
+            </parameterDescription>
+          </parameterListElement>
+          <parameterListElement>
+            <name>tariff_id</name>
+            <dataType>
+              <string/>
+            </dataType>
+            <parameterDescription>
+              <textElement>Optional: The ID of the tariff.</textElement>
+              <language>en</language>
+            </parameterDescription>
+          </parameterListElement>
+        </parameterList>
         <legibleDescription>
           <textElement>
           <![CDATA[
             Tariff list - description see above
-            <p/>
-            Parameters are
-            <ul>
-              <li><strong>startOfInterval</strong> - date - the start date of the requested interval</li>
-              <li><strong>endOfInterval</strong> - date - the end date of the requested interval</li>
-              <li><strong>tariffNames</strong> - string - comma-separated list of requested tariffs (optional)</li>
-            </ul>
             <p/>
             The JMES queries for the elements of the result structure are:
             <ul>

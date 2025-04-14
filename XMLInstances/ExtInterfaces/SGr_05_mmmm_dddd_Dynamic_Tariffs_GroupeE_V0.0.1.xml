@@ -173,8 +173,10 @@
                       <p/>
                       Parameters of request in the product are
                       <ul>
-                        <li><strong>start_timestamp</strong> - date - the start date of the requested interval</li>
-                        <li><strong>end_timestamp</strong> - date - the end date of the requested interval</li>
+                        <li><strong>start_timestamp</strong> - date - the start date of the requested interval,
+                        provided as dynamic parameter when reading from the Datapoint.</li>
+                        <li><strong>end_timestamp</strong> - date - the end date of the requested interval, provided
+                        as dynamic parameter when reading from the Datapoint.</li>
                       </ul>
                       <p/>
                       The JMES queries used to map the result from Groupe E to the result structure are:
@@ -203,11 +205,11 @@
                   <requestQuery>
                     <parameter>
                       <name>start_timestamp</name>
-                      <value>{{start_timestamp}}</value>
+                      <value>[[start_timestamp]]</value>
                     </parameter>
                     <parameter>
                       <name>end_timestamp</name>
-                      <value>{{end_timestamp}}</value>
+                      <value>[[end_timestamp]]</value>
                     </parameter>
                   </requestQuery>
                   <responseQuery>

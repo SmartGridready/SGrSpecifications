@@ -2,9 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Swisspower Dynamic Tariffs</deviceName>
-  <manufacturerName>Swisspower</manufacturerName>
+             xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+  <deviceName>Groupe E Dynamic Tariffs</deviceName>
+  <manufacturerName>Groupe E</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -13,7 +13,7 @@
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>0.0.1</softwareRevision>
-    <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>
@@ -24,7 +24,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://esit-test.code-fabrik.ch</restApiUri>
+        <restApiUri>https://api.tariffs.groupe-e.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
@@ -43,16 +43,16 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-		      <textElement>
-		        <![CDATA[
-		          The dynamic tariff structure offers a price that can change every 15 minutes.
-		          <p/>The function profile contains all the necessary information to retrieve a series of data points with information on tariff values every 15 minutes.
-		          <p/>The prices are available on an online interface (WEB-API), which an energy management system will use to plan the operation of various devices
-		          <p/><img src="ressources/dynamic_tariff.svg"/>
-		          <p/>This functional profile can only be provided by products with rest API interface.
-		          <p/>The request for the tariffs defines the start time and end time of the interval the tariffs should be returned for.
-		              Each entry in the resulting tariff list contains also the start time and end time of the sub intervals together with a list of entries with tariff unit and tariff value as well as an optional tariff name.
-		          <p/>The schema for the JSon created by the Rest API is
+              <textElement>
+                <![CDATA[
+                  The dynamic tariff structure offers a price that can change every 15 minutes.
+                  <p/>The function profile contains all the necessary information to retrieve a series of data points with information on tariff values every 15 minutes.
+                  <p/>The prices are available on an online interface (WEB-API), which an energy management system will use to plan the operation of various devices
+                  <p/><img src="ressources/dynamic_tariff.svg"/>
+                  <p/>This functional profile can only be provided by products with rest API interface.
+                  <p/>The request for the tariffs defines the start time and end time of the interval the tariffs should be returned for.
+                      Each entry in the resulting tariff list contains also the start time and end time of the sub intervals together with a list of entries with tariff unit and tariff value as well as an optional tariff name.
+                  <p/>The schema for the JSon created by the Rest API is
 
 <pre style="color:blue">
 {
@@ -152,8 +152,8 @@
     } 
 ]
 </pre>
-		        ]]>
-		      </textElement>
+                ]]>
+              </textElement>
               <language>en</language>
             </legibleDescription>
           </functionalProfile>
@@ -166,6 +166,30 @@
                   <json />
                 </dataType>
                 <unit>NONE</unit>
+                <parameterList>
+                  <parameterListElement>
+                    <name>start_timestamp</name>
+                    <dataType>
+                      <string/>
+                    </dataType>
+                    <parameterDescription>
+                      <textElement>Begin of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
+                      <language>en</language>
+                      <label>Period Start Timestamp</label>
+                    </parameterDescription>
+                  </parameterListElement>
+                  <parameterListElement>
+                    <name>end_timestamp</name>
+                    <dataType>
+                      <string/>
+                    </dataType>
+                    <parameterDescription>
+                      <textElement>End of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
+                      <language>en</language>
+                      <label>Period End Timestamp</label>
+                    </parameterDescription>
+                  </parameterListElement>
+                </parameterList>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
@@ -173,16 +197,20 @@
                       <p/>
                       Parameters of request in the product are
                       <ul>
-                        <li><strong>metering_code</strong> - string - the metering code identifies the consumer location,
-                        provided as configuration value.</li>
-                        <li><strong>start_time</strong> - date - the start date of the requested interval, provided as
-                        dynamic parameter when reading from the Datapoint.</li>
-                        <li><strong>end_time</strong> - date - the end date of the requested interval, provided as dynamic
-                        parameter when reading from the Datapoint.</li>
+                        <li><strong>start_timestamp</strong> - date - the start date of the requested interval, provided
+                        as dynamic parameter value.</li>
+                        <li><strong>end_timestamp</strong> - date - the end date of the requested interval, provide
+                        as dynamic parameter value.</li>
                       </ul>
-                      There is no reformatting of the JSon output - the Swisspower tariff is the base format for the tariff
-                      functional profile.
-                  ]]>
+                      <p/>
+                      The JMES queries used to map the result from Groupe E to the result structure are:
+                      <ul>
+                        <li><strong>start_timestamp</strong>:   <span style="color:blue">[*].start_timestamp</span></li>
+                        <li><strong>end_timestamp</strong>:     <span style="color:blue">[*].end_timestamp</span></li>
+                        <li><strong>[*].vario_grid</strong>:    <span style="color:blue">[*].integrated[*].value</span></li>
+                        <li><strong>[*].unit</strong>:          <span style="color:blue">[*].integrated[*].unit</span></li>
+                      </ul>
+                    ]]>
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
@@ -195,18 +223,10 @@
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
-					<header>
-					  <headerName>Authorization</headerName>
-					  <value>Bearer {{token}}</value>
-					</header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/metering_code</requestPath>
+                  <requestPath>/v1/tariffs</requestPath>
                   <requestQuery>
-                    <parameter>
-                      <name>metering_code</name>
-                      <value>{{metering_code}}</value>
-                    </parameter>
                     <parameter>
                       <name>start_timestamp</name>
                       <value>[[start_timestamp]]</value>
@@ -217,8 +237,13 @@
                     </parameter>
                   </requestQuery>
                   <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>prices</query>
+                    <queryType>JMESPathMapping</queryType>
+                    <jmesPathMappings>
+                      <mapping><from>[*].start_timestamp</from><to>[*].start_timestamp</to></mapping>
+                      <mapping><from>[*].end_timestamp</from><to>[*].end_timestamp</to></mapping>
+                      <mapping><from>[*].vario_grid</from><to>[*].integrated[*].value</to></mapping>
+                      <mapping><from>[*].unit</from><to>[*].integrated[*].unit</to></mapping>
+                    </jmesPathMappings>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
