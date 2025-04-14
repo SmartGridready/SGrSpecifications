@@ -16,13 +16,13 @@
     </changeLog>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-04-14</date>
+      <date>2025-04-08</date>
       <author>SGr/mkr</author>
       <comment>Corrections, prepare for finalization</comment>
     </changeLog>
     <changeLog>
       <version>1.0.0</version>
-      <date>2025-04-08</date>
+      <date>2025-04-14</date>
       <author>SGr/mkr</author>
       <comment>Added dynamic parameters, prepare for publication</comment>
     </changeLog>
@@ -304,38 +304,42 @@
                 <parameterList>
                   <parameterListElement>
                     <name>start_timestamp</name>
-                    <dataType>string</dataType>
+                    <dataType>
+                      <string />
+                    </dataType>
                     <parameterDescription>
                       <textElement>
-                        Begin of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                        Begin of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
                       </textElement>
                       <language>en</language>
-                      <label>Start time stamp</label>
+                      <label>Period start time stamp</label>
                     </parameterDescription>
                     <parameterDescription>
                       <textElement>
-                        Beginn der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                        Beginn der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
                       </textElement>
                       <language>de</language>
-                      <label>Start-Zeitpunkt</label>
+                      <label>Start-Zeitpunkt Periode</label>
                     </parameterDescription>
                   </parameterListElement>
                   <parameterListElement>
                     <name>end_timestamp</name>
-                    <dataType>string</dataType>
+                    <dataType>
+                      <string />
+                    </dataType>
                     <parameterDescription>
                       <textElement>
-                        End of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                        End of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
                       </textElement>
                       <language>en</language>
-                      <label>End time stamp</label>
+                      <label>Period end timestamp</label>
                     </parameterDescription>
                     <parameterDescription>
                       <textElement>
-                        Ende der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD
+                        Ende der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
                       </textElement>
                       <language>de</language>
-                      <label>End-Zeitpunkt</label>
+                      <label>End-Zeitpunkt Periode</label>
                     </parameterDescription>
                   </parameterListElement>
                 </parameterList>

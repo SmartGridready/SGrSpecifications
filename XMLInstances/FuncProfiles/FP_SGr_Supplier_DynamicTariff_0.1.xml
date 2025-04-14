@@ -148,20 +148,20 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          Die dynamische Tarif-Struktur bietet einen Strompreis, der sich alle 15 Minuten ändern kann.
-          <p/>Das Funktionsprofil enthält alle nötigen Informationen, um eine Reihe von Datenpunkten mit Tarifinformationen alle 15 Minuten abzufragen.
-          <p/>Die Preise sind über ein Online-Interface (WEB-API) abrufbar, womit ein Energie-Management-System den Betrieb verschiedener Geräte zeitlich festlegt.
+          Die dynamische Tarif-Struktur bietet einen Strompreis, der sich alle 15 Minuten Ã¤ndern kann.
+          <p/>Das Funktionsprofil enthÃ¤lt alle nÃ¶tigen Informationen, um eine Reihe von Datenpunkten mit Tarifinformationen alle 15 Minuten abzufragen.
+          <p/>Die Preise sind Ã¼ber ein Online-Interface (WEB-API) abrufbar, womit ein Energie-Management-System den Betrieb verschiedener GerÃ¤te zeitlich festlegt.
           <p/><img src="ressources/dynamic_tariff.svg"/>
-          <p/>Dieses Funktionsprofil kann nur mit Produkten genutzt werden, die ein REST API unterstützen.
-          <p/>Die Tarif-Abfrage definiert den Start- und End-Zeitpunkt des Intervalls, für das die Tarife abgerufen werden.
-              Jedes Element der resultierenden Tarif-Liste enthält auch den Start- und End-Zeitpunkt der Sub-Intervalle, in Kombination mit einer Liste von Elementen mit Tarif-Einheit und -Preis.
+          <p/>Dieses Funktionsprofil kann nur mit Produkten genutzt werden, die ein REST API unterstÃ¼tzen.
+          <p/>Die Tarif-Abfrage definiert den Start- und End-Zeitpunkt des Intervalls, fÃ¼r das die Tarife abgerufen werden.
+              Jedes Element der resultierenden Tarif-Liste enthÃ¤lt auch den Start- und End-Zeitpunkt der Sub-Intervalle, in Kombination mit einer Liste von Elementen mit Tarif-Einheit und -Preis.
           <p/>Das JSON-Schema des REST API ist
 
 <pre style="color:blue">
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Dynamische Tarife",
-  "description": "JSON-Schema für den Abruf dynamischer Tarife",
+  "description": "JSON-Schema fÃ¼r den Abruf dynamischer Tarife",
   "type": "array",
   "items": {
     "type": "object",
@@ -275,10 +275,11 @@
           <parameterListElement>
             <name>start_timestamp</name>
             <dataType>
-              <string/>
+              <string />
             </dataType>
             <parameterDescription>
-              <textElement>Begin of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
+              <textElement>Begin of tariff periods to be queried. Format according ISO 8601:
+                YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
               <language>en</language>
               <label>Period Start Timestamp</label>
             </parameterDescription>
@@ -286,10 +287,11 @@
           <parameterListElement>
             <name>end_timestamp</name>
             <dataType>
-              <string/>
+              <string />
             </dataType>
             <parameterDescription>
-              <textElement>End of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
+              <textElement>End of tariff periods to be queried. Format according ISO 8601:
+                YYYY-MM-DDThh:mm:ss.sTZD.</textElement>
               <language>en</language>
               <label>Period End Timestamp</label>
             </parameterDescription>
@@ -297,7 +299,7 @@
           <parameterListElement>
             <name>tariff_id</name>
             <dataType>
-              <string/>
+              <string />
             </dataType>
             <parameterDescription>
               <textElement>Optional: The ID of the tariff.</textElement>
