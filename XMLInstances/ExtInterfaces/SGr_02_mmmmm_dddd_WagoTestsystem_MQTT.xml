@@ -226,7 +226,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuator/anaolgue/voltage_dc_out1</topic>
-                  <template>{ "set": {{value}} }</template>
+                  <template>{ "set": [[value]] }</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuator/analogue/voltage_dc_out1</topic>
@@ -633,7 +633,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out1</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out1</topic>
@@ -678,7 +678,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out2</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out2</topic>
@@ -725,7 +725,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out3</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out3</topic>
@@ -772,7 +772,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out4</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out4</topic>
@@ -819,7 +819,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out5</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out5</topic>
@@ -866,7 +866,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out6</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out6</topic>
@@ -911,7 +911,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out7</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out7</topic>
@@ -958,7 +958,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuators/voltage_dc_out8</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuators/voltage_dc_out8</topic>
@@ -1181,7 +1181,7 @@
                 </readCmdMessage>
                 <writeCmdMessage>
                   <topic>actuator/register_m1_out1</topic>
-                  <template>{{value}}</template>
+                  <template>[[value]]</template>
                 </writeCmdMessage>
                 <inMessage>
                   <topic>actuator/register_m1_out1</topic>

@@ -680,7 +680,7 @@
                     </parameter>
                     <parameter>
                       <name>turn</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestForm>
                   <valueMapping>

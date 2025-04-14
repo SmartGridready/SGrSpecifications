@@ -1504,6 +1504,20 @@
                 <messagingDataType>
                   <string />
                 </messagingDataType>
+                <writeCmdMessage>
+                  <topic>{{topic_prefix}}/command/switch:0</topic>
+                  <template>[[value]]</template>
+                  <valueMapping>
+                    <mapping>
+                      <genericValue>false</genericValue>
+                      <deviceValue>off</deviceValue>
+                    </mapping>
+                    <mapping>
+                      <genericValue>true</genericValue>
+                      <deviceValue>on</deviceValue>
+                    </mapping>
+                  </valueMapping>
+                </writeCmdMessage>
                 <inMessage>
                   <topic>{{topic_prefix}}/status/switch:0</topic>
                   <responseQuery>
@@ -1560,6 +1574,20 @@
                 <messagingDataType>
                   <string />
                 </messagingDataType>
+                <writeCmdMessage>
+                  <topic>{{topic_prefix}}/command/switch:1</topic>
+                  <template>[[value]]</template>
+                  <valueMapping>
+                    <mapping>
+                      <genericValue>false</genericValue>
+                      <deviceValue>off</deviceValue>
+                    </mapping>
+                    <mapping>
+                      <genericValue>true</genericValue>
+                      <deviceValue>on</deviceValue>
+                    </mapping>
+                  </valueMapping>
+                </writeCmdMessage>
                 <inMessage>
                   <topic>{{topic_prefix}}/status/switch:1</topic>
                   <responseQuery>
@@ -1616,6 +1644,20 @@
                 <messagingDataType>
                   <string />
                 </messagingDataType>
+                <writeCmdMessage>
+                  <topic>{{topic_prefix}}/command/switch:2</topic>
+                  <template>[[value]]</template>
+                  <valueMapping>
+                    <mapping>
+                      <genericValue>false</genericValue>
+                      <deviceValue>off</deviceValue>
+                    </mapping>
+                    <mapping>
+                      <genericValue>true</genericValue>
+                      <deviceValue>on</deviceValue>
+                    </mapping>
+                  </valueMapping>
+                </writeCmdMessage>
                 <inMessage>
                   <topic>{{topic_prefix}}/status/switch:2</topic>
                   <responseQuery>
@@ -1672,6 +1714,20 @@
                 <messagingDataType>
                   <string />
                 </messagingDataType>
+                <writeCmdMessage>
+                  <topic>{{topic_prefix}}/command/switch:3</topic>
+                  <template>[[value]]</template>
+                  <valueMapping>
+                    <mapping>
+                      <genericValue>false</genericValue>
+                      <deviceValue>off</deviceValue>
+                    </mapping>
+                    <mapping>
+                      <genericValue>true</genericValue>
+                      <deviceValue>on</deviceValue>
+                    </mapping>
+                  </valueMapping>
+                </writeCmdMessage>
                 <inMessage>
                   <topic>{{topic_prefix}}/status/switch:3</topic>
                   <responseQuery>

@@ -206,11 +206,11 @@
                     </parameter>
                     <parameter>
                       <name>start_timestamp</name>
-                      <value>{{start_timestamp}}</value>
+                      <value>[[start_timestamp]]</value>
                     </parameter>
                     <parameter>
                       <name>end_timestamp</name>
-                      <value>{{end_timestamp}}</value>
+                      <value>[[end_timestamp]]</value>
                     </parameter>
                   </requestQuery>
                   <responseQuery>
