@@ -8,6 +8,24 @@
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Published</state>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2024-01-24</date>
+      <author>Ergo/ag</author>
+      <comment>Initial declaration</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2024-02-28</date>
+      <author>Ergo/ag</author>
+      <comment>Incremented version</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.1</version>
+      <date>2025-04-10</date>
+      <author>SGr/mkr</author>
+      <comment>Incremented version</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -30,8 +48,8 @@
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
-      <secondaryVersionNumber>0</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
@@ -39,17 +57,18 @@
     <configurationListElement>
       <name>device_id</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
+      <defaultValue>00000000-0000-0000-0000-000000000000</defaultValue>
       <configurationDescription>
         <textElement>Identification of the device (UUID).
-        The device ID can be retrieved from the /Devices API endpoint.</textElement>
+          The device ID can be retrieved from the /Devices API endpoint.</textElement>
         <language>en</language>
         <label>Identification</label>
       </configurationDescription>
       <configurationDescription>
         <textElement>Identifikation des Geräts (UUID).
-        Die Geräte-ID kann vom API-Endpunkt /Devices abgerufen werden.</textElement>
+          Die Geräte-ID kann vom API-Endpunkt /Devices abgerufen werden.</textElement>
         <language>de</language>
         <label>Identifikation</label>
       </configurationDescription>
@@ -57,8 +76,9 @@
     <configurationListElement>
       <name>username</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
+      <defaultValue></defaultValue>
       <configurationDescription>
         <textElement>User name for accessing the device.</textElement>
         <language>en</language>
@@ -73,8 +93,9 @@
     <configurationListElement>
       <name>password</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
+      <defaultValue></defaultValue>
       <configurationDescription>
         <textElement>Password for accessing the device.</textElement>
         <language>en</language>
@@ -90,7 +111,7 @@
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
-        <restApiInterfaceSelection>TCPV4</restApiInterfaceSelection>
+        <restApiInterfaceSelection>URI</restApiInterfaceSelection>
         <restApiUri>https://api.smart-me.com</restApiUri>
         <restApiAuthenticationMethod>BasicSecurityScheme</restApiAuthenticationMethod>
         <restApiBasic>
@@ -160,7 +181,7 @@
                 <dataPointName>ReactivePowerACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -196,7 +217,7 @@
                 <dataPointName>ReactivePowerACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <legibleDescription>
@@ -231,7 +252,7 @@
                 <dataPointName>ReactivePowerACL2></dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -267,7 +288,7 @@
                 <dataPointName>ReactivePowerACL3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -371,7 +392,7 @@
                 <dataPointName>ActiveEnergyACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -472,7 +493,7 @@
                 <dataPointName>ActivePowerACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -508,7 +529,7 @@
                 <dataPointName>ActivePowerACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -544,7 +565,7 @@
                 <dataPointName>ActivePowerACL2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -580,7 +601,7 @@
                 <dataPointName>ActivePowerACL3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -680,7 +701,7 @@
                 <dataPointName>CurrentACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -716,7 +737,7 @@
                 <dataPointName>CurrentACL2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -752,7 +773,7 @@
                 <dataPointName>CurrentACL3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -788,7 +809,7 @@
                 <dataPointName>CurrentACN</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
@@ -867,7 +888,7 @@
                 <dataPointName>Frequency</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float64 />
                 </dataType>
                 <unit>HERTZ</unit>
                 <legibleDescription>

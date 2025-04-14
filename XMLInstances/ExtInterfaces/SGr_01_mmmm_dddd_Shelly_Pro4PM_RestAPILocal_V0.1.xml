@@ -1525,7 +1525,7 @@
                     </parameter>
                     <parameter>
                       <name>on</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestQuery>
                 </restApiWriteServiceCall>
@@ -1612,7 +1612,7 @@
                     </parameter>
                     <parameter>
                       <name>on</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestQuery>
                 </restApiWriteServiceCall>
@@ -1699,7 +1699,7 @@
                     </parameter>
                     <parameter>
                       <name>on</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestQuery>
                 </restApiWriteServiceCall>
@@ -1786,7 +1786,7 @@
                     </parameter>
                     <parameter>
                       <name>on</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestQuery>
                 </restApiWriteServiceCall>
