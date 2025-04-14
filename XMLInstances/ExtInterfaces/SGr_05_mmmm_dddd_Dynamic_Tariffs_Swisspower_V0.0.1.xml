@@ -173,9 +173,12 @@
                       <p/>
                       Parameters of request in the product are
                       <ul>
-                        <li><strong>metering_code</strong> - string - the metering code identifies the consumer location</li>
-                        <li><strong>start_time</strong> - date - the start date of the requested interval</li>
-                        <li><strong>end_time</strong> - date - the end date of the requested interval</li>
+                        <li><strong>metering_code</strong> - string - the metering code identifies the consumer location,
+                        provided as configuration value.</li>
+                        <li><strong>start_time</strong> - date - the start date of the requested interval, provided as
+                        dynamic parameter when reading from the Datapoint.</li>
+                        <li><strong>end_time</strong> - date - the end date of the requested interval, provided as dynamic
+                        parameter when reading from the Datapoint.</li>
                       </ul>
                       There is no reformatting of the JSon output - the Swisspower tariff is the base format for the tariff
                       functional profile.
@@ -206,11 +209,11 @@
                     </parameter>
                     <parameter>
                       <name>start_timestamp</name>
-                      <value>{{start_timestamp}}</value>
+                      <value>[[start_timestamp]]</value>
                     </parameter>
                     <parameter>
                       <name>end_timestamp</name>
-                      <value>{{end_timestamp}}</value>
+                      <value>[[end_timestamp]]</value>
                     </parameter>
                   </requestQuery>
                   <responseQuery>

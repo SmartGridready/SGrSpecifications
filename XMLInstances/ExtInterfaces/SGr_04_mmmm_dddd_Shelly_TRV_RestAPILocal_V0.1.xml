@@ -208,7 +208,7 @@
                   <requestQuery>
                     <parameter>
                       <name>target_t</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestQuery>
                   <responseQuery>

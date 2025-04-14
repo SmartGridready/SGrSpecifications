@@ -513,7 +513,7 @@
                   </requestHeader>
                   <requestMethod>POST</requestMethod>
                   <requestPath>/v3/externalOverride/sgcp/{{smId}}/restrictPower</requestPath>
-                  <requestBody>{{value}}</requestBody>
+                  <requestBody>[[value]]</requestBody>
                 </restApiWriteServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>

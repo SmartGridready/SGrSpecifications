@@ -60,28 +60,4 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
     </sequence>
   </complexType>
-  <complexType name="DynamicParameterDescription">
-    <complexContent>
-      <extension base="sgr:LegibleDescription">
-        <sequence>
-          <element name="label" type="string" minOccurs="0" />
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-  <complexType name="DynamicParameterDescriptionListElement">
-    <sequence>
-      <element name="name" type="string" />
-      <element name="dataType" type="sgr:DataTypeProduct" />
-      <element name="defaultValue" type="string" minOccurs="0" />
-      <element name="parameterDescription" type="sgr:DynamicParameterDescription" minOccurs="0" maxOccurs="unbounded" />
-    </sequence>
-  </complexType>
-  <complexType name="DynamicParameterDescriptionList">
-    <annotation>
-    </annotation>
-    <sequence>
-      <element name="parameterListElement" minOccurs="0" maxOccurs="unbounded" type="sgr:DynamicParameterDescriptionListElement"/>
-    </sequence>
-  </complexType>
 </schema>

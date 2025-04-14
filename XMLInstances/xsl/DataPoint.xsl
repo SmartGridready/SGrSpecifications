@@ -182,6 +182,25 @@
                 </xsl:for-each>
                 <xsl:apply-templates select="sgr:dataType/sgr:enum" />
                 <xsl:apply-templates select="sgr:dataType/sgr:bitmap" />
+                <xsl:if test="sgr:parameterList" >
+                    <p />
+                    Dynamic parameters to provide when reading the Datapoint:
+                    <table style="margin-left:10px;">
+                        <xsl:for-each select="sgr:parameterList/sgr:parameterListElement">
+                            <tr>
+                                <td class="noborder" style="padding-left:10px;">
+                                    <b><xsl:value-of select="sgr:name" />:</b><br />
+                                    <xsl:value-of select="name(sgr:dataType/*[1])" />
+                                </td>
+                                <td class="noborder" style="padding-left:10px;">
+                                    <xsl:for-each select="sgr:parameterDescription" >
+                                        <xsl:value-of select="sgr:textElement[position()]" />
+                                    </xsl:for-each>
+                                </td>
+                            </tr>
+                        </xsl:for-each>
+                    </table>
+                </xsl:if>
             </td>
             <td>
                 <xsl:call-template name="SGrUnits">

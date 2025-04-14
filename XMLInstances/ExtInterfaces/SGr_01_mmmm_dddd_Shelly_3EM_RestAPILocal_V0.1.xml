@@ -810,7 +810,7 @@
                   <requestQuery>
                     <parameter>
                       <name>turn</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestQuery>
                   <responseQuery>

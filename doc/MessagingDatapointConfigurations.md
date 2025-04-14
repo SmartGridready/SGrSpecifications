@@ -81,7 +81,7 @@ Whether a command to trigger value reading depends on the device.
 This configuration contains only a `<writeCmdMessage>` element.
 The `<writeCmdMessage>` consists of a `<topic>` and a `template` element 
 that contains a template for the message to send. The message template string
-musst contain a placeholder `{{value}}` that is substituted with the value 
+musst contain a placeholder `[[value]]` that is substituted with the value 
 written to the device.
 
 ```xml
@@ -91,7 +91,7 @@ written to the device.
     </messagingDataType>
     <writeCmdMessage>
       <topic>actuator/analgue/voltage_dc_out1</topic>
-      <template>{ "command": "write", "value": {{value}} }</template>
+      <template>{ "command": "write", "value": [[value]] }</template>
     </writeCmdMessage>
   </messagingDataPointConfiguration>
 
@@ -151,7 +151,7 @@ A RW datapoint must support all three message elements:
 ```xml
   <writeCmdMessage>
     <topic>actuator/analgue/voltage_dc_out1</topic>
-    <template>{ "command": "set", "value" : {{value}}} </template>
+    <template>{ "command": "set", "value" : [[value]]} </template>
   </writeCmdMessage>
 ```
 
