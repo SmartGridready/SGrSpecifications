@@ -16,7 +16,7 @@
     </changeLog>
     <changeLog>
       <version>0.2.0</version>
-      <date>2024-11-21</date>
+      <date>2025-04-15</date>
       <author>Matthias Krebs, FHNW</author>
       <comment>Added digital inputs</comment>
     </changeLog>
@@ -1769,7 +1769,7 @@
                     </parameter>
                     <parameter>
                       <name>turn</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestForm>
                   <valueMapping>
@@ -1878,7 +1878,7 @@
                     </parameter>
                     <parameter>
                       <name>turn</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestForm>
                   <valueMapping>
@@ -1987,7 +1987,7 @@
                     </parameter>
                     <parameter>
                       <name>turn</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestForm>
                   <valueMapping>
@@ -2096,7 +2096,7 @@
                     </parameter>
                     <parameter>
                       <name>turn</name>
-                      <value>{{value}}</value>
+                      <value>[[value]]</value>
                     </parameter>
                   </requestForm>
                   <valueMapping>
