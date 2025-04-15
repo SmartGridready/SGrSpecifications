@@ -535,7 +535,7 @@
                   </requestHeader>
                   <requestMethod>POST</requestMethod>
                   <requestPath>/v1/flex_management/setting</requestPath>
-                  <requestBody>{"CurrentLimit":{{value}}}</requestBody>
+                  <requestBody>{"CurrentLimit":[[value]]}</requestBody>
                 </restApiWriteServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
@@ -597,7 +597,7 @@
                   </requestHeader>
                   <requestMethod>POST</requestMethod>
                   <requestPath>/v1/flex_management/setting</requestPath>
-                  <requestBody>{"FallbackCurrentLimit":{{value}}}</requestBody>
+                  <requestBody>{"FallbackCurrentLimit":[[value]]}</requestBody>
                 </restApiWriteServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
@@ -679,7 +679,7 @@
                   </requestHeader>
                   <requestMethod>POST</requestMethod>
                   <requestPath>/v1/flex_management/setting</requestPath>
-                  <requestBody>{"ActivePowerActivation":{{value}}}</requestBody>
+                  <requestBody>{"ActivePowerActivation":[[value]]}</requestBody>
                 </restApiWriteServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
