@@ -38,9 +38,9 @@
    controllable via two relay contacts. The implementation of the functional profile must cover the following four operating states
    (the switching states m:n refer to the first (m) and n=second (n) contact):</p>
 <ol>
-   <li>Operating State 1 (Switching state, for terminal solution: 1:0): <strong>Maximum Consumption</strong>: The load management allows for maximum power consumption.</li>
-   <li>Operating State 2 (Switching state, for terminal solution: 0:0): <strong>Normal</strong>: In normal operation, the load management optimizes power consumption according to user-defined criteria.</li>
-   <li>Operating State 3 (Switching state, for terminal solution: 0:1): <strong>Reduced (Desired)</strong>: Power consumption is reduced by an agreed-upon amount in percentage (curtailment) if possible.</li>
+   <li>Operating State 1 (Switching state, for terminal solution: 0:0): <strong>Normal</strong>: In normal operation, the load management optimizes power consumption according to user-defined criteria.</li>
+   <li>Operating State 2 (Switching state, for terminal solution: 0:1): <strong>Reduced (Desired)</strong>: Power consumption is reduced by an agreed-upon amount in percentage (curtailment) if possible.</li>
+   <li>Operating State 3 (Switching state, for terminal solution: 1:0): <strong>Maximum Consumption</strong>: The load management allows for maximum power consumption.</li>
    <li>Operating State 4 (Switching state, for terminal solution: 1:1): <strong>Locked</strong>: In this operating mode, no or a defined minimum energy (minLoad) is allowed to be drawn from the grid. This can be achieved through a reduction in power consumption during a maximum duration (maxLockTimeMinutes).</li>
 </ol>
 
@@ -60,12 +60,12 @@
 			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden
 			(die Schaltzustände m:n beziehen sich auf den ersten (m) bzw. zweiten (n) Kontakt):</p>
           <ol>
-             <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0):
-                <strong>Maximaler Verbrauch</strong>: Das Lastmanagement ermöglicht eine maximale Bezugsleistung.</li>
-			 <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:0):
-			    <strong>Normal</strong>: Im Normalbetrieb optimiert das Lastmanagement den Strombezug nach den Kriterien des Nutzers.</li>
-             <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung: 0:1):
+             <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 0:0):
+                <strong>Normal</strong>: Im Normalbetrieb optimiert das Lastmanagement den Strombezug nach den Kriterien des Nutzers.</li>
+             <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:1):
                 <strong>Reduziert (Wunsch)</strong>: Der Lastbezug wird um einen vereinbarten Betrag in Prozent (curtailment) gesenkt, falls dies möglich ist</li>
+             <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung: 1:0):
+                <strong>Maximaler Verbrauch</strong>: Das Lastmanagement ermöglicht eine maximale Bezugsleistung.</li>
              <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung: 1:1):
                 <strong>Gesperrt</strong>: In diesen Betriebsmodus darf keine oder eine definierte
                 minimale Energie (minLoad) vom Netz bezogen werden. Dies kann mittels einer Reduktion des Strombezugs
