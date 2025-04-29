@@ -16,9 +16,9 @@
     </changeLog>
     <changeLog>
       <version>1.1.0</version>
-      <date>2025-03-18</date>
+      <date>2025-04-29</date>
       <author>Matthias Krebs, FHNW</author>
-      <comment>New Draft: </comment>
+      <comment>Corrections and additional metering FPs</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
