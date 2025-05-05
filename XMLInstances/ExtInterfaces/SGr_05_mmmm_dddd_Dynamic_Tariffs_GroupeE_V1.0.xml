@@ -7,7 +7,7 @@
   <manufacturerName>Groupe E</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.0.1</version>
       <date>2024-02-28</date>
@@ -37,7 +37,7 @@
       <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
   </deviceInformation>
   <interfaceList>
     <restApiInterface>
@@ -56,8 +56,8 @@
               <functionalProfileType>Supplier</functionalProfileType>
               <levelOfOperation>5</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
@@ -332,7 +332,7 @@
                         End of tariff periods to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
                       </textElement>
                       <language>en</language>
-                      <label>Period end timestamp</label>
+                      <label>Period end time stamp</label>
                     </parameterDescription>
                     <parameterDescription>
                       <textElement>
