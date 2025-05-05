@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.2.2</version>
       <date>2022-11-17</date>
@@ -13,7 +13,7 @@
     <changeLog>
       <version>1.0.0</version>
       <date>2025-02-04</date>
-      <author>M.Krebs, FHNW</author>
+      <author>SGr/mkr</author>
       <comment>Prepare for Publication</comment>
     </changeLog>
   </releaseNotes>
