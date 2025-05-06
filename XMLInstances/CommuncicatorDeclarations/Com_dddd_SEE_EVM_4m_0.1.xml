@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<communicatorFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Communicator/CommunicatorFrame.xsd">
+  <communicatorName>Eigenverbrauchsmanager</communicatorName>
+  <manufacturerName>Smart Energy Engineering</manufacturerName>
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2025-05-06</date>
+      <author>SGr/mkr</author>
+      <comment>First Draft</comment>
+    </changeLog>
+  </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <communicatorInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>
+          Der Eigenverbrauchsmanager (EVM) von Smart Energy Engineering ist ein Energie-Management-System (EMS),
+          welches mit verschiedensten Geräten im Gebäude kommuniziert und den Energieverbrauch so optimiert,
+          dass möglichst viel selbst produzierter PV-Strom genutzt werden kann.
+          </p>
+          <b>Die wichtigsten Eigenschaften:</b>
+          <ul>
+            <li>Zentrale Steuereinheit mit Datenarchivierung und Cloud-Anbindung</li>
+            <li>Auslesung geeichter Elektrozähler 3 Phasen zur Messung grosser Verbraucher</li>
+            <li>Einbindung von Temperaturfühlern zur Messung der Raum- und Speichertemperaturen</li>
+            <li>Einbindung von Wärmepumpen aller Hersteller, auch ältere Modelle</li>
+            <li>Einbindung von Boiler und Wärmepumpen-Boiler aller Hersteller</li>
+            <li>Einbindung von Elektromobil-Ladestationen</li>
+            <li>Einbindung stationärer Akkusysteme aller Hersteller</li>
+          </ul>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.smart-energy-engineering.ch</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>
+          The self-consumption manager (EVM) from Smart Energy Engineering is an energy management system (EMS)
+          that communicates with various devices in the building and optimizes energy consumption so that as much
+          self-produced PV electricity as possible can be used.
+          </p>
+          <b>The most important features:</b>
+          <ul>
+            <li>Central control unit with data archiving and cloud connection</li>
+            <li>Reading of calibrated electrical meters with 3 phases for measuring large consumers</li>
+            <li>Integration of temperature sensors for measuring room and storage temperatures</li>
+            <li>Integration of heat pumps from all manufacturers, including older models</li>
+            <li>Integration of boilers and heat pump boilers from all manufacturers</li>
+            <li>Integration of electric vehicle charging stations</li>
+            <li>Integration of stationary battery systems from all manufacturers</li>
+          </ul>
+        ]]>
+      </textElement>
+      <language>en</language>
+      <uri>https://www.smart-energy-engineering.ch</uri>
+    </legibleDescription>
+    <supportedTransportServices>
+      <!-- messaging and contacts not available! -->
+      <transportService>
+        <modbus>RTU</modbus>
+      </transportService>
+      <transportService>
+        <modbus>TCPIP</modbus>
+      </transportService>
+      <transportService>
+        <rest>URI</rest>
+      </transportService>
+    </supportedTransportServices>
+    <communicatorCategory>SmartHome</communicatorCategory>
+    <!-- version number does not match format of FPs and EIDs -->
+    <versionNumber>0.1.0</versionNumber>
+    <brandName>SEE</brandName>
+    <manufacturerSpecificationIdentification>SEE</manufacturerSpecificationIdentification>
+    <manufacturerLabel>EVM</manufacturerLabel>
+    <levelOfOperation>4m</levelOfOperation>
+    <isLocalControl>true</isLocalControl>
+    <!-- should have test state like EID -->
+  </communicatorInformation>
+  <!--
+    Why is there no enclosing "functionalProfileList", like in FPs and EIDs?
+    There is a "genericAttributeList"!
+  -->
+  <functionalProfileListElement>
+    <functionalProfileName>CurrentAC</functionalProfileName>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>Metering</functionalProfileCategory>
+      <functionalProfileType>CurrentAC</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+  </functionalProfileListElement>
+</communicatorFrame>
