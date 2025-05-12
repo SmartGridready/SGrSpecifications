@@ -1438,7 +1438,7 @@
                   <int16U />
                 </modbusDataType>
                 <address>5001</address>
-                <registerType>HoldRegister</registerType>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
