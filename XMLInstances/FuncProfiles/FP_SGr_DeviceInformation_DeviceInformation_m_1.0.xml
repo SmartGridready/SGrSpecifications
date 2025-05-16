@@ -5,30 +5,24 @@
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.1.0</version>
-      <date>2023-10-08</date>
-      <author>SGr/ag</author>
+      <version>0.6.0</version>
+      <date>2024-10-22</date>
+      <author>Ergo/ag</author>
       <comment>Initialization</comment>
     </changeLog>
     <changeLog>
-      <version>0.1.1</version>
-      <date>2025-01-27</date>
-      <author>SGr/mkr</author>
-      <comment>Corrected level of operation and description</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
-      <date>2025-05-05</date>
+      <date>2025-02-04</date>
       <author>SGr/mkr</author>
-      <comment>Prepared for Publication</comment>
+      <comment>Prepare for Publication</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
-      <functionalProfileCategory>Actuator</functionalProfileCategory>
-      <functionalProfileType>Relais</functionalProfileType>
-      <levelOfOperation>1m</levelOfOperation>
+      <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
+      <functionalProfileType>DeviceInformation</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
         <secondaryVersionNumber>0</secondaryVersionNumber>
@@ -38,7 +32,9 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          Read and write the state of a relay contact.
+          <p>Functional profile used to read a device ID used to identify a device.</p>
+          <p>Further on, this functional profile that can be used for vendor specific information and data points.
+          It allows the handling of data points, which are valid for the whole device.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -46,7 +42,9 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          Lesen und Schreiben des Zustands eines Relais-Kontakts.
+          <p>Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts.</p>
+          <p>Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden.
+          Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -55,19 +53,19 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>Relais</dataPointName>
-        <dataDirection>RW</dataDirection>
-        <presenceLevel>M</presenceLevel>
+        <dataPointName>DeviceId</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
         <dataType>
-          <boolean/>
+          <string/>
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Switching state of the relay contact</textElement>
+          <textElement>The device ID</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Schaltzustand des Relais-Kontakts</textElement>
+          <textElement>Die Geräte-ID</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
