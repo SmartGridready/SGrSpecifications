@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Review</state>
@@ -25,12 +26,12 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Wirkleistung</strong><br>
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
           Zwecke.
-          
+
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
              einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
              umgesetzt werden:
@@ -52,11 +53,11 @@
     </legibleDescription>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Active Power Measurement</strong><br>
           Monitoring functional profile for power generators and consumers for reflecting the active power.
-          
+
           <p>With this functional profile you can measure the total active power as well as the active power of
              the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
           <ul>
@@ -72,7 +73,7 @@
              either for the entire device or for individual datapoints
              (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
              </p>
-        ]]>			
+        ]]>
       </textElement>
       <language>en</language>
     </legibleDescription>
@@ -84,7 +85,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
@@ -103,7 +104,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
@@ -122,7 +123,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
@@ -141,7 +142,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>

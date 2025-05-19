@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Review</state>
@@ -25,12 +26,12 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Blindleistung</strong><br>
           Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
           regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
-          
+
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtblindleistung wie auch die Blindleistung der drei
              einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
              umgesetzt werden:
@@ -48,11 +49,11 @@
     </legibleDescription>
     <legibleDescription>
       <textElement>
-          <![CDATA[	
+          <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Reactive Power Measurement</strong><br>
-          Monitoring functional profile for power generators and consumers for reflecting the reactive power. 
-          
+          Monitoring functional profile for power generators and consumers for reflecting the reactive power.
+
           <p>With this functional profile you can measure the total active power as well as the active power of the three individual phases.
              One of the following options must be implemented for fulfilling the functional profile:
           <ul>
@@ -75,7 +76,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
@@ -94,7 +95,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
@@ -113,7 +114,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
@@ -132,7 +133,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Published</state>
@@ -63,7 +64,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
@@ -82,7 +83,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
@@ -101,7 +102,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
@@ -120,7 +121,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>

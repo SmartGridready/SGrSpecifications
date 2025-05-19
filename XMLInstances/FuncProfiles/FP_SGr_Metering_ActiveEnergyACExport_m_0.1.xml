@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Review</state>
@@ -25,13 +26,13 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Energy measurement</strong><br>
           Monitoring functional profile for power generators and consumers for reflecting the energy balance.
-          
+
           <p>Data is typically recorded by an energy manager (or a billing software).</p>
-          
+
           <p>With this functional profile you can measure the total energy as well as the energy of the three
              individual phases. One of the following options must be implemented for fulfilling the functional profile:
           <ul>
@@ -47,19 +48,19 @@
              either for the entire device or for individual datapoints
              (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
              </p>
-        ]]> 
+        ]]>
       </textElement>
       <language>en</language>
     </legibleDescription>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Wirkenergie</strong><br>
           Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
-          
+
           <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-          
+
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
              der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
              umgesetzt werden:
@@ -75,7 +76,7 @@
           <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
              für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
              (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
-        ]]>	
+        ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -87,7 +88,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
@@ -106,7 +107,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
@@ -125,7 +126,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
@@ -144,7 +145,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Published</state>
@@ -31,12 +32,12 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Stromstärke</strong><br>
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
           Zwecke.
-          
+
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
              Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
           <ul>
@@ -49,31 +50,31 @@
           <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
              für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
              (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
-        ]]>	
+        ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Current measurement</strong><br>
-          Monitoring functional profile for power generators and consumers for reflecting the current. 
-          
+          Monitoring functional profile for power generators and consumers for reflecting the current.
+
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
              Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
           <ul>
             <li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
             <li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
           </ul>
-          
+
           <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
 
           <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
              either for the entire device or for individual datapoints
              (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
              </p>
-        ]]>	
+        ]]>
       </textElement>
       <language>en</language>
     </legibleDescription>
@@ -85,7 +86,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
@@ -104,7 +105,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
@@ -123,7 +124,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
@@ -142,7 +143,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
