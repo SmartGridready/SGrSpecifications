@@ -98,9 +98,9 @@
                 <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
-                  
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
                     einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                     umgesetzt werden:
@@ -124,7 +124,7 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the active power.
-                  
+
                   <p>With this functional profile you can measure the total active power as well as the active power of
                     the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
@@ -189,12 +189,12 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Blindleistung</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
                   regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
-                  
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtblindleistung wie auch die Blindleistung der drei
                     einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                     umgesetzt werden:
@@ -210,11 +210,11 @@
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                  <![CDATA[	
+                  <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Reactive Power Measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the reactive power. 
-                  
+                  Monitoring functional profile for power generators and consumers for reflecting the reactive power.
+
                   <p>With this functional profile you can measure the total active power as well as the active power of the three individual phases.
                     One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
@@ -277,9 +277,9 @@
                 <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Stromstärke</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
-                  
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
                     Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
                   <ul>
@@ -292,31 +292,31 @@
                   <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
                     für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
                     (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
-                ]]>	
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the current. 
-                  
+                  Monitoring functional profile for power generators and consumers for reflecting the current.
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
                     Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
                   <ul>
                     <li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
                     <li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
                   </ul>
-                  
+
                   <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
 
                   <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
                     either for the entire device or for individual datapoints
                     (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
                     </p>
-                ]]>	
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
@@ -427,11 +427,11 @@
                   <p>The charging station's current limit is dynamically regulated by an external Home Energy Management System (HEMS) with the data point <em>EMSCurrentLimit</em> expressed in amps.
                     This data point enables real-time monitoring and control of the consumption limit of the charging station.
                     This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
-                  <p>This functional profile can be utilized in conjunction with the 
+                  <p>This functional profile can be utilized in conjunction with the
                     <a href="https://library.smartgridready.ch/FP_SGr_EVSE_EVSEState_m_0.2.xml?viewProfile">EVSE State</a>
                     functional profile to check the current state of the charging station.</p>
                   <p>
-                    For the data points <em>EMSCurrentLimit</em> and <em>SafeCurrent</em>, 
+                    For the data points <em>EMSCurrentLimit</em> and <em>SafeCurrent</em>,
                     the <em>SmoothTransition</em> sub data points can be utilized to specify the transition process from an old to a new setpoint following the reception of a new limit value by the charging station.
                     (See <a href="https://github.com/SmartGridready/SGrSpecifications/blob/Consolidation_of_EVSE_Specification/doc/FP_EVSE/EVSE.md#smoothtransition-sub-data-points">Smooth Transition Sub Data Points</a>.)
                   </p>
@@ -559,7 +559,7 @@
                   <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
                   <p><strong>Flex Manager</strong><br>
                   Steuerndes Funktionsprofil für die flexible Steuerung des Energieverbrauchs eines Produktes.</p>
-                  
+
                   <p>Dieses Funktionsprofil wird in der Regel vom Smart Grid Operator oder Regelenergie
                     Manager (Communicator) verwendet, um z.B. ein Energiemanagement-System (EMS) als Produkt anzusteuern.
                     Die Steuerung der Anlage erfolgt über die obligatorischen Datenpunkte:
