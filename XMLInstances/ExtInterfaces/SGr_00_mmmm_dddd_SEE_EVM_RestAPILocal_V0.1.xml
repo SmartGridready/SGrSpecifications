@@ -127,13 +127,13 @@
                 <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
-                  
+
                   <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
                      Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
                      zu definieren.</p>
-                  
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
                      einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                      umgesetzt werden:
@@ -153,10 +153,10 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the active power.
-                  
+
                   <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute
                      per data point. Thus, different measurement precisions can be defined for the data points.</p>
-                  
+
                   <p>With this functional profile you can measure the total active power as well as the active power of
                      the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
@@ -233,13 +233,13 @@
                 <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
-                  
+
                   <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
                      Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
                      zu definieren.</p>
-                  
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
                      einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                      umgesetzt werden:
@@ -261,10 +261,10 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the active power.
-                  
+
                   <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute
                      per data point. Thus, different measurement precisions can be defined for the data points.</p>
-                  
+
                   <p>With this functional profile you can measure the total active power as well as the active power of
                      the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
@@ -341,26 +341,26 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              <strong>Messung der Wirkenergie</strong><br>
-                              Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
-                  
-                              <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-                  
-                              <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
-                                 Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                                 zu definieren.</p>
-                  
-                              <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
-                                 der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-                                 umgesetzt werden:
-                              <ul>
-                                <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
-                                <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
-                                <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
-                              </ul>
-                              </p>
-                            ]]>
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Wirkenergie</strong><br>
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
+
+                  <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
+
+                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
+                      Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
+                      zu definieren.</p>
+
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
+                      der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+                      umgesetzt werden:
+                  <ul>
+                    <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
+                    <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
+                    <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
+                  </ul>
+                  </p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -370,12 +370,12 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the energy balance.
-                  
+
                   <p>Data is typically recorded by an energy manager (or a billing software).</p>
-                  
+
                   <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute per data point.
                      Thus, different measurement precisions can be defined for the data points. </p>
-                  
+
                   <p>With this functional profile you can measure the total energy as well as the energy of the three
                      individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
@@ -453,13 +453,13 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
-      
+
                   <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-      
+
                   <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
                       Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
                       zu definieren.</p>
-      
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
                       der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                       umgesetzt werden:
@@ -477,16 +477,16 @@
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the energy balance.
-                  
+
                   <p>Data is typically recorded by an energy manager (or a billing software).</p>
-                  
+
                   <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute per data point.
                      Thus, different measurement precisions can be defined for the data points. </p>
-                  
+
                   <p>With this functional profile you can measure the total energy as well as the energy of the three
                      individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
