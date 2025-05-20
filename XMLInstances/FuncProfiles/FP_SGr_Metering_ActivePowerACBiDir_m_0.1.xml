@@ -4,29 +4,23 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Published</state>
+    <state>Review</state>
     <changeLog>
-      <version>0.1.1</version>
-      <date>2021-04-03</date>
-      <author>IBT/cb</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.0.0</version>
-      <date>2023-04-21</date>
-      <author>SGr/sz</author>
-      <comment>Finalisierung</comment>
+      <version>0.1.0</version>
+      <date>2025-05-20</date>
+      <author>SGr/mkr</author>
+      <comment>First draft</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>ActivePowerAC</functionalProfileType>
+      <functionalProfileType>ActivePowerACBiDir</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -35,7 +29,7 @@
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Wirkleistung</strong><br>
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der bilanzierten Wirkleistung.
+          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur bidirektionalen Messung der Wirkleistung.
 
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
              einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
@@ -59,7 +53,7 @@
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Active Power Measurement</strong><br>
-          Monitoring functional profile for power generators and consumers for reflecting the active power balance.
+          Monitoring functional profile for power generators and consumers for reflecting the bidirectional measurement of active power.
 
           <p>With this functional profile you can measure the total active power as well as the active power of
              the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
@@ -82,7 +76,7 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActivePowerACtot</dataPointName>
+        <dataPointName>ActivePowerACtot.Import</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -90,18 +84,18 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Erfassung der gesamten Wirkleistung</textElement>
+          <textElement>Erfassung der gesamten Wirkleistung (Bezug)</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Total active power measurement</textElement>
+          <textElement>Total active power measurement (import)</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActivePowerACL1</dataPointName>
+        <dataPointName>ActivePowerACL1.Import</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -109,18 +103,18 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Erfassung der Wirkleistung Phase 1</textElement>
+          <textElement>Erfassung der Wirkleistung Phase 1 (Bezug)</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Active power measurement of phase 1</textElement>
+          <textElement>Active power measurement of phase 1 (import)</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActivePowerACL2</dataPointName>
+        <dataPointName>ActivePowerACL2.Import</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -128,18 +122,18 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Erfassung der Wirkleistung Phase 2</textElement>
+          <textElement>Erfassung der Wirkleistung Phase 2 (Bezug)</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Active power measurement of phase 2</textElement>
+          <textElement>Active power measurement of phase 2 (import)</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActivePowerACL3</dataPointName>
+        <dataPointName>ActivePowerACL3.Import</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -147,11 +141,11 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Erfassung der Wirkleistung Phase 3</textElement>
+          <textElement>Erfassung der Wirkleistung Phase 3 (Bezug)</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Active power measurement of phase 3</textElement>
+          <textElement>Active power measurement of phase 3 (import)</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
