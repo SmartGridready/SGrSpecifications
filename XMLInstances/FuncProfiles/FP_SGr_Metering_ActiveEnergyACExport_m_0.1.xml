@@ -4,29 +4,23 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Published</state>
+    <state>Review</state>
     <changeLog>
-      <version>0.1.1</version>
-      <date>2021-04-03</date>
-      <author>IBT/cb</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.0.0</version>
-      <date>2023-04-21</date>
-      <author>SGr/sz</author>
-      <comment>Finalisierung</comment>
+      <version>0.1.0</version>
+      <date>2025-05-19</date>
+      <author>SGr/mkr</author>
+      <comment>Kopie von ActiveEnergyAC</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>ActiveEnergyAC</functionalProfileType>
+      <functionalProfileType>ActiveEnergyACExport</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -47,6 +41,8 @@
             <li>Three-phase devices with measurement of the total energy all data points</li>
           </ul>
           </p>
+
+          <p>This functional profile type complements the <i>ActiveEnergyAC</i> functional profile, in order to distinguish energy export from import.</p>
 
           <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
              either for the entire device or for individual datapoints
@@ -74,6 +70,8 @@
             <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
           </ul>
           </p>
+
+          <p>Dieser Funktionsprofil-Typ ergänzt das Funktionsprofil <i>ActiveEnergyAC</i>, um Einspeisung von Bezug unterscheiden zu können.</p>
 
           <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
              für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden

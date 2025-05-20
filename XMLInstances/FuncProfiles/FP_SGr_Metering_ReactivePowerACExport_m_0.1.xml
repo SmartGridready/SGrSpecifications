@@ -4,18 +4,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Published</state>
+    <state>Review</state>
     <changeLog>
-      <version>0.2.2</version>
-      <date>2022-11-17</date>
-      <author>Ergo/mm</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.0.0</version>
-      <date>2023-04-21</date>
-      <author>SGr/sz</author>
-      <comment>Finalisierung</comment>
+      <version>0.1.0</version>
+      <date>2025-05-19</date>
+      <author>SGr/mkr</author>
+      <comment>Kopie von ReactivePowerAC</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -25,8 +19,8 @@
       <functionalProfileType>ReactivePowerAC</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -47,6 +41,8 @@
             <li>3-phasige Geräte mit Einzelphasen- und Gesamtblindleistungsmessung geben alle Datenpunkte an</li>
           </ul>
           </p>
+
+          <p>Dieser Funktionsprofil-Typ ergänzt das Funktionsprofil <i>ReactivePowerAC</i>, um Einspeisung von Bezug unterscheiden zu können.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -66,6 +62,8 @@
             <li>Three-phase devices with measurement of the total reactive power use all data points</li>
           </ul>
           </p>
+
+          <p>This functional profile type complements the <i>ReactivePowerAC</i> functional profile, in order to distinguish export from import power.</p>
         ]]>
       </textElement>
       <language>en</language>

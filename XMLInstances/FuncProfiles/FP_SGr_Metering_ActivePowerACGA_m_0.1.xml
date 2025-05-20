@@ -4,29 +4,23 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Published</state>
+    <state>Draft</state>
     <changeLog>
-      <version>0.1.1</version>
-      <date>2021-04-03</date>
-      <author>IBT/cb</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.0.0</version>
-      <date>2023-04-21</date>
-      <author>SGr/sz</author>
-      <comment>Finalisierung</comment>
+      <version>0.1.0</version>
+      <date>2025-05-20</date>
+      <author>SGr/mkr</author>
+      <comment>First draft</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>CurrentAC</functionalProfileType>
+      <functionalProfileType>ActivePowerACGA</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -34,17 +28,18 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <strong>Messung der Stromstärke</strong><br>
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
-          Zwecke.
+          <strong>Messung der Wirkleistung</strong><br>
+          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der bilanzierten Wirkleistung.
+          Generische Attribute dienen der Unterscheidung der Messrichtung und der Tarifregister.
 
-          <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
-             Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+          <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
+             einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+             umgesetzt werden:
           <ul>
-            <li>Einphasige Geräte geben die Stromstärke über die erste Phase an (CurrentAC1)</li>
-            <li>3-phasige Geräte geben die Stromstärke pro Phase an (CurrentAC1, CurrentAC2, CurrentAC3)</li>
+            <li>Einphasige Geräte geben die Totalleistung an (ActivePowerACtot)</li>
+            <li>3-phasige Geräte ohne Totalleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+            <li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
           </ul>
-          Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
           </p>
 
           <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
@@ -58,17 +53,18 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <strong>Current measurement</strong><br>
-          Monitoring functional profile for power generators and consumers for reflecting the current.
+          <strong>Active Power Measurement</strong><br>
+          Monitoring functional profile for power generators and consumers for reflecting the active power balance.
+          Uses generic attributes to distinguish measurement direction and tariff registers.
 
-          <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
-             Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+          <p>With this functional profile you can measure the total active power as well as the active power of
+             the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
           <ul>
-            <li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
-            <li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+            <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
+            <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+            <li>Three-phase devices with measurement of the total active power use all data points</li>
           </ul>
-
-          <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
+          </p>
 
           <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
              either for the entire device or for individual datapoints
@@ -79,79 +75,87 @@
       <language>en</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>CurrentACL1</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>M</presenceLevel>
-        <dataType>
-          <float64 />
-        </dataType>
-        <unit>AMPERES</unit>
-        <legibleDescription>
-          <textElement>Erfassung des Stromes in Phase 1</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Current measurement of phase 1</textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>CurrentACL2</dataPointName>
+        <dataPointName>ActivePowerACtot</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
-        <unit>AMPERES</unit>
+        <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Erfassung des Stromes in Phase 2</textElement>
+          <textElement>Erfassung der gesamten Wirkleistung</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current measurement of phase 2</textElement>
+          <textElement>Total active power measurement</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>CurrentACL3</dataPointName>
+        <dataPointName>ActivePowerACL1</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
-        <unit>AMPERES</unit>
+        <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Erfassung des Stromes in Phase 3</textElement>
+          <textElement>Erfassung der Wirkleistung Phase 1</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current measurement of phase 3</textElement>
+          <textElement>Active power measurement of phase 1</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>CurrentACN</dataPointName>
+        <dataPointName>ActivePowerACL2</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
+        <presenceLevel>R</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
-        <unit>AMPERES</unit>
+        <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Erfassung des Stromes im Nullleiter</textElement>
+          <textElement>Erfassung der Wirkleistung Phase 2</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current measurement of neutral conductor</textElement>
+          <textElement>Active power measurement of phase 2</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerACL3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Wirkleistung Phase 3</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Active power measurement of phase 3</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>

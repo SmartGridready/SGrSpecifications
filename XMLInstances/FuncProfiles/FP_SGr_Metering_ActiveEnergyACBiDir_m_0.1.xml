@@ -4,29 +4,23 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Published</state>
+    <state>Draft</state>
     <changeLog>
-      <version>0.1.1</version>
-      <date>2021-04-03</date>
-      <author>IBT/cb</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.0.0</version>
-      <date>2023-04-21</date>
-      <author>SGr/sz</author>
-      <comment>Finalisierung</comment>
+      <version>0.1.0</version>
+      <date>2025-05-20</date>
+      <author>SGr/mkr</author>
+      <comment>First draft</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>ActiveEnergyAC</functionalProfileType>
+      <functionalProfileType>ActiveEnergyACBiDir</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -35,7 +29,7 @@
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Energy measurement</strong><br>
-          Monitoring functional profile for power generators and consumers for reflecting the active energy balance.
+          Monitoring functional profile for power generators and consumers for reflecting the bi-directional active energy measurement.
 
           <p>Data is typically recorded by an energy manager (or a billing software).</p>
 
@@ -61,7 +55,7 @@
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Wirkenergie</strong><br>
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Wirkenergie.
+          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur bidirektionalen Messung der Wirkenergie.
 
           <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
 
@@ -86,7 +80,7 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActiveEnergyACtot</dataPointName>
+        <dataPointName>ActiveEnergyACtot.Import</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -94,18 +88,18 @@
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
-          <textElement>Total energy measurement</textElement>
+          <textElement>Total energy measurement (import)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der gesamten Wirkenergie</textElement>
+          <textElement>Erfassung der gesamten Wirkenergie (Bezug)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActiveEnergyACL1</dataPointName>
+        <dataPointName>ActiveEnergyACtot.Export</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -113,18 +107,18 @@
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
-          <textElement>Energy measurement of phase 1</textElement>
+          <textElement>Total energy measurement (export)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der Wirkenergie Phase 1</textElement>
+          <textElement>Erfassung der gesamten Wirkenergie (Einspeisung)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActiveEnergyACL2</dataPointName>
+        <dataPointName>ActiveEnergyACL1.Import</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -132,18 +126,18 @@
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
-          <textElement>Energy measurement of phase 2</textElement>
+          <textElement>Energy measurement of phase 1 (import)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der Wirkenergie Phase 2</textElement>
+          <textElement>Erfassung der Wirkenergie Phase 1 (Bezug)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActiveEnergyACL3</dataPointName>
+        <dataPointName>ActiveEnergyACL2.Import</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -151,11 +145,87 @@
         </dataType>
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
-          <textElement>Energy measurement of phase 3</textElement>
+          <textElement>Energy measurement of phase 2 (import)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der Wirkenergie Phase 3</textElement>
+          <textElement>Erfassung der Wirkenergie Phase 2 (Bezug)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActiveEnergyACL3.Import</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Energy measurement of phase 3 (import)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Wirkenergie Phase 3 (Bezug)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActiveEnergyACL1.Export</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Energy measurement of phase 1 (export)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Wirkenergie Phase 1 (Einspeisung)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActiveEnergyACL2.Export</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Energy measurement of phase 2 (export)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Wirkenergie Phase 2 (Einspeisung)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActiveEnergyACL3.Export</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Energy measurement of phase 3 (export)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Wirkenergie Phase 3 (Einspeisung)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
