@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenericAttributeFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Generic/GenericAttribute.xsd">
+
+  <name>MeteringDirection</name>
+
+  <dataType>
+    <enum>
+      <enumEntry>
+        <literal>Net</literal>
+        <description></description>
+      </enumEntry>
+      <enumEntry>
+        <literal>Import</literal>
+        <description></description>
+      </enumEntry>
+      <enumEntry>
+        <literal>Export</literal>
+        <description></description>
+      </enumEntry>
+    </enum>
+  </dataType>
+  <unit>NONE</unit>
+  <legibleDescription>
+    <textElement>
+      Defines the direction of measurement.
+    </textElement>
+    <language>en</language>
+  </legibleDescription>
+  <legibleDescription>
+    <textElement>
+      Gibt die Mess-Richtung an.
+    </textElement>
+    <language>de</language>
+  </legibleDescription>
+
+</GenericAttributeFrame>

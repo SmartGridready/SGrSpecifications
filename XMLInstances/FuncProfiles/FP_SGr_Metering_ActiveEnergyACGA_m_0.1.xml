@@ -4,19 +4,19 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-05-19</date>
+      <date>2025-05-20</date>
       <author>SGr/mkr</author>
-      <comment>Kopie von ActiveEnergyAC</comment>
+      <comment>First draft</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>ActiveEnergyACExport</functionalProfileType>
+      <functionalProfileType>ActiveEnergyACGA</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
@@ -30,6 +30,7 @@
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Energy measurement</strong><br>
           Monitoring functional profile for power generators and consumers for reflecting the active energy balance.
+          Uses generic attributes to distinguish measurement direction and tariff registers.
 
           <p>Data is typically recorded by an energy manager (or a billing software).</p>
 
@@ -41,8 +42,6 @@
             <li>Three-phase devices with measurement of the total energy all data points</li>
           </ul>
           </p>
-
-          <p>This functional profile type complements the <i>ActiveEnergyAC</i> functional profile, in order to distinguish energy export from import.</p>
 
           <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
              either for the entire device or for individual datapoints
@@ -58,6 +57,7 @@
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Wirkenergie</strong><br>
           Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Wirkenergie.
+          Generische Attribute dienen der Unterscheidung der Messrichtung und der Tarifregister.
 
           <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
 
@@ -71,8 +71,6 @@
           </ul>
           </p>
 
-          <p>Dieser Funktionsprofil-Typ ergänzt das Funktionsprofil <i>ActiveEnergyAC</i>, um Einspeisung von Bezug unterscheiden zu können.</p>
-
           <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
              für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
              (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
@@ -81,6 +79,14 @@
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>

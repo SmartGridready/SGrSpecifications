@@ -4,19 +4,19 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-05-19</date>
+      <date>2025-05-20</date>
       <author>SGr/mkr</author>
-      <comment>Kopie von ActivePowerAC</comment>
+      <comment>First draft</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>ActivePowerACExport</functionalProfileType>
+      <functionalProfileType>ActivePowerACGA</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
@@ -30,6 +30,7 @@
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Wirkleistung</strong><br>
           Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der bilanzierten Wirkleistung.
+          Generische Attribute dienen der Unterscheidung der Messrichtung und der Tarifregister.
 
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
              einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
@@ -40,8 +41,6 @@
             <li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
           </ul>
           </p>
-
-          <p>Dieser Funktionsprofil-Typ ergänzt das Funktionsprofil <i>ActivePowerAC</i>, um Einspeisung von Bezug unterscheiden zu können.</p>
 
           <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
              für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
@@ -56,6 +55,7 @@
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Active Power Measurement</strong><br>
           Monitoring functional profile for power generators and consumers for reflecting the active power balance.
+          Uses generic attributes to distinguish measurement direction and tariff registers.
 
           <p>With this functional profile you can measure the total active power as well as the active power of
              the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
@@ -66,8 +66,6 @@
           </ul>
           </p>
 
-          <p>This functional profile type complements the <i>ActivePowerAC</i> functional profile, in order to distinguish export from import power.</p>
-
           <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
              either for the entire device or for individual datapoints
              (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
@@ -77,6 +75,14 @@
       <language>en</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
