@@ -74,7 +74,7 @@ public class CheckDeviceStructure {
                 System.out.flush();
 
                 if (name == null || name.isBlank()) {
-                    System.err.println("==> undefined GA name");
+                    System.out.println("==> undefined GA name");
                 }
                 if (
                     (gaElement.getDataType() == null) &&
@@ -85,7 +85,7 @@ public class CheckDeviceStructure {
                         gaElement.getGenericAttributeList().getGenericAttributeListElement().isEmpty()
                     )
                 ) {
-                    System.err.println("==> no sub-attributes despite no data type");
+                    System.out.println("==> no sub-attributes despite no data type");
                 }
 
                 if (
@@ -132,10 +132,10 @@ public class CheckDeviceStructure {
                 System.out.flush();
 
                 if (fpElement.getFunctionalProfile().getFunctionalProfileIdentification().getLevelOfOperation() == null) {
-                    System.err.println("==> undefined FP level of operation");
+                    System.out.println("==> undefined FP level of operation");
                 }
                 if (fpElement.getReleaseNotes().getState() == null) {
-                    System.err.println("==> undefined FP release state");
+                    System.out.println("==> undefined FP release state");
                 }
 
                 if (
@@ -153,7 +153,7 @@ public class CheckDeviceStructure {
                         String attrKey = fpAttr.getName();
                         List<GenericAttributeFrame> genAttrs = genAttributes.getOrDefault(attrKey, Collections.emptyList());
                         if (genAttrs.isEmpty()) {
-                            System.err.println("==> no matching generic attribute " + attrKey);
+                            System.out.println("==> no matching generic attribute " + attrKey);
                         }
                     }
 
@@ -187,10 +187,10 @@ public class CheckDeviceStructure {
                 System.out.flush();
 
                 if (eidElement.getDeviceInformation().getLevelOfOperation() == null) {
-                    System.err.println("==> undefined device level of operation");
+                    System.out.println("==> undefined device level of operation");
                 }
                 if (eidElement.getReleaseNotes().getState() == null) {
-                    System.err.println("==> undefined device release state");
+                    System.out.println("==> undefined device release state");
                 }
 
                 List<FunctionalProfileBase> profiles = new ArrayList<>();
@@ -211,7 +211,7 @@ public class CheckDeviceStructure {
                     profiles.addAll(eidElement.getInterfaceList().getGenericInterface().getFunctionalProfileList()
                             .getFunctionalProfileListElement());
                 } else {
-                    System.err.println("==> undefined interface type");
+                    System.out.println("==> undefined interface type");
                 }
 
                 for (FunctionalProfileBase prof : profiles) {
@@ -229,9 +229,9 @@ public class CheckDeviceStructure {
                         FunctionalProfileFrame okVersion = checkFunctionalProfile(prof.getFunctionalProfile().getFunctionalProfileIdentification(), funcProfiles.get(key), false);
 
                         if (okVersion == null) {
-                            System.err.println("==> no matching FP for " + key);
+                            System.out.println("==> no matching FP for " + key);
                         } else {
-                            System.err.println("==> no matching FP for " + key + " (at version " + fpVersion + ")");
+                            System.out.println("==> no matching FP for " + key + " (at version " + fpVersion + ")");
                         }
 
                         ok = okVersion;
@@ -276,13 +276,13 @@ public class CheckDeviceStructure {
                 System.out.flush();
 
                 if (comElement.getCommunicatorInformation().getLevelOfOperation() == null) {
-                    System.err.println("==> undefined communicator level of operation");
+                    System.out.println("==> undefined communicator level of operation");
                 }
                 if (comElement.getCommunicatorInformation().getSupportedTransportServices() == null) {
-                    System.err.println("==> undefined communicator transport services");
+                    System.out.println("==> undefined communicator transport services");
                 }
                 if (comElement.getReleaseNotes().getState() == null) {
-                    System.err.println("==> undefined device release state");
+                    System.out.println("==> undefined device release state");
                 }
 
                 List<CommunicatorFunctionalProfile> profiles = new ArrayList<>();
@@ -306,9 +306,9 @@ public class CheckDeviceStructure {
                         FunctionalProfileFrame okVersion = checkFunctionalProfile(prof.getFunctionalProfileIdentification(), funcProfiles.get(key), false);
 
                         if (okVersion == null) {
-                            System.err.println("==> no matching FP for " + key);
+                            System.out.println("==> no matching FP for " + key);
                         } else {
-                            System.err.println("==> no matching FP for " + key + " (at version " + fpVersion + ")");
+                            System.out.println("==> no matching FP for " + key + " (at version " + fpVersion + ")");
                         }
 
                         ok = okVersion;
@@ -322,7 +322,7 @@ public class CheckDeviceStructure {
                 System.out.flush();
             }
         } catch (Throwable t) {
-            t.printStackTrace(System.err);
+            t.printStackTrace();
         }
     }
 
@@ -368,21 +368,21 @@ public class CheckDeviceStructure {
                 if (devName.equals(fpName)) {
 
                     if (found) {
-                        System.err.println("    nok as two generic attributes with same name:" + fpName + " - in " + key);
+                        System.out.println("    nok as two generic attributes with same name:" + fpName + " - in " + key);
                         return false;
                     }
 
                     found = true;
 
                     if (genAttributes.get(devName) == null) {
-                        System.err.println("    nok as no matching generic attribute " + devName);
+                        System.out.println("    nok as no matching generic attribute " + devName);
                         return false;
                     }
                 }
             }
 
             if (!found) {
-                System.err.println("    nok as generic attribute " + fpName + " is missing");
+                System.out.println("    nok as generic attribute " + fpName + " is missing");
                 return false;
             }
         }
@@ -436,7 +436,7 @@ public class CheckDeviceStructure {
                     }
 
                     if (failed) {
-                        System.err.println("    nok as inconsistent data directions dev:"
+                        System.out.println("    nok as inconsistent data directions dev:"
                                 + devElem.getDataPoint().getDataDirection()
                                 + ", fp:" + fpElem.getDataPoint().getDataDirection() + " for name:" + fpName + " - in "
                                 + key);
@@ -447,19 +447,19 @@ public class CheckDeviceStructure {
                     String fpDataType = getDataType(fpElem.getDataPoint().getDataType());
 
                     if (!devDataType.equals(fpDataType)) {
-                        System.err.println("    nok as inconsistent data types dev:" + devDataType
+                        System.out.println("    nok as inconsistent data types dev:" + devDataType
                                 + ", fp:" + fpDataType + " for name:" + fpName + " - in " + key);
                         return false;
                     }
 
                     if (devElem.getDataPoint().getUnit() != fpElem.getDataPoint().getUnit()) {
-                        System.err.println("    nok as inconsistent unit dev:" + devElem.getDataPoint().getUnit()
+                        System.out.println("    nok as inconsistent unit dev:" + devElem.getDataPoint().getUnit()
                                 + ", fp:" + fpElem.getDataPoint().getUnit() + " for name:" + fpName + " - in " + key);
                         return false;
                     }
 
                     if (found) {
-                        System.err.println("    nok as two data points with same name:" + fpName + " - in " + key);
+                        System.out.println("    nok as two data points with same name:" + fpName + " - in " + key);
                         return false;
                     }
 
@@ -468,7 +468,7 @@ public class CheckDeviceStructure {
             }
 
             if (!found && fpElem.getDataPoint().getPresenceLevel() == PresenceLevel.M) {
-                System.err.println("    nok as " + fpName + " is mandatory");
+                System.out.println("    nok as " + fpName + " is mandatory");
                 return false;
             }
         }

@@ -15,6 +15,7 @@
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <generalRemarks>IBT/cb for test purpose only</generalRemarks>
+    <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>2</secondaryVersionNumber>

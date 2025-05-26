@@ -32,6 +32,7 @@
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>5</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>

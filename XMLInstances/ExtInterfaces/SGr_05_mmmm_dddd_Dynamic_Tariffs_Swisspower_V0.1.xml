@@ -26,6 +26,7 @@
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>5</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>

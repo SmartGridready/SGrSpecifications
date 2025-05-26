@@ -23,6 +23,7 @@
     <versionNumber>betaTest</versionNumber>
     <brandName>adsf</brandName>
     <generalRemarks>adflköj</generalRemarks>
+    <levelOfOperation>m</levelOfOperation>
     <isLocalControl>true</isLocalControl>
   </communicatorInformation>
   <functionalProfileListElement>

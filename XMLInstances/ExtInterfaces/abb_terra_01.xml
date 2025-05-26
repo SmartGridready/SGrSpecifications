@@ -13,6 +13,7 @@
     <deviceCategory>ChargingStation</deviceCategory>
     <isLocalControl>true</isLocalControl>
     <softwareRevision>0.0.0</softwareRevision>
+    <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
