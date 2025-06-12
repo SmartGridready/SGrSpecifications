@@ -15,7 +15,7 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>SGCP</functionalProfileCategory>
-      <functionalProfileType>LoadManagement</functionalProfileType>
+      <functionalProfileType>FlexMgmt</functionalProfileType>
       <levelOfOperation>2</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
