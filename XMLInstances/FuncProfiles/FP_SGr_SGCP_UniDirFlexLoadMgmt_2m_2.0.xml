@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Review</state>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2021-09-02</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung beta test</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2023-10-17</date>
+      <author>Ergo/ag</author>
+      <comment>Finalisierung</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2025-03-09</date>
+      <author>Ergo/ag</author>
+      <comment>Textkorrekturen</comment>
+    </changeLog>
+    <changeLog>
+      <version>2.0.0</version>
+      <date>2025-06-12</date>
+      <author>SGr/mkr</author>
+      <comment>Renamed data points</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>UniDirFlexLoadMgmt</functionalProfileType>
+      <levelOfOperation>2m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>2</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_ems_to_wp_evse.svg"/>
+
+          <p>Stage 2m functional profile for Energy Management Systems (EMS) with a communication interface to the flexibility manager (to power suppliers, pooling providers or similar), 
+          controllable via a data point with various operating modes. The implementation of the functional profile must cover the following four operating states:</p>  
+          <p>The following operating states can be set and read through the data point "OpModeLoadCmd":</p>
+            <ol>
+              <li><strong>LD_NORMAL</strong>: In normal operation, the load management optimizes power consumption according to user-defined criteria within the allowed power range.</li>
+              <li><strong>LD_REDUCED</strong>: In reduced operation, power consumption is reduced by an agreed-upon amount in percentage (curtailment) if possible.</li>
+              <li><strong>LD_MAX</strong>: In maximum operation, the load management allows for maximum power consumption.</li>
+              <li><strong>LD_LOCKED</strong>: In the "locked" operating mode, no or a defined minimum energy (minLoad) is allowed to be drawn from the grid. This can be achieved through a reduction in power consumption during a maximum duration (maxLockTimeMinutes).</li>
+            </ol>
+          <p>The current operating mode of the customer's system can be read through the data point "OpLoadState."</p>
+          <p>The parameters for the minimum percentage reduction (curtailment), minimum power consumption (minLoad), and the maximum lock time duration (maxLockTimeMinutes), as well as the time windows for defining continuous load changes (smoothTransition), are manually configured during declaration or on the device itself. The optimal path for the declared device is defined during declaration.</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_ems_to_wp_evse.svg"/>
+
+          <p>Stufe 2m Funktionsprofil für Energiemanagement-Systeme (EMS), welche eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+          die über einen Datenpunkt mit verschiedenen Betriebsmodi steuerbar ist. 
+          Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
+
+          <p> Folgende Betriebszustände können über den Datenpunkt "OpModeLoadCmd" gesetzt und ausgelesen werden: </p>
+          <ol>
+            <li><strong>LD_NORMAL</strong>: Im Normalbetrieb optimiert das Lastmanagement den Strombezug nach den Kriterien des Nutzers.
+                innerhalb des zugelassenen Leistungsbereichs.</li>
+            <li><strong>LD_REDUCED</strong>: Im reduzierten Betrieb wird der Leistungsbezug um einen vereinbarten Betrag in Prozent
+                (curtailment) gesenkt, falls dies möglich ist. </li>
+            <li><strong>LD_MAX</strong>: Im Maximalbetrieb ermöglicht das Lastmanagement eine maximale
+                Bezugsleistung.</li>
+            <li><strong>LD_LOCKED</strong>: Im Betriebsmodus "gesperrt" darf keine oder eine definierte
+                minimale Energie (minLoad) vom Netz bezogen werden. Dies kann mittels einer Reduktion des Strombezugs
+                während einer maximalen Zeitdauer (maxLockTimeMinutes) erfolgen.</li>
+          </ol>
+
+          <p> Über den Datenpunkt "OpLoadState" kann der aktuelle Betriebsmodus der Kundenanlage ausgelesen werden. </p>
+
+          <p> Die Parameter für den minimal-Wert für die prozentuale Abregelung (curtailment), den minimalen Strombezug (minLoad),  
+          und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden 
+          über die Attribute während der Deklaration oder am Gerät selber manuell konfiguriert. Der optimale Weg für das deklarierte Gerät 
+          wird bei der Deklaration definiert. </p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>OpModeLoadCmd</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>LD_NORMAL</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>LD_REDUCED</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>LD_MAX</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>LD_LOCKED</literal>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Setting the operation mode</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Setzen des Betriebsmodus</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>OpLoadState</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>LD_NORMAL</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>LD_REDUCED</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>LD_MAX</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>LD_LOCKED</literal>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Feedback of load management</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückmeldung vom Lastmanagement</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
