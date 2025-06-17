@@ -4,18 +4,24 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-04-21</date>
+      <date>2024-06-23</date>
       <author>ag</author>
       <comment>Initial Version</comment>
     </changeLog>
     <changeLog>
       <version>0.1.1</version>
+      <date>2025-06-12</date>
+      <author>SGr/mkr</author>
+      <comment>Renamed data points</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
       <date>2025-06-17</date>
       <author>SGr/mkr</author>
-      <comment>Renamed data points, enums and corrected text</comment>
+      <comment>Ready for publication</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -23,10 +29,10 @@
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>SGCP</functionalProfileCategory>
       <functionalProfileType>FlexMgmt</functionalProfileType>
-      <levelOfOperation>2m</levelOfOperation>
+      <levelOfOperation>2</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>1</secondaryVersionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -36,29 +42,27 @@
           <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
           
           <p>Stage 2 functional profile for Energy Management Systems (EMS) with a communication interface to the the flexibility manager (to power suppliers, pooling providers or similar)
-             controllable via a data point with various operating modes. The implementation of the functional profile must cover the following four operating states:</p>
-        
-          <p>The following operating states can be set and read through the data point "OpModeFlexMgmtCmd":</p>
+             that is controllable via two relay contacts.
+             The implementation of the functional profile must include the following four operating states:
+             (the switching states m:n refer to the first (m) and n=second (n) contact):</p>
           <ol>
-            <li><strong>NORMAL</strong>: 
+            <li>Operating State 1 (Switching state, for terminal solution: 0:0):
               <strong>NormalOperation</strong>:
                 No target from DSO
                 (normal state, charging station loads uninfluenced according to its demand)</li>
-            <li><strong>MAX_LOAD</strong>:
+            <li>Operating State 2 (Switching state, for terminal solution: 0:1):
               <strong>MaximumLoad</strong>:
                 Request from DSO: Maximum load
                 (Loading from grid, depending on device 10 or 20 kW).</li>
-            <li><strong>MAX_FEEDIN</strong>:
+            <li>Operating State 3 (Switching state, for terminal solution: 1:0):
               <strong>MaximumFeedIn</strong>:
                 Request from DSO: Maximum feed-in
                 (Feed-in into grid, depending on device 10 or 20 kW).</li>
-            <li><strong>LOCKED</strong>:
+            <li>Operating State 4 (Switching state, for terminal solution: 1:1):
               <strong>LockedOperation</strong>:
                 Requirement from DSO: Load shedding (will be implemented as priority)
                 no power exchange with the grid, i.e. 0 kW</li>
           </ol>
-
-          <p>The current operating mode of the customer's system can be read through the data point "OpFlexMgmtState."</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -68,31 +72,27 @@
       <![CDATA[
           <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
           
-          <p>Stufe 2m Funktionsprofil für Energiemanagement-Systeme (EMS), welche eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
-             die über einen Datenpunkt mit verschiedenen Betriebsmodi steuerbar ist.
-            Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
-
-          <p> Folgende Betriebszustände können über den Datenpunkt "OpModeFlexMgmtCmd" gesetzt und ausgelesen werden: </p>
+          <p>Stufe 2 Funktionsprofil für Energiemanagement-Systeme (EMS), welche eine Kommunikationsschnittstelle zum Flexibilitäts-Manager (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+             die über zwei Relais-Kontakte steuerbar ist. Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:
+             Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden (die Schaltzustände m:n beziehen sich auf den ersten (m) bzw. zweiten (n) Kontakt):</p>
           <ol>
-            <li><strong>NORMAL</strong>: 
+            <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 0:0):
               <strong>Normalbetrieb</strong>:
                 Keine Vorgabe seitens VNB
                 (normaler Zustand, Ladestation lädt unbeeinflusst gemäss Bedarf)</li>
-            <li><strong>MAX_LOAD</strong>:
+            <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:1):
               <strong>Maximaler Verbrauch</strong>:
                 Wunsch von VNB: Maximale Ladeleistung
                 (Bezug aus dem Netz, je nach Gerät 10 oder 20 kW)</li>
-            <li><strong>MAX_FEEDIN</strong>:
+            <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung: 1:0):
               <strong>Maximale Einspeisung</strong>:
                 Wunsch von VNB: Maximale Entladeleistung
                 (Einspeisung ins Netz, je nach Gerät entweder 10 oder 20 kW)</li>
-            <li><strong>LOCKED</strong>:
+            <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung 1:1):
               <strong>Sperrbetrieb</strong>:
                 Vorgabe VNB: Lastabwurf (wird prioritär umgesetzt),
                 kein Leistungsaustausch mit dem Netz, d.h. 0 kW</li>
           </ol>
-
-          <p> Über den Datenpunkt "OpFlexMgmtState" kann der aktuelle Betriebsmodus der Kundenanlage ausgelesen werden. </p>
         ]]>
       </textElement>
       <language>de</language>
@@ -101,64 +101,38 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>OpModeFlexMgmtCmd</dataPointName>
-        <dataDirection>RW</dataDirection>
+        <dataPointName>FlexMgmt1isON</dataPointName>
+        <dataDirection>W</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
-          <enum>
-            <enumEntry>
-              <literal>NORMAL</literal>
-            </enumEntry>
-            <enumEntry>
-              <literal>MAX_LOAD</literal>
-            </enumEntry>
-            <enumEntry>
-              <literal>MAX_FEEDIN</literal>
-            </enumEntry>
-            <enumEntry>
-              <literal>LOCKED</literal>
-            </enumEntry>
-          </enum>
+          <boolean />
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Setting the operation mode</textElement>
+          <textElement>Switching state first relay contact (0 or 1)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Setzen des Betriebsmodus</textElement>
+          <textElement>Schaltzustand erste Klemme (0 oder 1)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>OpFlexMgmtState</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <dataPointName>FlexMgmt2isON</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
         <dataType>
-          <enum>
-            <enumEntry>
-              <literal>NORMAL</literal>
-            </enumEntry>
-            <enumEntry>
-              <literal>MAX_LOAD</literal>
-            </enumEntry>
-            <enumEntry>
-              <literal>MAX_FEEDIN</literal>
-            </enumEntry>
-            <enumEntry>
-              <literal>LOCKED</literal>
-            </enumEntry>
-          </enum>
+          <boolean />
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Feedback of load management</textElement>
+          <textElement>Switching state first relay contact (0 or 1)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Rückmeldung vom Lastmanagement</textElement>
+          <textElement>Schaltzustand zweite Klemme (0 oder 1)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
