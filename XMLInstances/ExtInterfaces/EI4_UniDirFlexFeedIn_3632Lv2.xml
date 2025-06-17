@@ -124,19 +124,19 @@
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>FI_NORMAL</literal>
+                      <literal>NORMAL</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>FI_REDUCED</literal>
+                      <literal>REDUCED</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>FI_LOCKED</literal>
+                      <literal>LOCKED</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>FI_MAX</literal>
+                      <literal>MAX</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                   </enum>

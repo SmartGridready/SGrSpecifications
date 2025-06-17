@@ -4,7 +4,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.1</version>
       <date>2021-09-02</date>
@@ -13,21 +13,9 @@
     </changeLog>
     <changeLog>
       <version>1.0.0</version>
-      <date>2023-10-17</date>
-      <author>Ergo/ag</author>
-      <comment>Finalisierung</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.1.0</version>
-      <date>2025-03-09</date>
-      <author>Ergo/ag</author>
-      <comment>Textkorrekturen</comment>
-    </changeLog>
-    <changeLog>
-      <version>2.0.0</version>
-      <date>2025-06-12</date>
+      <date>2025-06-17</date>
       <author>SGr/mkr</author>
-      <comment>Renamed data points</comment>
+      <comment>Ready for publication</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -37,7 +25,7 @@
       <functionalProfileType>UniDirFlexFeedInMgmt</functionalProfileType>
       <levelOfOperation>2m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>2</primaryVersionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
         <secondaryVersionNumber>0</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
@@ -52,10 +40,10 @@
 
           <p>The following operating states can be set and read through the data point "OpModeFeedInCmd":</p>
           <ol>
-            <li><strong>FI_NORMAL</strong>: In normal operation, the load management optimizes feed-in according to user-defined criteria within the allowed power range.</li>
-            <li><strong>FI_REDUCED</strong>: In reduced operation, feed-in power is reduced by an agreed-upon amount in percentage (curtailment) if possible.</li>
-            <li><strong>FI_MAX</strong>: In maximum operation, the load management allows for maximum feed-in power.</li>
-            <li><strong>FI_LOCKED</strong>: In the "locked" operating mode, no energy is allowed to be fed into the grid. This can be achieved through a reduction of generation or by disabling storage discharge for a maximum duration (maxLockTimeMinutes).</li>
+            <li><strong>NORMAL</strong>: In normal operation, the load management optimizes feed-in according to user-defined criteria within the allowed power range.</li>
+            <li><strong>REDUCED</strong>: In reduced operation, feed-in power is reduced by an agreed-upon amount in percentage (curtailment) if possible.</li>
+            <li><strong>MAX</strong>: In maximum operation, the load management allows for maximum feed-in power.</li>
+            <li><strong>LOCKED</strong>: In the "locked" operating mode, no energy is allowed to be fed into the grid. This can be achieved through a reduction of generation or by disabling storage discharge for a maximum duration (maxLockTimeMinutes).</li>
           </ol>
 
           <p>The current operating mode of the customer's system can be read through the data point "OpLoadState."</p>
@@ -76,13 +64,13 @@
 
           <p> Folgende Betriebszustände können über den Datenpunkt "OpModeFeedInCmd" gesetzt und ausgelesen werden: </p>
           <ol>
-            <li><strong>FI_NORMAL</strong>: Im Normalbetrieb optimiert das Lastmanagement die Einspeisung nach den Kriterien des Nutzers.
+            <li><strong>NORMAL</strong>: Im Normalbetrieb optimiert das Lastmanagement die Einspeisung nach den Kriterien des Nutzers.
                 innerhalb des zugelassenen Leistungsbereichs.</li>
-            <li><strong>FI_REDUCED</strong>: Im reduzierten Betrieb wird Einspeiseleistung um einen vereinbarten Betrag
+            <li><strong>REDUCED</strong>: Im reduzierten Betrieb wird Einspeiseleistung um einen vereinbarten Betrag
                 in Prozent (curtailment) gesenkt, falls dies möglich ist. </li>
-            <li><strong>FI_MAX</strong>: Im Maximalbetrieb ermöglicht das Lastmanagement eine maximale
+            <li><strong>MAX</strong>: Im Maximalbetrieb ermöglicht das Lastmanagement eine maximale
                 Einspeiseleistung. </li>
-            <li><strong>FI_LOCKED</strong>: Im Betriebsmodus "gesperrt" darf keine Energie ins Netz eingespeist werden. Dies kann mittels einer Abregelung der Erzeugung oder dem Abschalten der Speicherentladung
+            <li><strong>LOCKED</strong>: Im Betriebsmodus "gesperrt" darf keine Energie ins Netz eingespeist werden. Dies kann mittels einer Abregelung der Erzeugung oder dem Abschalten der Speicherentladung
                 während einer maximalen Zeitdauer (maxLockTimeMinutes) erfolgen</li>
           </ol>
 
@@ -106,16 +94,16 @@
         <dataType>
           <enum>
             <enumEntry>
-              <literal>FI_NORMAL</literal>
+              <literal>NORMAL</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_REDUCED</literal>
+              <literal>REDUCED</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX</literal>
+              <literal>MAX</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_LOCKED</literal>
+              <literal>LOCKED</literal>
             </enumEntry>
           </enum>
         </dataType>
@@ -138,16 +126,16 @@
         <dataType>
           <enum>
             <enumEntry>
-              <literal>FI_NORMAL</literal>
+              <literal>NORMAL</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_REDUCED</literal>
+              <literal>REDUCED</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX</literal>
+              <literal>MAX</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_LOCKED</literal>
+              <literal>LOCKED</literal>
             </enumEntry>
           </enum>
         </dataType>
