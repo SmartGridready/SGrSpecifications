@@ -13,9 +13,9 @@
     </changeLog>
     <changeLog>
       <version>0.1.1</version>
-      <date>2025-06-12</date>
+      <date>2025-06-17</date>
       <author>SGr/mkr</author>
-      <comment>Renamed data points</comment>
+      <comment>Renamed data points, enums and corrected text</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -40,19 +40,19 @@
         
           <p>The following operating states can be set and read through the data point "OpModeFlexMgmtCmd":</p>
           <ol>
-            <li><strong>FI_NORMAL</strong>: 
+            <li><strong>NORMAL</strong>: 
               <strong>NormalOperation</strong>:
                 No target from DSO
                 (normal state, charging station loads uninfluenced according to its demand)</li>
-            <li><strong>FI_MAX_LOAD</strong>:
+            <li><strong>MAX_LOAD</strong>:
               <strong>MaximumLoad</strong>:
                 Request from DSO: Maximum load
                 (Loading from grid, depending on device 10 or 20 kW).</li>
-            <li><strong>FI_MAX_FEEDIN</strong>:
+            <li><strong>MAX_FEEDIN</strong>:
               <strong>MaximumFeedIn</strong>:
                 Request from DSO: Maximum feed-in
                 (Feed-in into grid, depending on device 10 or 20 kW).</li>
-            <li><strong>FI_LOCKED</strong>:
+            <li><strong>LOCKED</strong>:
               <strong>LockedOperation</strong>:
                 Requirement from DSO: Load shedding (will be implemented as priority)
                 no power exchange with the grid, i.e. 0 kW</li>
@@ -74,19 +74,19 @@
 
           <p> Folgende Betriebszustände können über den Datenpunkt "OpModeFlexMgmtCmd" gesetzt und ausgelesen werden: </p>
           <ol>
-            <li><strong>FI_NORMAL</strong>: 
+            <li><strong>NORMAL</strong>: 
               <strong>Normalbetrieb</strong>:
                 Keine Vorgabe seitens VNB
                 (normaler Zustand, Ladestation lädt unbeeinflusst gemäss Bedarf)</li>
-            <li><strong>FI_MAX_LOAD</strong>:
-              <strong>Maximale Ladung</strong>:
+            <li><strong>MAX_LOAD</strong>:
+              <strong>Maximaler Verbrauch</strong>:
                 Wunsch von VNB: Maximale Ladeleistung
                 (Bezug aus dem Netz, je nach Gerät 10 oder 20 kW)</li>
-            <li><strong>FI_MAX_FEEDIN</strong>:
+            <li><strong>MAX_FEEDIN</strong>:
               <strong>Maximale Einspeisung</strong>:
                 Wunsch von VNB: Maximale Entladeleistung
                 (Einspeisung ins Netz, je nach Gerät entweder 10 oder 20 kW)</li>
-            <li><strong>FI_LOCKED</strong>:
+            <li><strong>LOCKED</strong>:
               <strong>Sperrbetrieb</strong>:
                 Vorgabe VNB: Lastabwurf (wird prioritär umgesetzt),
                 kein Leistungsaustausch mit dem Netz, d.h. 0 kW</li>
@@ -107,16 +107,16 @@
         <dataType>
           <enum>
             <enumEntry>
-              <literal>FI_NORMAL</literal>
+              <literal>NORMAL</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX_LOAD</literal>
+              <literal>MAX_LOAD</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX_FEEDIN</literal>
+              <literal>MAX_FEEDIN</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_LOCKED</literal>
+              <literal>LOCKED</literal>
             </enumEntry>
           </enum>
         </dataType>
@@ -139,16 +139,16 @@
         <dataType>
           <enum>
             <enumEntry>
-              <literal>FI_NORMAL</literal>
+              <literal>NORMAL</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX_LOAD</literal>
+              <literal>MAX_LOAD</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX_FEEDIN</literal>
+              <literal>MAX_FEEDIN</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_LOCKED</literal>
+              <literal>LOCKED</literal>
             </enumEntry>
           </enum>
         </dataType>
