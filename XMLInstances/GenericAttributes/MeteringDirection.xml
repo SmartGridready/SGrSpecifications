@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenericAttributeFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Generic/GenericAttribute.xsd">
+
+  <name>MeteringDirection</name>
+
+  <dataType>
+    <enum>
+      <enumEntry>
+        <literal>Net</literal>
+        <description>Net or balance value</description>
+      </enumEntry>
+      <enumEntry>
+        <literal>Import</literal>
+        <description>Import from grid</description>
+      </enumEntry>
+      <enumEntry>
+        <literal>Export</literal>
+        <description>Export to grid</description>
+      </enumEntry>
+    </enum>
+  </dataType>
+  <unit>NONE</unit>
+  <legibleDescription>
+    <textElement>
+      Defines the direction of measurement (net, import, export).
+    </textElement>
+    <language>en</language>
+  </legibleDescription>
+  <legibleDescription>
+    <textElement>
+      Gibt die Mess-Richtung an (Netto, Bezug, Einspeisung).
+    </textElement>
+    <language>de</language>
+  </legibleDescription>
+
+</GenericAttributeFrame>

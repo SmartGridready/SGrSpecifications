@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenericAttributeFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Generic/GenericAttribute.xsd">
+
+  <name>MeteringTariffNr</name>
+
+  <dataType>
+    <int32 />
+  </dataType>
+  <unit>NONE</unit>
+  <legibleDescription>
+    <textElement>
+      Defines the number of the tariff register.
+    </textElement>
+    <language>en</language>
+  </legibleDescription>
+  <legibleDescription>
+    <textElement>
+      Gibt die Nummer des Tarifregisters an.
+    </textElement>
+    <language>de</language>
+  </legibleDescription>
+
+</GenericAttributeFrame>
