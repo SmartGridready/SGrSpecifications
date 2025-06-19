@@ -6,3 +6,6 @@
 /.vscode
 /XMLInstances/META-INF
 /XMLInstances/model
+
+*.html
+*.htm

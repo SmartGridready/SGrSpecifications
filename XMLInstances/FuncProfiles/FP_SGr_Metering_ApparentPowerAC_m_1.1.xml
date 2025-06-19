@@ -6,20 +6,26 @@
   <releaseNotes>
     <state>Review</state>
     <changeLog>
-      <version>0.1.0</version>
-      <date>2025-05-19</date>
+      <version>1.0.0</version>
+      <date>2025-02-04</date>
       <author>SGr/mkr</author>
-      <comment>Kopie von ApparentPowerAC</comment>
+      <comment>Prepare for Publication</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2025-06-18</date>
+      <author>SGr/mkr</author>
+      <comment>Generische Attribute, Textanpassungen</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>ApparentPowerACExport</functionalProfileType>
+      <functionalProfileType>ApparentPowerAC</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>0</primaryVersionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
         <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
@@ -34,7 +40,17 @@
           Bei der Einführung von Leistungstarifen müssen für diese Messung auch regulatorische Vorgaben
           beachtet werden. Typische Nachbarprofile sind Controller oder Datenlogger.
 
-          <p>Dieser Funktionsprofil-Typ ergänzt das Funktionsprofil <i>ReactiveEnergyAC</i>, um Einspeisung von Bezug unterscheiden zu können.</p>
+          <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+          <ul>
+            <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+            <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+            <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+          </ul>
+          </p>
+
+          <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+          Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+          </p>
         ]]>
       </textElement>
       <language>de</language>
@@ -49,12 +65,30 @@
           After introduction of demand tariffs regulatory standards have to be followed.
           Typical neighboring profiles are communicator or data logger.
 
-          <p>This functional profile type complements the <i>ReactivePowerAC</i> functional profile, in order to distinguish export from import power.</p>
+          <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+          <ul>
+            <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+            <li><i>Import</i> is the import from grid, a positive value</li>
+            <li><i>Export</i> is the export to grid, a positive value</li>
+          </ul>
+          </p>
+
+          <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+          A value of 0 means tariff-less or total, a positive number a specific tariff register.
+          </p>
         ]]>
       </textElement>
       <language>en</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>

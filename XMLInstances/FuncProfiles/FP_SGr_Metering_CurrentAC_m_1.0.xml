@@ -39,17 +39,14 @@
           Zwecke.
 
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
-             Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+            Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
           <ul>
             <li>Einphasige Geräte geben die Stromstärke über die erste Phase an (CurrentAC1)</li>
             <li>3-phasige Geräte geben die Stromstärke pro Phase an (CurrentAC1, CurrentAC2, CurrentAC3)</li>
           </ul>
-          Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
           </p>
 
-          <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
-             für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
-             (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
+          <p>Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -61,19 +58,15 @@
           <strong>Current measurement</strong><br>
           Monitoring functional profile for power generators and consumers for reflecting the current.
 
-          <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
-             Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+          <p>This functional profile allows measurement of the current on a single phase of three phases.
+            One of the following approaches must be applied when implementing the functional profile:
           <ul>
             <li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
             <li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
           </ul>
+          </p>
 
-          <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
-
-          <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
-             either for the entire device or for individual datapoints
-             (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
-             </p>
+          <p>The implementation of a data point measuring the current on the neutral conductor is optional (via data point CurrentACN).</p>
         ]]>
       </textElement>
       <language>en</language>
