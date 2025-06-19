@@ -144,7 +144,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerACL2></dataPointName>
+        <dataPointName>ReactivePowerACL2</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>

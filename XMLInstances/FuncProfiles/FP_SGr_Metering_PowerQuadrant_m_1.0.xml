@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Review</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2022-01-01</date>
+      <author>IBT/cb</author>
+      <comment>Initial Draft</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2025-06-18</date>
+      <author>SGr/mkr</author>
+      <comment>Changed data type, added description</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>Metering</functionalProfileCategory>
+      <functionalProfileType>PowerQuadrant</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <p>Der Power-Quadrant gibt die Lastverteilung zwischen Wirk- und Blindleistung und zwischen Bezug und Einspeisung geometrisch an:
+          <ul>
+            <li>1 = Wirkleistung Bezug, Blindleistung Bezug</li>
+            <li>2 = Wirkleistung Einspeisung, Blindleistung Bezug</li>
+            <li>3 = Wirkleistung Einspeisung, Blindleistung Einspeisung</li>
+            <li>4 = Wirkleistung Bezug, Blindleistung Einspeisung</li>
+          </ul>
+          </p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <p>The power quadrant geometrically reflects the load distribution between active and reactive power and between import and export:
+          <ul>
+            <li>1 = active import, reactive import</li>
+            <li>2 = active export, reactive import</li>
+            <li>3 = active export, reactive export</li>
+            <li>4 = active import, reactive export</li>
+          </ul>
+          </p>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PowerQuadrantACtot</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <int16U />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Erfassung des gesamten Power-Quadrant</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the total power quadrant</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PowerQuadrantACL1</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <int16U />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Erfassung des Power-Quadrant in Phase 1</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the power quadrant in phase 1</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PowerQuadrantACL2</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <int16U />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Erfassung des Power-Quadrant in Phase 2</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the power quadrant in phase 2</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PowerQuadrantACL3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <int16U />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Erfassung des Power-Quadrant in Phase 3</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the power quadrant in phase 3</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
