@@ -4,7 +4,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>1.0.0</version>
       <date>2023-04-21</date>
@@ -13,7 +13,7 @@
     </changeLog>
     <changeLog>
       <version>1.1.0</version>
-      <date>2025-06-18</date>
+      <date>2025-06-27</date>
       <author>SGr/mkr</author>
       <comment>Generische Attribute, Textanpassungen</comment>
     </changeLog>
