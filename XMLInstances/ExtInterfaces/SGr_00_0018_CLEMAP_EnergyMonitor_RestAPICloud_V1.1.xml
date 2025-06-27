@@ -16,9 +16,9 @@
     </changeLog>
     <changeLog>
       <version>1.1.0</version>
-      <date>2025-04-29</date>
+      <date>2025-06-18</date>
       <author>SGr/mkr</author>
-      <comment>Corrections and additional metering FPs</comment>
+      <comment>Corrections and additional metering FPs, use generic attributes</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -155,7 +155,7 @@
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
@@ -164,8 +164,7 @@
                 <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
-                  Zwecke.
+                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
 
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
                     einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
@@ -177,9 +176,17 @@
                   </ul>
                   </p>
 
-                  <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
-                    für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
-                    (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
+                  <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+                  <ul>
+                    <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+                    <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+                    <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+                  </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+                  Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+                  </p>
                 ]]>
               </textElement>
               <language>de</language>
@@ -189,7 +196,7 @@
                 <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the active power.
+                  Monitoring functional profile for power generators and consumers for measuring the active power.
 
                   <p>With this functional profile you can measure the total active power as well as the active power of
                     the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
@@ -200,15 +207,53 @@
                   </ul>
                   </p>
 
-                  <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
-                    either for the entire device or for individual datapoints
-                    (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
-                    </p>
+                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+                  <ul>
+                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+                    <li><i>Import</i> is the import from grid, a positive value</li>
+                    <li><i>Export</i> is the export to grid, a positive value</li>
+                  </ul>
+                  </p>
+
+                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
+                  </p>
                 ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
           </functionalProfile>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MeteringDirection</name>
+              <dataType>
+                <enum>
+                  <enumEntry>
+                    <literal>Net</literal>
+                    <description>Net or balance value</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Import</literal>
+                    <description>Import from grid</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Export</literal>
+                    <description>Export to grid</description>
+                  </enumEntry>
+                </enum>
+              </dataType>
+              <value>Net</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MeteringTariffNr</name>
+              <dataType>
+                <int32 />
+              </dataType>
+              <value>0</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -362,7 +407,7 @@
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
@@ -371,7 +416,7 @@
                 <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Blindleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
+                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Blindleistung im Wechselstromnetz, für
                   regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
 
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtblindleistung wie auch die Blindleistung der drei
@@ -383,13 +428,25 @@
                     <li>3-phasige Geräte mit Einzelphasen- und Gesamtblindleistungsmessung geben alle Datenpunkte an</li>
                   </ul>
                   </p>
+
+                  <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+                  <ul>
+                    <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+                    <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+                    <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+                  </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+                  Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+                  </p>
                 ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                  <![CDATA[
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Reactive Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the reactive power.
@@ -402,11 +459,54 @@
                     <li>Three-phase devices with measurement of the total reactive power use all data points</li>
                   </ul>
                   </p>
+
+                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+                  <ul>
+                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+                    <li><i>Import</i> is the import from grid, a positive value</li>
+                    <li><i>Export</i> is the export to grid, a positive value</li>
+                  </ul>
+                  </p>
+
+                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
+                  </p>
                 ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
           </functionalProfile>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MeteringDirection</name>
+              <dataType>
+                <enum>
+                  <enumEntry>
+                    <literal>Net</literal>
+                    <description>Net or balance value</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Import</literal>
+                    <description>Import from grid</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Export</literal>
+                    <description>Export to grid</description>
+                  </enumEntry>
+                </enum>
+              </dataType>
+              <value>Net</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MeteringTariffNr</name>
+              <dataType>
+                <int32 />
+              </dataType>
+              <value>0</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -480,7 +580,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ReactivePowerACL2></dataPointName>
+                <dataPointName>ReactivePowerACL2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -580,11 +680,6 @@
                     <li>3-phasige Geräte in Dreiecksschaltung geben die Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
                   </ul>
                   </p>
-
-                  <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
-                    für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
-                    (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
-                  </p>
                 ]]>
               </textElement>
               <language>de</language>
@@ -603,11 +698,6 @@
                     <li>Three-phase devices in star configuration provide the voltage per phase vs. neutral using three data points (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
                     <li>Three-phase devices in delta configuration provide the voltage between phases using three data points (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
                   </ul>
-                  </p>
-
-                  <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
-                    either for the entire device or for individual datapoints
-                    (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
                   </p>
                 ]]>
               </textElement>
@@ -753,12 +843,9 @@
                     <li>Einphasige Geräte geben die Stromstärke über die erste Phase an (CurrentAC1)</li>
                     <li>3-phasige Geräte geben die Stromstärke pro Phase an (CurrentAC1, CurrentAC2, CurrentAC3)</li>
                   </ul>
-                  Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
                   </p>
 
-                  <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
-                    für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
-                    (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
+                  <p>Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.</p>
                 ]]>
               </textElement>
               <language>de</language>
@@ -770,19 +857,15 @@
                   <strong>Current measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the current.
 
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
-                    Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+                  <p>This functional profile allows measurement of the current on a single phase of three phases.
+                    One of the following approaches must be applied when implementing the functional profile:
                   <ul>
                     <li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
                     <li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
                   </ul>
+                  </p>
 
-                  <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
-
-                  <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
-                    either for the entire device or for individual datapoints
-                    (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
-                    </p>
+                  <p>The implementation of a data point measuring the current on the neutral conductor is optional (via data point CurrentACN).</p>
                 ]]>
               </textElement>
               <language>en</language>
