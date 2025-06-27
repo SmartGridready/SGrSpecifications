@@ -7,7 +7,7 @@
   <manufacturerName>Smart Energy Engineering</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Draft</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.0</version>
       <date>2025-05-05</date>
@@ -15,10 +15,10 @@
       <comment>First Draft</comment>
     </changeLog>
     <changeLog>
-      <version>0.1.1</version>
-      <date>2025-05-19</date>
+      <version>1.0.0</version>
+      <date>2025-06-27</date>
       <author>SGr/mkr</author>
-      <comment>Distinguish consumption/production FP, metadata updates</comment>
+      <comment>Published</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -75,9 +75,9 @@
     <manufacturerSpecificationIdentification>SEE</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
-      <subReleaseVersionNumber>1</subReleaseVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
