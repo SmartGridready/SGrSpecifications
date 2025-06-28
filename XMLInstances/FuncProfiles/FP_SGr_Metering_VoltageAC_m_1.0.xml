@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Published</state>
     <changeLog>
@@ -40,21 +40,16 @@
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Spannung</strong><br />
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
           Zwecke.
 
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Spannung auf einer Phase wie auch auf drei Phasen.
-             Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+            Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
           <ul>
             <li>Einphasige Geräte geben die Spannung über die erste Phase an (VoltageACL1_N)</li>
             <li>3-phasige Geräte in Sternschaltung geben die Spannung pro Phase gegen den Nullleiter an (VoltageACL1_N, VoltageACL2_N, VoltageACL2_N).</li>
             <li>3-phasige Geräte in Dreiecksschaltung geben die Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
           </ul>
-          </p>
-
-          <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
-             für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
-             (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
           </p>
         ]]>
       </textElement>
@@ -68,17 +63,12 @@
           Monitoring functional profile for power generators and consumers for reflecting the voltage.
 
           <p>This functional profile allows measurement of the voltage on a single phase of three phases.
-             One of the following approaches must be applied when implementing the functional profile:
+            One of the following approaches must be applied when implementing the functional profile:
           <ul>
             <li>Single-phase devices use the total voltage with the first data point (VoltageACL1_N)</li>
             <li>Three-phase devices in star configuration provide the voltage per phase vs. neutral using three data points (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
             <li>Three-phase devices in delta configuration provide the voltage between phases using three data points (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
           </ul>
-          </p>
-
-          <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
-             either for the entire device or for individual datapoints
-             (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
           </p>
         ]]>
       </textElement>
@@ -92,7 +82,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
@@ -111,7 +101,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
@@ -130,7 +120,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
@@ -149,7 +139,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
@@ -168,7 +158,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
@@ -187,7 +177,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>

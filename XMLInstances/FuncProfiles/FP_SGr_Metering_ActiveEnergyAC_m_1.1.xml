@@ -6,16 +6,16 @@
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.1.1</version>
-      <date>2021-04-03</date>
-      <author>IBT/cb</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
       <date>2023-04-21</date>
       <author>SGr/sz</author>
       <comment>Finalisierung</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2025-06-27</date>
+      <author>SGr/mkr</author>
+      <comment>Generische Attribute, Textanpassungen</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -26,7 +26,7 @@
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -35,12 +35,12 @@
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Energy measurement</strong><br>
-          Monitoring functional profile for power generators and consumers for reflecting the active energy balance.
+          Monitoring functional profile for power generators and consumers for measuring the active energy.
 
           <p>Data is typically recorded by an energy manager (or a billing software).</p>
 
           <p>With this functional profile you can measure the total energy as well as the energy of the three
-             individual phases. One of the following options must be implemented for fulfilling the functional profile:
+            individual phases. One of the following options must be implemented for fulfilling the functional profile:
           <ul>
             <li>Single-phase devices use the total energy data point (ActiveEnergyACtot)</li>
             <li>Three-phase devices without measurement of the total energy use the data points per (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
@@ -48,10 +48,17 @@
           </ul>
           </p>
 
-          <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
-             either for the entire device or for individual datapoints
-             (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
-             </p>
+          <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+          <ul>
+            <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+            <li><i>Import</i> is the import from grid, a positive value</li>
+            <li><i>Export</i> is the export to grid, a positive value</li>
+          </ul>
+          </p>
+
+          <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+          A value of 0 means tariff-less or total, a positive number a specific tariff register.
+          </p>
         ]]>
       </textElement>
       <language>en</language>
@@ -61,13 +68,13 @@
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Wirkenergie</strong><br>
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Wirkenergie.
+          Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
 
           <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
 
           <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
-             der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-             umgesetzt werden:
+            der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+            umgesetzt werden:
           <ul>
             <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
             <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
@@ -75,14 +82,30 @@
           </ul>
           </p>
 
-          <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
-             für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
-             (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
+          <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+          <ul>
+            <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+            <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+            <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+          </ul>
+          </p>
+
+          <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+          Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+          </p>
         ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>

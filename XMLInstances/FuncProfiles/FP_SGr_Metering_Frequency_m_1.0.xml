@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Published</state>
@@ -31,26 +32,26 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <strong>Messung der Frequenz</strong><br>
-          Monitoring Funktionsprofil zur Kontrolle der Netzbelastung.
-          
+          <strong>Messung der Frequenz</strong><br/>
+          Monitoring-Funktionsprofil zur Kontrolle der Netzbelastung.
+
           <p>Abweichungen zur Sollfrequenz sind ein
-             Indikator für die Netzbelastung und können für steuernde und regeltechnische Zwecke verwendet werden.</p>
-        ]]>	
+            Indikator für die Netzbelastung und können für steuernde und regeltechnische Zwecke verwendet werden.</p>
+        ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <strong>Frequency measurement</strong><br>
+          <strong>Frequency measurement</strong><br/>
           Monitoring functional profile for reflecting the network load.
-          
+
           <p>Differences to the nominal frequency indicate the network load and can be used for system control.</p>
-        ]]>	
+        ]]>
       </textElement>
       <language>en</language>
     </legibleDescription>
@@ -62,7 +63,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
-          <float64/>
+          <float64 />
         </dataType>
         <unit>HERTZ</unit>
         <legibleDescription>

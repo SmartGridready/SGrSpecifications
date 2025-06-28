@@ -6,16 +6,16 @@
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.2.2</version>
-      <date>2022-09-29</date>
-      <author>Ergo/mm</author>
-      <comment>Finalisierung Go-Live</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
       <date>2025-02-04</date>
       <author>SGr/mkr</author>
       <comment>Prepare for Publication</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2025-06-27</date>
+      <author>SGr/mkr</author>
+      <comment>Generische Attribute, Textanpassungen</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -26,7 +26,7 @@
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -34,8 +34,20 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
+          Messung der Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
           Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
+
+          <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+          <ul>
+            <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+            <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+            <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+          </ul>
+          </p>
+
+          <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+          Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+          </p>
         ]]>
       </textElement>
       <language>de</language>
@@ -44,13 +56,33 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          Balance measurement of reactive energy: Data acquisition is performed periodically by the CEM (or a billing software), which collects measurements and adds a time stamp.<br />
+          Measurement of reactive energy: Data acquisition is performed periodically by the CEM (or a billing software), which collects measurements and adds a time stamp.<br />
           An energy measurement needs a time stamp for balance purposes, even on the grid provider or aggregator side. Typical neighboring profiles are communicator.
+
+          <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+          <ul>
+            <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+            <li><i>Import</i> is the import from grid, a positive value</li>
+            <li><i>Export</i> is the export to grid, a positive value</li>
+          </ul>
+          </p>
+
+          <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+          A value of 0 means tariff-less or total, a positive number a specific tariff register.
+          </p>
         ]]>
       </textElement>
       <language>en</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>

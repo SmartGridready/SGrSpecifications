@@ -6,16 +6,16 @@
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.2.2</version>
-      <date>2022-11-17</date>
-      <author>Ergo/mm</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
       <date>2025-02-04</date>
       <author>SGr/mkr</author>
       <comment>Prepare for Publication</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.1.0</version>
+      <date>2025-06-18</date>
+      <author>SGr/mkr</author>
+      <comment>Generische Attribute, Textanpassungen</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
@@ -26,7 +26,7 @@
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
@@ -39,6 +39,18 @@
           Je nach Optimierungsanwendung muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
           Bei der Einführung von Leistungstarifen müssen für diese Messung auch regulatorische Vorgaben
           beachtet werden. Typische Nachbarprofile sind Controller oder Datenlogger.
+
+          <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+          <ul>
+            <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+            <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+            <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+          </ul>
+          </p>
+
+          <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+          Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+          </p>
         ]]>
       </textElement>
       <language>de</language>
@@ -52,11 +64,31 @@
           Depending on the optimization application, a measurement interval of 10 times/second up to once a minute is required.
           After introduction of demand tariffs regulatory standards have to be followed.
           Typical neighboring profiles are communicator or data logger.
+
+          <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+          <ul>
+            <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+            <li><i>Import</i> is the import from grid, a positive value</li>
+            <li><i>Export</i> is the export to grid, a positive value</li>
+          </ul>
+          </p>
+
+          <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+          A value of 0 means tariff-less or total, a positive number a specific tariff register.
+          </p>
         ]]>
       </textElement>
       <language>en</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>

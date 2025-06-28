@@ -6,23 +6,23 @@
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.2.2</version>
-      <date>2022-11-17</date>
-      <author>Ergo/mm</author>
-      <comment>Vorbereitung beta test</comment>
+      <version>0.1.0</version>
+      <date>2022-01-01</date>
+      <author>IBT/cb</author>
+      <comment>Initial Draft</comment>
     </changeLog>
     <changeLog>
       <version>1.0.0</version>
-      <date>2023-04-21</date>
-      <author>SGr/sz</author>
-      <comment>Finalisierung</comment>
+      <date>2025-06-27</date>
+      <author>SGr/mkr</author>
+      <comment>Changed data type, added description, publish</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>Metering</functionalProfileCategory>
-      <functionalProfileType>ReactivePowerAC</functionalProfileType>
+      <functionalProfileType>PowerQuadrant</functionalProfileType>
       <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
@@ -34,17 +34,12 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <strong>Messung der Blindleistung</strong><br>
-          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
-          regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
-
-          <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtblindleistung wie auch die Blindleistung der drei
-             einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-             umgesetzt werden:
+          <p>Der Power-Quadrant gibt die Lastverteilung zwischen Wirk- und Blindleistung und zwischen Bezug und Einspeisung geometrisch an:
           <ul>
-            <li>Einphasige Geräte geben die Gesamtblindleistung an (ReactivePowerACtot)</li>
-            <li>3-phasige Geräte ohne Gesamtblindleistungsmessung geben die Blindleistung pro Phase an (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
-            <li>3-phasige Geräte mit Einzelphasen- und Gesamtblindleistungsmessung geben alle Datenpunkte an</li>
+            <li>1 = Wirkleistung Bezug, Blindleistung Bezug</li>
+            <li>2 = Wirkleistung Einspeisung, Blindleistung Bezug</li>
+            <li>3 = Wirkleistung Einspeisung, Blindleistung Einspeisung</li>
+            <li>4 = Wirkleistung Bezug, Blindleistung Einspeisung</li>
           </ul>
           </p>
         ]]>
@@ -53,17 +48,14 @@
     </legibleDescription>
     <legibleDescription>
       <textElement>
-          <![CDATA[
+        <![CDATA[
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <strong>Reactive Power Measurement</strong><br>
-          Monitoring functional profile for power generators and consumers for reflecting the reactive power.
-
-          <p>With this functional profile you can measure the total active power as well as the active power of the three individual phases.
-             One of the following options must be implemented for fulfilling the functional profile:
+          <p>The power quadrant geometrically reflects the load distribution between active and reactive power and between import and export:
           <ul>
-            <li>Single-phase devices use the total reactive power data point (ReactivePowerACtot)</li>
-            <li>Three-phase devices without measurement of the total reactive power use the data points per phase (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
-            <li>Three-phase devices with measurement of the total reactive power use all data points</li>
+            <li>1 = active import, reactive import</li>
+            <li>2 = active export, reactive import</li>
+            <li>3 = active export, reactive export</li>
+            <li>4 = active import, reactive export</li>
           </ul>
           </p>
         ]]>
@@ -74,76 +66,76 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerACtot</dataPointName>
+        <dataPointName>PowerQuadrantACtot</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64 />
+          <int16U />
         </dataType>
-        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Erfassung der gesamten Blindleistung</textElement>
+          <textElement>Erfassung des gesamten Power-Quadrant</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Total reactive power measurement</textElement>
+          <textElement>Measurement of the total power quadrant</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerACL1</dataPointName>
+        <dataPointName>PowerQuadrantACL1</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64 />
+          <int16U />
         </dataType>
-        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Erfassung der Blindleistung Phase 1</textElement>
+          <textElement>Erfassung des Power-Quadrant in Phase 1</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Reactive power measurement of phase 1</textElement>
+          <textElement>Measurement of the power quadrant in phase 1</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerACL2></dataPointName>
+        <dataPointName>PowerQuadrantACL2</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64 />
+          <int16U />
         </dataType>
-        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Erfassung der Blindleistung Phase 2</textElement>
+          <textElement>Erfassung des Power-Quadrant in Phase 2</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Reactive power measurement of phase 2</textElement>
+          <textElement>Measurement of the power quadrant in phase 2</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerACL3</dataPointName>
+        <dataPointName>PowerQuadrantACL3</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float64 />
+          <int16U />
         </dataType>
-        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Erfassung der Blindleistung Phase 3</textElement>
+          <textElement>Erfassung des Power-Quadrant in Phase 3</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Reactive power measurement of phase 3</textElement>
+          <textElement>Measurement of the power quadrant in phase 3</textElement>
           <language>en</language>
         </legibleDescription>
       </dataPoint>
