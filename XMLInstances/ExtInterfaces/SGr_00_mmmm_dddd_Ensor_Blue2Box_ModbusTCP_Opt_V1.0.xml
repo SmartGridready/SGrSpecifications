@@ -11,7 +11,7 @@
     <changeLog>
       <version>1.0.0</version>
       <date>2025-03-05</date>
-      <author>Matthias Krebs, FHNW</author>
+      <author>SGr/mkr</author>
       <comment>Initial declaration</comment>
     </changeLog>
   </releaseNotes>
@@ -78,7 +78,7 @@
               <li>Ensor eRS801</li>
               <li>Ensor eRS301</li>
               <li>Metcom MCS301</li>
-              <li>Any other DSMR/P1 (from version 5) compatible meter</li>
+              <li>Jeder mit DSMR/P1 (ab Version 5) kompatible Stromzähler</li>
             </ul>
           </p>
           <p>
