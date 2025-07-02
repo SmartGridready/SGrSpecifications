@@ -7,12 +7,18 @@
   <manufacturerName>CLEMAP</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.0</version>
       <date>2025-03-18</date>
       <author>SGr/mkr</author>
       <comment>Draft for Testing</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2025-07-01</date>
+      <author>SGr/mkr</author>
+      <comment>Published</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -34,8 +40,8 @@
     <manufacturerSpecificationIdentification>CLEMAP</manufacturerSpecificationIdentification>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
