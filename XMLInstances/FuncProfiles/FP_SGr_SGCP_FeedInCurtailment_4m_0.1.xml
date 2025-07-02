@@ -7,7 +7,7 @@
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-07-01</date>
+      <date>2025-07-02</date>
       <author>kear</author>
       <comment>First Draft</comment>
     </changeLog>
@@ -30,7 +30,7 @@
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Controlling functional profile for the curtailment of PV grid feed-in</b></p>
           <p>This functional profile is used by a smart grid operator or flexibility manager (communicator) to control a PV system via EMS or inverter and limit its AC feed-in to the grid. The system can be controlled via a local interface (Modbus TCP / IEC-61850) or a cloud API.</p>
-          <p>Note: If the requested active power cannot be achieved within a given time limit, the EEA must be shut off.</p>
+          <p>Note: If the requested active power cannot be achieved within a given time limit, the power plant must be shut off.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -41,7 +41,7 @@
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV-Einspeisung</b></p>
           <p>Dieses Funktionsprofil wird vom Smart-Grid-Operator oder Flexibilitätsmanager (Communicator) verwendet, um eine PV-Anlage per EMS oder Wechselrichter anzusteuern und die AC-seitige Einspeisung zu begrenzen. Die Regelung kann über eine lokale Protokoll-Schnittstelle (z. B. Modbus TCP / IEC-61850) oder ein Cloud-API erfolgen.</p>
-          <p>Ergänzung: Kann der Wirkleistungssollwert innerhalb des vorgegebenen Zeitraums nicht erreicht werden, ist die EEA abzuschalten.</p>
+          <p>Ergänzung: Kann der Wirkleistungssollwert innerhalb des vorgegebenen Zeitraums nicht erreicht werden, ist die Anlage abzuschalten.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -52,7 +52,7 @@
       <dataPoint>
         <dataPointName>MaximumFeedInPower</dataPointName>
         <dataDirection>RW</dataDirection>
-        <presenceLevel>M</presenceLevel>
+        <presenceLevel>R</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -77,11 +77,11 @@
         </dataType>
         <unit>PERCENT</unit>
         <legibleDescription>
-          <textElement>Maximum feed-in limit as percentage of nominal AC active power [0%...100%]</textElement>
+          <textElement>Maximum feed-in limit as percentage of nominal active power [0%...100%]</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Maximale einzuspeisende Wirkleistung als Prozentwert der Nennleistung [0%...100%]</textElement>
+          <textElement>Maximale einzuspeisende Wirkleistung als Prozentwert der Nenn-Wirkleistung [0%...100%]</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -126,7 +126,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActivePowerProduced</dataPointName>
+        <dataPointName>ActivePowerOutput</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -134,18 +134,18 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Active power produced by the inverter (EEA)</textElement>
+          <textElement>Active power at the inverter output</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Wirkleistung am Ausgang des Wechselrichters (EEA)</textElement>
+          <textElement>Wirkleistung am Ausgang des Wechselrichters</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerProduced</dataPointName>
+        <dataPointName>ReactivePowerOutput</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -153,11 +153,11 @@
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
-          <textElement>Reactive power produced by the inverter (EEA)</textElement>
+          <textElement>Reactive power at the inverter output</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Blindleistung am Ausgang des Wechselrichters (EEA)</textElement>
+          <textElement>Blindleistung am Ausgang des Wechselrichters</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -265,14 +265,13 @@
         <dataType>
           <float64 />
         </dataType>
-        <!-- TODO this requires W/m2 -->
-        <unit>WATTS</unit>
+        <unit>WATTS_PER_SQUARE_METER</unit>
         <legibleDescription>
-          <textElement>Irradiation from Sensorbox in real time, if available (note: W/m2 is not supported)</textElement>
+          <textElement>Irradiation from sensor box, if available</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Einstrahlung aus Sensorbox in Echtzeit, wenn vorhanden (Hinweis: W/m2 ist nicht unterstützt)</textElement>
+          <textElement>Einstrahlung aus Sensor-Box, wenn vorhanden</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -306,7 +305,7 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Fallback feed-in limit active power, if upstream is unreachable</textElement>
+          <textElement>Fallback feed-in limit active power, when the controlled system is unreachable</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
@@ -325,7 +324,7 @@
         </dataType>
         <unit>PERCENT</unit>
         <legibleDescription>
-          <textElement>Fallback feed-in limit as percentage of active power, if upstream is unreachable</textElement>
+          <textElement>Fallback feed-in limit as percentage of active power, when the controlled system is unreachable</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
@@ -334,7 +333,5 @@
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
-
-
   </dataPointList>
 </FunctionalProfileFrame>
