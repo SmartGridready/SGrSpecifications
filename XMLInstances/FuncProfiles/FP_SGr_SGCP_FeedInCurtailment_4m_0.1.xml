@@ -7,7 +7,7 @@
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-06-30</date>
+      <date>2025-07-01</date>
       <author>kear</author>
       <comment>First Draft</comment>
     </changeLog>
@@ -27,10 +27,10 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Controlling functional profile for the curtailment of PV grid feed-in</b></p>
           <p>This functional profile is used by a smart grid operator or flexibility manager (communicator) to control a PV system via EMS or inverter and limit its AC feed-in to the grid. The system can be controlled via a local interface (Modbus TCP / IEC-61850) or a cloud API.</p>
-          <p>Note: If the requested active power cannot be achieved within a given time limit, the PV system must be shut off.</p>
+          <p>Note: If the requested active power cannot be achieved within a given time limit, the EEA must be shut off.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -38,7 +38,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV-Einspeisung</b></p>
           <p>Dieses Funktionsprofil wird vom Smart-Grid-Operator oder Flexibilitätsmanager (Communicator) verwendet, um eine PV-Anlage per EMS oder Wechselrichter anzusteuern und die AC-seitige Einspeisung zu begrenzen. Die Regelung kann über eine lokale Protokoll-Schnittstelle (z. B. Modbus TCP / IEC-61850) oder ein Cloud-API erfolgen.</p>
           <p>Ergänzung: Kann der Wirkleistungssollwert innerhalb des vorgegebenen Zeitraums nicht erreicht werden, ist die EEA abzuschalten.</p>
@@ -71,7 +71,7 @@
       <dataPoint>
         <dataPointName>MaximumFeedInPercent</dataPointName>
         <dataDirection>RW</dataDirection>
-        <presenceLevel>M</presenceLevel>
+        <presenceLevel>R</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -82,6 +82,25 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>Maximale einzuspeisende Wirkleistung als Prozentwert der Nennleistung [0%...100%]</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerSetPoint</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Set point of the reactive power factor [-0.9...0.9]</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Sollwert für den Blindleistungsfaktor [-0.9...0.9]</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -107,7 +126,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ACProduction</dataPointName>
+        <dataPointName>ActivePowerProduced</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -115,30 +134,30 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>AC production from inverter in real time</textElement>
+          <textElement>Active power produced by the inverter (EEA)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>AC-Ausgangsleistung des Wechselrichters in Echtzeit</textElement>
+          <textElement>Wirkleistung am Ausgang des Wechselrichters (EEA)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerProd</dataPointName>
-        <dataDirection>RW</dataDirection>
+        <dataPointName>ReactivePowerProduced</dataPointName>
+        <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
-        <unit>NONE</unit>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
-          <textElement>feed-in reactive power set at inverter [-0.9...0.9]</textElement>
+          <textElement>Reactive power produced by the inverter (EEA)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Einzuspeisende Blindleistung am Wechselrichter [-0.9...0.9]</textElement>
+          <textElement>Blindleistung am Ausgang des Wechselrichters (EEA)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -153,11 +172,11 @@
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Active power feed-in in real time</textElement>
+          <textElement>Active power feed-in at grid connection point</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Eingespeiste Wirkleistung in Echtzeit</textElement>
+          <textElement>Eingespeiste Wirkleistung am Netzanschlusspunkt</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -172,11 +191,11 @@
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
-          <textElement>Reactive power feed-in in real time</textElement>
+          <textElement>Reactive power feed-in at grid connection point</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Eingespeiste Blindleistung in Echtzeit</textElement>
+          <textElement>Eingespeiste Blindleistung am Netzanschlusspunkt</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -249,11 +268,11 @@
         <!-- TODO this requires W/m2 -->
         <unit>WATTS</unit>
         <legibleDescription>
-          <textElement>Irradiation from Sensorbox in real time, if available</textElement>
+          <textElement>Irradiation from Sensorbox in real time, if available (note: W/m2 is not supported)</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Einstrahlung aus Sensorbox in Echtzeit, wenn vorhanden</textElement>
+          <textElement>Einstrahlung aus Sensorbox in Echtzeit, wenn vorhanden (Hinweis: W/m2 ist nicht unterstützt)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
