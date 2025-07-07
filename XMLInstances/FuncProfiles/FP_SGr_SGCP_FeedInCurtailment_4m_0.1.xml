@@ -29,7 +29,17 @@
         <![CDATA[
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Controlling functional profile for the curtailment of PV grid feed-in</b></p>
+
           <p>This functional profile is used by a smart grid operator or flexibility manager (communicator) to control a PV system via EMS or inverter and limit its AC feed-in to the grid. The system can be controlled via a local interface (Modbus TCP / IEC-61850) or a cloud API.</p>
+
+          <p>One of the following approaches of voltage measurement must be applied when implementing the functional profile:
+          <ul>
+            <li>Single-phase devices use the total voltage with the first data point (VoltageACL1_N)</li>
+            <li>Three-phase devices in star configuration provide the voltage per phase vs. neutral using three data points (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
+            <li>Three-phase devices in delta configuration provide the voltage between phases using three data points (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+          </ul>
+          </p>
+
           <p>Note: If the requested active power cannot be achieved within a given time limit, the power plant must be shut off.</p>
         ]]>
       </textElement>
@@ -40,7 +50,17 @@
         <![CDATA[
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV-Einspeisung</b></p>
+
           <p>Dieses Funktionsprofil wird vom Smart-Grid-Operator oder Flexibilitätsmanager (Communicator) verwendet, um eine PV-Anlage per EMS oder Wechselrichter anzusteuern und die AC-seitige Einspeisung zu begrenzen. Die Regelung kann über eine lokale Protokoll-Schnittstelle (z. B. Modbus TCP / IEC-61850) oder ein Cloud-API erfolgen.</p>
+
+          <p>Eine der folgenden Varianten der Spannungsmessung muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+          <ul>
+            <li>Einphasige Geräte geben die Spannung über die erste Phase an (VoltageACL1_N)</li>
+            <li>3-phasige Geräte in Sternschaltung geben die Spannung pro Phase gegen den Nullleiter an (VoltageACL1_N, VoltageACL2_N, VoltageACL2_N).</li>
+            <li>3-phasige Geräte in Dreiecksschaltung geben die Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+          </ul>
+          </p>
+
           <p>Ergänzung: Kann der Wirkleistungssollwert innerhalb des vorgegebenen Zeitraums nicht erreicht werden, ist die Anlage abzuschalten.</p>
         ]]>
       </textElement>
@@ -254,6 +274,63 @@
         <legibleDescription>
           <textElement>Erfassung der Spannung zwischen Phase B-C</textElement>
           <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL1_N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phase 1 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL2_N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phase 2 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL3_N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phase 3 and neutral</textElement>
+          <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
