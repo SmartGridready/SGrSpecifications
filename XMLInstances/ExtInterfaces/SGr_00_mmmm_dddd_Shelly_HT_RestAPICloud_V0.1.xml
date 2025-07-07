@@ -109,28 +109,36 @@
               <functionalProfileType>DeviceInformation</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Ermöglicht das Auslesen des Gerätestatus.
+                <![CDATA[
+                  <p>Functional profile used to read a device ID used to identify a device.</p>
+                  <p>Further on, this functional profile that can be used for vendor specific information and data points.
+                  It allows the handling of data points, which are valid for the whole device.</p>
+                ]]>
               </textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                Allows reading the device status.
+                <![CDATA[
+                  <p>Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts.</p>
+                  <p>Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden.
+                  Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.</p>
+                ]]>
               </textElement>
-              <language>en</language>
+              <language>de</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ConnectionStatus</dataPointName>
+                <dataPointName>Online</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <boolean />
