@@ -9,13 +9,7 @@
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
-      <version>1.0.0</version>
-      <date>2025-03-05</date>
-      <author>SGr/mkr</author>
-      <comment>Initial declaration</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.1.0</version>
+      <version>0.1.0</version>
       <date>2025-03-05</date>
       <author>SGr/mkr</author>
       <comment>Draft for Testlab</comment>
@@ -43,7 +37,7 @@
           </p>
           <p>
             <b>Notes:</b><br />
-            This EID supports all FPs mandatory in upcoming VSE specification.
+            This EID supports the minimal FPs mandatory in upcoming VSE specification.
           <p>
         ]]>
       </textElement>
@@ -71,7 +65,7 @@
           </p>
           <p>
             <b>Hinweise:</b><br />
-            Diese EID enthält alle FPs, die in der kommenden VSE-Kundenschnittstelle vorgeschrieben sind.
+            Diese EID enthält die minimalen FPs, die in der kommenden VSE-Kundenschnittstelle vorgeschrieben sind.
           <p>
         ]]>
       </textElement>
@@ -85,11 +79,11 @@
     <manufacturerSpecificationIdentification>Ensor</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>1</primaryVersionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -252,7 +246,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
 
@@ -284,7 +278,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active power.
 
@@ -381,111 +375,6 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>21.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>48</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>41.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>50</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>61.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>52</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -505,7 +394,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
 
@@ -537,7 +426,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active power.
 
@@ -606,6 +495,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -623,112 +513,6 @@
                   <int32U />
                 </modbusDataType>
                 <address>30</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>22.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>54</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>42.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>56</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>62.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>58</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -758,7 +542,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active energy.
 
@@ -791,7 +575,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
 
@@ -863,16 +647,17 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>1.8.0</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Total energy measurement</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -909,7 +694,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active energy.
 
@@ -942,7 +727,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
 
@@ -1014,16 +799,17 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.8.0</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Total energy measurement</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -1060,7 +846,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Spannung</strong><br />
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
@@ -1080,7 +866,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Voltage measurement</strong><br />
                   Monitoring functional profile for power generators and consumers for reflecting the voltage.
 
@@ -1225,7 +1011,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Stromstärke</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
@@ -1246,7 +1032,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the current.
 
@@ -1273,7 +1059,6 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
                 </alternativeNames>
@@ -1309,7 +1094,6 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
                 </alternativeNames>
@@ -1345,7 +1129,6 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
                 </alternativeNames>

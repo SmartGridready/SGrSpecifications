@@ -3,182 +3,201 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Ensor Blue2Box for Optimization</deviceName>
-  <manufacturerName>Ensor</manufacturerName>
+  <deviceName>WhatWatt Go MQTT VSE</deviceName>
+  <manufacturerName>WhatWatt</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Published</state>
+    <state>Draft</state>
     <changeLog>
-      <version>1.0.0</version>
-      <date>2025-03-05</date>
+      <version>0.1.0</version>
+      <date>2025-01-15</date>
       <author>SGr/mkr</author>
-      <comment>Initial declaration</comment>
+      <comment>Draft for Testlab</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[
-          <p>
-            Blue2Box is a cutting-edge technology meter adapter that provides customer data in SCADA Modbus TCP or RTU and other protocols such as M-Bus. By utilizing the meter's DMSR/P1 interface Industry 4.0 functionality is also enabled.
-          </p>
-          <p>
-            <b>Examples of compatible smart meters:</b><br />
-            <ul>
-              <li>Ensor eRS801</li>
-              <li>Ensor eRS301</li>
-              <li>Metcom MCS301</li>
-              <li>Any other DSMR/P1 (from version 5) compatible meter</li>
-            </ul>
-          </p>
-          <p>
-            <b>Prerequisites:</b><br />
-            The electricity meters used must also output the defined data points at the DSMR/P1 interface.
-          </p>
-          <p>
-            <b>Notes:</b><br />
-            <ul>
-              <li>
-                This EID includes most mandatory functional profiles of the upcoming VSE customer interface specification:<br />
-                <ul>
-                  <li>Smart Meter ID</li>
-                  <li>Active Power Import Total (+P)</li>
-                  <li>Active Power Import (L1 - L3) (+P)</li>
-                  <li>Active Power Export Total (-P)</li>
-                  <li>Active Power Export (L1 - L3) (-P)</li>
-                  <li>Active Energy Import Total (+A)</li>
-                  <li>Active Energy Export Total (-A)</li>
-                  <li>Voltage (L1 - L3)</li>
-                  <li>Current (L1 - L3)</li>
-                </ul>
-              </li>
-              <li>
-                The following use cases are covered:<br />
-                <ul>
-                  <li>Optimization for local load management</li>
-                  <li>Optimization for PV own usage</li>
-                </ul>
-              </li>
-            </ul>
-          <p>
-        ]]>
-      </textElement>
-      <language>en</language>
-      <uri>https://www.ensor.com/</uri>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>
-        <![CDATA[
-          <p>
-            Blue2Box ist ein hochmoderner Zählerdaten-Adapter, der Kundendaten in SCADA Modbus TCP oder RTU und anderen Protokollen wie M-Bus bereitstellt. Durch die Nutzung der DMSR/P1-Schnittstelle des Zählers wird auch Industrie 4.0-Funktionalität ermöglicht.
-          </p>
-          <p>
-            <b>Beispiele kompatibler Smart-Meter:</b><br />
-            <ul>
-              <li>Ensor eRS801</li>
-              <li>Ensor eRS301</li>
-              <li>Metcom MCS301</li>
-              <li>Jeder mit DSMR/P1 (ab Version 5) kompatible Stromzähler</li>
-            </ul>
-          </p>
-          <p>
-            <b>Voraussetzungen:</b><br />
-            Die verwendeten Stromzähler müssen die definierten Datenpunkte auch an der DSMR/P1-Schnittstelle ausgeben.
-          </p>
-          <p>
-            <b>Hinweise:</b><br />
-            <ul>
-              <li>
-                Diese EID enthält einen Grossteil der obligatorischen Funktionsprofile aus der kommenden Spezifikation der VSE-Kundenschnittstelle:<br />
-                <ul>
-                  <li>Smart Meter ID</li>
-                  <li>Wirkleistung Bezug Total (+P)</li>
-                  <li>Wirkleistung Bezug (L1 - L3) (+P)</li>
-                  <li>Wirkleistung Einspeisung Total (-P)</li>
-                  <li>Wirkleistung Einspeisung (L1 - L3) (-P)</li>
-                  <li>Wirkenergie Bezug Total (+A)</li>
-                  <li>Wirkenergie Einspeisung Total (-A)</li>
-                  <li>Spannung (L1 - L3)</li>
-                  <li>Strom (L1 - L3)</li>
-                </ul>
-              </li>
-              <li>
-                Die folgenden Anwendungsfälle sind abgedeckt:<br />
-                <ul>
-                  <li>Optimierung für lokales Lastmanagement</li>
-                  <li>Optimierung für PV-Eigenverbrauch</li>
-                </ul>
-              </li>
-            </ul>
-          <p>
+        <![CDATA[ 
+          <p>whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.</p>
+          <p>Der konfigurierte MQTT-Topic-Pfad muss der EID als Parameter mitgegeben werden.</p>
+          <p>Das Topic-Template muss folgendermassen aussehen:</p>
+          <code>
+          {
+            "P_In": ${1_7_0},
+            "P_Out": ${2_7_0},
+            "E_In": ${1_8_0},
+            "E_Out": ${2_8_0},
+            "I_P1": ${31_7_0},
+            "I_P2": ${51_7_0},
+            "I_P3": ${71_7_0},
+            "V_P1": ${32_7_0},
+            "V_P2": ${52_7_0},
+            "V_P3": ${72_7_0},
+            "Meter": {
+              "Id": "${meter.id}",
+              "DateTime": "${meter.date_time}"
+            }
+          }
+          </code>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.ensor.com/</uri>
+      <uri>https://whatwatt.ch/de/product</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
-    <isLocalControl>true</isLocalControl>
-    <softwareRevision>0.6.12</softwareRevision>
+    <isLocalControl>false</isLocalControl>
+    <softwareRevision>1.1.22</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <manufacturerSpecificationIdentification>Ensor</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>1</primaryVersionNumber>
-      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>slave_id</name>
+      <name>broker_host</name>
       <dataType>
-        <int16 />
+        <string />
       </dataType>
-      <defaultValue>1</defaultValue>
+      <defaultValue>localhost</defaultValue>
       <configurationDescription>
-        <textElement>Modbus slave ID.</textElement>
+        <textElement>Message broker hostname or IP address.</textElement>
         <language>en</language>
-        <label>Modbus slave ID</label>
+        <label>Broker Hostname</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
+        <language>de</language>
+        <label>Broker-Hostname</label>
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
-      <name>tcp_address</name>
+      <name>broker_port</name>
+      <dataType>
+        <int32 />
+      </dataType>
+      <defaultValue>1883</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TCP port.</textElement>
+        <language>en</language>
+        <label>Broker Port</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TCP-Port.</textElement>
+        <language>de</language>
+        <label>Broker-Port</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls</name>
+      <dataType>
+        <boolean />
+      </dataType>
+      <defaultValue>false</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS.</textElement>
+        <language>en</language>
+        <label>Broker TLS</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS.</textElement>
+        <language>de</language>
+        <label>Broker-TLS</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_tls_verify</name>
+      <dataType>
+        <boolean />
+      </dataType>
+      <defaultValue>false</defaultValue>
+      <configurationDescription>
+        <textElement>Message broker TLS certificate verification.</textElement>
+        <language>en</language>
+        <label>Broker TLS Verification</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
+        <language>de</language>
+        <label>Broker-TLS-Verifizierung</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>broker_username</name>
       <dataType>
         <string />
       </dataType>
       <defaultValue></defaultValue>
       <configurationDescription>
-        <textElement>The IP address</textElement>
+        <textElement>Message broker user name.</textElement>
         <language>en</language>
-        <label>TCP/IP address</label>
+        <label>Broker User</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker User-Name.</textElement>
+        <language>de</language>
+        <label>Broker-User</label>
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
-      <name>tcp_port</name>
+      <name>broker_password</name>
       <dataType>
-        <int32 />
+        <string />
       </dataType>
-      <defaultValue>502</defaultValue>
+      <defaultValue></defaultValue>
       <configurationDescription>
-        <textElement>The IP port</textElement>
+        <textElement>Message broker password.</textElement>
         <language>en</language>
-        <label>TCP/IP port</label>
+        <label>Broker Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Message-Broker Passwort.</textElement>
+        <language>de</language>
+        <label>Broker-Passwort</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>topic_path</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>whatwatt/whatwattgo</defaultValue>
+      <configurationDescription>
+        <textElement>MQTT topic path.</textElement>
+        <language>en</language>
+        <label>Topic Path</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>MQTT-Topic-Pfad.</textElement>
+        <language>de</language>
+        <label>Topic-Pfad</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
   <interfaceList>
-    <modbusInterface>
-      <modbusInterfaceDescription>
-        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
-        <modbusTcp>
-          <port>{{tcp_port}}</port>
-          <address>{{tcp_address}}</address>
-          <slaveId>{{slave_id}}</slaveId>
-        </modbusTcp>
-        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
-        <bitOrder>BigEndian</bitOrder>
-      </modbusInterfaceDescription>
+    <messagingInterface>
+      <messagingInterfaceDescription>
+        <platform>MQTT5</platform>
+        <messageBrokerList>
+          <messageBrokerListElement>
+            <host>{{broker_host}}</host>
+            <port>{{broker_port}}</port>
+            <tls>{{broker_tls}}</tls>
+            <tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
+          </messageBrokerListElement>
+        </messageBrokerList>
+        <messageBrokerAuthentication>
+          <basicAuthentication>
+            <username>{{broker_username}}</username>
+            <password>{{broker_password}}</password>
+          </basicAuthentication>
+        </messageBrokerAuthentication>
+      </messagingInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
@@ -236,20 +255,54 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>4</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <string />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Meter.Id</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SmartMeterTimestamp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <dateTime />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Read the meter timestamp.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen des Meter-Zeitstempels.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <string />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Meter.DateTime</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveImportPower</functionalProfileName>
+            <functionalProfileName>ActivePowerAC_Import</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -378,134 +431,24 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>28</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>21.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>48</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>41.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>50</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>61.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>52</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>P_In</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveExportPower</functionalProfileName>
+            <functionalProfileName>ActivePowerAC_Export</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -634,134 +577,24 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>30</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>22.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>54</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>42.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>56</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>62.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>P_Out</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveImportEnergy</functionalProfileName>
+            <functionalProfileName>ActiveEnergyAC_Import</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -894,26 +727,24 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>6</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>E_In</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveExportEnergy</functionalProfileName>
+            <functionalProfileName>ActiveEnergyAC_Export</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -1046,26 +877,24 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>12</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>E_Out</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousVoltage</functionalProfileName>
+            <functionalProfileName>VoltageAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -1139,20 +968,18 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>36</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>V_P1</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1175,20 +1002,18 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>38</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>V_P2</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1211,26 +1036,24 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>40</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>V_P3</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousCurrent</functionalProfileName>
+            <functionalProfileName>CurrentAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -1305,20 +1128,18 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>42</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-2</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>I_P1</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1340,20 +1161,18 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>44</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-2</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>I_P2</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1375,24 +1194,22 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>46</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-2</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <number />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>I_P3</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
       </functionalProfileList>
-    </modbusInterface>
+    </messagingInterface>
   </interfaceList>
 </DeviceFrame>
