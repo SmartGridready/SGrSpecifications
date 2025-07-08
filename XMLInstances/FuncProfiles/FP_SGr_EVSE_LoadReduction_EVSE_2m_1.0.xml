@@ -26,7 +26,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[    
-          <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/ems_from-to_evse.svg" style="float:left; padding:0.3em;"/>
           <p> Level 2m functional profile for wallboxes (Electric Vehicle Supply Equipment "EVSE").
 			To implement the functional profile the device must have a controller which covers four operating states.</p>
           <p>The following four operating states can be set and read using the data point "EVSE_OpModeCmd": </p>
@@ -48,7 +48,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[    
-          <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/ems_from-to_evse.svg" style="float:left; padding:0.3em;"/>
           <p> Stufe 2 Funktionsprofil für Heim-Ladestationen (Wallboxen bzw. Electric Vehicle Supply Equipment "EVSE").
 			  Zur Umsetzung des Funktionsprofils müssen die Ladestationen über einen Regler verfügen, der vier Betriebszustände abdeckt.</p>
           <p>Folgende vier Betriebszustände können über den Datenpunkt "EVSE_OpModeCmd" gesetzt und ausgelesen werden: </p>

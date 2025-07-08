@@ -37,7 +37,7 @@
           Dies ist die einfachste Möglichkeit, den Energieverbrauch in Echtzeit auf einem Smartphone, Tablet oder Computer zu visualisieren,
           die gemessenen Daten zu analysieren und den Eigenverbrauch zu optimieren. </p>
           Durch die Anschlussmöglichkeit von drei Phasen lassen sich ganze Wohnungen, Gebäude oder Firmenareale mit tiefen Investitionskosten ausrüsten und überwachen.
-        ]]>   
+        ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -137,7 +137,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Blindleistung</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
                   regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
@@ -157,8 +157,8 @@
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                  <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[ 
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Reactive Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the reactive power. 
                   
@@ -338,7 +338,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
                   
@@ -357,14 +357,14 @@
                     <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
                   </ul>
                   </p>
-                ]]>	
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the energy balance.
                   
@@ -381,7 +381,7 @@
                     <li>Three-phase devices with measurement of the total energy all data points</li>
                   </ul>
                   </p>
-                ]]>	
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
@@ -442,7 +442,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
                   Zwecke.
@@ -467,7 +467,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the active power.
                   
@@ -482,7 +482,7 @@
                     <li>Three-phase devices with measurement of the total active power use all data points</li>
                   </ul>
                   </p>
-                ]]>     
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
@@ -651,7 +651,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Stromstärke</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
                   Zwecke.
@@ -668,14 +668,14 @@
                   </ul>
                   Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
                   </p>
-                ]]> 
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the current. 
                   
@@ -690,7 +690,7 @@
                   </ul>
                   
                   <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
-                ]]> 
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
@@ -859,25 +859,25 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Frequenz</strong><br>
                   Monitoring Funktionsprofil zur Kontrolle der Netzbelastung.
                   
                   <p>Abweichungen zur Sollfrequenz sind ein
                      Indikator für die Netzbelastung und können für steuernde und regeltechnische Zwecke verwendet werden.</p>
-                ]]> 
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Frequency measurement</strong><br>
                   Monitoring functional profile for reflecting the network load.
                   
                   <p>Differences to the nominal frequency indicate the network load and can be used for system control.</p>
-                ]]> 
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>

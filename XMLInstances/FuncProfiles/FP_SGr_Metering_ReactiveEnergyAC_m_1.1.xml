@@ -33,8 +33,8 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          Messung der Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+          Messung der Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
           Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
 
           <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
@@ -55,8 +55,8 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          Measurement of reactive energy: Data acquisition is performed periodically by the CEM (or a billing software), which collects measurements and adds a time stamp.<br />
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+          Measurement of reactive energy: Data acquisition is performed periodically by the EMS (or a billing software), which collects measurements and adds a time stamp.<br />
           An energy measurement needs a time stamp for balance purposes, even on the grid provider or aggregator side. Typical neighboring profiles are communicator.
 
           <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:

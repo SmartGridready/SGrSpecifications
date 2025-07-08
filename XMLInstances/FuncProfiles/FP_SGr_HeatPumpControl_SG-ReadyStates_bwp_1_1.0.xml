@@ -32,7 +32,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <h4>Heat pump with two operation modes</h4>
           <p>Level 1 functional profile with 2 operation modes (SG Ready heat pumps). The operating states are
            defined from SG ready - "Bundesverband Wärmepumpe e.V. (bwp)"</p>
@@ -54,7 +54,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <h4>Wärmepumpen mit 2 Betriebszuständen</h4>
           <p>Stufe 1 Funktionsprofil für Wärmepumpen mit 2 Betriebszuständen (SG Ready Wärmepumpen, Definition nach SG Ready - Bundesverband Wärmepumpe e.V. (bwp))</p>
           <p>Dieses Funktionsprofil bildet nur den ersten SG-Ready Klemmenkontakt ab und entspricht damit der klassischen EVU-Sperre:</p>

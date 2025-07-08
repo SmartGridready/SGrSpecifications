@@ -26,7 +26,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[    
-          <img src="ressources/cem_to_evse.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/ems_to_evse.svg" style="float:left; padding:0.3em;"/>
           <p>Level 1 funktional profile for wallboxes (Electric Vehicle Supply Equipment "EVSE") with one relay contact. 
 			To implement this funktional profile wallboxes must have a controller which covers the following two operating states:</p>
           <ol>
@@ -47,7 +47,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[    
-          <img src="ressources/cem_to_evse.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/ems_to_evse.svg" style="float:left; padding:0.3em;"/>
           <p>Stufe 1 Funktionsprofil für Heim-Ladestationen (Wallboxen bzw. Electric Vehicle Supply Equipment «EVSE») mit einem Klemmkontakt. Zur Umsetzung des Funktionsprofils müssen Ladestationen 
 		  über einen Regler verfügen, welcher folgende Betriebszustände abdeckt:</p>
           <ol>

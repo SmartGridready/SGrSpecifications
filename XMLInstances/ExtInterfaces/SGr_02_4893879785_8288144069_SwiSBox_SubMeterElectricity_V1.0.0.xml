@@ -66,7 +66,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
                   
@@ -85,7 +85,7 @@
                     <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
                   </ul>
                   </p>
-                ]]> 
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -198,10 +198,10 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Bilanzmessung Scheinenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Bilanzmessung Scheinenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
                   Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-                ]]> 
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -314,10 +314,10 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
                   Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-                ]]>	
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -430,7 +430,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Blindleistung</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
                   regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
@@ -450,8 +450,8 @@
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                  <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[ 
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Reactive Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the reactive power. 
                   
@@ -592,7 +592,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   Die Messung der Scheinleistung erfolgt zur Messung Scheinleistung im Wechselstromnetz, für regeltechnische Zwecke.
                   
                   Je nach Optimierungsanwendung muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
@@ -711,7 +711,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
                   Zwecke.
@@ -842,13 +842,13 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Frequenz</strong><br>
                   Monitoring Funktionsprofil zur Kontrolle der Netzbelastung.
                   
                   <p>Abweichungen zur Sollfrequenz sind ein
                      Indikator für die Netzbelastung und können für steuernde und regeltechnische Zwecke verwendet werden.</p>
-                ]]>	
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -895,7 +895,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Stromstärke</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
                   Zwecke.
@@ -912,14 +912,14 @@
                   </ul>
                   Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
                   </p>
-                ]]>	
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the current. 
                   
@@ -934,7 +934,7 @@
                   </ul>
                   
                   <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
-                ]]>	
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
@@ -1125,11 +1125,11 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   Der PowerFactor entspricht der Division der Wirkleistung durch die Scheinleistung.
                   Er ist nicht zu verwechseln mit dem Klirrfaktor, welcher den Oberwellenanteil misst. In einem overwellenfreien System entspricht der Power Faktor
                   genau arccos(phi) und wird mit zunehmenden Oberwellen schlechter.
-                ]]>	
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>

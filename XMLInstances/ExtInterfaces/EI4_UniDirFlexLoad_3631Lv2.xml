@@ -54,7 +54,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>Anlagen, welche dieses Funktionsprofil nutzen verfügen in der Regel über
-                einen CEM (Customer Energy Manager). Diese Software stellt sicher, dass der
+                ein EMS (Energie-Management-System). Diese Software stellt sicher, dass der
                 Energiebezug der Geräte entsprechend den Betriebsmodi beim Moduswechsel neu
                 aufeinander abgestimmt wird. Beim Wechsel reagiert eine Anlage gemäss den in
                 SGr-Attribut b) vereinbarten Parametern. </textElement>

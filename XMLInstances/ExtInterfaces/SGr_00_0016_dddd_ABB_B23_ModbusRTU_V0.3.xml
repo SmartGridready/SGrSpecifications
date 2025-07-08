@@ -460,7 +460,7 @@
             <legibleDescription>
               <textElement>Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise
                 periodisch
-                durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem
+                durch das EMS (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem
                 Zeitwert ergänzt.</textElement>
               <language>de</language>
             </legibleDescription>
@@ -603,7 +603,7 @@
             <legibleDescription>
               <textElement>Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise
                 periodisch
-                durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem
+                durch das EMS (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem
                 Zeitwert ergänzt.</textElement>
               <language>de</language>
             </legibleDescription>
@@ -1025,7 +1025,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the energy balance.
 
@@ -1051,7 +1051,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
 
@@ -1223,8 +1223,8 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
                   Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
                 ]]>
               </textElement>
@@ -1363,8 +1363,8 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.
                   Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
                 ]]>
               </textElement>

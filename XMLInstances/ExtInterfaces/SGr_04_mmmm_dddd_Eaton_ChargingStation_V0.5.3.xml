@@ -183,36 +183,36 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the current. 
-                  
+                  Monitoring functional profile for power generators and consumers for reflecting the current.
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
                      Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
                   <ul>
                     <li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
                     <li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
                   </ul>
-                  
+
                   <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
-                  
+
                   <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
                      either for the entire device or for individual datapoints
                      (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
                      </p>
-                ]]> 
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Stromstärke</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
-                  
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
                      Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
                   <ul>
@@ -221,12 +221,12 @@
                   </ul>
                   Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
                   </p>
-                  
+
                   <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
                      für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
                      (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
                      </p>
-                ]]> 
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -328,13 +328,13 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the energy balance.
-                  
+
                   <p>Data is typically recorded by an energy manager (or a billing software).</p>
-                  
+
                   <p>With this functional profile you can measure the total energy as well as the energy of the three
                      individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
@@ -343,24 +343,24 @@
                     <li>Three-phase devices with measurement of the total energy all data points</li>
                   </ul>
                   </p>
-                  
+
                   <p>Knowing the precision of measurements is useful - it can be specified as a attribute <em>precision</em> per data point or in general.
                      Thus, different measurement precisions can be defined for the data points
                      (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Precision</a>).
                      </p>
-                ]]> 
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
-                  
+
                   <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-                  
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
                      der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                      umgesetzt werden:
@@ -370,12 +370,12 @@
                     <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
                   </ul>
                   </p>
-                  
+
                   <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit hilfreich - sie kann pro Datenpunkt oder generell als generisches
                      Attribut <em>Precision</em> angegeben werden. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte zu definieren
                      (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Precision</a>).
                      </p>
-                ]]> 
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -536,7 +536,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/cem_from_evse.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/ems_from_evse.svg" style="float:left; padding:0.3em;"/>
                   Functional profile for reading the status of the connector of an electric vehicle charging station (EVSE).
                   <p>The status of the connector indicates, for example, whether a car is connected to the charging station, if it is currently charging, or if the connector is not connected to the electric vehicle.
                      The function profile refers to the states offered by the OCPP 1.6 protocol under ocppState.</p>
@@ -560,7 +560,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/cem_from_evse.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/ems_from_evse.svg" style="float:left; padding:0.3em;"/>
                   Funktionsprofil zum Auslesen des Status einer Elektrofahrzeug-Ladestation (EVSE).
                   <p>Der Status der Ladestation zeigt beispielsweise an, ob ein Auto mit der Ladestation verbunden ist, ob es gerade lädt oder ob die Ladestation nicht mit dem Elektrofahrzeug verbunden ist.
                      Das Funktionsprofil bezieht sich auf die Zustände, die das OCPP 1.6-Protokoll unter ocppState bietet.</p>
