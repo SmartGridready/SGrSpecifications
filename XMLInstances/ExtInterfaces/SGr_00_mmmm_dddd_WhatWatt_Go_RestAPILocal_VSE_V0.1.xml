@@ -67,7 +67,7 @@
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>SmartmeterInfo</functionalProfileName>
+            <functionalProfileName>DeviceInformation</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
@@ -103,7 +103,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DeviceId</dataPointName>
+                <dataPointName>SmartMeterId</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <string />
@@ -113,11 +113,11 @@
                   <manufName>96.1.1</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>The device ID</textElement>
+                  <textElement>The smart meter ID</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Die Geräte-ID</textElement>
+                  <textElement>Die Smartmeter-ID</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -141,7 +141,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DateTime</dataPointName>
+                <dataPointName>SmartMeterTimestamp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <dateTime />

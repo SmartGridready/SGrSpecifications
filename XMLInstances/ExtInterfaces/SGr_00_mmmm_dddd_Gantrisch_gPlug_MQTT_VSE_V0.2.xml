@@ -244,7 +244,7 @@
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>SmartmeterInfo</functionalProfileName>
+            <functionalProfileName>DeviceInformation</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
@@ -280,7 +280,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DeviceId</dataPointName>
+                <dataPointName>SmartMeterId</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <string />
@@ -290,11 +290,11 @@
                   <manufName>96.1.1</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>The device ID</textElement>
+                  <textElement>The smart meter ID</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Die Geräte-ID</textElement>
+                  <textElement>Die Smartmeter-ID</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -313,6 +313,42 @@
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>"{{field_name}}".SMid</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SmartMeterTimestamp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <dateTime />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Read the meter timestamp.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen des Meter-Zeitstempels.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <string />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <filter>
+                    <jmespathFilter>
+                      <query>Time</query>
+                      <matchesRegex>\{.*\}</matchesRegex>
+                    </jmespathFilter>
+                  </filter>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Time</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
