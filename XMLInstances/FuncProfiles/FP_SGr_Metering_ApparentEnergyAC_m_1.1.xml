@@ -75,6 +75,14 @@
       <language>en</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>MeteringDirection</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MeteringTariffNr</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>

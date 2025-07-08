@@ -73,7 +73,7 @@
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
-             <legibleDescription>
+            <legibleDescription>
               <textElement>
                 <![CDATA[
                   <img src="ressources/ems_to_evse.svg" style="float:left; padding:0.3em;"/>
