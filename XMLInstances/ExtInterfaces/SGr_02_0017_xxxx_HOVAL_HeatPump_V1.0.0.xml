@@ -21,7 +21,7 @@
         <![CDATA[
           Produktbeschreibung für Hoval Wärmepumpen mit Steuerung TopTronic® E in Kombination mit dem HovalConnect Modbus-Gateway
           <br>Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-hoval-product-eid">Hoval HeatPumpAppliance</a>
-        ]]>   
+        ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -98,39 +98,39 @@
               <hpBwpName>sHPbwpName</hpBwpName>
             </alternativeNames>
             <legibleDescription>
-              <textElement>                
-                <![CDATA[    
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
-                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus gesetzt werden können. 
+                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus gesetzt werden können.
                   Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
                   <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
-                  
+
                   <ul>
                     <li> Die Betriebszustände werden direkt über Modbus gesetzt und ausgelesen. </li>
                     <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
-                    von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>        
+                    von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>
                   </ul>
-                  
+
                  <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
                   <ul>
                     <li><strong>HP_LOCKED</strong>: Der Betriebszustand HP_LOCKED entspricht einer absoluten Sperrung.</li>
                     <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb.</li>
                     <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
                     <li><strong>HP_FORCED</strong>: Bei HP_FORCED wird auf Maximaltemperatur gefahren (Puffer und Warmwasser), wenn erforderlich durch den Elektroeinsatz.
-                                                    Dieser Betriebszustand wird NICHT empfohlen (Lebensdauer und Effizienz).</li>                  
+                                                    Dieser Betriebszustand wird NICHT empfohlen (Lebensdauer und Effizienz).</li>
                   </ul>
-                  
+
                   <p>Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
-                  
+
                   <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
                   Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
 
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz gemäss bwp (Link oben).</p>
-                  
+
                   <p>Empfehlung für Eigenverbrauchsoptimierung: Zwischen <strong>HP_NORMAL</strong> und <strong>HP_INTENSIFIED</strong> schalten.
                      Es sollte nicht häufiger als alle 30 Minuten zwischen den Betriebsmodi hin- und hergeschaltet werden (Lebensdauer der Wärmepumpe).</p>
-                     
+
                   <p>Hinweis: Wärmepumpenseitig ist die Konfiguration Variante 2 für "Smart Grid Aktivierung durch Systembus" zu setzen.</p>
                 ]]>
               </textElement>
@@ -186,7 +186,7 @@
                 <modbusDataType>
                   <int8U/>
                 </modbusDataType>
-                <address>27545</address>                
+                <address>27545</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -228,7 +228,7 @@
                   <textElement>
                     <![CDATA[
                       Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe
-                    ]]>         
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -237,7 +237,7 @@
                 <modbusDataType>
                   <int8U/>
                 </modbusDataType>
-                <address>27545</address>                
+                <address>27545</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -278,7 +278,7 @@
                   <textElement>
                     <![CDATA[
                       Aktivierung der SG-Ready Funktion
-                    ]]>         
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -287,7 +287,7 @@
                 <modbusDataType>
                   <int8U/>
                 </modbusDataType>
-                <address>27546</address>                
+                <address>27546</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -313,8 +313,8 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   Dieses Profil dient dem Aufzeichnen von internen Daten aus der Wärmepumpe für Monitoring-Zwecke.
                   <p>Bemerkung:<br>
                   Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</p
@@ -350,7 +350,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>25613</address>                
+                <address>25613</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -381,7 +381,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>1505</address>                
+                <address>1505</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -411,7 +411,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>27484</address>                
+                <address>27484</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -442,7 +442,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>18733</address>                
+                <address>18733</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -472,7 +472,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>27488</address>                
+                <address>27488</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -513,7 +513,7 @@
                 <modbusDataType>
                   <int32 />
                 </modbusDataType>
-                <address>25611</address>                
+                <address>25611</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -550,7 +550,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>1516</address>                
+                <address>1516</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -581,7 +581,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>1518</address>                
+                <address>1518</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>

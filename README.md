@@ -22,8 +22,8 @@ SmarGridready is
 
 ## Architecture
 SmartGridready introduces two roles: products and communicators. Products typically either produce or consume energy.
-Communicators are controlling the behavior of products. Note that SmartGridready allows for cascaded architectures. A
-Consumer Energy Manager (CEM), installed in your house, can act as a communicator towards typical house installations
+Communicators are controlling the behavior of products. Note that SmartGridready allows for cascaded architectures. An
+Energy Management System (EMS), installed in your house, can act as a communicator towards typical house installations
 (heat pumps, EV charging stations, photovoltaic installations, ...) and be a product towards the distribution grid (e.g.
 offering services for flexible load management).
 

@@ -82,7 +82,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Ermöglicht Auslesen der Temperaturen.
+                Ermöglicht das Auslesen der Temperaturen.
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -149,7 +149,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Ermöglicht Auslesen und Steuern der Zieltemperatur.
+                Ermöglicht das Auslesen und Steuern der Zieltemperatur.
               </textElement>
               <language>de</language>
             </legibleDescription>

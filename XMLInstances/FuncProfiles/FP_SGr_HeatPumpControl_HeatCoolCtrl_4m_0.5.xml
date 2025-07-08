@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Revoked</state>
     <remarks>
       This functional profile is in preliminary state. Before implementing external-interfaces or any other
       functionality, the detailed functionality must be verified with the heat pump manufacturer.

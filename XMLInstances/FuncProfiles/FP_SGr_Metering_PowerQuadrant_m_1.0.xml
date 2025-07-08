@@ -33,7 +33,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <p>Der Power-Quadrant gibt die Lastverteilung zwischen Wirk- und Blindleistung und zwischen Bezug und Einspeisung geometrisch an:
           <ul>
             <li>1 = Wirkleistung Bezug, Blindleistung Bezug</li>
@@ -49,7 +49,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <p>The power quadrant geometrically reflects the load distribution between active and reactive power and between import and export:
           <ul>
             <li>1 = active import, reactive import</li>

@@ -42,7 +42,7 @@
         Drehzahl-/Leistungsvorgabe-Profil pro Kompressor definiert werden (oder auch gar
         kein Profil, wenn keine Drehzahl-/Leistungsvorgabe möglich ist).
         Diese Vorgabe braucht eine doppelte Absicherung falscher Vorgaben durch den
-        WP-Hersteller und den CEM. Siehe auch Attribute minVal / maxVal. Der Communicator
+        WP-Hersteller und das EMS. Siehe auch Attribute minVal / maxVal. Der Communicator
         fragt zuerst den erlaubten Bereich und die Betriebsart ab und passt die
         entsprechenden Wunschgrössen an. Die WP überwacht intern die vorgegebenen
         Wunschgrössen und korrigiert, wenn aus Sicherheitsgründen notwendig

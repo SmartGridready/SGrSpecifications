@@ -455,11 +455,10 @@ Betrieb zu gewährleisten!</textElement>
                 <legibleDescription>
                   <textElement>
                     To allow setpoint control, register 117 for PV demand should be set to 1. Should
-                    we create a PowerCtrlSetptEn ?. In RCG web interface, Menu item "Photovoltaics"
-                    > PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu >
-                    "WNA" > FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to
+                    we create a PowerCtrlSetptEn ?. In RCG web interface, Menu item "Photovoltaics"> PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu >
+                    "WNA"> FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to
                     "53" Heating circuit > Parameter> Offset to "3"; Mixer1 and 2 > Parameter>
-                    Offset to "3". On-site tests however showed that it was difficult to maintain 
+                    Offset to "3". On-site tests however showed that it was difficult to maintain
                     the required PV register to the required value 1 to accept power setpoints, even with continuous writing. After consultation with the installation technician, internal settings manipulation were done to fix this issue
                   </textElement>
                   <language>en</language>
@@ -1221,8 +1220,8 @@ Betrieb zu gewährleisten!</textElement>
                 <unit>NONE</unit>
                 <legibleDescription>
                   <textElement>
-                    When 1, activates following of setpoint HeatBufferTempSetpointOffset for tank temperature. 
-                    If 0, HeatBufferTempSetpointOffset not applied 
+                    When 1, activates following of setpoint HeatBufferTempSetpointOffset for tank temperature.
+                    If 0, HeatBufferTempSetpointOffset not applied
                   </textElement>
                   <language>en</language>
                 </legibleDescription>

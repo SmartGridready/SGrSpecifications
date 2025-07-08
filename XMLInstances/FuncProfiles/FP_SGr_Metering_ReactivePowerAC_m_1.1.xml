@@ -33,7 +33,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Blindleistung</strong><br>
           Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Blindleistung im Wechselstromnetz, für
           regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
@@ -66,7 +66,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <strong>Reactive Power Measurement</strong><br>
           Monitoring functional profile for power generators and consumers for reflecting the reactive power.
 

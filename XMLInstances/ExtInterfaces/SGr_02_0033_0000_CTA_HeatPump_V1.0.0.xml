@@ -23,7 +23,7 @@
           <p>CTA Wärmepumpen mit Optiheat Inverta TWW 4esr, Eco 9e und Eco 17e und
           SmartGridready Anbindung ermöglichen einen umweltfreundlichen Betrieb mit hohem Komfort.</p>
           Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-cta-product-eid">CTA HeatPumpAppliance</a>
-        ]]>   
+        ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -44,7 +44,7 @@
     </versionNumber>
     <programmerHints>
       <textElement>
-        This Gateway offers manufacturer specific control modes for HeatCoolCtrl and DomHotWaterCtrl.  
+        This Gateway offers manufacturer specific control modes for HeatCoolCtrl and DomHotWaterCtrl.
         Manufacurer specific data points use the preamble cta.
         Some data points support persistent memory functionality  (RWP) and limit data write operations to a couple 10'000 write cycles.
       </textElement>
@@ -101,31 +101,31 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>                
-                <![CDATA[    
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
-                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus gesetzt werden können. 
+                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus gesetzt werden können.
                   Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
                   <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
-                  
+
                   <ul>
                     <li> Die Betriebszustände werden direkt über Modbus gesetzt und ausgelesen. </li>
                     <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
-                    von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>        
+                    von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>
                   </ul>
-                  
+
                  <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
                   <ul>
                     <li><strong>HP_LOCKED</strong>: Wärmepumpe gesperrt - zum Beispiel fixe Sperre nach Uhrzeit.</li>
                     <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb.</li>
                     <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
-                    <li><strong>HP_FORCED</strong>: Forcierter Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist).</li>                  
+                    <li><strong>HP_FORCED</strong>: Forcierter Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist).</li>
                   </ul>
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
-                  
+
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
-                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung der Wärmepumpen ist 
+                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung der Wärmepumpen ist
                   "Max. Lock Time" 20 Minuten und "Min. Run Time" 3 Minuten.</p>
                   <p>Für die Verwendung zur Eigenverbrauchsoptimierung wird empfohlen, nur die Betriebszustände HP_NORMAL und HP_INTENSIFIED zu verwenden.
                      Der Betriebsmodus HP_FORCED sollte nur in Ausnahmefällen verwendet werden, da er bei häufigem Einschalten zu Lebensdauerbeschränkungen des Verdichters führen kann.</p>
@@ -206,7 +206,7 @@
                         Warmwassertemperatur</li>
                       </ul>
                       Max. 5 Schaltungen täglich für Zustände 3 und 4
-                    ]]> 
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </programmerHints>
@@ -285,8 +285,8 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   Dieses Profil dient dem Aufzeichnen von internen Daten aus der Wärmepumpe für Monitoring-Zwecke.
                   <p>Bemerkung:<br>
                   Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</p

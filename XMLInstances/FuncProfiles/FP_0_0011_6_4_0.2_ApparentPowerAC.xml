@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Revoked</state>
     <changeLog>
       <version>0.2.2</version>
       <date>2022-11-17</date>
@@ -26,7 +26,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[	
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           Die Messung der Scheinleistung erfolgt zur Messung Scheinleistung im Wechselstromnetz, für regeltechnische Zwecke.
           
           Je nach Optimierungsanwendung muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.

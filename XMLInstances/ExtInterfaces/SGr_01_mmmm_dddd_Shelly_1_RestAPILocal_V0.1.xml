@@ -75,18 +75,26 @@
               <functionalProfileType>Relais</functionalProfileType>
               <levelOfOperation>1m</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Relais ein- oder ausschalten.</textElement>
-              <language>de</language>
+              <textElement>
+                <![CDATA[
+                  Read and write the state of a relay contact.
+                ]]>
+              </textElement>
+              <language>en</language>
             </legibleDescription>
             <legibleDescription>
-              <textElement>Switch relay on or off.</textElement>
-              <language>en</language>
+              <textElement>
+                <![CDATA[
+                  Lesen und Schreiben des Zustands eines Relais-Kontakts.
+                ]]>
+              </textElement>
+              <language>de</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -99,12 +107,12 @@
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>Relais-Status</textElement>
-                  <language>de</language>
+                  <textElement>Switching state of the relay contact</textElement>
+                  <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Relay state</textElement>
-                  <language>en</language>
+                  <textElement>Schaltzustand des Relais-Kontakts</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>

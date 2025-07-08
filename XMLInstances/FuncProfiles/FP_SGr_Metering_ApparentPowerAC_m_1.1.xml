@@ -33,7 +33,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           Die Messung der Scheinleistung erfolgt zur Messung Scheinleistung im Wechselstromnetz, für regeltechnische Zwecke.
 
           Je nach Optimierungsanwendung muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
@@ -58,7 +58,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           Measurement of the apparent power is performed to measure the apparent power in the AC grid, for regulation purposes.
 
           Depending on the optimization application, a measurement interval of 10 times/second up to once a minute is required.

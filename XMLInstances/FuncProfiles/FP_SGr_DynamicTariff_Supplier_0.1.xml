@@ -4,7 +4,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Draft</state>
+    <state>Revoked</state>
     <changeLog>
       <version>0.0.1</version>
       <date>2023-11-29</date>

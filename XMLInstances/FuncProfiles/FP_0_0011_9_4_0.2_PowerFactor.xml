@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Revoked</state>
     <changeLog>
       <version>0.1.1</version>
       <date>2021-04-05</date>
@@ -32,7 +32,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[	
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           Der PowerFactor entspricht der Division der Wirkleistung durch die Scheinleistung.
           Er ist nicht zu verwechseln mit dem Klirrfaktor, welcher den Oberwellenanteil misst. In einem overwellenfreien System entspricht der Power Faktor
           genau arccos(phi) und wird mit zunehmenden Oberwellen schlechter.

@@ -51,6 +51,8 @@ public class CheckDeviceStructure {
                     return name.endsWith(".xml");
                 }
             })) {
+                System.out.println("GA: " + file.getName());
+
                 // does not support validation (schema issue?)
                 @SuppressWarnings("unchecked")
                 JAXBElement<GenericAttributeFrame> jaxbElement = (JAXBElement<GenericAttributeFrame>) nonValidatingUnmarshaller.unmarshal(file);
@@ -68,7 +70,6 @@ public class CheckDeviceStructure {
                     genAttributes.get(key).add(gaElement);
                 }
 
-                System.out.println();
                 System.out.println("GA: " + key + ", "
                         + file.getName());
                 System.out.flush();
@@ -94,6 +95,7 @@ public class CheckDeviceStructure {
                 ) {
                     System.out.println("--> " + gaElement.getGenericAttributeList().getGenericAttributeListElement().size() + " sub-attributes");
                 }
+                System.out.println();
             }
             System.out.println();
             System.out.println();
@@ -106,6 +108,8 @@ public class CheckDeviceStructure {
                     return name.endsWith(".xml");
                 }
             })) {
+                System.out.println("FP: " + file.getName());
+
                 // TODO why is this no JAXBElement, but GenericAttributeFrame and DeviceFrame are?
                 FunctionalProfileFrame fpElement = (FunctionalProfileFrame) validatingUnmarshaller.unmarshal(file);
 
@@ -123,7 +127,6 @@ public class CheckDeviceStructure {
 
                 funcProfiles.get(key).add(fpElement);
 
-                System.out.println();
                 System.out.println("FP: " + key + ", "
                         + ((fpElement.getFunctionalProfile().getFunctionalProfileIdentification().getLevelOfOperation() != null) ? fpElement.getFunctionalProfile().getFunctionalProfileIdentification().getLevelOfOperation().value() : UNDEFINED_VALUE) + ", "
                         + version + ", "
@@ -159,6 +162,7 @@ public class CheckDeviceStructure {
 
                     System.out.println("--> " + fpElement.getGenericAttributeList().getGenericAttributeListElement().size() + " generic attributes");
                 }
+                System.out.println();
             }
 
             System.out.println();
@@ -172,13 +176,14 @@ public class CheckDeviceStructure {
                     return name.endsWith(".xml");
                 }
             })) {
+                System.out.println("EID: " + file.getName());
+
                 @SuppressWarnings("unchecked")
                 JAXBElement<DeviceFrame> jaxbElement = (JAXBElement<DeviceFrame>) validatingUnmarshaller.unmarshal(file);
                 DeviceFrame eidElement = (DeviceFrame) jaxbElement.getValue();
 
                 String version = getVersionString(eidElement.getDeviceInformation().getVersionNumber());
 
-                System.out.println();
                 System.out.println("EID: " + eidElement.getDeviceName() + ", " + eidElement.getManufacturerName() + ", "
                         + ((eidElement.getDeviceInformation().getLevelOfOperation() != null) ? eidElement.getDeviceInformation().getLevelOfOperation().value() : UNDEFINED_VALUE) + ", "
                         + version + ", "
@@ -247,6 +252,7 @@ public class CheckDeviceStructure {
                 }
 
                 System.out.println("-->" + profiles.size());
+                System.out.println();
                 System.out.flush();
             }
 
@@ -261,13 +267,14 @@ public class CheckDeviceStructure {
                     return name.endsWith(".xml");
                 }
             })) {
+                System.out.println("COM: " + file.getName());
+
                 @SuppressWarnings("unchecked")
                 JAXBElement<CommunicatorFrame> jaxbElement = (JAXBElement<CommunicatorFrame>) validatingUnmarshaller.unmarshal(file);
                 CommunicatorFrame comElement = (CommunicatorFrame) jaxbElement.getValue();
 
                 String version = comElement.getCommunicatorInformation().getVersionNumber();
 
-                System.out.println();
                 System.out.println("COM: " + comElement.getCommunicatorName() + ", " + comElement.getManufacturerName() + ", "
                         + ((comElement.getCommunicatorInformation().getLevelOfOperation() != null) ? comElement.getCommunicatorInformation().getLevelOfOperation().value() : UNDEFINED_VALUE) + ", "
                         + version + ", "
@@ -319,6 +326,7 @@ public class CheckDeviceStructure {
                 }
 
                 System.out.println("-->" + profiles.size());
+                System.out.println();
                 System.out.flush();
             }
         } catch (Throwable t) {

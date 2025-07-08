@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Revoked</state>
     <changeLog>
       <version>0.1.1</version>
       <date>2021-04-03</date>
@@ -32,8 +32,8 @@
     <legibleDescription>
       <textElement>
         <![CDATA[	
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+          Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.
           Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
         ]]>
       </textElement>

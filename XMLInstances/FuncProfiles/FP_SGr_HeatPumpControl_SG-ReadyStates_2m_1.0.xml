@@ -32,7 +32,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <h4>Heat pump with 4 operation modes</h4>
           <p>Level 2m functional profile for heat pumps with 4 operation modes (SG Ready heat pumps) which can be set via 
           Modbus or RestAPI. In addition, the current operation status of the heat pump can be read. The operating states are
@@ -69,7 +69,7 @@
     <legibleDescription>
       <textElement>                
         <![CDATA[    
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
           <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus oder RestAPI gesetzt werden können. 
           Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>

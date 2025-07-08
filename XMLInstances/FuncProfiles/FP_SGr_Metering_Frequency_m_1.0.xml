@@ -33,7 +33,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <strong>Messung der Frequenz</strong><br/>
           Monitoring-Funktionsprofil zur Kontrolle der Netzbelastung.
 
@@ -46,7 +46,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           <strong>Frequency measurement</strong><br/>
           Monitoring functional profile for reflecting the network load.
 

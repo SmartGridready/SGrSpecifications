@@ -102,7 +102,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
 
@@ -134,7 +134,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active power.
 
@@ -241,7 +241,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Blindleistung</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Blindleistung im Wechselstromnetz, für
                   regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
@@ -274,7 +274,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Reactive Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the reactive power.
 
@@ -381,7 +381,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Stromstärke</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
@@ -402,7 +402,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the current.
 
@@ -521,7 +521,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/ems_from-to_evse.svg" style="float:left; padding:0.3em;"/>
                   The functional profile enables a controller to set a current limitation for a charging station (Electric Vehicle Supply Equipment, EVSE).
                   <p>The charging station's current limit is dynamically regulated by an external Home Energy Management System (HEMS) with the data point <em>EMSCurrentLimit</em> expressed in amps.
                     This data point enables real-time monitoring and control of the consumption limit of the charging station.
@@ -541,7 +541,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/ems_from-to_evse.svg" style="float:left; padding:0.3em;"/>
                   Das Funktionsprofil ermöglicht es einer Steuerung, eine Strombegrenzung für eine Elektrofahrzeug-Ladestation (Electric Vehicle Supply Equipment, EVSE) festzulegen.
                   <p>Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Home Energy Management System (HEMS) über den Datenpunkt <em>EMSCurrentLimit</em> geregelt (in Ampere).
                     Dieser Datenpunkt ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.

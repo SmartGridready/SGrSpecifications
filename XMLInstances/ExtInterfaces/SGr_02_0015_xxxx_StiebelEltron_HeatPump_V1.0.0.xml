@@ -137,18 +137,18 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
                   <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus oder RestAPI gesetzt werden können.
                   Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
                   <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
-                  
+
                   <ul>
                     <li> Die Betriebszustände werden direkt über Modbus oder RestAPI gesetzt und ausgelesen. </li>
                     <li> Die Klemmkontakte werden gemappt und über Modbus oder RestAPI zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
                     von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>
                   </ul>
-                  
+
                  <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
                   <ul>
                     <li><strong>HP_LOCKED</strong>: Wärmepumpe gesperrt - zum Beispiel fixe Sperre nach Uhrzeit.</li>
@@ -156,9 +156,9 @@
                     <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
                     <li><strong>HP_FORCED</strong>: Dieser Betriebsmodus sollte nur im Ausnahmefall benutzt werden. Die Wärmepumpe fährt auf maximale Temperatur, was eine höhere Belastung der Wärmepumpe zur Folge hat. Der Elektroeinsatz wird nicht aktiviert.</li>
                   </ul>
-                  
+
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
-                  
+
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
                   Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist
                   "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
@@ -391,9 +391,9 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
-                  
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch das EMS.</p>
+
                   <p>Bemerkungen:</p>
                   <ol>
                     <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen

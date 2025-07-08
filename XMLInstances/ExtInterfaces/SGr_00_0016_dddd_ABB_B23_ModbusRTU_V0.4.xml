@@ -224,7 +224,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Spannung</strong><br />
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
@@ -244,7 +244,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Voltage measurement</strong><br />
                   Monitoring functional profile for power generators and consumers for reflecting the voltage.
 
@@ -493,7 +493,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Frequenz</strong><br/>
                   Monitoring-Funktionsprofil zur Kontrolle der Netzbelastung.
 
@@ -506,7 +506,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Frequency measurement</strong><br/>
                   Monitoring functional profile for reflecting the network load.
 
@@ -571,7 +571,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Stromstärke</strong><br>
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
                   Zwecke.
@@ -592,7 +592,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the current.
 
@@ -761,7 +761,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
 
@@ -793,7 +793,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active power.
 
@@ -1004,7 +1004,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Blindleistung</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Blindleistung im Wechselstromnetz, für
                   regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
@@ -1037,7 +1037,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Reactive Power Measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the reactive power.
 
@@ -1251,7 +1251,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   Die Messung der Scheinleistung erfolgt zur Messung Scheinleistung im Wechselstromnetz, für regeltechnische Zwecke.
 
                   Je nach Optimierungsanwendung muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
@@ -1276,7 +1276,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   Measurement of the apparent power is performed to measure the apparent power in the AC grid, for regulation purposes.
 
                   Depending on the optimization application, a measurement interval of 10 times/second up to once a minute is required.
@@ -1478,7 +1478,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active energy.
 
@@ -1511,7 +1511,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
 
@@ -1726,8 +1726,8 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Messung der Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Messung der Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
                   Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
 
                   <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
@@ -1748,8 +1748,8 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Measurement of reactive energy: Data acquisition is performed periodically by the CEM (or a billing software), which collects measurements and adds a time stamp.<br />
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Measurement of reactive energy: Data acquisition is performed periodically by the EMS (or a billing software), which collects measurements and adds a time stamp.<br />
                   An energy measurement needs a time stamp for balance purposes, even on the grid provider or aggregator side. Typical neighboring profiles are communicator.
 
                   <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
@@ -1951,7 +1951,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for measuring the active energy.
 
@@ -1984,7 +1984,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkenergie</strong><br>
                   Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
 
@@ -2199,8 +2199,8 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Messung der Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Messung der Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch das EMS (oder eine Abrechnungssoftware), welche Messwerte aufnimmt und mit dem Zeitwert ergänzt.<br />
                   Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
 
                   <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
@@ -2221,8 +2221,8 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  Measurement of reactive energy: Data acquisition is performed periodically by the CEM (or a billing software), which collects measurements and adds a time stamp.<br />
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  Measurement of reactive energy: Data acquisition is performed periodically by the EMS (or a billing software), which collects measurements and adds a time stamp.<br />
                   An energy measurement needs a time stamp for balance purposes, even on the grid provider or aggregator side. Typical neighboring profiles are communicator.
 
                   <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
@@ -2424,7 +2424,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <p>Der Power-Quadrant gibt die Lastverteilung zwischen Wirk- und Blindleistung und zwischen Bezug und Einspeisung geometrisch an:
                   <ul>
                     <li>1 = Wirkleistung Bezug, Blindleistung Bezug</li>
@@ -2440,7 +2440,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <p>The power quadrant geometrically reflects the load distribution between active and reactive power and between import and export:
                   <ul>
                     <li>1 = active import, reactive import</li>
@@ -2586,7 +2586,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   Der PowerFactor entspricht der Division der Wirkleistung durch die Scheinleistung.
                   Er ist nicht zu verwechseln mit dem Klirrfaktor, welcher den Oberwellenanteil misst. In einem overwellenfreien System entspricht der Power Faktor
                   genau arccos(phi) und wird mit zunehmenden Oberwellen schlechter.
@@ -2597,7 +2597,7 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   The power factor is the active power divided by the apparent power.
                   It is not to be confused with the distortion factor, which measures the harmonics ratio. In a system with no harmonics the power factor
                   is equal to arccos(phi) and gets worse with increasing harmonics.

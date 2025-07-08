@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Published</state>
@@ -26,10 +27,10 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/cem_from_evse.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/ems_from_evse.svg" style="float:left; padding:0.3em;"/>
           Functional profile for reading the status of the connector of an electric vehicle charging station (EVSE).
           <p>The status of the connector indicates, for example, whether a car is connected to the charging station, if it is currently charging, or if the connector is not connected to the electric vehicle.
-             The function profile refers to the states offered by the OCPP 1.6 protocol under ocppState.</p>
+            The function profile refers to the states offered by the OCPP 1.6 protocol under ocppState.</p>
           <p>Knowing the status of the charging station allows an external controller to influence the charging of the car, for example, through the EMS_Current_Limit functional profile.</p>
           <p>The current state of the wallbox can be read using the data point ocppState with following values corresponding to the OCPP standard (Open Charge Point Protocol):</p>
           <ol>
@@ -50,10 +51,10 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/cem_from_evse.svg" style="float:left; padding:0.3em;"/>
+          <img src="ressources/ems_from_evse.svg" style="float:left; padding:0.3em;"/>
           Funktionsprofil zum Auslesen des Status einer Elektrofahrzeug-Ladestation (EVSE).
           <p>Der Status der Ladestation zeigt beispielsweise an, ob ein Auto mit der Ladestation verbunden ist, ob es gerade lädt oder ob die Ladestation nicht mit dem Elektrofahrzeug verbunden ist.
-             Das Funktionsprofil bezieht sich auf die Zustände, die das OCPP 1.6-Protokoll unter ocppState bietet.</p>
+            Das Funktionsprofil bezieht sich auf die Zustände, die das OCPP 1.6-Protokoll unter ocppState bietet.</p>
           <p>Durch die Kenntnis des Status der Ladestation kann ein externer Controller beispielsweise über das Funktionsprofil EMS_Current_Limit Einfluss auf das Laden des Fahrzeugs nehmen.</p>
           <p>Der aktuelle Zustand der Wallbox kann über den Datenpunkt ocppState mit folgenden Werten entsprechend dem OCPP-Standard (Open Charge Point Protocol) ausgelesen werden:</p>
           <ol>

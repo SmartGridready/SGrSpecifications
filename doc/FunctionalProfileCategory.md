@@ -1,35 +1,35 @@
 # Functional Profile Category
 
-Following is the list o fpossible functional profile categories defining the usage of the product
+Following is the list of possible functional profile categories defining the usage of the product
 
 | Element | Description |
 |---------|-------------|
 | Battery | 1: Batterie |
 | Kompressor | 2: Kompressor |
-| DeviceInformation | 3: Geräteinformation |
+| DeviceInformation | 3: GerÃ¤teinformation |
 | DHWCircuit | 4: WarmWasserheizung |
 | DHWStorage | 5: WarmWasserspeicher |
-| Dishwasher | 6: Geschirrspülmaschine |
+| Dishwasher | 6: GeschirrspÃ¼lmaschine |
 | Dryer | 7: Trockner |
 | ElectricalImmersionHeater | 8: elekrtrischer Tauchsieder |
 | Fan | 9: Ventilator |
-| GasHeatingAppliance | 10: Gas/Wärmeanwendung |
+| GasHeatingAppliance | 10: Gas/WÃ¤rmeanwendung |
 | Metering | 11: allgemein verwendbar |
-| HeatingBufferStorage | 12: Wärmepufferspeicher |
+| HeatingBufferStorage | 12: WÃ¤rmepufferspeicher |
 | HeatingCircuit | 13: Heizkreis |
 | HeatingObject | 14: Heizungsobjekt |
 | HeatingZone | 15: Heizzone |
-| HeatPumpControl | 16: Wärmepumpenanwendung |
-| HeatSinkCircuit | 17: Kühlkörperschaltung |
-| HeatSourceCircuit | 18: Wärmekörperschaltung |
-| HeatSourceUnit | 19: Wärmequelle |
+| HeatPumpControl | 16: WÃ¤rmepumpenanwendung |
+| HeatSinkCircuit | 17: KÃ¼hlkÃ¶rperschaltung |
+| HeatSourceCircuit | 18: WÃ¤rmekÃ¶rperschaltung |
+| HeatSourceUnit | 19: WÃ¤rmequelle |
 | HVACController | 20: HLKController |
 | HVACRoom | 21: HLKRaum |
 | InstantDHWHeater | 22: Durchfluss-Warmwasserheizung |
 | Inverter | 23: Wechselrichter / Wandler |
-| OilHeatingAppliance | 24: Oelwärmeanwendung |
+| OilHeatingAppliance | 24: OelwÃ¤rmeanwendung |
 | Pump | 25: Pumpe |
-| RefrigerantCircuit | 26: Kältemittelkreislauf |
+| RefrigerantCircuit | 26: KÃ¤ltemittelkreislauf |
 | SmartEnergyAppliance | 27: Smart Energy Appliance |
 | SolarDHWStorage | 28: Solar-Warmwasserspeicher |
 | SolarThermalCircuit | 29: Solar-Warmwasserkreislauf |
@@ -44,14 +44,14 @@ Following is the list o fpossible functional profile categories defining the usa
 | Household | 37: Haushalt |
 | PVSystem | 38: PV System |
 | EV | 39: Elektromobil |
-| EVSE | 40: Ladestationscontroller für Elektrofahrzeug |
+| EVSE | 40: Ladestationscontroller fÃ¼r Elektrofahrzeug |
 | ChargingOutlet | 41: Ladestation |
-| CEM | 42: Energiemanager für Endverbraucher |
+| CEM | 42: Energiemanager fÃ¼r Endverbraucher |
 | Actuator | 43:allgemein fuer Aktor |
 | Sensor | 44: allgemein fuer Messdatenaufnahme |
-| Controller | 45:Steuergerät |
+| Controller | 45:SteuergerÃ¤t |
 | EnvCondition | 46:Umweltbedingungen |
-| FlexBuildingCampus | 47: Gebäude und Campus.elektrische Flexibilität |
-| Metering | 48: Metering< |
+| FlexBuildingCampus | 47: GebÃ¤ude und Campus.elektrische FlexibilitÃ¤t |
+| Metering | 48: Metering |
 | DynamicTariff | 49: Dynamic Tariff |
 | R50 | 50: Reserve |

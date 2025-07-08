@@ -135,28 +135,28 @@
               <functionalProfileType>DeviceInformation</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
                 <![CDATA[
-          Functional profile used to read a device ID used to identify a device. <p>
-          Further on, this functional profile that can be used for vendor specific information and data points. <p>
-          It allows the handling of data points, which are valid for the whole device.
-        ]]>
+                  <p>Functional profile used to read a device ID used to identify a device.</p>
+                  <p>Further on, this functional profile that can be used for vendor specific information and data points.
+                  It allows the handling of data points, which are valid for the whole device.</p>
+                ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
             <legibleDescription>
               <textElement>
                 <![CDATA[
-          Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts. <p>
-          Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden. <p>
-          Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
-        ]]>
+                  <p>Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts.</p>
+                  <p>Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden.
+                  Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -171,11 +171,11 @@
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>Read the device ID.</textElement>
+                  <textElement>The device ID</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Auslesen der Geräte ID.</textElement>
+                  <textElement>Die Geräte-ID</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -209,30 +209,37 @@
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
-                  Zwecke.
-                  
-                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
-                     Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                     zu definieren.</p>
-                  
+                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
+
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
-                     einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-                     umgesetzt werden:
+                    einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+                    umgesetzt werden:
                   <ul>
                     <li>Einphasige Geräte geben die Totalleistung an (ActivePowerACtot)</li>
                     <li>3-phasige Geräte ohne Totalleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
                     <li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
                   </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+                  <ul>
+                    <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+                    <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+                    <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+                  </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+                  Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
                   </p>
                 ]]>
               </textElement>
@@ -241,26 +248,66 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Active Power Measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the active power.
-                  
-                  <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute
-                     per data point. Thus, different measurement precisions can be defined for the data points.</p>
-                  
+                  Monitoring functional profile for power generators and consumers for measuring the active power.
+
                   <p>With this functional profile you can measure the total active power as well as the active power of
-                     the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
+                    the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
                     <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
                     <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
                     <li>Three-phase devices with measurement of the total active power use all data points</li>
                   </ul>
                   </p>
+
+                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+                  <ul>
+                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+                    <li><i>Import</i> is the import from grid, a positive value</li>
+                    <li><i>Export</i> is the export to grid, a positive value</li>
+                  </ul>
+                  </p>
+
+                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
+                  </p>
                 ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
           </functionalProfile>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MeteringDirection</name>
+              <dataType>
+                <enum>
+                  <enumEntry>
+                    <literal>Net</literal>
+                    <description>Net or balance value</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Import</literal>
+                    <description>Import from grid</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Export</literal>
+                    <description>Export to grid</description>
+                  </enumEntry>
+                </enum>
+              </dataType>
+              <value>Net</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MeteringTariffNr</name>
+              <dataType>
+                <int32 />
+              </dataType>
+              <value>0</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -270,8 +317,6 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <maximumValue>90</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkleistung</textElement>
@@ -314,8 +359,6 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 1</textElement>
@@ -358,8 +401,6 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 2</textElement>
@@ -402,8 +443,6 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <maximumValue>30</maximumValue>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 3</textElement>
@@ -442,7 +481,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActiveEnergyACIn</functionalProfileName>
+            <functionalProfileName>ActiveEnergyAC_Import</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -450,61 +489,109 @@
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              <strong>Messung der Wirkenergie</strong><br>
-                              Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
-                  
-                              <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-                  
-                              <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
-                                 Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                                 zu definieren.</p>
-                  
-                              <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
-                                 der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-                                 umgesetzt werden:
-                              <ul>
-                                <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
-                                <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
-                                <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
-                              </ul>
-                              </p>
-                            ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                 <![CDATA[
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the energy balance.
-                  
+                  Monitoring functional profile for power generators and consumers for measuring the active energy.
+
                   <p>Data is typically recorded by an energy manager (or a billing software).</p>
-                  
-                  <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute per data point.
-                     Thus, different measurement precisions can be defined for the data points. </p>
-                  
+
                   <p>With this functional profile you can measure the total energy as well as the energy of the three
-                     individual phases. One of the following options must be implemented for fulfilling the functional profile:
+                    individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
                     <li>Single-phase devices use the total energy data point (ActiveEnergyACtot)</li>
                     <li>Three-phase devices without measurement of the total energy use the data points per (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
                     <li>Three-phase devices with measurement of the total energy all data points</li>
                   </ul>
                   </p>
+
+                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+                  <ul>
+                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+                    <li><i>Import</i> is the import from grid, a positive value</li>
+                    <li><i>Export</i> is the export to grid, a positive value</li>
+                  </ul>
+                  </p>
+
+                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
+                  </p>
                 ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Wirkenergie</strong><br>
+                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
+
+                  <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
+
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
+                    der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+                    umgesetzt werden:
+                  <ul>
+                    <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
+                    <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
+                    <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
+                  </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+                  <ul>
+                    <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+                    <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+                    <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+                  </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+                  Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+                  </p>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
           </functionalProfile>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MeteringDirection</name>
+              <dataType>
+                <enum>
+                  <enumEntry>
+                    <literal>Net</literal>
+                    <description>Net or balance value</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Import</literal>
+                    <description>Import from grid</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Export</literal>
+                    <description>Export to grid</description>
+                  </enumEntry>
+                </enum>
+              </dataType>
+              <value>Import</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MeteringTariffNr</name>
+              <dataType>
+                <int32 />
+              </dataType>
+              <value>0</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -516,12 +603,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Total energy measurement</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -558,12 +645,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der Wirkenergie Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Energy measurement of phase 1</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 1</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -600,12 +687,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der Wirkenergie Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Energy measurement of phase 2</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 2</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -642,12 +729,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der Wirkenergie Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Energy measurement of phase 3</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 3</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -678,7 +765,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActiveEnergyACOut</functionalProfileName>
+            <functionalProfileName>ActiveEnergyAC_Export</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -686,61 +773,109 @@
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                              <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                              <strong>Messung der Wirkenergie</strong><br>
-                              Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
-                  
-                              <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-                  
-                              <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
-                                 Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                                 zu definieren.</p>
-                  
-                              <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
-                                 der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-                                 umgesetzt werden:
-                              <ul>
-                                <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
-                                <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
-                                <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
-                              </ul>
-                              </p>
-                            ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[	
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the energy balance.
-                  
+                  Monitoring functional profile for power generators and consumers for measuring the active energy.
+
                   <p>Data is typically recorded by an energy manager (or a billing software).</p>
-                  
-                  <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute per data point.
-                     Thus, different measurement precisions can be defined for the data points. </p>
-                  
+
                   <p>With this functional profile you can measure the total energy as well as the energy of the three
-                     individual phases. One of the following options must be implemented for fulfilling the functional profile:
+                    individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
                     <li>Single-phase devices use the total energy data point (ActiveEnergyACtot)</li>
                     <li>Three-phase devices without measurement of the total energy use the data points per (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
                     <li>Three-phase devices with measurement of the total energy all data points</li>
                   </ul>
                   </p>
+
+                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+                  <ul>
+                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+                    <li><i>Import</i> is the import from grid, a positive value</li>
+                    <li><i>Export</i> is the export to grid, a positive value</li>
+                  </ul>
+                  </p>
+
+                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
+                  </p>
                 ]]>
               </textElement>
               <language>en</language>
             </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Wirkenergie</strong><br>
+                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
+
+                  <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
+
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
+                    der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+                    umgesetzt werden:
+                  <ul>
+                    <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
+                    <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
+                    <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
+                  </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
+                  <ul>
+                    <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
+                    <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
+                    <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
+                  </ul>
+                  </p>
+
+                  <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
+                  Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
+                  </p>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
           </functionalProfile>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MeteringDirection</name>
+              <dataType>
+                <enum>
+                  <enumEntry>
+                    <literal>Net</literal>
+                    <description>Net or balance value</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Import</literal>
+                    <description>Import from grid</description>
+                  </enumEntry>
+                  <enumEntry>
+                    <literal>Export</literal>
+                    <description>Export to grid</description>
+                  </enumEntry>
+                </enum>
+              </dataType>
+              <value>Export</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MeteringTariffNr</name>
+              <dataType>
+                <int32 />
+              </dataType>
+              <value>0</value>
+              <unit>NONE</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -752,12 +887,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Total energy measurement</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -794,12 +929,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der Wirkenergie Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Energy measurement of phase 1</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 1</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -836,12 +971,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der Wirkenergie Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Energy measurement of phase 2</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 2</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -878,12 +1013,12 @@
                 <unit>KILOWATT_HOURS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der Wirkenergie Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
                   <textElement>Energy measurement of phase 3</textElement>
                   <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 3</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -921,16 +1056,49 @@
               <functionalProfileType>VoltageAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Messung der aktuellen Spannung.
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Spannung</strong><br />
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
+                  Zwecke.
+
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Spannung auf einer Phase wie auch auf drei Phasen.
+                    Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+                  <ul>
+                    <li>Einphasige Geräte geben die Spannung über die erste Phase an (VoltageACL1_N)</li>
+                    <li>3-phasige Geräte in Sternschaltung geben die Spannung pro Phase gegen den Nullleiter an (VoltageACL1_N, VoltageACL2_N, VoltageACL2_N).</li>
+                    <li>3-phasige Geräte in Dreiecksschaltung geben die Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+                  </ul>
+                  </p>
+                ]]>
               </textElement>
               <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Voltage measurement</strong><br />
+                  Monitoring functional profile for power generators and consumers for reflecting the voltage.
+
+                  <p>This functional profile allows measurement of the voltage on a single phase of three phases.
+                    One of the following approaches must be applied when implementing the functional profile:
+                  <ul>
+                    <li>Single-phase devices use the total voltage with the first data point (VoltageACL1_N)</li>
+                    <li>Three-phase devices in star configuration provide the voltage per phase vs. neutral using three data points (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
+                    <li>Three-phase devices in delta configuration provide the voltage between phases using three data points (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+                  </ul>
+                  </p>
+                ]]>
+              </textElement>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -945,8 +1113,12 @@
                 <minimumValue>100</minimumValue>
                 <maximumValue>260</maximumValue>
                 <legibleDescription>
-                  <textElement>Spannung Phase 1 gegenüber Nulleiter</textElement>
+                  <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
                   <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Measurement of the voltage between phase 1 and neutral</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -984,8 +1156,12 @@
                 <minimumValue>100</minimumValue>
                 <maximumValue>260</maximumValue>
                 <legibleDescription>
-                  <textElement>Spannung Phase 2 gegenüber Nulleiter</textElement>
+                  <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
                   <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Measurement of the voltage between phase 2 and neutral</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -1023,8 +1199,12 @@
                 <minimumValue>100</minimumValue>
                 <maximumValue>260</maximumValue>
                 <legibleDescription>
-                  <textElement>Spannung Phase 3 gegenüber Nulleiter</textElement>
+                  <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
                   <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Measurement of the voltage between phase 3 and neutral</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -1069,9 +1249,44 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Messung des aktuellen Stromflusses.
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Stromstärke</strong><br>
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
+                  Zwecke.
+
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
+                    Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+                  <ul>
+                    <li>Einphasige Geräte geben die Stromstärke über die erste Phase an (CurrentAC1)</li>
+                    <li>3-phasige Geräte geben die Stromstärke pro Phase an (CurrentAC1, CurrentAC2, CurrentAC3)</li>
+                  </ul>
+                  </p>
+
+                  <p>Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.</p>
+                ]]>
               </textElement>
               <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Current measurement</strong><br>
+                  Monitoring functional profile for power generators and consumers for reflecting the current.
+
+                  <p>This functional profile allows measurement of the current on a single phase of three phases.
+                    One of the following approaches must be applied when implementing the functional profile:
+                  <ul>
+                    <li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
+                    <li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+                  </ul>
+                  </p>
+
+                  <p>The implementation of a data point measuring the current on the neutral conductor is optional (via data point CurrentACN).</p>
+                ]]>
+              </textElement>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -1086,8 +1301,12 @@
                 <minimumValue>0</minimumValue>
                 <maximumValue>120</maximumValue>
                 <legibleDescription>
-                  <textElement>Stromfluss Phase 1</textElement>
+                  <textElement>Erfassung des Stromes in Phase 1</textElement>
                   <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Current measurement of phase 1</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -1125,8 +1344,12 @@
                 <minimumValue>0</minimumValue>
                 <maximumValue>120</maximumValue>
                 <legibleDescription>
-                  <textElement>Stromfluss Phase 2</textElement>
+                  <textElement>Erfassung des Stromes in Phase 2</textElement>
                   <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Current measurement of phase 2</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
@@ -1164,8 +1387,12 @@
                 <minimumValue>0</minimumValue>
                 <maximumValue>120</maximumValue>
                 <legibleDescription>
-                  <textElement>Stromfluss Phase 3</textElement>
+                  <textElement>Erfassung des Stromes in Phase 3</textElement>
                   <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Current measurement of phase 3</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
