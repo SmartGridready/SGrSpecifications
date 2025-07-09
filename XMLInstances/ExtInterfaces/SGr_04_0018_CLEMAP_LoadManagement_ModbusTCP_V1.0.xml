@@ -3,20 +3,14 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>CLEMAP Energy Monitor ModbusTCP</deviceName>
+  <deviceName>CLEMAP Load Management ModbusTCP</deviceName>
   <manufacturerName>CLEMAP</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.1.0</version>
-      <date>2025-03-18</date>
-      <author>SGr/mkr</author>
-      <comment>Draft for Testing</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
-      <date>2025-07-01</date>
+      <date>2025-07-09</date>
       <author>SGr/mkr</author>
       <comment>Published</comment>
     </changeLog>
@@ -25,15 +19,34 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          Der CLEMAP Energy Monitor wird eingesetzt, um den Stromverbrauch bei KMU und industriellen Anwendungen vollständig zu überwachen.
+          <p>
+          CLEMAP Load Management is used to control load peaks in a targeted manner and to ensure grid stability in SMEs and industrial applications.
           </p>
-          Er wird in Steuerschränke oder Verteilerkästen installiert und fungiert als dezentrale Messstelle.
+          <p>
+          The system acts as a central energy management system (EMS) and enables the intelligent control of consumers based on real-time data and defined priorities.
+          It is integrated directly into existing infrastructures and optimizes energy use through active load management.
+          </p>
+        ]]>
+        </textElement>
+      <language>en</language>
+      <uri>https://en.clemap.com/products/clemap-load-management</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>
+          CLEMAP Load Management wird eingesetzt, um Lastspitzen gezielt zu steuern und die Netzstabilität bei KMU sowie in industriellen Anwendungen sicherzustellen.
+          </p>
+          <p>
+          Das System fungiert als zentrales Energiemanagementsystem (EMS) und ermöglicht die intelligente Regelung von Verbrauchern basierend auf Echtzeitdaten und definierten Prioritäten.
+          Es wird direkt in bestehende Infrastrukturen integriert und optimiert die Energienutzung durch aktives Lastmanagement.
+          </p>
         ]]>
         </textElement>
       <language>de</language>
-      <uri>https://www.clemap.com/products/clemap-energy-monitor</uri>
+      <uri>https://www.clemap.com/products/clemap-load-management</uri>
     </legibleDescription>
-    <deviceCategory>SubMeterElectricity</deviceCategory>
+    <deviceCategory>CEM</deviceCategory>
     <isLocalControl>true</isLocalControl>
     <softwareRevision>fw4.10.11</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
