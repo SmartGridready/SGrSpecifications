@@ -13,7 +13,7 @@
             <tbody><tr style="border:hidden;"><td>
                 <div class="functionalProfile">
                     <h2>
-        
+
                         <xsl:value-of
                             select="sgr:functionalProfile/sgr:functionalProfileIdentification/sgr:functionalProfileCategory" />
                         - <xsl:value-of
@@ -22,9 +22,9 @@
                             select="sgr:functionalProfile/sgr:functionalProfileIdentification/sgr:levelOfOperation" />)
                     </h2>
                     <br />
-        
+
                     <xsl:apply-templates select="sgr:releaseNotes" />
-        
+
                     <table>
                         <colgroup>
                             <col style="width:30%" />
@@ -38,7 +38,7 @@
                                     <colgroup>
                                         <col style="width:30%" />
                                     </colgroup>
-        
+
                                     <xsl:apply-templates
                                         select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification">
                                         <xsl:with-param name="separator" select="' - '" />
@@ -48,19 +48,19 @@
                         </tr>
                     </table>
                     <br />
-        
+
                     <!-- Functional Profile Block -->
                     <table>
                         <colgroup>
                             <col style="width:230px" />
                         </colgroup>
-        
+
                         <!-- alternativeNames -->
                         <xsl:apply-templates select="sgr:functionalProfile/sgr:alternativeNames" />
                         <xsl:apply-templates select="sgr:functionalProfile/sgr:legibleDescription" />
                         <xsl:apply-templates select="sgr:genericAttributes" />
                     </table>
-        
+
                     <xsl:apply-templates select="sgr:dataPointList" />
 
                     <xsl:if test="//sgr:genericAttributeList">
@@ -77,29 +77,29 @@
                                     <th>Type</th>
                                     <th>Description</th>
                                 </tr>
-        
+
                                 <!--//sgr:attributeList-->
                                 <xsl:if test="//sgr:genericAttributeList">
                                     <xsl:for-each select="//sgr:genericAttributeList/sgr:genericAttributeListElement[not(sgr:name=preceding::sgr:name)]">
                                         <xsl:sort select="sgr:name"/>
                                         <tr class="genericDetails">
-                                            <xsl:variable name="name" select="sgr:name"/> 
+                                            <xsl:variable name="name" select="sgr:name"/>
                                             <xsl:variable name="attribute" select="document(concat('../GenericAttributes/', $name, '.xml'))"/>
                                             <td class="genericattribute">
-                                              <xsl:value-of select="$attribute/sgr:GenericAttributeFrame/sgr:name"/>
-                                              <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:genericAttributeList/sgr:genericAttributeListElement">
-                                                <ul style="margin: 0">
-                                                  <li><xsl:value-of select="sgr:name"/></li>
-                                                </ul>
-                                              </xsl:for-each>
+                                                <xsl:value-of select="$attribute/sgr:GenericAttributeFrame/sgr:name"/>
+                                                <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:genericAttributeList/sgr:genericAttributeListElement">
+                                                    <ul style="margin: 0">
+                                                        <li><xsl:value-of select="sgr:name"/></li>
+                                                    </ul>
+                                                </xsl:for-each>
                                             </td>
                                             <td>
-                                              <xsl:apply-templates select="$attribute/sgr:GenericAttributeFrame/sgr:dataType" />&#160;
-                                              <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:genericAttributeList/sgr:genericAttributeListElement">
-                                                <ul style="margin: 0">
-                                                  <li><xsl:apply-templates select="sgr:dataType" /></li>
-                                                </ul>
-                                              </xsl:for-each>
+                                                <xsl:apply-templates select="$attribute/sgr:GenericAttributeFrame/sgr:dataType" />&#160;
+                                                <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:genericAttributeList/sgr:genericAttributeListElement">
+                                                    <ul style="margin: 0">
+                                                        <li><xsl:apply-templates select="sgr:dataType" /></li>
+                                                    </ul>
+                                                </xsl:for-each>
                                             </td>
                                             <td>
                                                 <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:legibleDescription">

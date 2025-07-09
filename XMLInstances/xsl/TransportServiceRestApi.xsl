@@ -83,26 +83,26 @@
         </xsl:if>
     </xsl:template>
 
-	<!-- RestApiDataPointConfiguration -->
-	<xsl:template match="sgr:restApiDataPointConfiguration">
-		<tr class="transportDetails">
-			<td class="restapiattribute">Data Type</td>
-			<td>
-				<xsl:value-of select="./sgr:dataType" />
-			</td>
-		</tr>
-        <xsl:apply-templates select="sgr:restApiServiceCall" />      
-	</xsl:template>    
+    <!-- RestApiDataPointConfiguration -->
+    <xsl:template match="sgr:restApiDataPointConfiguration">
+        <tr class="transportDetails">
+            <td class="restapiattribute">Data Type</td>
+            <td>
+                <xsl:value-of select="./sgr:dataType" />
+            </td>
+        </tr>
+        <xsl:apply-templates select="sgr:restApiServiceCall" />
+    </xsl:template>
 
     <!-- Rest Api Service Call -->
     <xsl:template match="sgr:restApiServiceCall">
         <tr class="transportDetails">
-			<td>End Point</td>
-			<td>
-				<xsl:value-of select="sgr:requestMethod" /> &#160; 
-				<xsl:value-of select="sgr:requestPath" />
-			</td>
-		</tr>
+            <td>End Point</td>
+            <td>
+                <xsl:value-of select="sgr:requestMethod" /> &#160;
+                <xsl:value-of select="sgr:requestPath" />
+            </td>
+        </tr>
         <xsl:if test="sgr:requestQuery">
             <tr class="transportDetails">
                 <td>Request Query</td>
@@ -112,7 +112,7 @@
                         <br />
                     </xsl:for-each>
                 </td>
-            </tr>   
+            </tr>
         </xsl:if>
         <xsl:if test="sgr:requestForm">
             <tr class="transportDetails">
@@ -123,31 +123,31 @@
                         <br />
                     </xsl:for-each>
                 </td>
-            </tr>   
+            </tr>
         </xsl:if>
         <xsl:if test="sgr:requestHeader">
             <tr class="transportDetails">
                 <td>Header</td>
                 <td>
-    				<xsl:for-each select="sgr:requestHeader/sgr:header">
+                    <xsl:for-each select="sgr:requestHeader/sgr:header">
                         <xsl:value-of select="./sgr:headerName" /> : <xsl:value-of select="sgr:value" />
                     </xsl:for-each>
                 </td>
             </tr>
         </xsl:if>
         <xsl:if test="sgr:requestBody">
-		    <tr class="transportDetails">
-			    <td>Body</td>
-			    <td>
+            <tr class="transportDetails">
+                <td>Body</td>
+                <td>
                     <xsl:value-of select="sgr:requestBody" />
-			    </td>
-		    </tr>		
+                </td>
+            </tr>
         </xsl:if>
-		<tr class="transportDetails">
-			<td>Response</td>
-			<td>
-				<xsl:value-of select="sgr:responseQuery/sgr:queryType" /> &#160;
-				<xsl:value-of select="sgr:responseQuery/sgr:query" />
+        <tr class="transportDetails">
+            <td>Response</td>
+            <td>
+                <xsl:value-of select="sgr:responseQuery/sgr:queryType" /> &#160;
+                <xsl:value-of select="sgr:responseQuery/sgr:query" />
                 <xsl:if test="sgr:responseQuery/sgr:jmesPathMappings">
                     <br />
                     <xsl:for-each select="sgr:responseQuery/sgr:jmesPathMappings/sgr:mapping">
@@ -158,8 +158,8 @@
                         <br />
                     </xsl:for-each>
                 </xsl:if>
-			</td>
-		</tr>     
-	</xsl:template>    
-    
+            </td>
+        </tr>
+    </xsl:template>
+
 </xsl:stylesheet>

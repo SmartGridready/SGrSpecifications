@@ -5,7 +5,7 @@
     <!--
     Contains the style sheets for the generic functional profile, including
     - sgr:alternativeNames
--->
+    -->
 
     <xsl:template match="sgr:functionalProfileList">
         <xsl:for-each select="sgr:functionalProfileListElement">
@@ -31,7 +31,7 @@
                 <xsl:apply-templates select="sgr:modbusAttributes" />
                 <xsl:apply-templates select="sgr:messagingAttributes" />
             </table>
-            
+
             <xsl:apply-templates select="sgr:dataPointList" />
 
         </div>
@@ -57,7 +57,7 @@
                 <xsl:choose>
                     <xsl:when test="sgr:specificationOwnerIdentification = 0">SGr</xsl:when>
                     <xsl:otherwise><xsl:value-of select="sgr:specificationOwnerIdentification" /></xsl:otherwise>
-                </xsl:choose>        
+                </xsl:choose>
             </td>
         </tr-->
         <tr>
