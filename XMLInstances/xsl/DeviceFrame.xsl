@@ -16,14 +16,14 @@
                     <h1>
                         <xsl:value-of select="sgr:manufacturerName" /> -
                         <xsl:value-of select="sgr:deviceName" />
-                        
+
                         <xsl:if test="sgr:deviceInformation/sgr:levelOfOperation">
                             (Level <xsl:value-of select="sgr:deviceInformation/sgr:levelOfOperation" />)
                         </xsl:if>
                     </h1>
-        
+
                     <xsl:apply-templates select="sgr:releaseNotes" />
-        
+
                     <table>
                         <colgroup>
                             <col style="width:230px" />
@@ -52,20 +52,20 @@
                         <tr>
                             <td class="noborder" />
                         </tr>
-        
+
                         <xsl:apply-templates select="sgr:deviceInformation" />
                         <xsl:apply-templates select="sgr:genericAttributeList" />
                         <xsl:apply-templates select="sgr:genericAttributes" />
-        
+
                     </table>
-        
+
                     <xsl:for-each select="sgr:interfaceList/*">
                         <div class="interface">
                             <table>
                                 <colgroup>
                                     <col style="width:230px" />
                                 </colgroup>
-        
+
                                 <!-- Modbus Device -->
                                 <xsl:if test="sgr:modbusInterfaceDescription">
                                     <h1 class="modbusattribute">Modbus Interface</h1>
@@ -73,21 +73,21 @@
                                     <xsl:apply-templates select="sgr:modbusAttributes" />
                                     <xsl:apply-templates select="sgr:timeSyncBlockNotification" />
                                 </xsl:if>
-        
+
                                 <!-- Messaging Device -->
                                 <xsl:if test="sgr:messagingInterfaceDescription">
                                     <h1 class="messagingattribute">Messaging Interface</h1>
                                     <xsl:apply-templates select="sgr:messagingInterfaceDescription" />
                                     <xsl:apply-templates select="sgr:messagingAttributes" />
                                 </xsl:if>
-        
+
                                 <!-- Rest Device -->
                                 <xsl:if test="sgr:restApiInterfaceDescription">
                                     <h1 class="restapiattribute">RestApi Interface</h1>
                                     <xsl:apply-templates
                                         select="sgr:restApiInterfaceDescription" />
                                 </xsl:if>
-        
+
                                 <!-- Contact Device -->
                                 <xsl:if test="sgr:contactInterfaceDescription">
                                     <h1 class="contactapiattribute">Contact Interface</h1>
@@ -95,11 +95,11 @@
                                         select="sgr:contactInterface/sgr:contactInterfaceDescription" />
                                 </xsl:if>
                             </table>
-        
+
                             <!-- Functiol Profiles -->
                             <xsl:apply-templates select="sgr:functionalProfileList" />
                         </div>
-        
+
                     </xsl:for-each>
 
                     <xsl:if test="//sgr:configurationList">
@@ -118,17 +118,17 @@
                                     <th>Default</th>
                                     <th>Description</th>
                                 </tr>
-        
+
                                 <xsl:for-each select="//sgr:configurationList/sgr:configurationListElement[not(sgr:name=preceding::sgr:name)]">
                                     <tr class="genericDetails">
                                         <td>
-                                            <xsl:value-of select="sgr:name"/> 
+                                            <xsl:value-of select="sgr:name"/>
                                         </td>
                                         <td>
-                                            <xsl:apply-templates select="sgr:dataType" /> 
+                                            <xsl:apply-templates select="sgr:dataType" />
                                         </td>
                                         <td>
-                                            <xsl:value-of select="sgr:defaultValue"/> 
+                                            <xsl:value-of select="sgr:defaultValue"/>
                                         </td>
                                         <td>
                                             <xsl:for-each select="sgr:configurationDescription">
@@ -153,8 +153,8 @@
             <tfoot><tr style="border:hidden;"><td>
                 <!-- Footer-->
                 <div class="documentfooter">
-				    <sup>1)</sup> data direction: R read, W write, P persistent, C constant
-				</div>
+                    <sup>1)</sup> data direction: R read, W write, P persistent, C constant
+                </div>
             </td></tr></tfoot>
         </table>
     </xsl:template>
@@ -179,7 +179,7 @@
                     <xsl:otherwise>
                         <img src="/xsl/ressources/cloud.png" alt="" width="16pt" height="16pt" />
                         Cloud device
-                     </xsl:otherwise>
+                    </xsl:otherwise>
                 </xsl:choose>
             </td>
         </tr>

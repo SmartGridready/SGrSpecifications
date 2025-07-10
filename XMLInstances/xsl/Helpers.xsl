@@ -98,7 +98,7 @@
                     </td>
                 </tr>
             </xsl:if>
-        </table>        
+        </table>
     </xsl:template>
 
     <!-- version number -->
@@ -190,56 +190,56 @@
         </xsl:if>
     </xsl:template>
 
-  	<!-- LegibleDescription -->
-	<xsl:template match="sgr:legibleDescription">
-		<tr>
-			<xsl:attribute name="lang">
-				<xsl:value-of select="sgr:language" />
-			</xsl:attribute>
-			<td colspan="2">
+    <!-- LegibleDescription -->
+    <xsl:template match="sgr:legibleDescription">
+        <tr>
+            <xsl:attribute name="lang">
+                <xsl:value-of select="sgr:language" />
+            </xsl:attribute>
+            <td colspan="2">
                 <img width="20px" height="14px">
                     <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
                 </img>
                 &#160;
                 <span class="renderhtml">
-                  <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                    <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                 </span>
                 <xsl:apply-templates select="sgr:uri" />
-			</td>
-		</tr>
-	</xsl:template>
+            </td>
+        </tr>
+    </xsl:template>
 
-	<!-- ProgrammerHints -->
-	<xsl:template match="sgr:programmerHints">
-		<tr class="transportDetails">
-			<xsl:attribute name="lang">
-				<xsl:value-of select="sgr:language" />
-			</xsl:attribute>
-			<td colspan="2" style="background-color:#E4E4E4">
+    <!-- ProgrammerHints -->
+    <xsl:template match="sgr:programmerHints">
+        <tr class="transportDetails">
+            <xsl:attribute name="lang">
+                <xsl:value-of select="sgr:language" />
+            </xsl:attribute>
+            <td colspan="2" style="background-color:#E4E4E4">
                 <div style="padding-top:0.3em;padding-bottom:0.3em">
                     <img width="20px" height="14px">
                         <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
                     </img>&#160;
-                    Programmer Hint 
+                    Programmer Hint
                     &#160;<img src="/xsl/ressources/hint.png" alt="Hint" width="16px" height="16px" />
                 </div>
                 <span class="renderhtml">
-                  <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                    <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                 </span>
                 <xsl:apply-templates select="sgr:uri" />
-			</td>
-		</tr>
-	</xsl:template>
+            </td>
+        </tr>
+    </xsl:template>
     <xsl:template match="sgr:uri">
         <div style="padding-top:0.5em;">
         <a target="_blank">
             <xsl:attribute name="href">
-                <xsl:value-of select="sgr:uri" />
+                <xsl:value-of select="." />
             </xsl:attribute>
             <img src="/xsl/ressources/link.png" alt="Link.." width="16pt" height="16pt" />&#160;
             <xsl:value-of select="." />
         </a>
-    </div>
+        </div>
     </xsl:template>
 
     <!-- Data Types -->
@@ -268,7 +268,7 @@
 
     <xsl:template match="sgr:enum">
         <div>
-          <ul>
+            <ul>
             <xsl:for-each select="sgr:enumEntry">
                 <li>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
@@ -276,10 +276,10 @@
                     <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
                 </li>
             </xsl:for-each>
-          </ul>
+            </ul>
         <xsl:if test="sgr:hexMask">
             <div>Hex Mask: 0x<xsl:value-of select="sgr:hexMask"/></div>
-        </xsl:if>        
+        </xsl:if>
         </div>
     </xsl:template>
 
@@ -294,7 +294,7 @@
                 </li>
             </xsl:for-each>
             </ul>
-        </div>       
+        </div>
     </xsl:template>
 
     <!-- LegibleDescription -->
@@ -309,14 +309,14 @@
             <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="$lang" />.png</xsl:attribute>
         </img>
         &#160;
-          <xsl:if test="$label != ''">
-              Label:
-              <span class="renderhtml">
-                  <xsl:value-of select="$label" disable-output-escaping="yes" />
-              </span>
-              <br/>
-          </xsl:if>
-          <xsl:value-of select="$value" disable-output-escaping="yes" />
+        <xsl:if test="$label != ''">
+            Label:
+            <span class="renderhtml">
+                <xsl:value-of select="$label" disable-output-escaping="yes" />
+            </span>
+            <br/>
+        </xsl:if>
+        <xsl:value-of select="$value" disable-output-escaping="yes" />
         <xsl:apply-templates select="sgr:uri" />
     </xsl:template>
 
@@ -521,4 +521,4 @@
         </xsl:choose>
     </xsl:template>
 
-</xsl:stylesheet> 
+</xsl:stylesheet>

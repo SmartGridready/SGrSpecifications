@@ -72,16 +72,16 @@
     </xsl:template>
 
     <!-- messagingDataPointConfiguration -->
-	<xsl:template match="sgr:messagingDataPointConfiguration">
-		<!-- messagingDataType (opt 1x) -->
+    <xsl:template match="sgr:messagingDataPointConfiguration">
+        <!-- messagingDataType (opt 1x) -->
         <tr class="transportDetails">
-			<td class="messagingattribute">Data Type</td>
-			<td>
-				<xsl:if test="sgr:messagingDataType">
-					<xsl:apply-templates select="sgr:messagingDataType" />
-				</xsl:if>
-			</td>
-		</tr>
+            <td class="messagingattribute">Data Type</td>
+            <td>
+                <xsl:if test="sgr:messagingDataType">
+                    <xsl:apply-templates select="sgr:messagingDataType" />
+                </xsl:if>
+            </td>
+        </tr>
 
         <!-- readCmdMessage (1x opt) -->
         <xsl:if test="sgr:readCmdMessage">
@@ -112,7 +112,7 @@
                 </td>
             </tr>
         </xsl:if>
-	</xsl:template>
+    </xsl:template>
 
     <xsl:template match="sgr:messagingDataType">
         <xsl:choose>
@@ -123,4 +123,4 @@
         </xsl:choose>
     </xsl:template>
 
-</xsl:stylesheet>  
+</xsl:stylesheet>

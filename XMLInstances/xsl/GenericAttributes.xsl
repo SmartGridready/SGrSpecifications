@@ -5,7 +5,7 @@
 
         <!--genericAttributeList-->
         <xsl:for-each select="sgr:genericAttributeListElement">
-            <xsl:variable name="name" select="sgr:name"/> 
+            <xsl:variable name="name" select="sgr:name"/>
             <xsl:variable name="attribute" select="document(concat('../GenericAttributes/', $name, '.xml'))"/>
             <tr class="genericDetails">
                 <td class="genericattribute">
@@ -39,4 +39,4 @@
 
     </xsl:template>
 
-</xsl:stylesheet>  
+</xsl:stylesheet>

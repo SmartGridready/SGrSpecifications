@@ -12,8 +12,8 @@
                         <xsl:when test="/sgr:DeviceFrame">
                             <col style="width:368px" />
                             <col style="width:54px" />
-    						<col style="width:75px" />
-    						<col style="width:44px" />
+                            <col style="width:75px" />
+                            <col style="width:44px" />
                         </xsl:when>
                         <xsl:otherwise>
                             <col style="width:324px" />
@@ -31,11 +31,11 @@
                     <th>Type</th>
                     <xsl:choose>
                         <xsl:when test="/sgr:DeviceFrame">
-    						<th>RWPC<sup>1)</sup></th>
+                            <th>RWPC<sup>1)</sup></th>
                         </xsl:when>
                         <xsl:otherwise>
-    						<th>MRO<sup>1)</sup></th>
-    						<th>RW<sup>2)</sup></th>
+                            <th>MRO<sup>1)</sup></th>
+                            <th>RW<sup>2)</sup></th>
                         </xsl:otherwise>
                     </xsl:choose>
                 </tr>
@@ -54,7 +54,7 @@
                     <colgroup>
                         <col style="width:194px" />
                     </colgroup>
-                    
+
                     <xsl:apply-templates select="sgr:dataPoint/sgr:programmerHints" />
 
                     <xsl:if test="sgr:dataPoint/sgr:minimumValue">
@@ -100,9 +100,9 @@
                             <xsl:when test="sgr:modbusDataPointConfiguration">
                                 <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
                                     <tr>
-                            			<td></td>
+                                        <td></td>
                                         <td style="color:red"><b>Constant data points cannot have a configuration</b></td>
-                            		</tr>
+                                    </tr>
                                 </xsl:if>
                                 <xsl:apply-templates select="sgr:modbusDataPointConfiguration" />
                                 <xsl:apply-templates select="sgr:blockCacheIdentification" />
@@ -130,12 +130,12 @@
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:if test="not(/sgr:DeviceFrame/sgr:interfaceList/sgr:contactInterface)">
-	                                <xsl:if test="sgr:dataPoint/sgr:dataDirection != 'C'">
-	                                    <tr>
-	                                        <td></td>
-	                                        <td style="color:red"><b>Non-constant data points must have a configuration</b></td>
-	                                    </tr>
-	                                </xsl:if>
+                                    <xsl:if test="sgr:dataPoint/sgr:dataDirection != 'C'">
+                                        <tr>
+                                            <td></td>
+                                            <td style="color:red"><b>Non-constant data points must have a configuration</b></td>
+                                        </tr>
+                                    </xsl:if>
                                 </xsl:if>
                             </xsl:otherwise>
                         </xsl:choose>
@@ -168,14 +168,14 @@
                 <xsl:for-each select="sgr:legibleDescription">
                     <div>
                         <xsl:attribute name="lang">
-                          <xsl:value-of select="sgr:language" />
+                            <xsl:value-of select="sgr:language" />
                         </xsl:attribute>
                         <img width="20px" height="14px">
                             <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
                         </img>
                         &#160;
                         <span class="renderhtml">
-                          <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                            <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                         </span>
                         <xsl:apply-templates select="sgr:uri" />
                     </div>
@@ -214,11 +214,11 @@
 
                 <xsl:apply-templates select="sgr:dataType" />
             </td>
-				<xsl:if test="not(/sgr:DeviceFrame)">
-					<td>
-						<xsl:value-of select="sgr:presenceLevel" />
-					</td>
-				</xsl:if>
+                <xsl:if test="not(/sgr:DeviceFrame)">
+                    <td>
+                        <xsl:value-of select="sgr:presenceLevel" />
+                    </td>
+                </xsl:if>
             <td>
                 <xsl:value-of select="sgr:dataDirection" />
             </td>

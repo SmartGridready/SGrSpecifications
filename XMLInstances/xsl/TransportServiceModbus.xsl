@@ -114,35 +114,35 @@
     </xsl:template>
 
     <!-- ModbusDataPointConfiguration -->
-	<xsl:template match="sgr:modbusDataPointConfiguration">
-		<!-- modbusDataType (opt 1x) -->
+    <xsl:template match="sgr:modbusDataPointConfiguration">
+        <!-- modbusDataType (opt 1x) -->
         <tr class="transportDetails">
-			<td class="modbusattribute">Data Type</td>
-			<td>
-				<xsl:if test="sgr:modbusDataType">
-					<xsl:apply-templates select="sgr:modbusDataType" />
-				</xsl:if>
-			</td>
-		</tr>
+            <td class="modbusattribute">Data Type</td>
+            <td>
+                <xsl:if test="sgr:modbusDataType">
+                    <xsl:apply-templates select="sgr:modbusDataType" />
+                </xsl:if>
+            </td>
+        </tr>
 
-		<tr class="transportDetails">
-			<td class="modbusattribute">Register</td>
-			<td>
-				<xsl:value-of select="sgr:registerType" />&#160; <xsl:value-of
-					select="sgr:address" />
-				<xsl:choose>
-					<xsl:when test="sgr:registerType = 'Coil'"> bit <xsl:value-of
-							select="sgr:bitRank" />
-					</xsl:when>
+        <tr class="transportDetails">
+            <td class="modbusattribute">Register</td>
+            <td>
+                <xsl:value-of select="sgr:registerType" />&#160; <xsl:value-of
+                    select="sgr:address" />
+                <xsl:choose>
+                    <xsl:when test="sgr:registerType = 'Coil'"> bit <xsl:value-of
+                            select="sgr:bitRank" />
+                    </xsl:when>
 
-					<xsl:when
-						test="sgr:registerType = 'DiscreteInput'"> bit <xsl:value-of
-							select="sgr:bitRank" />
-					</xsl:when>
-				</xsl:choose>
-				(Size <xsl:value-of select="sgr:numberOfRegisters" />) </td>
-		</tr>
-	</xsl:template>
+                    <xsl:when
+                        test="sgr:registerType = 'DiscreteInput'"> bit <xsl:value-of
+                            select="sgr:bitRank" />
+                    </xsl:when>
+                </xsl:choose>
+                (Size <xsl:value-of select="sgr:numberOfRegisters" />) </td>
+        </tr>
+    </xsl:template>
 
     <!-- Attributes Modbus -->
     <xsl:template match="sgr:modbusAttributes">
@@ -235,7 +235,7 @@
                             <td>
                                 <xsl:value-of select="sgr:registerType" />&#160;
                                 <xsl:value-of select="sgr:firstAddress" />
-				                (Size <xsl:value-of select="sgr:size" />)
+                                (Size <xsl:value-of select="sgr:size" />)
                             </td>
                         </tr>
                         <tr>
@@ -277,4 +277,4 @@
         </xsl:choose>
     </xsl:template>
 
-</xsl:stylesheet>  
+</xsl:stylesheet>
