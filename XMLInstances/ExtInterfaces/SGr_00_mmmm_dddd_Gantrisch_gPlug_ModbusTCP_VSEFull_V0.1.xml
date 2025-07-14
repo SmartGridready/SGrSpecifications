@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,15 +10,9 @@
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-01-17</date>
+      <date>2025-07-10</date>
       <author>SGr/mkr</author>
       <comment>Draft for Testlab</comment>
-    </changeLog>
-    <changeLog>
-      <version>0.2.0</version>
-      <date>2025-06-18</date>
-      <author>SGr/mkr</author>
-      <comment>Use FP with generic attributes</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -26,56 +20,7 @@
       <textElement>
         <![CDATA[
           <p>Diese EID unterstützt die vollständige VSE-Kundenschnittstelle via gPlug D/K/M von Gantrisch Energie.</p>
-          <p>Folgende Konfigurationsvorgaben müssen erfüllt sein:</p>
-          <p>
-            <b>MQTT:</b><br />
-            <ul>
-              <li>Topic Path = <code>%prefix%/%topic%/</code></li>
-            </ul>
-          </p>
-          <p>
-            <b>Tasmota Skript:</b><br />
-            <ul>
-              <li>Telemetrie-Intervall (komplette Daten) = 10 s</li>
-              <li>Telemetrie (Momentanwerte) deaktiviert</li>
-              <li>Name des Telemetrie-Datenfelds = <code>gPlug</code></li>
-            </ul>
-          </p>
-          <p>
-            Folgende Telemetrie-Keys müssen konfiguriert werden (OBIS Code als Referenz):
-            <ul>
-              <li>Pi = 1.7.0</li>
-              <li>Po = 2.7.0</li>
-              <li>P1i = 21.7.0</li>
-              <li>P2i = 41.7.0</li>
-              <li>P3i = 61.7.0</li>
-              <li>P1o = 22.7.0</li>
-              <li>P2o = 42.7.0</li>
-              <li>P3o = 62.7.0</li>
-              <li>rPi = 3.7.0</li>
-              <li>rPo = 4.7.0</li>
-              <li>rP1i = 23.7.0</li>
-              <li>rP2i = 43.7.0</li>
-              <li>rP3i = 63.7.0</li>
-              <li>rP1o = 24.7.0</li>
-              <li>rP2o = 44.7.0</li>
-              <li>rP3o = 64.7.0</li>
-              <li>Ei = 1.8.0</li>
-              <li>Eo = 2.8.0</li>
-              <li>rEi = 3.8.0</li>
-              <li>rEo = 4.8.0</li>
-              <li>V1 = 32.7.0</li>
-              <li>V2 = 52.7.0</li>
-              <li>V3 = 72.7.0</li>
-              <li>I1 = 31.7.0</li>
-              <li>I2 = 51.7.0</li>
-              <li>I3 = 71.7.0</li>
-            </ul>
-          </p>
-          <p>
-            Als "topic_path" muss der gesamte Topic-Pfad inkl. Präfix und Telegramm eingegeben werden, z.B. <code>tele/gPlugD_021345/SENSOR</code>.
-            Das Telegramm <em>SENSOR</em> enthält die Smartmeter-Messwerte.
-          </p>
+          <p>Die Modbus-Register sind nach dem SunSpec-Modell konfiguriert.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -89,168 +34,76 @@
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>2</secondaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>None</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>broker_host</name>
+      <name>slave_id</name>
       <dataType>
-        <string />
+        <int16 />
       </dataType>
-      <defaultValue>localhost</defaultValue>
+      <defaultValue>1</defaultValue>
       <configurationDescription>
-        <textElement>Message broker hostname or IP address.</textElement>
+        <textElement>Modbus slave ID.</textElement>
         <language>en</language>
-        <label>Broker Hostname</label>
+        <label>Modbus slave ID</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
+        <textElement>Modbus Slave-ID.</textElement>
         <language>de</language>
-        <label>Broker-Hostname</label>
+        <label>Modbus Slave-ID</label>
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
-      <name>broker_port</name>
+      <name>tcp_address</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>The IP address</textElement>
+        <language>en</language>
+        <label>TCP/IP address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Die IP-Adresse</textElement>
+        <language>de</language>
+        <label>TCP/IP-Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tcp_port</name>
       <dataType>
         <int32 />
       </dataType>
-      <defaultValue>1883</defaultValue>
+      <defaultValue>502</defaultValue>
       <configurationDescription>
-        <textElement>Message broker TCP port.</textElement>
+        <textElement>The IP port</textElement>
         <language>en</language>
-        <label>Broker Port</label>
+        <label>TCP/IP port</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Message-Broker TCP-Port.</textElement>
+        <textElement>Der IP-Port</textElement>
         <language>de</language>
-        <label>Broker-Port</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>broker_tls</name>
-      <dataType>
-        <boolean />
-      </dataType>
-      <defaultValue>false</defaultValue>
-      <configurationDescription>
-        <textElement>Message broker TLS.</textElement>
-        <language>en</language>
-        <label>Broker TLS</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Message-Broker TLS.</textElement>
-        <language>de</language>
-        <label>Broker-TLS</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>broker_tls_verify</name>
-      <dataType>
-        <boolean />
-      </dataType>
-      <defaultValue>false</defaultValue>
-      <configurationDescription>
-        <textElement>Message broker TLS certificate verification.</textElement>
-        <language>en</language>
-        <label>Broker TLS Verification</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
-        <language>de</language>
-        <label>Broker-TLS-Verifizierung</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>broker_username</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue></defaultValue>
-      <configurationDescription>
-        <textElement>Message broker user name.</textElement>
-        <language>en</language>
-        <label>Broker User</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Message-Broker User-Name.</textElement>
-        <language>de</language>
-        <label>Broker-User</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>broker_password</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue></defaultValue>
-      <configurationDescription>
-        <textElement>Message broker password.</textElement>
-        <language>en</language>
-        <label>Broker Password</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Message-Broker Passwort.</textElement>
-        <language>de</language>
-        <label>Broker-Passwort</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>topic_path</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue>tele/gPlug_012345/SENSOR</defaultValue>
-      <configurationDescription>
-        <textElement>MQTT topic path.</textElement>
-        <language>en</language>
-        <label>Topic Path</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>MQTT-Topic-Pfad.</textElement>
-        <language>de</language>
-        <label>Topic-Pfad</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>field_name</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue>gPlug</defaultValue>
-      <configurationDescription>
-        <textElement>JSON field name containing data</textElement>
-        <language>en</language>
-        <label>JSON field name</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>JSON-Feldname mit Daten</textElement>
-        <language>de</language>
-        <label>JSON-Feldname</label>
+        <label>TCP/IP-Port</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
   <interfaceList>
-    <messagingInterface>
-      <messagingInterfaceDescription>
-        <platform>MQTT5</platform>
-        <messageBrokerList>
-          <messageBrokerListElement>
-            <host>{{broker_host}}</host>
-            <port>{{broker_port}}</port>
-            <tls>{{broker_tls}}</tls>
-            <tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
-          </messageBrokerListElement>
-        </messageBrokerList>
-        <messageBrokerAuthentication>
-          <basicAuthentication>
-            <username>{{broker_username}}</username>
-            <password>{{broker_password}}</password>
-          </basicAuthentication>
-        </messageBrokerAuthentication>
-      </messagingInterfaceDescription>
+    <modbusInterface>
+      <modbusInterfaceDescription>
+        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+        <modbusTcp>
+          <port>{{tcp_port}}</port>
+          <address>{{tcp_address}}</address>
+          <slaveId>{{slave_id}}</slaveId>
+        </modbusTcp>
+        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
+        <bitOrder>BigEndian</bitOrder>
+      </modbusInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
@@ -308,24 +161,14 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <string />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".SMid</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>4</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -344,24 +187,14 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <string />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>Time</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>Time</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>0</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -496,24 +329,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Pi</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>28</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -536,24 +365,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P1i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>48</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -576,24 +401,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P2i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>50</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -616,24 +437,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P3i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>52</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -768,24 +585,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Po</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>30</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -808,24 +621,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P1o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>54</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -848,24 +657,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P2o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>56</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -888,24 +693,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P3o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1044,24 +845,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rPi</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1084,24 +881,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rP1i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1124,24 +917,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rP2i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1164,24 +953,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rP3i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1320,24 +1105,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rPo</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1360,24 +1141,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rP1o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1400,24 +1177,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rP2o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1440,24 +1213,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rP3o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1586,6 +1355,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>1.8.0</manufName>
+                  <sunSpecName>Ei</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
@@ -1596,24 +1366,20 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Ei</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>40117</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1742,6 +1508,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.8.0</manufName>
+                  <sunSpecName>Eo</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
@@ -1752,24 +1519,20 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Eo</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>40109</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1875,6 +1638,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>3.8.0</manufName>
+                  <sunSpecName></sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Blindenergie</textElement>
@@ -1885,24 +1649,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rEi</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -2018,24 +1778,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".rEo</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>58</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -2105,6 +1861,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
+                  <sunSpecName>V1</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
@@ -2115,24 +1872,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".V1</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40078</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2145,6 +1898,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
+                  <sunSpecName>V2</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
@@ -2155,24 +1909,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".V2</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40079</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2185,6 +1935,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
+                  <sunSpecName>V3</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
@@ -2195,24 +1946,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".V3</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40080</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -2283,6 +2030,7 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
+                  <sunSpecName>I1</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 1</textElement>
@@ -2293,24 +2041,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".I1</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40073</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2322,6 +2066,7 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
+                  <sunSpecName>I2</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 2</textElement>
@@ -2332,24 +2077,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".I2</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40074</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2361,6 +2102,7 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
+                  <sunSpecName>I3</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 3</textElement>
@@ -2371,28 +2113,24 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".I3</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40075</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
       </functionalProfileList>
-    </messagingInterface>
+    </modbusInterface>
   </interfaceList>
 </DeviceFrame>
