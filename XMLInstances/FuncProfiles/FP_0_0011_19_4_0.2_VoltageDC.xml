@@ -31,10 +31,10 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[
           <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
           Messung der Gleichspannung.
-        ]]>	
+        ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
