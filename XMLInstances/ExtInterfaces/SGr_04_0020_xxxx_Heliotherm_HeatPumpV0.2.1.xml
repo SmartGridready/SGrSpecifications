@@ -51,6 +51,7 @@ Betrieb zu gewährleisten!</textElement>
       <dataType>
         <string />
       </dataType>
+      <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
         <textElement>IP address or DHCP name of the device</textElement>
         <language>en</language>

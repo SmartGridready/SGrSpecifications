@@ -58,8 +58,9 @@
     <configurationListElement>
       <name>ipaddress</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
+      <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
         <textElement>IP address of the device</textElement>
         <language>en</language>

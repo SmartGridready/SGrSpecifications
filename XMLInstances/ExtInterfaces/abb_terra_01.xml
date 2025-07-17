@@ -38,6 +38,7 @@
       <dataType>
         <string/>
       </dataType>
+      <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
         <textElement>The IP address</textElement>
         <language>en</language>
