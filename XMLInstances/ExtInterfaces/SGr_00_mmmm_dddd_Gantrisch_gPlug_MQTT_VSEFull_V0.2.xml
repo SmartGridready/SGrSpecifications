@@ -353,7 +353,7 @@
                   <filter>
                     <jmespathFilter>
                       <query>Time</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
+                      <matchesRegex>.*</matchesRegex>
                     </jmespathFilter>
                   </filter>
                   <responseQuery>
