@@ -1,86 +1,62 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Gantrisch gPlug MQTT VSE</deviceName>
-  <manufacturerName>Gantrisch Energie AG</manufacturerName>
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+  <deviceName>WhatWatt Go MQTT VSE Minimal</deviceName>
+  <manufacturerName>WhatWatt</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-01-17</date>
+      <date>2025-01-15</date>
       <author>SGr/mkr</author>
       <comment>Draft for Testlab</comment>
-    </changeLog>
-    <changeLog>
-      <version>0.2.0</version>
-      <date>2025-06-18</date>
-      <author>SGr/mkr</author>
-      <comment>Use FP with generic attributes</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[
-          <p>Diese EID unterstützt die komplette VSE-Kundenschnittstelle via gPlug D/K/M von Gantrisch Energie.</p>
-          <p>Folgende Konfigurationsvorgaben müssen erfüllt sein:</p>
-          <p>
-            <b>MQTT:</b><br />
-            <ul>
-              <li>Topic Path = <code>%prefix%/%topic%/</code></li>
-            </ul>
-          </p>
-          <p>
-            <b>Tasmota Skript:</b><br />
-            <ul>
-              <li>Telemetrie-Intervall (komplette Daten) = 10 s</li>
-              <li>Telemetrie (Momentanwerte) deaktiviert</li>
-              <li>Name des Telemetrie-Datenfelds = <code>gPlug</code></li>
-            </ul>
-          </p>
-          <p>
-            Folgende Telemetrie-Keys müssen konfiguriert werden (OBIS Code als Referenz):
-            <ul>
-              <li>Pi = 1.7.0</li>
-              <li>Po = 2.7.0</li>
-              <li>P1i = 21.7.0</li>
-              <li>P2i = 41.7.0</li>
-              <li>P3i = 61.7.0</li>
-              <li>P1o = 22.7.0</li>
-              <li>P2o = 42.7.0</li>
-              <li>P3o = 62.7.0</li>
-              <li>Ei = 1.8.0</li>
-              <li>Eo = 2.8.0</li>
-              <li>V1 = 32.7.0</li>
-              <li>V2 = 52.7.0</li>
-              <li>V3 = 72.7.0</li>
-              <li>I1 = 31.7.0</li>
-              <li>I2 = 51.7.0</li>
-              <li>I3 = 71.7.0</li>
-            </ul>
-          </p>
-          <p>
-            Als "topic_path" muss der gesamte Topic-Pfad inkl. Präfix und Telegramm eingegeben werden, z.B. <code>tele/gPlugD_021345/SENSOR</code>.
-            Das Telegramm <em>SENSOR</em> enthält die Smartmeter-Messwerte.
-          </p>
+        <![CDATA[ 
+          <p>whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.</p>
+          <p>Der konfigurierte MQTT-Topic-Pfad muss der EID als Parameter mitgegeben werden.</p>
+          <p>Das Topic-Template muss folgendermassen aussehen:</p>
+          <code>
+          {
+            "P_In": ${1_7_0},
+            "P_Out": ${2_7_0},
+            "E_In": ${1_8_0},
+            "E_Out": ${2_8_0},
+            "I_P1": ${31_7_0},
+            "I_P2": ${51_7_0},
+            "I_P3": ${71_7_0},
+            "V_P1": ${32_7_0},
+            "V_P2": ${52_7_0},
+            "V_P3": ${72_7_0},
+            "Meter": {
+              "Id": "${meter.id}",
+              "DateTime": "${meter.date_time}"
+            }
+          }
+          </code>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://gplug.ch/produkte/</uri>
+      <uri>https://whatwatt.ch/de/product</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>false</isLocalControl>
-    <softwareRevision>14.0.0</softwareRevision>
+    <softwareRevision>1.1.22</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <manufacturerSpecificationIdentification>Gantrisch</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>2</secondaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -190,7 +166,7 @@
       <dataType>
         <string />
       </dataType>
-      <defaultValue>tele/gPlug_012345/SENSOR</defaultValue>
+      <defaultValue>whatwatt/whatwattgo</defaultValue>
       <configurationDescription>
         <textElement>MQTT topic path.</textElement>
         <language>en</language>
@@ -200,23 +176,6 @@
         <textElement>MQTT-Topic-Pfad.</textElement>
         <language>de</language>
         <label>Topic-Pfad</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>field_name</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue>gPlug</defaultValue>
-      <configurationDescription>
-        <textElement>JSON field name containing data</textElement>
-        <language>en</language>
-        <label>JSON field name</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>JSON-Feldname mit Daten</textElement>
-        <language>de</language>
-        <label>JSON-Feldname</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
@@ -242,7 +201,7 @@
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>SmartmeterId</functionalProfileName>
+            <functionalProfileName>DeviceInformation</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
@@ -278,7 +237,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DeviceId</dataPointName>
+                <dataPointName>SmartMeterId</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <string />
@@ -288,11 +247,11 @@
                   <manufName>96.1.1</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>The device ID</textElement>
+                  <textElement>The smart meter ID</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Die Geräte-ID</textElement>
+                  <textElement>Die Smartmeter-ID</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -302,15 +261,39 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".SMid</query>
+                    <query>Meter.Id</query>
+                  </responseQuery>
+                </inMessage>
+              </messagingDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SmartMeterTimestamp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <dateTime />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Read the meter timestamp.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen des Meter-Zeitstempels.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <messagingDataPointConfiguration>
+                <messagingDataType>
+                  <string />
+                </messagingDataType>
+                <inMessage>
+                  <topic>{{topic_path}}</topic>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Meter.DateTime</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -454,132 +437,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Pi</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>21.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P1i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>41.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P2i</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>61.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P3i</query>
+                    <query>P_In</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -704,6 +564,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.7.0</manufName>
                 </alternativeNames>
@@ -722,133 +583,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Po</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>22.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P1o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>42.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P2o</query>
-                  </responseQuery>
-                </inMessage>
-              </messagingDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <manufName>62.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <messagingDataPointConfiguration>
-                <messagingDataType>
-                  <number />
-                </messagingDataType>
-                <inMessage>
-                  <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".P3o</query>
+                    <query>P_Out</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -977,6 +714,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>1.8.0</manufName>
                 </alternativeNames>
@@ -995,15 +733,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Ei</query>
+                    <query>E_In</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1132,6 +864,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.8.0</manufName>
                 </alternativeNames>
@@ -1150,15 +883,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".Eo</query>
+                    <query>E_Out</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1247,15 +974,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".V1</query>
+                    <query>V_P1</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1287,15 +1008,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".V2</query>
+                    <query>V_P2</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1327,15 +1042,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".V3</query>
+                    <query>V_P3</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1407,7 +1116,6 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
                 </alternativeNames>
@@ -1426,15 +1134,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".I1</query>
+                    <query>I_P1</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1447,7 +1149,6 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
                 </alternativeNames>
@@ -1466,15 +1167,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".I2</query>
+                    <query>I_P2</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>
@@ -1487,7 +1182,6 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
                 </alternativeNames>
@@ -1506,15 +1200,9 @@
                 </messagingDataType>
                 <inMessage>
                   <topic>{{topic_path}}</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>"{{field_name}}"</query>
-                      <matchesRegex>\{.*\}</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>"{{field_name}}".I3</query>
+                    <query>I_P3</query>
                   </responseQuery>
                 </inMessage>
               </messagingDataPointConfiguration>

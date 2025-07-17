@@ -3,16 +3,16 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Ensor Blue2Box for Optimization</deviceName>
+  <deviceName>Ensor Blue2Box for VSE Minimal</deviceName>
   <manufacturerName>Ensor</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Published</state>
+    <state>Draft</state>
     <changeLog>
-      <version>1.0.0</version>
+      <version>0.1.0</version>
       <date>2025-03-05</date>
       <author>SGr/mkr</author>
-      <comment>Initial declaration</comment>
+      <comment>Draft for Testlab</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -37,29 +37,7 @@
           </p>
           <p>
             <b>Notes:</b><br />
-            <ul>
-              <li>
-                This EID includes most mandatory functional profiles of the upcoming VSE customer interface specification:<br />
-                <ul>
-                  <li>Smart Meter ID</li>
-                  <li>Active Power Import Total (+P)</li>
-                  <li>Active Power Import (L1 - L3) (+P)</li>
-                  <li>Active Power Export Total (-P)</li>
-                  <li>Active Power Export (L1 - L3) (-P)</li>
-                  <li>Active Energy Import Total (+A)</li>
-                  <li>Active Energy Export Total (-A)</li>
-                  <li>Voltage (L1 - L3)</li>
-                  <li>Current (L1 - L3)</li>
-                </ul>
-              </li>
-              <li>
-                The following use cases are covered:<br />
-                <ul>
-                  <li>Optimization for local load management</li>
-                  <li>Optimization for PV own usage</li>
-                </ul>
-              </li>
-            </ul>
+            This EID supports the minimal FPs mandatory in upcoming VSE specification.
           <p>
         ]]>
       </textElement>
@@ -87,29 +65,7 @@
           </p>
           <p>
             <b>Hinweise:</b><br />
-            <ul>
-              <li>
-                Diese EID enthält einen Grossteil der obligatorischen Funktionsprofile aus der kommenden Spezifikation der VSE-Kundenschnittstelle:<br />
-                <ul>
-                  <li>Smart Meter ID</li>
-                  <li>Wirkleistung Bezug Total (+P)</li>
-                  <li>Wirkleistung Bezug (L1 - L3) (+P)</li>
-                  <li>Wirkleistung Einspeisung Total (-P)</li>
-                  <li>Wirkleistung Einspeisung (L1 - L3) (-P)</li>
-                  <li>Wirkenergie Bezug Total (+A)</li>
-                  <li>Wirkenergie Einspeisung Total (-A)</li>
-                  <li>Spannung (L1 - L3)</li>
-                  <li>Strom (L1 - L3)</li>
-                </ul>
-              </li>
-              <li>
-                Die folgenden Anwendungsfälle sind abgedeckt:<br />
-                <ul>
-                  <li>Optimierung für lokales Lastmanagement</li>
-                  <li>Optimierung für PV-Eigenverbrauch</li>
-                </ul>
-              </li>
-            </ul>
+            Diese EID enthält die minimalen FPs, die in der kommenden VSE-Kundenschnittstelle vorgeschrieben sind.
           <p>
         ]]>
       </textElement>
@@ -123,8 +79,8 @@
     <manufacturerSpecificationIdentification>Ensor</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>1</primaryVersionNumber>
-      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
@@ -245,11 +201,37 @@
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SmartMeterTimestamp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <dateTime />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Read the meter timestamp.</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Auslesen des Meter-Zeitstempels.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>0</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveImportPower</functionalProfileName>
+            <functionalProfileName>ActivePowerAC_Import</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -393,119 +375,11 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>21.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>48</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>41.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>50</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>61.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>52</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveExportPower</functionalProfileName>
+            <functionalProfileName>ActivePowerAC_Export</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -649,119 +523,11 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>22.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>54</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>42.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>56</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>62.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveImportEnergy</functionalProfileName>
+            <functionalProfileName>ActiveEnergyAC_Import</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -913,7 +679,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousActiveExportEnergy</functionalProfileName>
+            <functionalProfileName>ActiveEnergyAC_Export</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -1065,7 +831,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousVoltage</functionalProfileName>
+            <functionalProfileName>VoltageAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -1230,7 +996,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>InstantaneousCurrent</functionalProfileName>
+            <functionalProfileName>CurrentAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
