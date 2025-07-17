@@ -168,8 +168,9 @@
                   <requestMethod>GET</requestMethod>
                   <requestPath>/api/v1/system</requestPath>
                   <responseQuery>
+                    <!-- concatenate date and time to get ISO string: 2025-01-01T15:39:07 -->
                     <queryType>JMESPathExpression</queryType>
-                    <query>join("T",[meter.date,meter.time])</query>
+                    <query>join('T', [meter.date, meter.time])</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
