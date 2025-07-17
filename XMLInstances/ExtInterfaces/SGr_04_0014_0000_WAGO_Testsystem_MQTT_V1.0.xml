@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>WAGOMeter Testsystem V1.0</deviceName>
+  <deviceName>WAGOMeter Testsystem MQTT</deviceName>
   <manufacturerName>WAGO</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -41,6 +41,12 @@
     <powerSource>mains1Phase</powerSource>
     <nominalPower>4 Watt</nominalPower>
     <levelOfOperation>4</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+    <testState>None</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -188,11 +194,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -206,7 +212,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -221,25 +227,11 @@
                   <number/>
                 </messagingDataType>
                 <readCmdMessage>
-                  <topic>actuator/analgue/voltage_dc_in1</topic>
-                  <template>{ "cmd": "read" }</template>
+                  <topic>sensors/analogue/voltage_dc_in1</topic>
+                  <template>read</template>
                 </readCmdMessage>
-                <writeCmdMessage>
-                  <topic>actuator/anaolgue/voltage_dc_out1</topic>
-                  <template>{ "set": [[value]] }</template>
-                </writeCmdMessage>
                 <inMessage>
-                  <topic>actuator/analogue/voltage_dc_out1</topic>
-                  <filter>
-                    <jmespathFilter>
-                      <query>sensorId</query>
-                      <matchesRegex>1</matchesRegex>
-                    </jmespathFilter>
-                  </filter>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>[0].value</query>
-                  </responseQuery>
+                  <topic>sensors/voltage/voltage_dc_in1</topic>
                 </inMessage>
               </messagingDataPointConfiguration>
             </dataPointListElement>
@@ -252,11 +244,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -270,7 +262,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -302,11 +294,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -320,7 +312,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -352,11 +344,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -370,7 +362,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -402,11 +394,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -420,7 +412,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -452,11 +444,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -470,7 +462,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -502,11 +494,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -520,7 +512,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -552,11 +544,11 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageDC</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -570,7 +562,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -616,7 +608,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -663,7 +655,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <unitConversionMultiplicator>0.00073244422742</unitConversionMultiplicator>
@@ -708,7 +700,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -755,7 +747,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -802,7 +794,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -849,7 +841,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
@@ -896,7 +888,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <unitConversionMultiplicator>0.00073244422742</unitConversionMultiplicator>
@@ -941,7 +933,7 @@
                 <dataPointName>VoltageDC</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <minimumValue>0</minimumValue>
