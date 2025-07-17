@@ -95,7 +95,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://api.smartchargecontroller.ch:3000</restApiUri>
+        <restApiUri>https://api.smartchargecontroller.ch</restApiUri>
         <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
         <restApiBearer>
           <restApiServiceCall>
