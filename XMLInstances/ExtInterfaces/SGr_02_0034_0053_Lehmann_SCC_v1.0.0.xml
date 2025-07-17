@@ -238,6 +238,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkleistung</textElement>
                   <language>de</language>
@@ -270,7 +271,7 @@
                   <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>multiply(`0.001`,sum([activePower.l1,activePower.l2,activePower.l3]))</query>
+                    <query>sum([activePower.l1,activePower.l2,activePower.l3])</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -283,6 +284,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 1</textElement>
                   <language>de</language>
@@ -315,7 +317,7 @@
                   <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>multiply(`0.001`,activePower.l1)</query>
+                    <query>activePower.l1</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -360,7 +362,7 @@
                   <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>multiply(`0.001`,activePower.l2)</query>
+                    <query>activePower.l2</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -373,6 +375,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 3</textElement>
                   <language>de</language>
@@ -405,7 +408,7 @@
                   <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>multiply(`0.001`,activePower.l3)</query>
+                    <query>activePower.l3</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
