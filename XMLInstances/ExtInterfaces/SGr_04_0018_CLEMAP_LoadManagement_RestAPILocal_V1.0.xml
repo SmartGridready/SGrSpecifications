@@ -657,8 +657,8 @@
                   <textElement>
                     <![CDATA[
                       Currently permissible charging current for the charging station.
-                      <p>If the device requires different datapoints for writing and reading, the data direction of this data point
-                      can be changed to write (W) and the data point <em>EMSCurrentLimitFeedback</em> can be used to define a datapoint for reading the maximum current.</p>
+                      <p>If the device requires different data points for writing and reading, the data direction of this data point
+                      can be changed to write (W) and the data point <em>EMSCurrentLimitFeedback</em> can be used to define a data point for reading the maximum current.</p>
                     ]]>
                   </textElement>
                   <language>en</language>
@@ -719,8 +719,8 @@
                   <textElement>
                     <![CDATA[
                       Fallback value for the maximum current. The charging station uses this value in the event of a communication interruption with the HEMS.
-                      <p>If the device requires different datapoints for writing and reading, the data direction of this data point
-                      can be changed to W and the data point <em>SafeCurrentFeedback</em> can be used to define a datapoint for reading the safe current.</p>
+                      <p>If the device requires different data points for writing and reading, the data direction of this data point
+                      can be changed to W and the data point <em>SafeCurrentFeedback</em> can be used to define a data point for reading the safe current.</p>
                     ]]>
                   </textElement>
                   <language>en</language>

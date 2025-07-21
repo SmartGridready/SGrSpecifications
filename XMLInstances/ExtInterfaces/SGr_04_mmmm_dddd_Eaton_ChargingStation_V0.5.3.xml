@@ -111,7 +111,7 @@
                   <p>The charging station's current limit is dynamically regulated by an external Energy Management System (EMS), with the data point <em>EMSCurrentLimit</em> expressed in amps.
                     This data point enables real-time monitoring and control of the consumption limit of the charging station.
                     This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
-                  <p>The SmoothTransition datapoints are utilized to specify the transition process following the reception of a new limit value by the charging station.</p>
+                  <p>The SmoothTransition data points are utilized to specify the transition process following the reception of a new limit value by the charging station.</p>
                   <p>This functional profile can be utilized in conjunction with the EVSE States functional profile.</p>
                 ]]>
               </textElement>

@@ -71,7 +71,7 @@
           </p>
 
           <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
-             either for the entire device or for individual datapoints
+             either for the entire device or for individual data points
              (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
              </p>
         ]]>

@@ -694,7 +694,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="ScalingFactor">
     <annotation>
       <documentation>scaled_value = value * multiplicator * 10^powerof10 This type is used for to
-        convert integer datapoint values into floats only </documentation>
+        convert integer data point values into floats only </documentation>
     </annotation>
     <sequence>
       <element name="multiplicator" type="int" />

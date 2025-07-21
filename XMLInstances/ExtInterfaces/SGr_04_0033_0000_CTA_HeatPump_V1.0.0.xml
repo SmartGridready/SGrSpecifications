@@ -143,7 +143,7 @@
                   <textElement>
                     remoteCtrlTimeSec is valid for external HeatCoolCtrl commands. It must be > 0 for keeping the external command / Setpoint valid.
                     CTA_Ext_Heating_Setpoints and / or  CTA_Ext_Cooling_Setpoints must be set t true that the appropriate setpoint can be set.
-                    Check the datapoints ctaRemoteHCTempSetptEnable within the HeatCoolCtrl functional profiles for further information.
+                    Check the data points ctaRemoteHCTempSetptEnable within the HeatCoolCtrl functional profiles for further information.
                   </textElement>
                   <language>en</language>
                 </programmerHints>

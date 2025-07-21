@@ -55,7 +55,7 @@
             <li><strong>HP_FORCED</strong>: Forced start-up command (as far as this is possible within the control settings of the heat pump).  </li>
           </ul>
           
-          <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
+          <p> Via the data point SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
           
           <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
             frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
