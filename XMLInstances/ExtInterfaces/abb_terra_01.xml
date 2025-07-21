@@ -24,7 +24,7 @@
     <configurationListElement>
       <name>slave_id</name>
       <dataType>
-        <int16/>
+        <int16 />
       </dataType>
       <defaultValue>1</defaultValue>
       <configurationDescription>
@@ -36,7 +36,7 @@
     <configurationListElement>
       <name>tcp_address</name>
       <dataType>
-        <string/>
+        <string />
       </dataType>
       <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
@@ -48,7 +48,7 @@
     <configurationListElement>
       <name>tcp_port</name>
       <dataType>
-        <int32/>
+        <int32 />
       </dataType>
       <defaultValue>502</defaultValue>
       <configurationDescription>
@@ -422,7 +422,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ChargingCurrentLimitWrite</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
@@ -498,8 +498,8 @@
                 <programmerHints>
                   <textElement>
                     <![CDATA[
-                      ACHTUNG: der Modbus Wert muss erst mit der Bitmaske 0x0F00 gefiltert werden, nur Bits 9-12 sind relevant.<br>
-                      JMES Path: [{"state": @==`0`, "char": `"A"`}, {"state": @==`256`, "char": `"B"`}, {"state": @==`512`, "char": `"B"`}, {"state": @==`768`, "char": `"C"`}, {"state": @==`1024`, "char": `"C"`}, {"state": @==`1280`, "char": `"E"`}, {"state": `true`, "char": `"F"`}][?state] | [0].char
+                      ACHTUNG: der Modbus Wert muss erst mit der Bitmaske <code>0x0F00</code> gefiltert werden, nur Bits 9-12 sind relevant.<br/>
+                      JMES Path: <code>[{"state": @==`0`, "char": `"A"`}, {"state": @==`256`, "char": `"B"`}, {"state": @==`512`, "char": `"B"`}, {"state": @==`768`, "char": `"C"`}, {"state": @==`1024`, "char": `"C"`}, {"state": @==`1280`, "char": `"E"`}, {"state": `true`, "char": `"F"`}][?state] | [0].char</code>
                     ]]>
                   </textElement>
                   <language>de</language>
