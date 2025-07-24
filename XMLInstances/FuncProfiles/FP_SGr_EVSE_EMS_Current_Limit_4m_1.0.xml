@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
     <state>Published</state>
@@ -29,11 +30,11 @@
           <img src="ressources/ems_from-to_evse.svg" style="float:left; padding:0.3em;"/>
           The functional profile enables a controller to set a current limitation for a charging station (Electric Vehicle Supply Equipment, EVSE).
           <p>The charging station's current limit is dynamically regulated by an external Home Energy Management System (HEMS) with the data point <em>EMSCurrentLimit</em> expressed in amps.
-             This data point enables real-time monitoring and control of the consumption limit of the charging station.
-             This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
+            This data point enables real-time monitoring and control of the consumption limit of the charging station.
+            This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
           <p>This functional profile can be utilized in conjunction with the 
-             <a href="https://library.smartgridready.ch/FP_SGr_EVSE_EVSEState_m_0.2.xml?viewProfile">EVSE State</a>
-             functional profile to check the current state of the charging station.</p>
+            <a href="https://library.smartgridready.ch/FP_SGr_EVSE_EVSEState_m_0.2.xml?viewProfile">EVSE State</a>
+            functional profile to check the current state of the charging station.</p>
           <p>
             For the data points <em>EMSCurrentLimit</em> and <em>SafeCurrent</em>, 
             the <em>SmoothTransition</em> sub data points can be utilized to specify the transition process from an old to a new setpoint following the reception of a new limit value by the charging station.
@@ -49,11 +50,11 @@
           <img src="ressources/ems_from-to_evse.svg" style="float:left; padding:0.3em;"/>
           Das Funktionsprofil ermöglicht es einer Steuerung, eine Strombegrenzung für eine Elektrofahrzeug-Ladestation (Electric Vehicle Supply Equipment, EVSE) festzulegen.
           <p>Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Home Energy Management System (HEMS) über den Datenpunkt <em>EMSCurrentLimit</em> geregelt (in Ampere).
-             Dieser Datenpunkt ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.
-             Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.</p>
+            Dieser Datenpunkt ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.
+            Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.</p>
           <p>Um den aktuellen Status der Ladestation abzufragen, kann dieses Funktionsprofil in Verbindung mit dem Funktionsprofil
-             <a href="https://library.smartgridready.ch/FP_SGr_EVSE_EVSEState_m_0.2.xml?viewProfile">EVSE State</a>
-             verwendet werden.</p>
+            <a href="https://library.smartgridready.ch/FP_SGr_EVSE_EVSEState_m_0.2.xml?viewProfile">EVSE State</a>
+            verwendet werden.</p>
           <p>
             Für die Datenpunkte <em>EMSCurrentLimit</em> und <em>SafeCurrent</em> können <em>SmoothTransition</em> Unterdatenpunkte angegeben werden, die den Prozess des
             Übergangs von einem alten auf einen neuen Sollwert nach dem Empfang eines neuen Grenzwerts durch die Ladestation näher spezifizieren.
@@ -71,7 +72,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
@@ -102,7 +103,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -129,7 +130,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -156,7 +157,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -183,7 +184,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
@@ -210,7 +211,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
@@ -241,7 +242,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -268,7 +269,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -295,7 +296,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -322,7 +323,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
@@ -345,7 +346,7 @@
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
-          <int16U/>
+          <int16U />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -380,7 +381,7 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
-          <int16U/>
+          <int16U />
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
@@ -409,12 +410,13 @@
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
-          <float32/>
+          <float32 />
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
           <textElement>
-            The HEMS can read out the maximum permissible current for the charging station via the HWCurrentLimit data point.
+            The HEMS can read out the maximum permissible current for the charging station via the
+            HWCurrentLimit data point.
           </textElement>
           <language>en</language>
         </legibleDescription>
