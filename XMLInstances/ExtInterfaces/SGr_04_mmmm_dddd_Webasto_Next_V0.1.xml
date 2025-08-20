@@ -685,7 +685,6 @@
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
-              <!-- not all Enum values defined in FP are supported according to device docs -->
               <dataPoint>
                 <dataPointName>ocppState</dataPointName>
                 <dataDirection>R</dataDirection>
@@ -720,8 +719,9 @@
                 <unit>NONE</unit>
                 <programmerHints>
                   <textElement>
-                    </textElement>
-                  <language>de</language>
+                    Not all states defined in the functional profile are supported by the device!
+                  </textElement>
+                  <language>en</language>
                 </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -970,8 +970,9 @@
                 <unit>NONE</unit>
                 <programmerHints>
                   <textElement>
-                    </textElement>
-                  <language>de</language>
+                    Not an official functional profile!
+                  </textElement>
+                  <language>en</language>
                 </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>

@@ -138,7 +138,7 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>3</powerof10>
+                  <powerof10>-3</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
@@ -170,7 +170,7 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>3</powerof10>
+                  <powerof10>-3</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
@@ -202,7 +202,7 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>3</powerof10>
+                  <powerof10>-3</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
