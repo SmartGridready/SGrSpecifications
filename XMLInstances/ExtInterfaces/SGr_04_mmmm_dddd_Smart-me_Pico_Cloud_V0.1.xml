@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Pico Modbus</deviceName>
+  <deviceName>Pico Cloud</deviceName>
   <manufacturerName>Smart-me</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -17,7 +17,7 @@
   </releaseNotes>
   <deviceInformation>
     <deviceCategory>ChargingStation</deviceCategory>
-    <isLocalControl>true</isLocalControl>
+    <isLocalControl>false</isLocalControl>
     <softwareRevision>0.0.0</softwareRevision>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
@@ -28,30 +28,67 @@
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>tcp_address</name>
+      <name>device_id</name>
       <dataType>
         <string />
       </dataType>
-      <defaultValue>0.0.0.0</defaultValue>
+      <defaultValue>00000000-0000-0000-0000-000000000000</defaultValue>
       <configurationDescription>
-        <textElement>The IP address</textElement>
+        <textElement>Identification of the device (UUID).
+          The device ID can be retrieved from the /Devices API endpoint.</textElement>
         <language>en</language>
-        <label>TCP/IP address</label>
+        <label>Identification</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Identifikation des Geräts (UUID).
+          Die Geräte-ID kann vom API-Endpunkt /Devices abgerufen werden.</textElement>
+        <language>de</language>
+        <label>Identifikation</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>device_serial</name>
+      <dataType>
+        <int32 />
+      </dataType>
+      <defaultValue>0000000</defaultValue>
+      <configurationDescription>
+        <textElement>Serial number of the device, required for control.</textElement>
+        <language>en</language>
+        <label>Serial number</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Seriennr. des Geräts, zur Steuerung benötigt.</textElement>
+        <language>de</language>
+        <label>Seriennr.</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>api_key</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>API key for accessing the device.</textElement>
+        <language>en</language>
+        <label>Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>API-Key für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>Passwort</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
   <interfaceList>
-    <modbusInterface>
-      <modbusInterfaceDescription>
-        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
-        <modbusTcp>
-          <port>502</port>
-          <address>{{tcp_address}}</address>
-          <slaveId>255</slaveId>
-        </modbusTcp>
-        <firstRegisterAddressIsOne>true</firstRegisterAddressIsOne>
-        <bitOrder>BigEndian</bitOrder>
-      </modbusInterfaceDescription>
+    <restApiInterface>
+      <restApiInterfaceDescription>
+        <restApiInterfaceSelection>URI</restApiInterfaceSelection>
+        <restApiUri>https://api.smart-me.com</restApiUri>
+        <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
+        <!-- API key must be added to all request headers -->
+      </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
@@ -127,20 +164,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8218</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:31.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -159,20 +203,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8220</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:51.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -191,20 +242,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8222</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:71.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -281,20 +339,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>8212</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:32.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -314,20 +379,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>8214</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:52.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -347,20 +419,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>8216</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:72.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -482,6 +561,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkleistung</textElement>
                   <language>de</language>
@@ -491,20 +571,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8196</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:1.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -514,6 +601,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 1</textElement>
                   <language>de</language>
@@ -523,20 +611,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8198</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:21.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -546,6 +641,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 2</textElement>
                   <language>de</language>
@@ -555,20 +651,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8200</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:41.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -578,6 +681,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Wirkleistung Phase 3</textElement>
                   <language>de</language>
@@ -587,20 +691,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8202</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:61.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -723,6 +834,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Blindleistung</textElement>
                   <language>de</language>
@@ -732,20 +844,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8204</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:3.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -755,6 +874,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Blindleistung Phase 1</textElement>
                   <language>de</language>
@@ -764,20 +884,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8206</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:23.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -787,6 +914,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Blindleistung Phase 2</textElement>
                   <language>de</language>
@@ -796,20 +924,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8208</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:43.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -819,6 +954,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung der Blindleistung Phase 3</textElement>
                   <language>de</language>
@@ -828,20 +964,27 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>8210</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-6</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:63.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -967,6 +1110,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
                   <language>en</language>
@@ -976,20 +1120,27 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>8268</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:1.8.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1115,6 +1266,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
                   <language>en</language>
@@ -1124,20 +1276,27 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>8270</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:2.8.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1245,14 +1404,27 @@
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>1000</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/pico/charging/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>State</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1315,7 +1487,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>EMSCurrentLimit</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>W</dataDirection>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1340,21 +1512,83 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    Only accepts integer values!
+                  </textElement>
+                  <language>en</language>
+                </programmerHints>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>8302</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiWriteServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>POST</requestMethod>
+                  <requestPath>/pico/charging/{{device_serial}}</requestPath>
+                  <requestQuery>
+                    <parameter>
+                      <name>current</name>
+                      <value>[[value]]</value>
+                    </parameter>
+                  </requestQuery>
+                </restApiWriteServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>EMSCurrentLimitFeedback</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>AMPERES</unit>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Optional data point for reading the permissible charging current (for devices that require two separate data points for reading and writing, see above).
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Optionaler Datenpunkt zum Auslesen des zulässigen Ladestroms (für Geräte, die zwei separate Datenpunkte zum Lesen und Schreiben benötigen, siehe oben).
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/pico/charging/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>MaxDynamicCurrent</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1380,24 +1614,31 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>8298</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/pico/charging/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>MaxStationCurrent</query>
+                  </responseQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
       </functionalProfileList>
-    </modbusInterface>
+    </restApiInterface>
   </interfaceList>
 </DeviceFrame>

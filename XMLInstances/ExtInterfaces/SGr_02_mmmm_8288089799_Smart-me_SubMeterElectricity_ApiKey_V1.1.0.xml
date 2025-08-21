@@ -3,28 +3,16 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Smart-me 3-Phasen Meter BasicAuth</deviceName>
+  <deviceName>Smart-me 3-Phasen Meter API Key</deviceName>
   <manufacturerName>Smart-me</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Published</state>
+    <state>Review</state>
     <changeLog>
       <version>1.0.0</version>
-      <date>2024-01-24</date>
-      <author>Ergo/ag</author>
-      <comment>Initial declaration</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.1.0</version>
-      <date>2024-02-28</date>
-      <author>Ergo/ag</author>
-      <comment>Incremented version</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.1.1</version>
-      <date>2025-04-10</date>
+      <date>2025-08-20</date>
       <author>SGr/mkr</author>
-      <comment>Incremented version</comment>
+      <comment>Adapted from existing EID</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -48,14 +36,10 @@
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
-      <subReleaseVersionNumber>1</subReleaseVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
-    <programmerHints>
-      <textElement>Basic authentication is no longer recommended!</textElement>
-      <language>en</language>
-    </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -78,35 +62,18 @@
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
-      <name>username</name>
+      <name>api_key</name>
       <dataType>
         <string />
       </dataType>
       <defaultValue></defaultValue>
       <configurationDescription>
-        <textElement>User name for accessing the device.</textElement>
-        <language>en</language>
-        <label>User Name</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Benutzername für den Zugriff auf das Gerät.</textElement>
-        <language>de</language>
-        <label>Benutzername</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>password</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue></defaultValue>
-      <configurationDescription>
-        <textElement>Password for accessing the device.</textElement>
+        <textElement>API key for accessing the device.</textElement>
         <language>en</language>
         <label>Password</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Passwort für den Zugriff auf das Gerät.</textElement>
+        <textElement>API-Key für den Zugriff auf das Gerät.</textElement>
         <language>de</language>
         <label>Passwort</label>
       </configurationDescription>
@@ -117,11 +84,8 @@
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
         <restApiUri>https://api.smart-me.com</restApiUri>
-        <restApiAuthenticationMethod>BasicSecurityScheme</restApiAuthenticationMethod>
-        <restApiBasic>
-          <restBasicUsername>{{username}}</restBasicUsername>
-          <restBasicPassword>{{password}}</restBasicPassword>
-        </restApiBasic>
+        <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
+        <!-- API key must be added to all request headers -->
       </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
@@ -258,6 +222,10 @@
                 <restApiServiceCall>
                   <requestHeader>
                     <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
@@ -293,6 +261,10 @@
                 <dataType>JSON_number</dataType>
                 <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
@@ -330,6 +302,10 @@
                 <restApiServiceCall>
                   <requestHeader>
                     <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
@@ -365,6 +341,10 @@
                 <dataType>JSON_number</dataType>
                 <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
@@ -518,6 +498,10 @@
                 <restApiServiceCall>
                   <requestHeader>
                     <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
@@ -666,6 +650,10 @@
                 <restApiServiceCall>
                   <requestHeader>
                     <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
@@ -701,6 +689,10 @@
                 <dataType>JSON_number</dataType>
                 <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
@@ -738,6 +730,10 @@
                 <restApiServiceCall>
                   <requestHeader>
                     <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
@@ -773,6 +769,10 @@
                 <dataType>JSON_number</dataType>
                 <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
@@ -869,6 +869,10 @@
                 <restApiServiceCall>
                   <requestHeader>
                     <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
@@ -904,6 +908,10 @@
                 <dataType>JSON_number</dataType>
                 <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
@@ -941,41 +949,9 @@
                 <restApiServiceCall>
                   <requestHeader>
                     <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
                     </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/Values/{{device_id}}</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:71.7.0*255'].Value | `0`</query>
-                  </responseQuery>
-                </restApiServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>CurrentACN</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>AMPERES</unit>
-                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
-                <legibleDescription>
-                  <textElement>Erfassung des Stromes im Nullleiter</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Current measurement of neutral conductor</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiServiceCall>
-                  <requestHeader>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
@@ -985,7 +961,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:11.7.0*255'].Value | `0`</query>
+                    <query>Values[?Obis=='1-0:71.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -1054,6 +1030,10 @@
                 <dataType>JSON_number</dataType>
                 <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>

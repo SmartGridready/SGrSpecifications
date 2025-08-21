@@ -254,7 +254,7 @@
                   </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>[0].dataTimeArray[0].dataArray[?discription=='power' &amp;&amp; unit=='kW'].val | [0]</query>
+                    <query>[0].dataTimeArray[0].dataArray[?discription=='power' &amp;&amp; unit=='kW'].val | `0`</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -407,7 +407,7 @@
                   </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>[0].dataTimeArray[0].dataArray[?discription=='power' &amp;&amp; unit=='kW'].val | [0]</query>
+                    <query>[0].dataTimeArray[0].dataArray[?discription=='power' &amp;&amp; unit=='kW'].val | `0`</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -565,7 +565,7 @@
                   </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>[0].dataTimeArray[0].dataArray[?discription=='energy' &amp;&amp; unit=='kWh'].val | [0]</query>
+                    <query>[0].dataTimeArray[0].dataArray[?discription=='energy' &amp;&amp; unit=='kWh'].val | `0`</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -723,7 +723,7 @@
                   </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>[0].dataTimeArray[0].dataArray[?discription=='energy' &amp;&amp; unit=='kWh'].val | [0]</query>
+                    <query>[0].dataTimeArray[0].dataArray[?discription=='energy' &amp;&amp; unit=='kWh'].val | `0`</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
