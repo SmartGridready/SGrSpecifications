@@ -28,18 +28,6 @@
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>slave_id</name>
-      <dataType>
-        <int16 />
-      </dataType>
-      <defaultValue>255</defaultValue>
-      <configurationDescription>
-        <textElement>Modbus slave ID.</textElement>
-        <language>en</language>
-        <label>Modbus slave ID</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
       <name>tcp_address</name>
       <dataType>
         <string />
@@ -71,7 +59,7 @@
         <modbusTcp>
           <port>{{tcp_port}}</port>
           <address>{{tcp_address}}</address>
-          <slaveId>{{slave_id}}</slaveId>
+          <slaveId>255</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>true</firstRegisterAddressIsOne>
         <bitOrder>BigEndian</bitOrder>
