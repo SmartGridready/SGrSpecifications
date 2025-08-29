@@ -3,14 +3,14 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Gantrisch gPlug ModbusTCP VSE All</deviceName>
-  <manufacturerName>Gantrisch Energie AG</manufacturerName>
+  <deviceName>WhatWatt Go ModbusTCP VSE All</deviceName>
+  <manufacturerName>WhatWatt</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-07-10</date>
+      <date>2025-08-26</date>
       <author>SGr/mkr</author>
       <comment>Draft for Testlab</comment>
     </changeLog>
@@ -18,19 +18,18 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[
-          <p>Diese EID unterstützt die vollständige VSE-Kundenschnittstelle via gPlug D/K/M von Gantrisch Energie.</p>
-          <p>Die Modbus-Register sind nach dem SunSpec-Modell konfiguriert.</p>
+        <![CDATA[ 
+          <p>whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://gplug.ch/produkte/</uri>
+      <uri>https://whatwatt.ch/de/product</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
-    <isLocalControl>false</isLocalControl>
-    <softwareRevision>14.6.0</softwareRevision>
+    <isLocalControl>true</isLocalControl>
+    <softwareRevision>1.7.4</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <manufacturerSpecificationIdentification>Gantrisch</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
@@ -163,11 +162,11 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <string />
                 </modbusDataType>
-                <address>4</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
+                <address>1001</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>12</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
@@ -189,10 +188,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <int32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
+                <address>1013</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -331,10 +330,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>28</address>
-                <registerType>HoldRegister</registerType>
+                <address>501</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -367,10 +366,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>48</address>
-                <registerType>HoldRegister</registerType>
+                <address>1021</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -403,10 +402,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>50</address>
-                <registerType>HoldRegister</registerType>
+                <address>1023</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -439,10 +438,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>52</address>
-                <registerType>HoldRegister</registerType>
+                <address>1025</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -587,10 +586,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>30</address>
-                <registerType>HoldRegister</registerType>
+                <address>505</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -623,10 +622,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>54</address>
-                <registerType>HoldRegister</registerType>
+                <address>1021</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -659,10 +658,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>56</address>
-                <registerType>HoldRegister</registerType>
+                <address>1023</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -695,10 +694,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>1025</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -817,7 +816,7 @@
             <genericAttributeListElement>
               <name>MeteringTariffNr</name>
               <dataType>
-                <int32 />
+                <float32 />
               </dataType>
               <value>0</value>
               <unit>NONE</unit>
@@ -847,10 +846,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>503</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -883,10 +882,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>1033</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -919,10 +918,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>1035</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -955,10 +954,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>1037</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1107,10 +1106,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>507</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1143,10 +1142,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>1039</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1179,10 +1178,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>1041</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1215,10 +1214,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>1043</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1355,7 +1354,6 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>1.8.0</manufName>
-                  <sunSpecName>Ei</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
@@ -1368,10 +1366,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>40117</address>
-                <registerType>HoldRegister</registerType>
+                <address>549</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1508,7 +1506,6 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.8.0</manufName>
-                  <sunSpecName>Eo</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
@@ -1521,10 +1518,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>40109</address>
-                <registerType>HoldRegister</registerType>
+                <address>553</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1638,7 +1635,6 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>3.8.0</manufName>
-                  <sunSpecName></sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Blindenergie</textElement>
@@ -1651,10 +1647,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>551</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1780,10 +1776,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U />
+                  <float32 />
                 </modbusDataType>
-                <address>58</address>
-                <registerType>HoldRegister</registerType>
+                <address>555</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1861,7 +1857,6 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
-                  <sunSpecName>V1</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
@@ -1874,11 +1869,11 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <float32 />
                 </modbusDataType>
-                <address>40078</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>1</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
@@ -1898,7 +1893,6 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
-                  <sunSpecName>V2</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
@@ -1911,11 +1905,11 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <float32 />
                 </modbusDataType>
-                <address>40079</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>3</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
@@ -1935,7 +1929,6 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
-                  <sunSpecName>V3</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
@@ -1948,10 +1941,10 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <float32 />
                 </modbusDataType>
-                <address>40080</address>
-                <registerType>HoldRegister</registerType>
+                <address>5</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -2030,7 +2023,6 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
-                  <sunSpecName>I1</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 1</textElement>
@@ -2043,11 +2035,11 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <float32 />
                 </modbusDataType>
-                <address>40073</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>13</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
@@ -2066,7 +2058,6 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
-                  <sunSpecName>I2</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 2</textElement>
@@ -2079,11 +2070,11 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <float32 />
                 </modbusDataType>
-                <address>40074</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>15</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
@@ -2102,7 +2093,6 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
-                  <sunSpecName>I3</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 3</textElement>
@@ -2115,11 +2105,11 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <float32 />
                 </modbusDataType>
-                <address>40075</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>17</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
