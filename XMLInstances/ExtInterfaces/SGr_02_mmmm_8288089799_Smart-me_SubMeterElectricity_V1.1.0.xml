@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Smart-me 3-Phasen Meter</deviceName>
+  <deviceName>Smart-me 3-Phasen Meter BasicAuth</deviceName>
   <manufacturerName>Smart-me</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -52,6 +52,10 @@
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
+    <programmerHints>
+      <textElement>Basic authentication is no longer recommended!</textElement>
+      <language>en</language>
+    </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -262,7 +266,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:3.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:3.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -298,7 +302,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:23.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:23.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -334,7 +338,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:43.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:43.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -370,7 +374,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:63.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:63.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -522,7 +526,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:1.8.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:1.8.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -670,7 +674,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:1.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:1.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -706,7 +710,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:21.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:21.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -742,7 +746,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:41.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:41.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -778,7 +782,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:61.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:61.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -873,7 +877,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:31.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:31.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -909,7 +913,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:51.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:51.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -945,7 +949,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:71.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:71.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
@@ -981,7 +985,7 @@
                   <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>Values[?Obis=='1-0:11.7.0*255'].Value | [0]</query>
+                    <query>Values[?Obis=='1-0:11.7.0*255'].Value | `0`</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>

@@ -3,57 +3,79 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>WhatWatt Go REST API Local VSE Minimal</deviceName>
-  <manufacturerName>WhatWatt</manufacturerName>
+  <deviceName>Smart-me 3-Phasen Meter API Key</deviceName>
+  <manufacturerName>Smart-me</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Draft</state>
+    <state>Review</state>
     <changeLog>
-      <version>0.1.0</version>
-      <date>2025-01-15</date>
+      <version>1.0.0</version>
+      <date>2025-08-20</date>
       <author>SGr/mkr</author>
-      <comment>Draft for Testlab</comment>
+      <comment>Adapted from existing EID</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
-          <p>whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.</p>
+        <![CDATA[
+          Der smart-me 3-Phasen Meter ist ein leistungsstarker und präziser Energiezähler mit integrierter WiFi Schnittstelle. </p>
+          Für die Integration in die smart-me Cloud wird keine zusätzliche Hardware benötigt.
+          Er nutzt das bestehende WiFi Netzwerk und lässt sich von überall via Internet steuern und auswerten. </p>
+          Dies ist die einfachste Möglichkeit, den Energieverbrauch in Echtzeit auf einem Smartphone, Tablet oder Computer zu visualisieren,
+          die gemessenen Daten zu analysieren und den Eigenverbrauch zu optimieren. </p>
+          Durch die Anschlussmöglichkeit von drei Phasen lassen sich ganze Wohnungen, Gebäude oder Firmenareale mit tiefen Investitionskosten ausrüsten und überwachen.
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://whatwatt.ch/de/product</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
-    <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.1.22</softwareRevision>
+    <isLocalControl>false</isLocalControl>
+    <softwareRevision>1.1.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>base_uri</name>
+      <name>device_id</name>
       <dataType>
         <string />
       </dataType>
-      <defaultValue>http://localhost</defaultValue>
+      <defaultValue>00000000-0000-0000-0000-000000000000</defaultValue>
       <configurationDescription>
-        <textElement>Base address for accessing the resource.</textElement>
+        <textElement>Identification of the device (UUID).
+          The device ID can be retrieved from the /Devices API endpoint.</textElement>
         <language>en</language>
-        <label>Base URI</label>
+        <label>Identification</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
+        <textElement>Identifikation des Geräts (UUID).
+          Die Geräte-ID kann vom API-Endpunkt /Devices abgerufen werden.</textElement>
         <language>de</language>
-        <label>Basis URI</label>
+        <label>Identifikation</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>api_key</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>API key for accessing the device.</textElement>
+        <language>en</language>
+        <label>Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>API-Key für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>Passwort</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
@@ -61,129 +83,18 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>{{base_uri}}</restApiUri>
+        <restApiUri>https://api.smart-me.com</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
+        <!-- API key must be added to all request headers -->
       </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>DeviceInformation</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
-              <functionalProfileType>DeviceInformation</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  <p>Functional profile used to read a device ID used to identify a device.</p>
-                  <p>Further on, this functional profile that can be used for vendor specific information and data points.
-                  It allows the handling of data points, which are valid for the whole device.</p>
-                ]]>
-              </textElement>
-              <language>en</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  <p>Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts.</p>
-                  <p>Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden.
-                  Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.</p>
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>SmartMeterId</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <string />
-                </dataType>
-                <unit>NONE</unit>
-                <alternativeNames>
-                  <manufName>96.1.1</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>The smart meter ID</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Die Smartmeter-ID</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_string</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/system</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>meter.id</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>SmartMeterTimestamp</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <dateTime />
-                </dataType>
-                <unit>NONE</unit>
-                <legibleDescription>
-                  <textElement>Read the meter timestamp.</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Auslesen des Meter-Zeitstempels.</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_string</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/system</requestPath>
-                  <responseQuery>
-                    <!-- concatenate date and time to get ISO string: 2025-01-01T15:39:07 -->
-                    <queryType>JMESPathExpression</queryType>
-                    <query>join('T', [meter.date, meter.time])</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>ActivePowerAC_Import</functionalProfileName>
+            <functionalProfileName>Reactive Power</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ActivePowerAC</functionalProfileType>
+              <functionalProfileType>ReactivePowerAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
@@ -195,16 +106,17 @@
               <textElement>
                 <![CDATA[
                   <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
+                  <strong>Messung der Blindleistung</strong><br>
+                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Blindleistung im Wechselstromnetz, für
+                  regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
 
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtblindleistung wie auch die Blindleistung der drei
                     einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                     umgesetzt werden:
                   <ul>
-                    <li>Einphasige Geräte geben die Totalleistung an (ActivePowerACtot)</li>
-                    <li>3-phasige Geräte ohne Totalleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-                    <li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
+                    <li>Einphasige Geräte geben die Gesamtblindleistung an (ReactivePowerACtot)</li>
+                    <li>3-phasige Geräte ohne Gesamtblindleistungsmessung geben die Blindleistung pro Phase an (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
+                    <li>3-phasige Geräte mit Einzelphasen- und Gesamtblindleistungsmessung geben alle Datenpunkte an</li>
                   </ul>
                   </p>
 
@@ -227,15 +139,15 @@
               <textElement>
                 <![CDATA[
                   <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Active Power Measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for measuring the active power.
+                  <strong>Reactive Power Measurement</strong><br>
+                  Monitoring functional profile for power generators and consumers for reflecting the reactive power.
 
-                  <p>With this functional profile you can measure the total active power as well as the active power of
-                    the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
+                  <p>With this functional profile you can measure the total active power as well as the active power of the three individual phases.
+                    One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
-                    <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
-                    <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-                    <li>Three-phase devices with measurement of the total active power use all data points</li>
+                    <li>Single-phase devices use the total reactive power data point (ReactivePowerACtot)</li>
+                    <li>Three-phase devices without measurement of the total reactive power use the data points per phase (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
+                    <li>Three-phase devices with measurement of the total reactive power use all data points</li>
                   </ul>
                   </p>
 
@@ -274,7 +186,7 @@
                   </enumEntry>
                 </enum>
               </dataType>
-              <value>Import</value>
+              <value>Net</value>
               <unit>NONE</unit>
             </genericAttributeListElement>
             <genericAttributeListElement>
@@ -289,199 +201,169 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActivePowerACtot</dataPointName>
+                <dataPointName>ReactivePowerACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>1.7.0</manufName>
-                </alternativeNames>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der gesamten Wirkleistung</textElement>
+                  <textElement>Erfassung der gesamten Blindleistung</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Total active power measurement</textElement>
+                  <textElement>Total reactive power measurement</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
+                <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>report.instantaneous_power.active.positive.total</query>
+                    <query>Values[?Obis=='1-0:3.7.0*255'].Value | `0`</query>
                   </responseQuery>
-                </restApiReadServiceCall>
+                </restApiServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>ActivePowerAC_Export</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ActivePowerAC</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
-
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
-                    einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-                    umgesetzt werden:
-                  <ul>
-                    <li>Einphasige Geräte geben die Totalleistung an (ActivePowerACtot)</li>
-                    <li>3-phasige Geräte ohne Totalleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-                    <li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
-                  </ul>
-                  </p>
-
-                  <p>Das generische Attribut <i>MeteringDirection</i> gibt die Messrichtung an:
-                  <ul>
-                    <li><i>Net</i> ist ein bilanzierter Wert (Standard), positiv (Bezug) oder negativ (Einspeisung)</li>
-                    <li><i>Import</i> ist der Bezug vom Verteilnetz, positiv</li>
-                    <li><i>Export</i> ist die Einspeisung ins Verteilnetz, positiv</li>
-                  </ul>
-                  </p>
-
-                  <p>Das generische Attribut <i>MeteringTariffNr</i> gibt die Nummer des Tarifregisters an.
-                  Der Wert 0 bedeutet tariflos bzw. gesamt, ein positiver Wert ist ein spezifisches Tarifregister.
-                  </p>
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Active Power Measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for measuring the active power.
-
-                  <p>With this functional profile you can measure the total active power as well as the active power of
-                    the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
-                  <ul>
-                    <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
-                    <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-                    <li>Three-phase devices with measurement of the total active power use all data points</li>
-                  </ul>
-                  </p>
-
-                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
-                  <ul>
-                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
-                    <li><i>Import</i> is the import from grid, a positive value</li>
-                    <li><i>Export</i> is the export to grid, a positive value</li>
-                  </ul>
-                  </p>
-
-                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
-                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
-                  </p>
-                ]]>
-              </textElement>
-              <language>en</language>
-            </legibleDescription>
-          </functionalProfile>
-          <genericAttributeList>
-            <genericAttributeListElement>
-              <name>MeteringDirection</name>
-              <dataType>
-                <enum>
-                  <enumEntry>
-                    <literal>Net</literal>
-                    <description>Net or balance value</description>
-                  </enumEntry>
-                  <enumEntry>
-                    <literal>Import</literal>
-                    <description>Import from grid</description>
-                  </enumEntry>
-                  <enumEntry>
-                    <literal>Export</literal>
-                    <description>Export to grid</description>
-                  </enumEntry>
-                </enum>
-              </dataType>
-              <value>Export</value>
-              <unit>NONE</unit>
-            </genericAttributeListElement>
-            <genericAttributeListElement>
-              <name>MeteringTariffNr</name>
-              <dataType>
-                <int32 />
-              </dataType>
-              <value>0</value>
-              <unit>NONE</unit>
-            </genericAttributeListElement>
-          </genericAttributeList>
-          <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActivePowerACtot</dataPointName>
+                <dataPointName>ReactivePowerACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>2.7.0</manufName>
-                </alternativeNames>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Erfassung der gesamten Wirkleistung</textElement>
+                  <textElement>Erfassung der Blindleistung Phase 1</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Total active power measurement</textElement>
+                  <textElement>Reactive power measurement of phase 1</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
+                <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>report.instantaneous_power.active.negative.total</query>
+                    <query>Values[?Obis=='1-0:23.7.0*255'].Value | `0`</query>
                   </responseQuery>
-                </restApiReadServiceCall>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ReactivePowerACL2</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
+                <legibleDescription>
+                  <textElement>Erfassung der Blindleistung Phase 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Reactive power measurement of phase 2</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:43.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ReactivePowerACL3</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
+                <legibleDescription>
+                  <textElement>Erfassung der Blindleistung Phase 3</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Reactive power measurement of phase 3</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:63.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActiveEnergyAC_Import</functionalProfileName>
+            <functionalProfileName>Active Energy Total Import</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -601,10 +483,7 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>1.8.0</manufName>
-                </alternativeNames>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
                   <language>en</language>
@@ -616,31 +495,35 @@
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
+                <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.active.positive.total</query>
+                    <query>Values[?Obis=='1-0:1.8.0*255'].Value | `0`</query>
                   </responseQuery>
-                </restApiReadServiceCall>
+                </restApiServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActiveEnergyAC_Export</functionalProfileName>
+            <functionalProfileName>Active Power</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ActiveEnergyAC</functionalProfileType>
+              <functionalProfileType>ActivePowerAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
@@ -652,51 +535,16 @@
               <textElement>
                 <![CDATA[
                   <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Energy measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for measuring the active energy.
+                  <strong>Messung der Wirkleistung</strong><br>
+                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkleistung.
 
-                  <p>Data is typically recorded by an energy manager (or a billing software).</p>
-
-                  <p>With this functional profile you can measure the total energy as well as the energy of the three
-                    individual phases. One of the following options must be implemented for fulfilling the functional profile:
-                  <ul>
-                    <li>Single-phase devices use the total energy data point (ActiveEnergyACtot)</li>
-                    <li>Three-phase devices without measurement of the total energy use the data points per (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
-                    <li>Three-phase devices with measurement of the total energy all data points</li>
-                  </ul>
-                  </p>
-
-                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
-                  <ul>
-                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
-                    <li><i>Import</i> is the import from grid, a positive value</li>
-                    <li><i>Export</i> is the export to grid, a positive value</li>
-                  </ul>
-                  </p>
-
-                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
-                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
-                  </p>
-                ]]>
-              </textElement>
-              <language>en</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Messung der Wirkenergie</strong><br>
-                  Monitoring-Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung der Wirkenergie.
-
-                  <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
-                    der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
+                    einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                     umgesetzt werden:
                   <ul>
-                    <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
-                    <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
-                    <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
+                    <li>Einphasige Geräte geben die Totalleistung an (ActivePowerACtot)</li>
+                    <li>3-phasige Geräte ohne Totalleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+                    <li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
                   </ul>
                   </p>
 
@@ -714,6 +562,37 @@
                 ]]>
               </textElement>
               <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Active Power Measurement</strong><br>
+                  Monitoring functional profile for power generators and consumers for measuring the active power.
+
+                  <p>With this functional profile you can measure the total active power as well as the active power of
+                    the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
+                  <ul>
+                    <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
+                    <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+                    <li>Three-phase devices with measurement of the total active power use all data points</li>
+                  </ul>
+                  </p>
+
+                  <p>The generic attribute <i>MeteringDirection</i> defines the direction of measurement:
+                  <ul>
+                    <li><i>Net</i> is a net value (default), positive (import) or negative (export)</li>
+                    <li><i>Import</i> is the import from grid, a positive value</li>
+                    <li><i>Export</i> is the export to grid, a positive value</li>
+                  </ul>
+                  </p>
+
+                  <p>The generic attribute <i>MeteringTariffNr</i> defines the tariff register number.
+                  A value of 0 means tariff-less or total, a positive number a specific tariff register.
+                  </p>
+                ]]>
+              </textElement>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <genericAttributeList>
@@ -735,7 +614,7 @@
                   </enumEntry>
                 </enum>
               </dataType>
-              <value>Export</value>
+              <value>Net</value>
               <unit>NONE</unit>
             </genericAttributeListElement>
             <genericAttributeListElement>
@@ -750,222 +629,169 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActiveEnergyACtot</dataPointName>
+                <dataPointName>ActivePowerACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>2.8.0</manufName>
-                </alternativeNames>
+                <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
-                  <textElement>Total energy measurement</textElement>
-                  <language>en</language>
+                  <textElement>Erfassung der gesamten Wirkleistung</textElement>
+                  <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
-                  <language>de</language>
+                  <textElement>Total active power measurement</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
+                <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.active.negative.total</query>
+                    <query>Values[?Obis=='1-0:1.7.0*255'].Value | `0`</query>
                   </responseQuery>
-                </restApiReadServiceCall>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACL1</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Active power measurement of phase 1</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:21.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACL2</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Active power measurement of phase 2</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:41.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACL3</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Active power measurement of phase 3</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:61.7.0*255'].Value | `0`</query>
+                  </responseQuery>
+                </restApiServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>VoltageAC</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>VoltageAC</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Messung der Spannung</strong><br />
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische
-                  Zwecke.
-
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Spannung auf einer Phase wie auch auf drei Phasen.
-                    Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
-                  <ul>
-                    <li>Einphasige Geräte geben die Spannung über die erste Phase an (VoltageACL1_N)</li>
-                    <li>3-phasige Geräte in Sternschaltung geben die Spannung pro Phase gegen den Nullleiter an (VoltageACL1_N, VoltageACL2_N, VoltageACL2_N).</li>
-                    <li>3-phasige Geräte in Dreiecksschaltung geben die Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
-                  </ul>
-                  </p>
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Voltage measurement</strong><br />
-                  Monitoring functional profile for power generators and consumers for reflecting the voltage.
-
-                  <p>This functional profile allows measurement of the voltage on a single phase of three phases.
-                    One of the following approaches must be applied when implementing the functional profile:
-                  <ul>
-                    <li>Single-phase devices use the total voltage with the first data point (VoltageACL1_N)</li>
-                    <li>Three-phase devices in star configuration provide the voltage per phase vs. neutral using three data points (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
-                    <li>Three-phase devices in delta configuration provide the voltage between phases using three data points (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
-                  </ul>
-                  </p>
-                ]]>
-              </textElement>
-              <language>en</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageACL1_N</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>VOLTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>32.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Measurement of the voltage between phase 1 and neutral</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l1</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageACL2_N</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>VOLTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>52.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Measurement of the voltage between phase 2 and neutral</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l2</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageACL3_N</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>VOLTS</unit>
-                <minimumValue>0</minimumValue>
-                <alternativeNames>
-                  <manufName>72.7.0</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Measurement of the voltage between phase 3 and neutral</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l3</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>CurrentAC</functionalProfileName>
+            <functionalProfileName>Current</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -1028,9 +854,7 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <alternativeNames>
-                  <manufName>31.7.0</manufName>
-                </alternativeNames>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 1</textElement>
                   <language>de</language>
@@ -1042,20 +866,24 @@
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
+                <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l1</query>
+                    <query>Values[?Obis=='1-0:31.7.0*255'].Value | `0`</query>
                   </responseQuery>
-                </restApiReadServiceCall>
+                </restApiServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
@@ -1066,9 +894,7 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <alternativeNames>
-                  <manufName>51.7.0</manufName>
-                </alternativeNames>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 2</textElement>
                   <language>de</language>
@@ -1080,20 +906,24 @@
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
+                <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l2</query>
+                    <query>Values[?Obis=='1-0:51.7.0*255'].Value | `0`</query>
                   </responseQuery>
-                </restApiReadServiceCall>
+                </restApiServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
@@ -1104,9 +934,7 @@
                   <float64 />
                 </dataType>
                 <unit>AMPERES</unit>
-                <alternativeNames>
-                  <manufName>71.7.0</manufName>
-                </alternativeNames>
+                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 3</textElement>
                   <language>de</language>
@@ -1118,20 +946,106 @@
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
+                <restApiServiceCall>
                   <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
                     <header>
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
+                  <requestPath>/Values/{{device_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l3</query>
+                    <query>Values[?Obis=='1-0:71.7.0*255'].Value | `0`</query>
                   </responseQuery>
-                </restApiReadServiceCall>
+                </restApiServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>Net Frequency</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
+              <functionalProfileType>Frequency</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Frequenz</strong><br/>
+                  Monitoring-Funktionsprofil zur Kontrolle der Netzbelastung.
+
+                  <p>Abweichungen zur Sollfrequenz sind ein
+                    Indikator für die Netzbelastung und können für steuernde und regeltechnische Zwecke verwendet werden.</p>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_ems.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Frequency measurement</strong><br/>
+                  Monitoring functional profile for reflecting the network load.
+
+                  <p>Differences to the nominal frequency indicate the network load and can be used for system control.</p>
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>Frequency</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>HERTZ</unit>
+                <legibleDescription>
+                  <textElement>Erfassung des Frequenz</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Frequency measurement</textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_number</dataType>
+                <restApiServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>ApiKey {{api_key}}</value>
+                    </header>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/Values/{{device_id}}</requestPath>
+                  <responseQuery>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>Values[?Obis=='1-0:14.7.0*255'].Value</query>
+                  </responseQuery>
+                </restApiServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>

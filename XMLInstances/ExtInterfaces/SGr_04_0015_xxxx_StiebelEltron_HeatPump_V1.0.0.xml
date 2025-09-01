@@ -1482,7 +1482,7 @@
             <programmerHints>
               <textElement>
                 <![CDATA[
-                  Some configuration may not support parts or all of the datapoints of this
+                  Some configuration may not support parts or all of the data points of this
                   functional profile. Such data points report a value of -32768
                 ]]>
               </textElement>

@@ -3,14 +3,14 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>WhatWatt Go REST API Local VSE Minimal</deviceName>
-  <manufacturerName>WhatWatt</manufacturerName>
+  <deviceName>Gantrisch gPlug ModbusTCP VSE Minimal</deviceName>
+  <manufacturerName>Gantrisch Energie AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-01-15</date>
+      <date>2025-07-10</date>
       <author>SGr/mkr</author>
       <comment>Draft for Testlab</comment>
     </changeLog>
@@ -18,52 +18,92 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
-          <p>whatwatt Go ist das kleine Gerät, das ihnen ermöglicht, auf ihre Stromverbrauchsdaten in Echtzeit zuzugreifen.</p>
+        <![CDATA[
+          <p>Diese EID unterstützt die minimale VSE-Kundenschnittstelle via gPlug D/K/M von Gantrisch Energie.</p>
+          <p>Die Modbus-Register sind nach dem SunSpec-Modell konfiguriert.</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://whatwatt.ch/de/product</uri>
+      <uri>https://gplug.ch/produkte/</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
-    <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.1.22</softwareRevision>
+    <isLocalControl>false</isLocalControl>
+    <softwareRevision>14.6.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>Gantrisch</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>Verified</testState>
+    <testState>None</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>base_uri</name>
+      <name>slave_id</name>
+      <dataType>
+        <int16 />
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>Modbus slave ID.</textElement>
+        <language>en</language>
+        <label>Modbus slave ID</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Modbus Slave-ID.</textElement>
+        <language>de</language>
+        <label>Modbus Slave-ID</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tcp_address</name>
       <dataType>
         <string />
       </dataType>
-      <defaultValue>http://localhost</defaultValue>
+      <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
-        <textElement>Base address for accessing the resource.</textElement>
+        <textElement>The IP address</textElement>
         <language>en</language>
-        <label>Base URI</label>
+        <label>TCP/IP address</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
+        <textElement>Die IP-Adresse</textElement>
         <language>de</language>
-        <label>Basis URI</label>
+        <label>TCP/IP-Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tcp_port</name>
+      <dataType>
+        <int32 />
+      </dataType>
+      <defaultValue>502</defaultValue>
+      <configurationDescription>
+        <textElement>The IP port</textElement>
+        <language>en</language>
+        <label>TCP/IP port</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Der IP-Port</textElement>
+        <language>de</language>
+        <label>TCP/IP-Port</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
   <interfaceList>
-    <restApiInterface>
-      <restApiInterfaceDescription>
-        <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>{{base_uri}}</restApiUri>
-        <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
-      </restApiInterfaceDescription>
+    <modbusInterface>
+      <modbusInterfaceDescription>
+        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+        <modbusTcp>
+          <port>{{tcp_port}}</port>
+          <address>{{tcp_address}}</address>
+          <slaveId>{{slave_id}}</slaveId>
+        </modbusTcp>
+        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
+        <bitOrder>BigEndian</bitOrder>
+      </modbusInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
@@ -121,23 +161,14 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_string</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/system</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>meter.id</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>4</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -156,24 +187,14 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_string</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/system</requestPath>
-                  <responseQuery>
-                    <!-- concatenate date and time to get ISO string: 2025-01-01T15:39:07 -->
-                    <queryType>JMESPathExpression</queryType>
-                    <query>join('T', [meter.date, meter.time])</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>0</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -308,23 +329,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.instantaneous_power.active.positive.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>28</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -459,23 +477,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.instantaneous_power.active.negative.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>30</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -604,6 +619,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>1.8.0</manufName>
+                  <sunSpecName>Ei</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
@@ -614,23 +630,20 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.active.positive.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>40117</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -759,6 +772,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>2.8.0</manufName>
+                  <sunSpecName>Eo</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Total energy measurement</textElement>
@@ -769,23 +783,20 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.active.negative.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>40109</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -855,6 +866,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>32.7.0</manufName>
+                  <sunSpecName>V1</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
@@ -865,23 +877,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l1</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40078</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -894,6 +903,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>52.7.0</manufName>
+                  <sunSpecName>V2</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
@@ -904,23 +914,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l2</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40079</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -933,6 +940,7 @@
                 <minimumValue>0</minimumValue>
                 <alternativeNames>
                   <manufName>72.7.0</manufName>
+                  <sunSpecName>V3</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
@@ -943,23 +951,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l3</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40080</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1030,6 +1035,7 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>31.7.0</manufName>
+                  <sunSpecName>I1</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 1</textElement>
@@ -1040,23 +1046,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l1</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40073</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1068,6 +1071,7 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>51.7.0</manufName>
+                  <sunSpecName>I2</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 2</textElement>
@@ -1078,23 +1082,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l2</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40074</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1106,6 +1107,7 @@
                 <unit>AMPERES</unit>
                 <alternativeNames>
                   <manufName>71.7.0</manufName>
+                  <sunSpecName>I3</sunSpecName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Erfassung des Stromes in Phase 3</textElement>
@@ -1116,27 +1118,24 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l3</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>40075</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
       </functionalProfileList>
-    </restApiInterface>
+    </modbusInterface>
   </interfaceList>
 </DeviceFrame>

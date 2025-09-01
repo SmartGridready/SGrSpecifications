@@ -3,14 +3,14 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>WhatWatt Go REST API Local VSE Minimal</deviceName>
+  <deviceName>WhatWatt Go ModbusTCP VSE Minimal</deviceName>
   <manufacturerName>WhatWatt</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-01-15</date>
+      <date>2025-08-26</date>
       <author>SGr/mkr</author>
       <comment>Draft for Testlab</comment>
     </changeLog>
@@ -27,7 +27,7 @@
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.1.22</softwareRevision>
+    <softwareRevision>1.7.4</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
@@ -36,34 +36,73 @@
       <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>Verified</testState>
+    <testState>None</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>base_uri</name>
+      <name>slave_id</name>
+      <dataType>
+        <int16 />
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>Modbus slave ID.</textElement>
+        <language>en</language>
+        <label>Modbus slave ID</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Modbus Slave-ID.</textElement>
+        <language>de</language>
+        <label>Modbus Slave-ID</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tcp_address</name>
       <dataType>
         <string />
       </dataType>
-      <defaultValue>http://localhost</defaultValue>
+      <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
-        <textElement>Base address for accessing the resource.</textElement>
+        <textElement>The IP address</textElement>
         <language>en</language>
-        <label>Base URI</label>
+        <label>TCP/IP address</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
+        <textElement>Die IP-Adresse</textElement>
         <language>de</language>
-        <label>Basis URI</label>
+        <label>TCP/IP-Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tcp_port</name>
+      <dataType>
+        <int32 />
+      </dataType>
+      <defaultValue>502</defaultValue>
+      <configurationDescription>
+        <textElement>The IP port</textElement>
+        <language>en</language>
+        <label>TCP/IP port</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Der IP-Port</textElement>
+        <language>de</language>
+        <label>TCP/IP-Port</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
   <interfaceList>
-    <restApiInterface>
-      <restApiInterfaceDescription>
-        <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>{{base_uri}}</restApiUri>
-        <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
-      </restApiInterfaceDescription>
+    <modbusInterface>
+      <modbusInterfaceDescription>
+        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+        <modbusTcp>
+          <port>{{tcp_port}}</port>
+          <address>{{tcp_address}}</address>
+          <slaveId>{{slave_id}}</slaveId>
+        </modbusTcp>
+        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
+        <bitOrder>BigEndian</bitOrder>
+      </modbusInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
@@ -121,23 +160,14 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_string</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/system</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>meter.id</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <string />
+                </modbusDataType>
+                <address>1001</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>12</numberOfRegisters>
+              </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -156,24 +186,14 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_string</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/system</requestPath>
-                  <responseQuery>
-                    <!-- concatenate date and time to get ISO string: 2025-01-01T15:39:07 -->
-                    <queryType>JMESPathExpression</queryType>
-                    <query>join('T', [meter.date, meter.time])</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32 />
+                </modbusDataType>
+                <address>1013</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -308,23 +328,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.instantaneous_power.active.positive.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>501</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -459,23 +476,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.instantaneous_power.active.negative.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>505</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -614,23 +628,20 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.active.positive.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>549</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -769,23 +780,20 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.energy.active.negative.total</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>553</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -865,23 +873,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l1</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>1</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -904,23 +909,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l2</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>3</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -943,23 +945,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.voltage.l3</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>5</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1040,23 +1039,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l1</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>13</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1078,23 +1074,20 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l2</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>15</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1116,27 +1109,24 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_number</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/report</requestPath>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>report.current.l3</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>17</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
       </functionalProfileList>
-    </restApiInterface>
+    </modbusInterface>
   </interfaceList>
 </DeviceFrame>

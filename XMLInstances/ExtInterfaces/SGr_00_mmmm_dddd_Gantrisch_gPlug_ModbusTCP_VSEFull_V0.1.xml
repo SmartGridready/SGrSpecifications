@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Gantrisch gPlug MQTT VSE All</deviceName>
+  <deviceName>Gantrisch gPlug ModbusTCP VSE All</deviceName>
   <manufacturerName>Gantrisch Energie AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -62,7 +62,7 @@
       <dataType>
         <string />
       </dataType>
-      <defaultValue></defaultValue>
+      <defaultValue>0.0.0.0</defaultValue>
       <configurationDescription>
         <textElement>The IP address</textElement>
         <language>en</language>

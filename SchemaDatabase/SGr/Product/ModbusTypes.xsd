@@ -260,8 +260,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </simpleType>
   <complexType name="AccessProtectionEnabled">
     <annotation>
-      <documentation> Modbus datapoints may be protected by execptions. If this is the case, a
-        datapoint may be selected as true with a range of supported exceptions. A NOT listed
+      <documentation> Modbus data points may be protected by execptions. If this is the case, a
+        data point may be selected as true with a range of supported exceptions. A NOT listed
         exception means no XY exception </documentation>
     </annotation>
     <sequence>
