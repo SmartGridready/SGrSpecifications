@@ -129,27 +129,59 @@
               <functionalProfileType>FlexMgmt</functionalProfileType>
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                    <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
-              <h3>Funktionsprofil für Energiemanagement-Systeme (EMS)</h3>
-
-              Funktionsprofil für Energiemanagement-Systeme (EMS), welche über eine bidirektionale Kommunikationsschnittstelle zu einem Flexibilitäts-Manager (z. B. EVU / VNB) verfügen. Die Schnittstelle ermöglicht sowohl das Abrufen aktueller Daten als auch die gezielte Steuerung der Leistung am Netzanschlusspunkt über definierte Datenpunkte. Die Daten werden in drei Kategorien unterteilt:
-              <ul>
-              <li><h3>Einstellungen (Lesen):</h3>
-              Statische Installationsdaten wie Adresse, Zählernummer und installierte Flexibilitäten.</li>
-              <li><h3>Daten (Lesen):</h3>
-              Dynamische Informationen, beispielsweise die aktuelle PV-Produktion oder die Leistung am Netzanschlusspunkt.</li>
-              <li><h3>Leistungsbeschränkung (Steuern):</h3>
-              Zeitlich begrenzte Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).</li>
-              </ul>
-              Die Datenpunkte werden im JSON-Format übertragen, was die gleichzeitige Aktualisierung mehrerer Daten mit einer einzigen Abfrage ermöglicht und so den Netzwerkverkehr reduziert.
+                  <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
+                  Functional profile for energy management systems (EMS) that have a bidirectional communication interface to a flexibility manager (e.g., utility company/distribution system operator).
+                  The interface enables both the retrieval of current data and the targeted control of power at the grid connection point via defined data points.
+                  The data is divided into three categories:
+                  <ul>
+                    <li>
+                      <h3>Settings (read):</h3>
+                      Static installation data such as address, meter number, and installed flexibilities.
+                    </li>
+                    <li>
+                      <h3>Data (read):</h3>
+                      Dynamic information, such as current PV production or power at the grid connection point.
+                    </li>
+                    <li>
+                      <h3>Power restriction (control):</h3>
+                      Temporary restriction (maximum value) of the power at the grid connection point (positive values for energy consumption, negative values for feed-in).
+                    </li>
+                  </ul>
+                  The data points are transmitted in JSON format, which allows multiple data points to be updated simultaneously with a single query, thereby reducing network traffic.
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
+                  Funktionsprofil für Energiemanagement-Systeme (EMS), welche über eine bidirektionale Kommunikationsschnittstelle zu einem Flexibilitäts-Manager (z.B. EVU / VNB) verfügen.
+                  Die Schnittstelle ermöglicht sowohl das Abrufen aktueller Daten als auch die gezielte Steuerung der Leistung am Netzanschlusspunkt über definierte Datenpunkte.
+                  Die Daten werden in drei Kategorien unterteilt:
+                  <ul>
+                    <li>
+                      <h3>Einstellungen (Lesen):</h3>
+                      Statische Installationsdaten wie Adresse, Zählernummer und installierte Flexibilitäten.
+                    </li>
+                    <li>
+                      <h3>Daten (Lesen):</h3>
+                      Dynamische Informationen, beispielsweise die aktuelle PV-Produktion oder die Leistung am Netzanschlusspunkt.
+                    </li>
+                    <li>
+                      <h3>Leistungsbeschränkung (Steuern):</h3>
+                      Zeitlich begrenzte Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).
+                    </li>
+                  </ul>
+                  Die Datenpunkte werden im JSON-Format übertragen, was die gleichzeitige Aktualisierung mehrerer Daten mit einer einzigen Abfrage ermöglicht und so den Netzwerkverkehr reduziert.
                 ]]>
               </textElement>
               <language>de</language>
@@ -167,103 +199,209 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Lesen der statische Installationsdaten wie Adresse, Zählernummer und installierte Flexibilitäten.
+                      <p>Reading static installation data such as address, meter number, and installed flexibilities.</p>
 
-        </p>JSon-Schema für das gelieferte JSon-Objekt:
-        <font size="1"><pre style="color:blue">
-        {
-          "$schema": "http://json-schema.org/draft-07/schema#",
-          "title": "Get Settings - aktuelle Einstellungen",
-          "type": "object",
-          "properties": {
-            "Address": {
-              "description": "Adresse des Energiemanagers",
-              "type": "object",
-              "properties": {
-                "Street": {
-                  "description": "Strasse und Hausnummer",
-                  "type": "string"
-                },
+Schema of the returned JSON object:
 
-                "ZipCode": {
-                  "description": "Postleitzahl",
-                  "type": "string",
-                },
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get Settings - current settings",
+  "type": "object",
+  "properties": {
+    "Address": {
+      "description": "Address of the energy manager",
+      "type": "object",
+      "properties": {
+        "Street": {
+          "description": "Street and number",
+          "type": "string"
+        },
 
-                "City": {
-                  "description": "Ort",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "Street", "ZipCode", "City"
-              ]
-            },
-            "MeterNumber": {
-              "description": "Nummer auf dem Zähler",
-              "type": "string"
-            },
-            "MeasuringPointName": {
-              "description": "Messpunktbezeichnung im System",
-              "type": "string"
-            },
-            "AvailableFlexibilities": {
-              "description": "Liste der vorhandenen Flexibilitäten (PV, WP, EV, BESS)",
-              "type": "array",
-              "items": {
-                "type": "string",
-                "pattern": "^PV$|^WP$|^EV$|^BESS$"
-              }
-            },
-            "PVSize": {
-              "description": "Grösse PV Anlage (DC seitig) in [kWp]",
-              "type": "number"
-            },
-            "BatteryCapacity": {
-              "description": "Battery Capacity in [kWh]",
-              "type": "number"
-            },
-            "HeatpumpPower": {
-              "description": "Leistung Wärmepumpe elektrisch in [kW]",
-              "type": "number"
-            },
-            "WriteAccess": {
-              "description": "Kunde gibt Schreibzugriff auf Anlage an VNB",
-              "type": "boolean"
-            },
-            "PVControl": {
-              "description": "ist PV Reduzierung verfügbar ja oder nein",
-              "type": "boolean"
-            }
-          },
-          "required": [
-            "Address", "MeterNumber", "MeasuringPointName", "AvailableFlexibilities",
-            "PVSize", "BatteryCapacity", "HeatpumpPower", "WriteAccess", "PVControl"
-          ]
+        "ZipCode": {
+          "description": "Zip code",
+          "type": "string",
+        },
+
+        "City": {
+          "description": "Location",
+          "type": "string"
         }
-        </pre></font>
+      },
+      "required": [
+        "Street", "ZipCode", "City"
+      ]
+    },
+    "MeterNumber": {
+      "description": "Meter number",
+      "type": "string"
+    },
+    "MeasuringPointName": {
+      "description": "Measurement identifier in the system",
+      "type": "string"
+    },
+    "AvailableFlexibilities": {
+      "description": "List of available flexibilities (PV, WP, EV, BESS)",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^PV$|^WP$|^EV$|^BESS$"
+      }
+    },
+    "PVSize": {
+      "description": "PV plant size (DC side) in [kWp]",
+      "type": "number"
+    },
+    "BatteryCapacity": {
+      "description": "Battery Capacity in [kWh]",
+      "type": "number"
+    },
+    "HeatpumpPower": {
+      "description": "Electrical power of heat pump in [kW]",
+      "type": "number"
+    },
+    "WriteAccess": {
+      "description": "Customer grants write access to DSO",
+      "type": "boolean"
+    },
+    "PVControl": {
+      "description": "is PV restriction available yes or no",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "Address", "MeterNumber", "MeasuringPointName", "AvailableFlexibilities",
+    "PVSize", "BatteryCapacity", "HeatpumpPower", "WriteAccess", "PVControl"
+  ]
+}
+</pre></font>
 
-        JSon-Beispiel:
+JSON example:
 
-        <font size="1"><pre style="color:blue">
-        {
-          "Address": {
-            "Street": "string",
-            "ZipCode": "string",
-            "City": "string"
-          },
-          "MeterNumber": "string",
-          "MeasuringPointName": "string",
-          "AvailableFlexibilities": [
-            "PV"
-          ],
-          "PVSize": 0,
-          "BatteryCapacity": 0,
-          "HeatpumpPower": 0,
-          "WriteAccess": true,
-          "PVControl": true
+<font size="1"><pre style="color:blue">
+{
+  "Address": {
+    "Street": "string",
+    "ZipCode": "string",
+    "City": "string"
+  },
+  "MeterNumber": "string",
+  "MeasuringPointName": "string",
+  "AvailableFlexibilities": [
+    "PV"
+  ],
+  "PVSize": 0,
+  "BatteryCapacity": 0,
+  "HeatpumpPower": 0,
+  "WriteAccess": true,
+  "PVControl": true
+}
+</pre></font>
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      <p>Lesen der statischen Installationsdaten wie Adresse, Zählernummer und installierte Flexibilitäten.</p>
+
+Schema des gelieferten JSON-Objekts:
+
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get Settings - aktuelle Einstellungen",
+  "type": "object",
+  "properties": {
+    "Address": {
+      "description": "Adresse des Energiemanagers",
+      "type": "object",
+      "properties": {
+        "Street": {
+          "description": "Strasse und Hausnummer",
+          "type": "string"
+        },
+
+        "ZipCode": {
+          "description": "Postleitzahl",
+          "type": "string",
+        },
+
+        "City": {
+          "description": "Ort",
+          "type": "string"
         }
-        </pre></font>
+      },
+      "required": [
+        "Street", "ZipCode", "City"
+      ]
+    },
+    "MeterNumber": {
+      "description": "Nummer auf dem Zähler",
+      "type": "string"
+    },
+    "MeasuringPointName": {
+      "description": "Messpunktbezeichnung im System",
+      "type": "string"
+    },
+    "AvailableFlexibilities": {
+      "description": "Liste der vorhandenen Flexibilitäten (PV, WP, EV, BESS)",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^PV$|^WP$|^EV$|^BESS$"
+      }
+    },
+    "PVSize": {
+      "description": "Grösse PV Anlage (DC seitig) in [kWp]",
+      "type": "number"
+    },
+    "BatteryCapacity": {
+      "description": "Battery Capacity in [kWh]",
+      "type": "number"
+    },
+    "HeatpumpPower": {
+      "description": "Leistung Wärmepumpe elektrisch in [kW]",
+      "type": "number"
+    },
+    "WriteAccess": {
+      "description": "Kunde gibt Schreibzugriff auf Anlage an VNB",
+      "type": "boolean"
+    },
+    "PVControl": {
+      "description": "ist PV Reduzierung verfügbar ja oder nein",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "Address", "MeterNumber", "MeasuringPointName", "AvailableFlexibilities",
+    "PVSize", "BatteryCapacity", "HeatpumpPower", "WriteAccess", "PVControl"
+  ]
+}
+</pre></font>
+
+JSON-Beispiel:
+
+<font size="1"><pre style="color:blue">
+{
+  "Address": {
+    "Street": "string",
+    "ZipCode": "string",
+    "City": "string"
+  },
+  "MeterNumber": "string",
+  "MeasuringPointName": "string",
+  "AvailableFlexibilities": [
+    "PV"
+  ],
+  "PVSize": 0,
+  "BatteryCapacity": 0,
+  "HeatpumpPower": 0,
+  "WriteAccess": true,
+  "PVControl": true
+}
+</pre></font>
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -298,100 +436,201 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Lesen der dynamische Informationen, beispielsweise die aktuelle PV-Produktion oder die Leistung am Netzanschlusspunkt.
+                      <p>Reading dynamic information, such as current PV production or power at the grid connection point.</p>
 
-        </p>JSon-Schema für das gelieferte JSon-Objekt:
-        <font size="1"><pre style="color:blue">
-        {
-          "$schema": "http://json-schema.org/draft-07/schema#",
-          "title": "Get Data - aktuelle Daten und Flexibilitäten",
-          "type": "object",
-          "properties": {
-            "EmsAvailable": {
-              "description": "Zustand des EMS",
-              "type": "string",
-              "pattern": "^EMS_REACHABLE$|^EMS_NOT_REACHABLE$|^EMS_CONNECTION_FAULT$"
-            },
-            "PVPower": {
-              "description": "Aktuelle Produktionsleistung in [kW]",
-              "type": "number"
-            },
-            "MeterPower": {
-              "description": "Aktuelle Leistung am Bilanzzähler",
-              "description": "(+ Bezug, - Feed-In) in [kW]",
-              "type": "number"
-            },
-            "AvailableFlexPositive": {
-              "description": "verfügbare Flexibilität positiv (Bezug) in [kW]",
-              "type": "number"
-            },
-            "AvailableFlexNegative": {
-              "description": "verfügbare Flexibilität negativ (Produktion) in [kW]",
-              "type": "number"
-            },
-            "BESSSoc": {
-              "description": "Aktueller Ladestand Speicher in [%]",
-              "type": "integer"
-            },
-            "BESSCapacityNegative": {
-              "description": "mögliche Kapazität zum Laden bis Limite in [kWh]",
-              "type": "number"
-            },
-            "BESSCapacityPositive": {
-              "description": "mögliche Kapazität zum Entladen bis Limite in [kWh]",
-              "type": "number"
-            },
-            "MeterVoltage": {
-              "description": "Feedback aller drei Spannungslevel am Hausanschluss",
-              "description": "jeweils in [Volt]",
-              "type": "object",
-              "properties": {
-                "Voltage1": {
-                  "description": "Spannung Phase 1 in [Volt]",
-                  "type": "number"
-                },
+Schema of the returned JSON object:
 
-                "Voltage2": {
-                  "description": "Spannung Phase 2 in [Volt]",
-                  "type": "number"
-                },
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get Data - current data and flexibilities",
+  "type": "object",
+  "properties": {
+    "EmsAvailable": {
+      "description": "Status of the EMS",
+      "type": "string",
+      "pattern": "^EMS_REACHABLE$|^EMS_NOT_REACHABLE$|^EMS_CONNECTION_FAULT$"
+    },
+    "PVPower": {
+      "description": "Current power of production in [kW]",
+      "type": "number"
+    },
+    "MeterPower": {
+      "description": "Current power at balance meter",
+      "description": "(+ consumption, - feed-In) in [kW]",
+      "type": "number"
+    },
+    "AvailableFlexPositive": {
+      "description": "Available positive flexibility (consumption) in [kW]",
+      "type": "number"
+    },
+    "AvailableFlexNegative": {
+      "description": "Available negative flexibility (production) in [kW]",
+      "type": "number"
+    },
+    "BESSSoc": {
+      "description": "Current state of charge of storage in [%]",
+      "type": "integer"
+    },
+    "BESSCapacityNegative": {
+      "description": "Charging capacity up to limit in [kWh]",
+      "type": "number"
+    },
+    "BESSCapacityPositive": {
+      "description": "Discharging capacity down to limit in [kWh]",
+      "type": "number"
+    },
+    "MeterVoltage": {
+      "description": "Feedback of all three voltage levels at the building connection point",
+      "description": "each in [Volt]",
+      "type": "object",
+      "properties": {
+        "Voltage1": {
+          "description": "Voltage of phase 1 in [Volt]",
+          "type": "number"
+        },
 
-                "Voltage3": {
-                    "description": "Spannung Phase 3 in [Volt]",
-                  "type": "number"
-                }
-              },
-              "required": [
-                "Voltage1", "Voltage2", "Voltage3"
-              ]
-            }
-          },
-          "required": [
-            "EmsAvailable", "PVPower", "MeterPower", "BESSSoc", "MeterVoltage"
-          ]
+        "Voltage2": {
+          "description": "Voltage of phase 2 in [Volt]",
+          "type": "number"
+        },
+
+        "Voltage3": {
+            "description": "Voltage of phase 3 in [Volt]",
+          "type": "number"
         }
-        </pre></font>
+      },
+      "required": [
+        "Voltage1", "Voltage2", "Voltage3"
+      ]
+    }
+  },
+  "required": [
+    "EmsAvailable", "PVPower", "MeterPower", "BESSSoc", "MeterVoltage"
+  ]
+}
+</pre></font>
 
-        JSon-Beispiel:
+JSON example:
 
-        <font size="1"><pre style="color:blue">
-        {
-          "EmsAvailable": "EMS_REACHABLE",
-          "PVPower": 0,
-          "MeterPower": 0,
-          "AvailableFlexPositive": 0,
-          "AvailableFlexNegative": 0,
-          "BESSSoc": 0,
-          "BESSCapacityNegative": 0,
-          "BESSCapacityPositive": 0,
-          "MeterVoltage": {
-            "Voltage1": 0,
-            "Voltage2": 0,
-            "Voltage3": 0
-          }
+<font size="1"><pre style="color:blue">
+{
+  "EmsAvailable": "EMS_REACHABLE",
+  "PVPower": 0,
+  "MeterPower": 0,
+  "AvailableFlexPositive": 0,
+  "AvailableFlexNegative": 0,
+  "BESSSoc": 0,
+  "BESSCapacityNegative": 0,
+  "BESSCapacityPositive": 0,
+  "MeterVoltage": {
+    "Voltage1": 0,
+    "Voltage2": 0,
+    "Voltage3": 0
+  }
+}
+</pre></font>
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      <p>Lesen der dynamischen Informationen, beispielsweise die aktuelle PV-Produktion oder die Leistung am Netzanschlusspunkt.</p>
+
+Schema des gelieferten JSON-Objekts:
+
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get Data - aktuelle Daten und Flexibilitäten",
+  "type": "object",
+  "properties": {
+    "EmsAvailable": {
+      "description": "Zustand des EMS",
+      "type": "string",
+      "pattern": "^EMS_REACHABLE$|^EMS_NOT_REACHABLE$|^EMS_CONNECTION_FAULT$"
+    },
+    "PVPower": {
+      "description": "Aktuelle Produktionsleistung in [kW]",
+      "type": "number"
+    },
+    "MeterPower": {
+      "description": "Aktuelle Leistung am Bilanzzähler",
+      "description": "(+ Bezug, - Feed-In) in [kW]",
+      "type": "number"
+    },
+    "AvailableFlexPositive": {
+      "description": "verfügbare Flexibilität positiv (Bezug) in [kW]",
+      "type": "number"
+    },
+    "AvailableFlexNegative": {
+      "description": "verfügbare Flexibilität negativ (Produktion) in [kW]",
+      "type": "number"
+    },
+    "BESSSoc": {
+      "description": "Aktueller Ladestand Speicher in [%]",
+      "type": "integer"
+    },
+    "BESSCapacityNegative": {
+      "description": "mögliche Kapazität zum Laden bis Limite in [kWh]",
+      "type": "number"
+    },
+    "BESSCapacityPositive": {
+      "description": "mögliche Kapazität zum Entladen bis Limite in [kWh]",
+      "type": "number"
+    },
+    "MeterVoltage": {
+      "description": "Feedback aller drei Spannungslevel am Hausanschluss",
+      "description": "jeweils in [Volt]",
+      "type": "object",
+      "properties": {
+        "Voltage1": {
+          "description": "Spannung Phase 1 in [Volt]",
+          "type": "number"
+        },
+
+        "Voltage2": {
+          "description": "Spannung Phase 2 in [Volt]",
+          "type": "number"
+        },
+
+        "Voltage3": {
+            "description": "Spannung Phase 3 in [Volt]",
+          "type": "number"
         }
-        </pre></font>
+      },
+      "required": [
+        "Voltage1", "Voltage2", "Voltage3"
+      ]
+    }
+  },
+  "required": [
+    "EmsAvailable", "PVPower", "MeterPower", "BESSSoc", "MeterVoltage"
+  ]
+}
+</pre></font>
 
+JSON-Beispiel:
+
+<font size="1"><pre style="color:blue">
+{
+  "EmsAvailable": "EMS_REACHABLE",
+  "PVPower": 0,
+  "MeterPower": 0,
+  "AvailableFlexPositive": 0,
+  "AvailableFlexNegative": 0,
+  "BESSSoc": 0,
+  "BESSCapacityNegative": 0,
+  "BESSCapacityPositive": 0,
+  "MeterVoltage": {
+    "Voltage1": 0,
+    "Voltage2": 0,
+    "Voltage3": 0
+  }
+}
+</pre></font>
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -426,56 +665,115 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der zeitlich begrenzten Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).
+                      <p>Setting the time-limited restriction (maximum value) of the power at the grid connection point (positive values for energy consumption, negative values for feed-in).</p>
 
-        </p>JSon-Schema für das zu übergebende JSon-Objekt:
-        <font size="1"><pre style="color:blue">
-        {
-          "$schema": "http://json-schema.org/draft-07/schema#",
-          "title": "Restrict Power - Einschränkungen für die Leistung",
-          "type": "object",
-          "properties": {
-            "MaximumGridPointActive": {
-              "description": "Aktivierung der Leistungsreduktion",
-              "type": "boolean"
-            },
-            "MaximumGridPointPower": {
-              "description": "Maximale Leistung",
-              "type": "object",
-              "properties": {
-                "MaximumPowerKw": {
-                  "description": "Power to restrict in [kW]. Positive values restrict",
-                  "description": "import, negative values restrict export/feed-in",
-                  "type": "number"
-                },
+Schema of the JSON object to be sent:
 
-                "DurationInMinutes": {
-                  "description": "Duration in [min]",
-                  "type": "integer"
-                }
-              },
-              "required": [
-                "MaximumPowerKw", "DurationInMinutes"
-              ]
-            }
-          },
-          "required": [
-            "MaximumGridPointActive", "MaximumGridPointPower"
-          ]
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Restrict Power - power restriction",
+  "type": "object",
+  "properties": {
+    "MaximumGridPointActive": {
+      "description": "Activation of power restriction",
+      "type": "boolean"
+    },
+    "MaximumGridPointPower": {
+      "description": "Maximal power",
+      "type": "object",
+      "properties": {
+        "MaximumPowerKw": {
+          "description": "Power to restrict in [kW]. Positive values restrict",
+          "description": "import, negative values restrict export/feed-in",
+          "type": "number"
+        },
+
+        "DurationInMinutes": {
+          "description": "Duration in [min]",
+          "type": "integer"
         }
-        </pre></font>
+      },
+      "required": [
+        "MaximumPowerKw", "DurationInMinutes"
+      ]
+    }
+  },
+  "required": [
+    "MaximumGridPointActive", "MaximumGridPointPower"
+  ]
+}
+</pre></font>
 
-        JSon-Beispiel:
+JSON example:
 
-        <font size="1"><pre style="color:blue">
-        {
-          "MaximumGridPointActive": true,
-          "MaximumGridPointPower": {
-            "MaximumPowerKw": 0,
-            "DurationInMinutes": 0
-          }
+<font size="1"><pre style="color:blue">
+{
+  "MaximumGridPointActive": true,
+  "MaximumGridPointPower": {
+    "MaximumPowerKw": 0,
+    "DurationInMinutes": 0
+  }
+}
+</pre></font>
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      <p>Setzen der zeitlich begrenzten Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).</p>
+
+Schema des zu übergebenden JSON-Objekts:
+
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Restrict Power - Einschränkungen für die Leistung",
+  "type": "object",
+  "properties": {
+    "MaximumGridPointActive": {
+      "description": "Aktivierung der Leistungsreduktion",
+      "type": "boolean"
+    },
+    "MaximumGridPointPower": {
+      "description": "Maximale Leistung",
+      "type": "object",
+      "properties": {
+        "MaximumPowerKw": {
+          "description": "Power to restrict in [kW]. Positive values restrict",
+          "description": "import, negative values restrict export/feed-in",
+          "type": "number"
+        },
+
+        "DurationInMinutes": {
+          "description": "Duration in [min]",
+          "type": "integer"
         }
-        </pre></font>
+      },
+      "required": [
+        "MaximumPowerKw", "DurationInMinutes"
+      ]
+    }
+  },
+  "required": [
+    "MaximumGridPointActive", "MaximumGridPointPower"
+  ]
+}
+</pre></font>
+
+JSON-Beispiel:
+
+<font size="1"><pre style="color:blue">
+{
+  "MaximumGridPointActive": true,
+  "MaximumGridPointPower": {
+    "MaximumPowerKw": 0,
+    "DurationInMinutes": 0
+  }
+}
+</pre></font>
                     ]]>
                   </textElement>
                   <language>de</language>
