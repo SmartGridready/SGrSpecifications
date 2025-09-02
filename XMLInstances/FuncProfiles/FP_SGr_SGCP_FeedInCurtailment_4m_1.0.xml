@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Published</state>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2025-09-02</date>
+      <author>SGR/mkr</author>
+      <comment>Finalized</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>FeedInCurtailment</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
+          <p><b>Controlling functional profile for the curtailment of PV grid feed-in</b></p>
+
+          <p>This functional profile is used by a smart grid operator or flexibility manager (communicator) to control a PV system via EMS or inverter and limit its AC feed-in to the grid. The system can be controlled via a local interface (Modbus TCP / IEC-61850) or a cloud API.</p>
+
+          <p>One of the following approaches of voltage measurement must be applied when implementing the functional profile:
+          <ul>
+            <li>Single-phase devices use the total voltage with the first data point (VoltageACL1_N)</li>
+            <li>Three-phase devices in star configuration provide the voltage per phase vs. neutral using three data points (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
+            <li>Three-phase devices in delta configuration provide the voltage between phases using three data points (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+          </ul>
+          </p>
+
+          <p>Note: If the requested active power cannot be achieved within a given time limit, the power plant must be shut off.</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
+          <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV-Einspeisung</b></p>
+
+          <p>Dieses Funktionsprofil wird vom Smart-Grid-Operator oder Flexibilitätsmanager (Communicator) verwendet, um eine PV-Anlage per EMS oder Wechselrichter anzusteuern und die AC-seitige Einspeisung zu begrenzen. Die Regelung kann über eine lokale Protokoll-Schnittstelle (z. B. Modbus TCP / IEC-61850) oder ein Cloud-API erfolgen.</p>
+
+          <p>Eine der folgenden Varianten der Spannungsmessung muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+          <ul>
+            <li>Einphasige Geräte geben die Spannung über die erste Phase an (VoltageACL1_N)</li>
+            <li>3-phasige Geräte in Sternschaltung geben die Spannung pro Phase gegen den Nullleiter an (VoltageACL1_N, VoltageACL2_N, VoltageACL2_N).</li>
+            <li>3-phasige Geräte in Dreiecksschaltung geben die Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+          </ul>
+          </p>
+
+          <p>Ergänzung: Kann der Wirkleistungssollwert innerhalb des vorgegebenen Zeitraums nicht erreicht werden, ist die Anlage abzuschalten.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaximumFeedInPower</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Maximum feed-in active power at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Maximale einzuspeisende Wirkleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaximumFeedInPercent</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Maximum feed-in limit as percentage of nominal active power [0%...100%]</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Maximale einzuspeisende Wirkleistung als Prozentwert der Nenn-Wirkleistung [0%...100%]</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerSetPoint</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Set point of the reactive power factor [-0.9...0.9]</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Sollwert für den Blindleistungsfaktor [-0.9...0.9]</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>NominalDCPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Nominal DC power of the PV plant</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>DC-Nennleistung der PV-Anlage</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerOutput</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Active power at the inverter output</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Wirkleistung am Ausgang des Wechselrichters</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerOutput</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Reactive power at the inverter output</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Blindleistung am Ausgang des Wechselrichters</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerFeedIn</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Active power feed-in at grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Eingespeiste Wirkleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerFeedIn</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Reactive power feed-in at grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Eingespeiste Blindleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL1_L2</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phases A-B</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase A-B</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL1_L3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phases A-C</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase A-BC</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL2_L3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phases B-C</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase B-C</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL1_N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phase 1 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL2_N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phase 2 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageACL3_N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Measurement of the voltage between phase 3 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>Irradiation</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>WATTS_PER_SQUARE_METER</unit>
+        <legibleDescription>
+          <textElement>Irradiation from sensor box, if available</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Einstrahlung aus Sensor-Box, wenn vorhanden</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ClassificationCurtailment</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <int32 />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Classification and priority of the curtailment</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Klassifizierung und Priorität der Abregelung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>FallbackMaxFeedInPower</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Fallback feed-in limit active power, when the controlled system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfallwert der Einspeiseleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>FallbackMaxFeedInPercent</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Fallback feed-in limit as percentage of active power, when the controlled system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfallwert der Einspeiseleistung als Prozentwert der Wirkleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
