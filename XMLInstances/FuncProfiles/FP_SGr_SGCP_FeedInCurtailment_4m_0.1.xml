@@ -72,17 +72,17 @@
       <dataPoint>
         <dataPointName>MaximumFeedInPower</dataPointName>
         <dataDirection>RW</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>M</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
         <unit>KILOWATTS</unit>
         <legibleDescription>
-          <textElement>Maximum feed-in active power in kW</textElement>
+          <textElement>Maximum feed-in active power at the grid connection point</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Maximale einzuspeisende Wirkleistung in kW</textElement>
+          <textElement>Maximale einzuspeisende Wirkleistung am Netzanschlusspunkt</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -148,7 +148,7 @@
       <dataPoint>
         <dataPointName>ActivePowerOutput</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>M</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -186,7 +186,7 @@
       <dataPoint>
         <dataPointName>ActivePowerFeedIn</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>M</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -224,7 +224,7 @@
       <dataPoint>
         <dataPointName>VoltageACL1_L2</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>O</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -243,7 +243,7 @@
       <dataPoint>
         <dataPointName>VoltageACL1_L3</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>O</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -262,7 +262,7 @@
       <dataPoint>
         <dataPointName>VoltageACL2_L3</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>O</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -281,7 +281,7 @@
       <dataPoint>
         <dataPointName>VoltageACL1_N</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>O</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -300,7 +300,7 @@
       <dataPoint>
         <dataPointName>VoltageACL2_N</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>O</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
@@ -319,7 +319,7 @@
       <dataPoint>
         <dataPointName>VoltageACL3_N</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
+        <presenceLevel>O</presenceLevel>
         <dataType>
           <float64 />
         </dataType>
