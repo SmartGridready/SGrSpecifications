@@ -22,6 +22,12 @@
       <author>CLAP/ga</author>
       <comment>Correction in profileName</comment>
     </changeLog>
+    <changeLog>
+      <version>0.2.4</version>
+      <date>2025-09-02</date>
+      <author>SGR/mkr</author>
+      <comment>Text improvements and translation, finalization</comment>
+    </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
@@ -32,29 +38,52 @@
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
         <secondaryVersionNumber>2</secondaryVersionNumber>
-        <subReleaseVersionNumber>3</subReleaseVersionNumber>
+        <subReleaseVersionNumber>4</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
         <![CDATA[
           <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
-          <p><strong>Flex Manager</strong><br>
-          Steuerndes Funktionsprofil für die flexible Steuerung des Energieverbrauchs eines Produktes.</p>
+          <p>Controlling functional profile for flexible energy consumption of a product.</p>
           
-          <p>Dieses Funktionsprofil wird in der Regel vom Smart Grid Operator oder Regelenergie
-             Manager (Communicator) verwendet, um z.B. ein Energiemanagement-System (EMS) als Produkt anzusteuern.
-             Die Steuerung der Anlage erfolgt über die obligatorischen Datenpunkte:
+          <p>This functional profile is typically used by the smart grid operator or balancing energy manager
+          (communicator) to control an energy management system (EMS) as a product, for example.
+          The system is controlled via the mandatory data points:
           <ul>
-            <li>ReadinessState (Anlage ist bereit für Flexibilität)</li>
-            <li>ActivePower-Activation (Flexibilität wird vom FlexManager abgerufen)</li>
-            <li>RunState (Flexibilitätsabruf ist aktiv)</li>
-            <li>ActualActivePower (Rückmeldung)</li>
+            <li><code>ReadinessState</code> (system is ready for flexibility)</li>
+            <li><code>ActivePowerActivation</code> (flexibility is requested by the FlexManager)</li>
+            <li><code>RunState</code> (flexibility request is active)</li>
+            <li><code>ActualActivePower</code> (feedback)</li>
+          </ul>
+          The interface can be used for any energy storage systems that can support electrical flexibility.
+          The other data points enable optional reactive power, storage level display, charging and discharging profiles, and
+          specification of the available flexibility range (min/max kW / kVAR).
+          Power specifications are from the consumer's perspective (+ corresponds to energy consumption
+          from the grid or increase in consumption).</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
+          <p>Steuerndes Funktionsprofil für die flexible Steuerung des Energieverbrauchs eines Produktes.</p>
+          
+          <p>Dieses Funktionsprofil wird in der Regel vom Smart Grid Operator oder Regelenergie-
+          Manager (Communicator) verwendet, um z.B. ein Energiemanagement-System (EMS) als Produkt anzusteuern.
+          Die Steuerung der Anlage erfolgt über die obligatorischen Datenpunkte:
+          <ul>
+            <li><code>ReadinessState</code> (Anlage ist bereit für Flexibilität)</li>
+            <li><code>ActivePowerActivation</code> (Flexibilität wird vom FlexManager abgerufen)</li>
+            <li><code>RunState</code> (Flexibilitätsabruf ist aktiv)</li>
+            <li><code>ActualActivePower</code> (Rückmeldung)</li>
           </ul>
           Die Schnittstelle ist für beliebige Energiespeicher, welche elektrische Flexibilität unterstützen können,
           nutzbar. Die weiteren Datenpunkte ermöglichen optional Blindleistung, Speicherstands-Anzeige, Lade- und Entladeprofile sowie die
           Angabe des verfügbaren Flexibilitätsbereiches (min/max kW / kVAR). Leistungsangaben sind aus Sicht Bezüger (+ entspricht Energiebezug
-          aus dem Netz oder Erhöhung des Bezugs).
+          aus dem Netz oder Erhöhung des Bezugs).</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -73,10 +102,22 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              On Off Befehl, Wirkleistung Flexibilität liefern ja/nein:
+              On-off command, flexibility of active power yes/no:
               <ul>
-                <li>true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)</li>
-                <li>false: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)</li>
+                <li><code>true</code>: The latency period begins when this command is received (WinTms)</li>
+                <li><code>false</code>: The power adjustment is lowered via a defined ramp (RmpTms)</li>
+              </ul>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              On-Off Befehl, Wirkleistung Flexibilität liefern ja/nein:
+              <ul>
+                <li><code>true</code>: Die Latenzzeit beginnt mit dem Empfang dieses Befehls (WinTms)</li>
+                <li><code>false</code>: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)</li>
               </ul>
             ]]>
           </textElement>
@@ -94,7 +135,11 @@
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>On Off Befehl, Blindleistung Flexibilität liefern ja/nein:</textElement>
+          <textElement>On-off command, flexibility of reactive power yes/no</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>On-Off Befehl, Blindleistung Flexibilität liefern ja/nein</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -110,8 +155,13 @@
         <unit>KILOWATTS</unit>
         <legibleDescription>
           <textElement>
-            Leistungsvorgabe, +/-.
-            Active power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
+            Active power set point, +/-: Intended change of energy flow (+/-)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Wirkleistungsvorgabe, +/-: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -128,8 +178,13 @@
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
           <textElement>
-            Blindleistungsvorgabe, +/-.
-            Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
+            Reactive power set point, +/-: Intended change of energy flow (+/-)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Blindleistungsvorgabe, +/-: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -146,7 +201,17 @@
         <unit>NONE</unit>
         <legibleDescription>
           <textElement>
-            Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist
+            <![CDATA[
+              Readiness state of flexibility. <code>true</code> when device is ready for the next flexibility event.
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Bereitschaft für Flexibilität. <code>true</code> wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.
+            ]]>
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -163,7 +228,17 @@
         <unit>NONE</unit>
         <legibleDescription>
           <textElement>
-            Status running for flexibility. True wenn Anlage läuft für Flexibilität.
+            <![CDATA[
+              Activation state of flexibility. <code>true</code> when device is set to flexibility.
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Aktivität der Flexibilität. <code>true</code> wenn Anlage auf Flexibilität eingestellt ist.
+            ]]>
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -180,7 +255,13 @@
         <unit>KILOWATTS</unit>
         <legibleDescription>
           <textElement>
-            Momentane Leistung. Betrag und Richtung des Energieflusses.
+            Current active power. Absolute value and direction of the energy flow.
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Momentane Wirkleistung. Betrag und Richtung des Energieflusses.
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -195,6 +276,12 @@
           <float64/>
         </dataType>
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>
+            Current reactive power. Absolute value and direction of the energy flow.
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
         <legibleDescription>
           <textElement>
             Momentane Blindleistung. Betrag und Richtung des Energieflusses.
@@ -214,7 +301,13 @@
         <unit>KILOWATTS</unit>
         <legibleDescription>
           <textElement>
-            Maximal steuerbare Wirkleistung (actual value)
+            Maximal controlled active power (actual value)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Maximal steuerbare Wirkleistung (Momentanwert)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -231,7 +324,13 @@
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
           <textElement>
-            Maximal steuerbare Blindleistung (actual value)
+            Maximal controlled reactive power (actual value)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Maximal steuerbare Blindleistung (Momentanwert)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -248,7 +347,13 @@
         <unit>KILOWATTS</unit>
         <legibleDescription>
           <textElement>
-            Minimal steuerbare Wirkleistung (actual value)
+            Minimal controlled active power (actual value)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Minimal steuerbare Wirkleistung (Momentanwert)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -265,7 +370,13 @@
         <unit>KILOVOLT_AMPERES_REACTIVE</unit>
         <legibleDescription>
           <textElement>
-            Minimal steuerbare Blindleistung (actual value)
+            Minimal controlled reactive power (actual value)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Minimal steuerbare Blindleistung (Momentanwert)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -282,7 +393,13 @@
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
           <textElement>
-            Aktueller Speicherstand
+            Current state of charge of the storage
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Aktueller Ladestand des Speichers
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -299,7 +416,13 @@
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
           <textElement>
-            Minimaler Ladzustand (darf nicht verletzt werden)
+            Minimal state of charge of the storage (must not be violated)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Minimaler Ladestand des Speichers (darf nicht verletzt werden)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -316,7 +439,13 @@
         <unit>KILOWATT_HOURS</unit>
         <legibleDescription>
           <textElement>
-            Maximaler Ladzustand (darf nicht verletzt werden)
+            Maximal state of charge of the storage (must not be violated)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Maximaler Ladestand des Speichers (darf nicht verletzt werden)
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -332,6 +461,12 @@
         </dataType>
         <unit>PERCENT</unit>
         <arrayLength>8</arrayLength>
+        <legibleDescription>
+          <textElement>
+            Charge profile (relative to maximum value)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
         <legibleDescription>
           <textElement>
             Ladeprofil (relativ zum Maximalwert)
@@ -350,6 +485,12 @@
         </dataType>
         <unit>PERCENT</unit>
         <arrayLength>8</arrayLength>
+        <legibleDescription>
+          <textElement>
+            Discharge profile (relative to maximum value)
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
         <legibleDescription>
           <textElement>
             Entladeprofil (relativ zum Maximalwert)
