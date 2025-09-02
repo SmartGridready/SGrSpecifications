@@ -39,13 +39,25 @@
         <label>TCP/IP address</label>
       </configurationDescription>
     </configurationListElement>
+    <configurationListElement>
+      <name>tcp_port</name>
+      <dataType>
+        <int32 />
+      </dataType>
+      <defaultValue>502</defaultValue>
+      <configurationDescription>
+        <textElement>The IP port</textElement>
+        <language>en</language>
+        <label>TCP/IP port</label>
+      </configurationDescription>
+    </configurationListElement>
   </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
-          <port>502</port>
+          <port>{{tcp_port}}</port>
           <address>{{tcp_address}}</address>
           <slaveId>255</slaveId>
         </modbusTcp>
@@ -1003,7 +1015,7 @@
                 <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>1110</address>
+                <address>1602</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>

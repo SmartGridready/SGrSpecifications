@@ -61,7 +61,7 @@
           <address>{{tcp_address}}</address>
           <slaveId>255</slaveId>
         </modbusTcp>
-        <firstRegisterAddressIsOne>true</firstRegisterAddressIsOne>
+        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
         <bitOrder>BigEndian</bitOrder>
       </modbusInterfaceDescription>
       <functionalProfileList>
@@ -780,10 +780,9 @@
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
-              <!-- write-only according to docs, but there is no readable register -->
               <dataPoint>
                 <dataPointName>EMSCurrentLimit</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>W</dataDirection>
                 <dataType>
                   <float32 />
                 </dataType>
