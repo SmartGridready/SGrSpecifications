@@ -8,7 +8,7 @@
     <changeLog>
       <version>1.0.0</version>
       <date>2025-09-02</date>
-      <author>SGR/mkr</author>
+      <author>SGr/mkr</author>
       <comment>Finalized</comment>
     </changeLog>
   </releaseNotes>
@@ -253,7 +253,7 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der Spannung zwischen Phase A-BC</textElement>
+          <textElement>Erfassung der Spannung zwischen Phase A-C</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -287,12 +287,12 @@
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
-          <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
           <textElement>Measurement of the voltage between phase 1 and neutral</textElement>
           <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
+          <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
@@ -306,12 +306,12 @@
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
-          <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
           <textElement>Measurement of the voltage between phase 2 and neutral</textElement>
           <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
+          <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
@@ -325,12 +325,12 @@
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
-          <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
           <textElement>Measurement of the voltage between phase 3 and neutral</textElement>
           <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
+          <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
