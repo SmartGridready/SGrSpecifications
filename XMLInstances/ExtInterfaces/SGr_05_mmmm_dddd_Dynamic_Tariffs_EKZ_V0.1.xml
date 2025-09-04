@@ -3,48 +3,101 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Groupe E Dynamic Tariffs</deviceName>
-  <manufacturerName>Groupe E</manufacturerName>
+  <deviceName>EKZ Dynamic Tariffs</deviceName>
+  <manufacturerName>EKZ</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Published</state>
-    <changeLog>
-      <version>0.0.1</version>
-      <date>2024-02-28</date>
-      <author>Ergo/hf</author>
-      <comment>First draft</comment>
-    </changeLog>
+    <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-04-08</date>
+      <date>2025-09-03</date>
       <author>SGr/mkr</author>
-      <comment>Corrections, prepare for finalization</comment>
-    </changeLog>
-    <changeLog>
-      <version>1.0.0</version>
-      <date>2025-04-14</date>
-      <author>SGr/mkr</author>
-      <comment>Added dynamic parameters, prepare for publication</comment>
+      <comment>Initial draft</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Provides dynamic tariff prices of EKZ.</p>
+          <p>Additional information on the tariffs can be found <a href="https://www.ekz.ch/de/ueber-ekz/unternehmen/ekz/gesetzliche-vorgaben.html">here</a>.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.ekz.ch/de/blue/wissen/2025/dynamische-wahltarife-2026.html</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Stellt dynamische Strompreise des EKZ bereit.</p>
+          <p>Weitere Infos zu den Tarifen sind <a href="https://www.ekz.ch/de/ueber-ekz/unternehmen/ekz/gesetzliche-vorgaben.html">hier</a> zu finden.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.ekz.ch/de/blue/wissen/2025/dynamische-wahltarife-2026.html</uri>
+    </legibleDescription>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
-    <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>0</manufacturerSpecificationIdentification>
     <levelOfOperation>5</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>1</primaryVersionNumber>
-      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>Verified</testState>
+    <testState>None</testState>
+    <programmerHints>
+      <textElement>
+        <![CDATA[
+          This version of the EID only supports the <code>electricity</code> tariffs in a meaningful way,
+          mostly due to the SGr response JSON schema.
+        ]]>
+      </textElement>
+      <language>en</language>
+    </programmerHints>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>tariff_type</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>electricity</defaultValue>
+      <configurationDescription>
+        <textElement>The tariff type to get</textElement>
+        <language>en</language>
+        <label>Tariff Type</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Gewünschter Tarif-Typ</textElement>
+        <language>de</language>
+        <label>Tarif-Typ</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tariff_name</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>electricity_dynamic</defaultValue>
+      <configurationDescription>
+        <textElement>The actual tariff product to get</textElement>
+        <language>en</language>
+        <label>Tariff Name</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Gewünschtes Tarif-Produkt</textElement>
+        <language>de</language>
+        <label>Tarif-Name</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://api.tariffs.groupe-e.ch</restApiUri>
+        <restApiUri>https://api.tariffs.ekz.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
@@ -400,6 +453,15 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      <p>Maps the <code>electricity</code> property to match the <code>integrated</code> property required by SGr.</p>
+                      <p>The <code>component</code> property is not supported.
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </programmerHints>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_object</dataType>
@@ -412,33 +474,23 @@
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
                   <requestPath>/v1/tariffs</requestPath>
-                  <requestQuery>
-                    <parameter>
-                      <name>start_timestamp</name>
-                      <value>[[start_timestamp]]</value>
-                    </parameter>
-                    <parameter>
-                      <name>end_timestamp</name>
-                      <value>[[end_timestamp]]</value>
-                    </parameter>
-                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathMapping</queryType>
                     <jmesPathMappings>
                       <mapping>
-                        <from>[*].start_timestamp</from>
+                        <from>prices[*].start_timestamp</from>
                         <to>[*].start_timestamp</to>
                       </mapping>
                       <mapping>
-                        <from>[*].end_timestamp</from>
+                        <from>prices[*].end_timestamp</from>
                         <to>[*].end_timestamp</to>
                       </mapping>
                       <mapping>
-                        <from>[*].vario_grid</from>
+                        <from>prices[*].electricity[*].value</from>
                         <to>[*].integrated[*].value</to>
                       </mapping>
                       <mapping>
-                        <from>[*].unit</from>
+                        <from>prices[*].electricity[*].unit</from>
                         <to>[*].integrated[*].unit</to>
                       </mapping>
                     </jmesPathMappings>
