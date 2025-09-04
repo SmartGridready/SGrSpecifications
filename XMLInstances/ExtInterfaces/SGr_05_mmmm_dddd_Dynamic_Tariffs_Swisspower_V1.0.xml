@@ -439,7 +439,7 @@
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_object</dataType>
-                <restApiServiceCall>
+                <restApiReadServiceCall>
                   <requestHeader>
                     <header>
                       <headerName>Accept</headerName>
@@ -470,7 +470,7 @@
                     <queryType>JMESPathExpression</queryType>
                     <query>prices</query>
                   </responseQuery>
-                </restApiServiceCall>
+                </restApiReadServiceCall>
               </restApiDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
