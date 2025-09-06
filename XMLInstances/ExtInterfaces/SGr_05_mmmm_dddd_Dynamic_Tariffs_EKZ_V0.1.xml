@@ -23,7 +23,7 @@
           <p>Additional information on the tariffs can be found <a href="https://www.ekz.ch/de/ueber-ekz/unternehmen/ekz/gesetzliche-vorgaben.html">here</a>.</p>
         ]]>
       </textElement>
-      <language>de</language>
+      <language>en</language>
       <uri>https://www.ekz.ch/de/blue/wissen/2025/dynamische-wahltarife-2026.html</uri>
     </legibleDescription>
     <legibleDescription>
@@ -39,7 +39,7 @@
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
-    <manufacturerSpecificationIdentification>0</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>EKZDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>5</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
@@ -474,6 +474,16 @@
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
                   <requestPath>/v1/tariffs</requestPath>
+                  <requestQuery>
+                    <parameter>
+                      <name>start_timestamp</name>
+                      <value>[[start_timestamp]]</value>
+                    </parameter>
+                    <parameter>
+                      <name>end_timestamp</name>
+                      <value>[[end_timestamp]]</value>
+                    </parameter>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathMapping</queryType>
                     <jmesPathMappings>
