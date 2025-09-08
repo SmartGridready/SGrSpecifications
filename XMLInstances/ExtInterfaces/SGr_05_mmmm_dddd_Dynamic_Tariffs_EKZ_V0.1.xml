@@ -61,7 +61,24 @@
     <configurationListElement>
       <name>tariff_type</name>
       <dataType>
-        <string />
+        <enum>
+          <enumEntry>
+            <literal>electricity</literal>
+            <description>Electricity</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>grid</literal>
+            <description>Grid</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>integrated</literal>
+            <description>Integrated</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>regional_fees</literal>
+            <description>Regional Fees</description>
+          </enumEntry>
+        </enum>
       </dataType>
       <defaultValue>electricity</defaultValue>
       <configurationDescription>
@@ -476,6 +493,10 @@
                   <requestPath>/v1/tariffs</requestPath>
                   <requestQuery>
                     <parameter>
+                      <name>tariff_type</name>
+                      <value>{{tariff_type}}</value>
+                    </parameter>
+                    <parameter>
                       <name>start_timestamp</name>
                       <value>[[start_timestamp]]</value>
                     </parameter>
@@ -496,11 +517,11 @@
                         <to>[*].end_timestamp</to>
                       </mapping>
                       <mapping>
-                        <from>prices[*].electricity[*].value</from>
+                        <from>prices[*].{{tariff_type}}[*].value</from>
                         <to>[*].integrated[*].value</to>
                       </mapping>
                       <mapping>
-                        <from>prices[*].electricity[*].unit</from>
+                        <from>prices[*].{{tariff_type}}[*].unit</from>
                         <to>[*].integrated[*].unit</to>
                       </mapping>
                     </jmesPathMappings>
