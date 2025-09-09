@@ -47,7 +47,7 @@
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <isLocalControl>false</isLocalControl>
-    <softwareRevision>1.1.22</softwareRevision>
+    <softwareRevision>1.7.4</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <manufacturerSpecificationIdentification>WhatWatt</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
