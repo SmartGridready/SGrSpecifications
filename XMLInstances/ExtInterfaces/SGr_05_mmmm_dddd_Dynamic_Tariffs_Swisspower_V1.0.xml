@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Swisspower Dynamic Tariffs</deviceName>
-  <manufacturerName>Swisspower</manufacturerName>
+  <deviceName>ESIT / Swisspower Dynamic Tariffs</deviceName>
+  <manufacturerName>ESIT / Swisspower</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -28,9 +28,28 @@
     </changeLog>
   </releaseNotes>
   <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Provides dynamic tariff prices of ESIT/Swisspower.</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+      <uri>https://www.dynamische-stromtarife.ch/</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Stellt dynamische Strompreise von ESIT/Swisspower bereit.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.dynamische-stromtarife.ch/</uri>
+    </legibleDescription>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
+    <hardwareRevision>-</hardwareRevision>
     <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>5</levelOfOperation>
     <versionNumber>
@@ -41,6 +60,44 @@
     <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
+    <configurationListElement>
+      <name>tariff_type</name>
+      <dataType>
+        <enum>
+          <enumEntry>
+            <literal>electricity</literal>
+            <description>Electricity</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>grid</literal>
+            <description>Grid</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>integrated</literal>
+            <description>Integrated</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>dso</literal>
+            <description>DSO</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>feed_in</literal>
+            <description>Feed-in</description>
+          </enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>electricity</defaultValue>
+      <configurationDescription>
+        <textElement>The tariff type to get</textElement>
+        <language>en</language>
+        <label>Tariff Type</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Gewünschter Tarif-Typ</textElement>
+        <language>de</language>
+        <label>Tarif-Typ</label>
+      </configurationDescription>
+    </configurationListElement>
     <configurationListElement>
       <name>metering_code</name>
       <dataType>
@@ -454,6 +511,10 @@
                   <requestPath>/api/v1/metering_code</requestPath>
                   <requestQuery>
                     <parameter>
+                      <name>tariff_type</name>
+                      <value>{{tariff_type}}</value>
+                    </parameter>
+                    <parameter>
                       <name>metering_code</name>
                       <value>{{metering_code}}</value>
                     </parameter>
@@ -467,8 +528,29 @@
                     </parameter>
                   </requestQuery>
                   <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>prices</query>
+                    <queryType>JMESPathMapping</queryType>
+                    <jmesPathMappings>
+                      <mapping>
+                        <from>prices[*].start_timestamp</from>
+                        <to>[*].start_timestamp</to>
+                      </mapping>
+                      <mapping>
+                        <from>prices[*].end_timestamp</from>
+                        <to>[*].end_timestamp</to>
+                      </mapping>
+                      <mapping>
+                        <from>prices[*].{{tariff_type}}[*].value</from>
+                        <to>[*].integrated[*].value</to>
+                      </mapping>
+                      <mapping>
+                        <from>prices[*].{{tariff_type}}[*].unit</from>
+                        <to>[*].integrated[*].unit</to>
+                      </mapping>
+                      <mapping>
+                        <from>prices[*].{{tariff_type}}[*].component</from>
+                        <to>[*].integrated[*].component</to>
+                      </mapping>
+                    </jmesPathMappings>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>

@@ -9,28 +9,35 @@
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.0.1</version>
-      <date>2024-02-28</date>
-      <author>Ergo/hf</author>
-      <comment>First draft</comment>
-    </changeLog>
-    <changeLog>
-      <version>0.1.0</version>
-      <date>2025-04-08</date>
-      <author>SGr/mkr</author>
-      <comment>Corrections, prepare for finalization</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
       <date>2025-04-14</date>
       <author>SGr/mkr</author>
-      <comment>Added dynamic parameters, prepare for publication</comment>
+      <comment>Finalization</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Provides dynamic tariff prices of Groupe-e.</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+      <uri>https://www.groupe-e.ch/de/strom/vario</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Stellt dynamische Strompreise von Groupe-e bereit.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.groupe-e.ch/de/strom/vario</uri>
+    </legibleDescription>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
+    <hardwareRevision>-</hardwareRevision>
     <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>5</levelOfOperation>
     <versionNumber>
@@ -40,6 +47,38 @@
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>tariff_name</name>
+      <dataType>
+        <enum>
+          <enumEntry>
+            <literal>vario_grid</literal>
+            <description>Vario Grid</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>vario_plus</literal>
+            <description>Vario PLUS</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>dt_plus</literal>
+            <description>Double PLUS</description>
+          </enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>vario_grid</defaultValue>
+      <configurationDescription>
+        <textElement>The actual tariff product to get</textElement>
+        <language>en</language>
+        <label>Tariff Name</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Gewünschtes Tarif-Produkt</textElement>
+        <language>de</language>
+        <label>Tarif-Name</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
@@ -434,7 +473,7 @@
                         <to>[*].end_timestamp</to>
                       </mapping>
                       <mapping>
-                        <from>[*].vario_grid</from>
+                        <from>[*].{{tariff_name}}</from>
                         <to>[*].integrated[*].value</to>
                       </mapping>
                       <mapping>

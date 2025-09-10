@@ -19,6 +19,7 @@
     <deviceCategory>ChargingStation</deviceCategory>
     <isLocalControl>true</isLocalControl>
     <softwareRevision>0.0.0</softwareRevision>
+    <hardwareRevision>0.0.0</hardwareRevision>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>

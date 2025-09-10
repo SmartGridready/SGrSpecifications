@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Terra</deviceName>
+  <deviceName>Terra AC</deviceName>
   <manufacturerName>ABB</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -13,6 +13,7 @@
     <deviceCategory>ChargingStation</deviceCategory>
     <isLocalControl>true</isLocalControl>
     <softwareRevision>0.0.0</softwareRevision>
+    <hardwareRevision>0.0.0</hardwareRevision>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
