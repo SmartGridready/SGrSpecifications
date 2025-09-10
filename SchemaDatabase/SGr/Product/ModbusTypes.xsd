@@ -301,6 +301,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="port" type="sgr:unsignedIntParameter" />
       <element name="address" type="sgr:ModbusIpAddress" />
       <element name="slaveId" type="sgr:unsignedIntParameter" />
+      <element name="timeout" type="sgr:unsignedIntParameter" minOccurs="0" />
     </sequence>
   </complexType>
   <simpleType name="ModbusIpAddress">
@@ -311,7 +312,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <pattern value="\d+\.\d+\.\d+\.\d+|\{\{.*\}\}"></pattern>
     </restriction>
   </simpleType>
-   <simpleType name="BitOrder">
+    <simpleType name="BitOrder">
     <annotation>
       <documentation> Modbus bit orders are used to apply different conversion transformations to
         data between Modbus device and IEC61850 devices. </documentation>
