@@ -101,6 +101,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="RTU-ASCII" />
       <enumeration value="TCPIP-ASCII" />
       <enumeration value="UDPIP-ASCII" />
+      <enumeration value="RTU-TCPIP" />
     </restriction>
   </simpleType>
   <complexType name="ModbusDataPointConfiguration">
