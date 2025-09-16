@@ -3,81 +3,83 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Groupe E Dynamic Tariffs</deviceName>
-  <manufacturerName>Groupe E</manufacturerName>
+  <deviceName>CKW Dynamic Tariffs</deviceName>
+  <manufacturerName>CKW</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Published</state>
+    <state>Draft</state>
     <changeLog>
-      <version>1.0.0</version>
-      <date>2025-04-14</date>
+      <version>0.1.0</version>
+      <date>2025-09-16</date>
       <author>SGr/mkr</author>
-      <comment>Finalization</comment>
+      <comment>Initial draft</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Provides dynamic tariff prices of Groupe-e.</p>
-          <p>The Vario tariff is a 15-minute dynamic day-ahead grid usage tariff.</p>
+          CKW is offering two new dynamic tariff products for grid usage at grid level 7 for 2026.
+          CKW Home dynamic (customers with annual consumption <50MWh) and CKW Business dynamic (customers with annual consumption >50MWh).
+          The tariff profiles are based on the forecast grid load for the following day and are made available for the next day via an API by 6 p.m.
+          The tariff profile (working tariff for grid usage) is standardized to a volume-weighted average value.
+          The volume-weighted average value is slightly higher than the unit price of the standard grid product, but with a reduced power price.
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://www.groupe-e.ch/de/strom/vario</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Stellt dynamische Strompreise von Groupe-e bereit.</p>
-          <p>Der Vario-Tarif ist ein 15-min dynamischer day-ahead Netznutzungstarif.</p>
+          CKW stellt für 2026 zwei neue dynamische Wahlprodukte für die Netznutzung auf Netzebene 7 zur Verfügung.
+          CKW Home dynamic (Kunden <50MWh Jahresverbrauch) und CKW Business dynamic (Kunden >50MWh Jahresverbrauch).
+          Die Tarifprofile orientieren sich an der prognostizierten Netzlast des Folgetages und werden jeweils bis 18:00 Uhr über eine API für den nächsten Tag zur Verfügung gestellt.
+          Das Tarifprofil (Arbeitstarif der Netznutzung) wird jeweils an einen mengengewichteten Mittelwert normiert.
+          Der mengengewichtete Mittelwert ist leicht höher als der Einheitspreis des Standardnetzproduktes, dafür mit einem reduzierten Leistungspreis.
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.groupe-e.ch/de/strom/vario</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
     </legibleDescription>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
-    <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>CKWDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>5</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>1</primaryVersionNumber>
-      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>Verified</testState>
+    <testState>None</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
-      <name>tariff_name</name>
+      <name>tariff_type</name>
       <dataType>
         <enum>
           <enumEntry>
-            <literal>vario_grid</literal>
-            <description>Vario Grid</description>
+            <literal>grid</literal>
+            <description>Grid</description>
           </enumEntry>
           <enumEntry>
-            <literal>vario_plus</literal>
-            <description>Vario PLUS</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>dt_plus</literal>
-            <description>Double PLUS</description>
+            <literal>integrated</literal>
+            <description>Integrated</description>
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>vario_grid</defaultValue>
+      <defaultValue>grid</defaultValue>
       <configurationDescription>
-        <textElement>The actual tariff product to get</textElement>
+        <textElement>The tariff type to get</textElement>
         <language>en</language>
-        <label>Tariff Name</label>
+        <label>Tariff Type</label>
       </configurationDescription>
       <configurationDescription>
-        <textElement>Gewünschtes Tarif-Produkt</textElement>
+        <textElement>Gewünschter Tarif-Typ</textElement>
         <language>de</language>
-        <label>Tarif-Name</label>
+        <label>Tarif-Typ</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
@@ -85,7 +87,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://api.tariffs.groupe-e.ch</restApiUri>
+        <restApiUri>https://e-ckw-public-data.de-c1.eu1.cloudhub.io</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
@@ -459,7 +461,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/v1/tariffs</requestPath>
+                  <requestPath>/api/v1/netzinformationen/energie/dynamische-preise</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>start_timestamp</name>
@@ -482,11 +484,11 @@
                         <to>[*].end_timestamp</to>
                       </mapping>
                       <mapping>
-                        <from>[*].{{tariff_name}}</from>
+                        <from>[*].{{tariff_type}}[*].value</from>
                         <to>[*].integrated[*].value</to>
                       </mapping>
                       <mapping>
-                        <from>[*].unit</from>
+                        <from>[*].{{tariff_type}}[*].unit</from>
                         <to>[*].integrated[*].unit</to>
                       </mapping>
                     </jmesPathMappings>
