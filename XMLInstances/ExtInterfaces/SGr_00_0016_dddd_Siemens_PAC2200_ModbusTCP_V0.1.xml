@@ -12,7 +12,7 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        Read out the Siemens PAC2200 electricity meter.
+        Read the Siemens PAC2200 electricity meter.
       </textElement>
       <language>en</language>
     </legibleDescription>
