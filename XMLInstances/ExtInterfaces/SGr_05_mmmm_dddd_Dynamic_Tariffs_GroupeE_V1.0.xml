@@ -19,8 +19,14 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Provides dynamic tariff prices of Groupe-e.</p>
           <p>The Vario tariff is a 15-minute dynamic day-ahead grid usage tariff.</p>
+
+          <ul>
+            <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Time of Publication:</strong>&nbsp;until 18:00</li>
+            <li><strong>Binding Character:</strong>&nbsp;no change</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Only the grid usage tariff is dynamic.</li>
+          </ul>
         ]]>
       </textElement>
       <language>en</language>
@@ -29,8 +35,14 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Stellt dynamische Strompreise von Groupe-e bereit.</p>
           <p>Der Vario-Tarif ist ein 15-min dynamischer day-ahead Netznutzungstarif.</p>
+
+          <ul>
+            <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;bis spätestens 18:00 Uhr</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;keine Anpassung</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Nur der Netznutzungstarif ist dynamisch.</li>
+          </ul>
         ]]>
       </textElement>
       <language>de</language>
@@ -48,6 +60,15 @@
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
+    <programmerHints>
+      <textElement>
+        <![CDATA[
+          <p>Link zur technischen Dokumentation:</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://groupee.sharepoint.com/sites/MediaPoint/Supports%20publicitaires/02_Fiches%20produits/Smart%20meter/vario-integration-web-api-de.pdf?ga=1</uri>
+    </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>

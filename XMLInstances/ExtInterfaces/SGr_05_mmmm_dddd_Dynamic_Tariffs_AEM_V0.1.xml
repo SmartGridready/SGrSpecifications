@@ -19,7 +19,14 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          Optional grid usage tariff with dynamic energy component (cts/kWh) and fixed peak load component (cts/kW), available via the website, customer app, and API.
+          <p>Optional grid usage tariff with dynamic energy component (cts/kWh) and fixed peak load component (cts/kW), available via the website, customer app, and API.</p>
+
+          <ul>
+            <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Time of Publication:</strong>&nbsp;18:00 on the day before</li>
+            <li><strong>Binding Character:</strong>&nbsp;18:00 on the day before, via API, web site, app</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy and volume of the grid component is dynamic; the peak component is not dynamic.</li>
+          </ul>
         ]]>
       </textElement>
       <language>en</language>
@@ -28,7 +35,14 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          Optionaler Netznutzungstarif mit dynamischer Energiekomponente (cts/kWh) und fixer Spitzenlastkomponente (cts/kW), verfügbar über die Website, die Kunden-App und die API.
+          <p>Optionaler Netznutzungstarif mit dynamischer Energiekomponente (cts/kWh) und fixer Spitzenlastkomponente (cts/kW), verfügbar über die Website, die Kunden-App und die API.</p>
+
+          <ul>
+            <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;18.00 am Vortag</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;18.00 am Vortag durch API, webseite, App</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Nur der Energie-/Volumenanteil der Netzkomponente ist dynamisch; die Spitzenkomponente ist nicht dynamisch.</li>
+          </ul>
         ]]>
       </textElement>
       <language>de</language>
@@ -45,7 +59,17 @@
       <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
+    <programmerHints>
+      <textElement>
+        <![CDATA[
+          <p>Für das Jahr 2026 wird eine aktualisierte Version des dynamischen Tarifs veröffentlicht, wobei sich die Formel für die dynamische Komponente leicht ändern wird.</p>
+          <p>Link zur technischen Dokumentation:</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://aem-production.cdn.prismic.io/aem-production/Z1mn9ZbqstJ98VNc_documento_tecnico_tariffa_dinamica.pdf</uri>
+    </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
