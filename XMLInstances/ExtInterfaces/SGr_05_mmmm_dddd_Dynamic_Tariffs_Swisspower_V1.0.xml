@@ -9,18 +9,6 @@
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
-      <version>0.0.1</version>
-      <date>2024-02-28</date>
-      <author>Ergo/hf</author>
-      <comment>First draft</comment>
-    </changeLog>
-    <changeLog>
-      <version>0.1.0</version>
-      <date>2025-04-08</date>
-      <author>SGr/mkr</author>
-      <comment>Corrections, prepare for finalization</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
       <date>2025-04-14</date>
       <author>SGr/mkr</author>
@@ -32,6 +20,7 @@
       <textElement>
         <![CDATA[
           <p>Provides dynamic tariff prices of ESIT/Swisspower.</p>
+          <p>This EID is a template for actual provider tariffs!</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -41,6 +30,7 @@
       <textElement>
         <![CDATA[
           <p>Stellt dynamische Strompreise von ESIT/Swisspower bereit.</p>
+          <p>Diese EID ist eine Vorlage für konkrete Stromanbieter-Tarife!</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -74,7 +64,7 @@
           </enumEntry>
           <enumEntry>
             <literal>integrated</literal>
-            <description>Integrated</description>
+            <description>Electricity with grid fees included</description>
           </enumEntry>
           <enumEntry>
             <literal>dso</literal>
@@ -86,7 +76,7 @@
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>electricity</defaultValue>
+      <defaultValue>integrated</defaultValue>
       <configurationDescription>
         <textElement>The tariff type to get</textElement>
         <language>en</language>
@@ -137,7 +127,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://esit-test.code-fabrik.ch</restApiUri>
+        <restApiUri>https://esit.code-fabrik.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>

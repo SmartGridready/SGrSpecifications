@@ -19,28 +19,42 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          CKW is offering two new dynamic tariff products for grid usage at grid level 7 for 2026.
+          <p>CKW is offering two new dynamic tariff products for grid usage at grid level 7 for 2026.
           CKW Home dynamic (customers with annual consumption <50MWh) and CKW Business dynamic (customers with annual consumption >50MWh).
           The tariff profiles are based on the forecast grid load for the following day and are made available for the next day via an API by 6 p.m.
           The tariff profile (working tariff for grid usage) is standardized to a volume-weighted average value.
-          The volume-weighted average value is slightly higher than the unit price of the standard grid product, but with a reduced power price.
+          The volume-weighted average value is slightly higher than the unit price of the standard grid product, but with a reduced power price.</p>
+
+          <ul>
+            <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Time of Publication:</strong>&nbsp;until 18:00 on the day before</li>
+            <li><strong>Binding Character:</strong>&nbsp;until 18:00 on the day before</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy, system services, energy reserve, solidarized cost, grid fees</li>
+          </ul>
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          CKW stellt für 2026 zwei neue dynamische Wahlprodukte für die Netznutzung auf Netzebene 7 zur Verfügung.
+          <p>CKW stellt für 2026 zwei neue dynamische Wahlprodukte für die Netznutzung auf Netzebene 7 zur Verfügung.
           CKW Home dynamic (Kunden <50MWh Jahresverbrauch) und CKW Business dynamic (Kunden >50MWh Jahresverbrauch).
           Die Tarifprofile orientieren sich an der prognostizierten Netzlast des Folgetages und werden jeweils bis 18:00 Uhr über eine API für den nächsten Tag zur Verfügung gestellt.
           Das Tarifprofil (Arbeitstarif der Netznutzung) wird jeweils an einen mengengewichteten Mittelwert normiert.
-          Der mengengewichtete Mittelwert ist leicht höher als der Einheitspreis des Standardnetzproduktes, dafür mit einem reduzierten Leistungspreis.
+          Der mengengewichtete Mittelwert ist leicht höher als der Einheitspreis des Standardnetzproduktes, dafür mit einem reduzierten Leistungspreis.</p>
+
+          <ul>
+            <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;bis spätestens 18:00 Uhr am Vortag</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;bis 18:00 Uhr am Vortag</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Energie, SDL, Stromreserve, solidarisierte Kosten, Netzzuschlag</li>
+          </ul>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
     </legibleDescription>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
@@ -54,6 +68,19 @@
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>None</testState>
+    <programmerHints>
+      <textElement>
+        <![CDATA[
+          <p>Bei der API kann der Tariftyp grid und integrated abgerufen werden.
+          Der grid Tarif beinhaltet den dynamischen Tarif (Arbeitspreis), die SDL, Stromreserve, die solidarisierten Kosten und den Netzzuschlag.
+          Der Tarif integrated beinhaltet zusätzlich den Energiepreis des Produktes CKW ClassicStrom.
+          Ausgenommen sind das Messentgelt, der Leistungspreis und die Konzessionsabgabe.</p>
+          <p>Link zur technischen Dokumentation:</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
+    </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -66,11 +93,11 @@
           </enumEntry>
           <enumEntry>
             <literal>integrated</literal>
-            <description>Integrated</description>
+            <description>Electricity with grid fees included</description>
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>grid</defaultValue>
+      <defaultValue>integrated</defaultValue>
       <configurationDescription>
         <textElement>The tariff type to get</textElement>
         <language>en</language>
