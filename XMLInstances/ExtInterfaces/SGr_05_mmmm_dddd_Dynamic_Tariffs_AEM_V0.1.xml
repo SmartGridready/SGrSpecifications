@@ -86,7 +86,7 @@
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>grid</defaultValue>
+      <defaultValue>total</defaultValue>
       <configurationDescription>
         <textElement>The tariff type to get</textElement>
         <language>en</language>

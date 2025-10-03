@@ -93,11 +93,11 @@
           </enumEntry>
           <enumEntry>
             <literal>integrated</literal>
-            <description>Integrated</description>
+            <description>Electricity with grid fees included</description>
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>grid</defaultValue>
+      <defaultValue>integrated</defaultValue>
       <configurationDescription>
         <textElement>The tariff type to get</textElement>
         <language>en</language>
