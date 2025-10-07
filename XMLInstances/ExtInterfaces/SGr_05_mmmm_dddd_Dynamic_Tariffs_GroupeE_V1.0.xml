@@ -89,7 +89,7 @@
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>vario_grid</defaultValue>
+      <defaultValue>vario_plus</defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
