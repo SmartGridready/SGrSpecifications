@@ -10,7 +10,7 @@
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-09-03</date>
+      <date>2025-10-13</date>
       <author>SGr/mkr</author>
       <comment>Initial draft</comment>
     </changeLog>
@@ -152,7 +152,7 @@
       <dataType>
         <string />
       </dataType>
-      <defaultValue>electricity_dynamic</defaultValue>
+      <defaultValue></defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
@@ -548,6 +548,10 @@
                     <parameter>
                       <name>tariff_type</name>
                       <value>{{tariff_type}}</value>
+                    </parameter>
+                    <parameter>
+                      <name>tariff_name</name>
+                      <value>{{tariff_name}}</value>
                     </parameter>
                     <parameter>
                       <name>start_timestamp</name>
