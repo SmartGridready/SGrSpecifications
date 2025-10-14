@@ -10,7 +10,7 @@
     <state>Published</state>
     <changeLog>
       <version>1.0.0</version>
-      <date>2025-04-14</date>
+      <date>2025-10-03</date>
       <author>SGr/mkr</author>
       <comment>Finalization</comment>
     </changeLog>
@@ -89,7 +89,7 @@
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>vario_grid</defaultValue>
+      <defaultValue>vario_plus</defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
