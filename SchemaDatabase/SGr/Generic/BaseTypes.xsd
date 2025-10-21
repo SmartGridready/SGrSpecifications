@@ -962,4 +962,14 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </sequence>
   </complexType>
 
+  <complexType name="ValueMapping">
+    <annotation>
+      <documentation>Maps one value to another value</documentation>
+    </annotation>
+    <sequence>
+      <element name="genericValue" type="string"/>
+      <element name="deviceValue" type="string"/>
+    </sequence>
+  </complexType>
+
 </schema>

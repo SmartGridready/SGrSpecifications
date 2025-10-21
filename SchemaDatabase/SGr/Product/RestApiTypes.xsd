@@ -67,16 +67,6 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </restriction>
   </simpleType>
 
-  <complexType name="ValueMapping">
-    <annotation>
-      <documentation>Maps one value to another value</documentation>
-    </annotation>
-    <sequence>
-      <element name="genericValue" type="string"/>
-      <element name="deviceValue" type="string"/>
-    </sequence>
-  </complexType>
-
   <complexType name="RestApiValueMapping">
     <annotation>
       <documentation>Maps from generic interface to device specific values.</documentation>
