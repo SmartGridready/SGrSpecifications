@@ -901,6 +901,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="XPathExpression" />
       <enumeration value="RegularExpression" />
       <enumeration value="JMESPathMapping" />
+      <enumeration value="JSONataExpression" />
     </restriction>
   </simpleType>
 
