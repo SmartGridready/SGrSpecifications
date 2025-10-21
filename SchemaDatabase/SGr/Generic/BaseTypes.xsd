@@ -863,6 +863,13 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </sequence>
   </complexType>
 
+  <complexType name="JSONataFilterType">
+    <sequence>
+      <element name="query" type="string" />
+      <element name="matchesRegex" type="string" />
+    </sequence>
+  </complexType>
+
   <complexType name="XPathFilterType">
     <sequence>
       <element name="query" type="string" />
@@ -883,6 +890,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="jmespathFilter" type="sgr:JMESPathFilterType" />
       <element name="xpapathFilter" type="sgr:XPathFilterType" />
       <element name="regexFilter" type="sgr:RegexFilterType" />
+      <element name="jsonataFilter" type="sgr:JSONataFilterType" />
     </choice>
   </complexType>
 
