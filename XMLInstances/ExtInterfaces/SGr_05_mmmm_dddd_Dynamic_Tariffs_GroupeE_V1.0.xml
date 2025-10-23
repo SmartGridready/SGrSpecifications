@@ -492,25 +492,21 @@
                     </parameter>
                   </requestQuery>
                   <responseQuery>
-                    <queryType>JMESPathMapping</queryType>
-                    <jmesPathMappings>
-                      <mapping>
-                        <from>[*].start_timestamp</from>
-                        <to>[*].start_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].end_timestamp</from>
-                        <to>[*].end_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].{{tariff_name}}</from>
-                        <to>[*].integrated[*].value</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].unit</from>
-                        <to>[*].integrated[*].unit</to>
-                      </mapping>
-                    </jmesPathMappings>
+                    <queryType>JSONataExpression</queryType>
+                    <query>
+                      <![CDATA[
+                        $.{
+                          "start_timestamp":start_timestamp,
+                          "end_timestamp":end_timestamp,
+                          "integrated": [
+                            {
+                              "value": {{tariff_name}},
+                              "unit": unit
+                            }
+                          ]
+                        }
+                      ]]>
+                    </query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
