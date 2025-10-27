@@ -80,6 +80,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="topic" type="string" />
       <element name="template" type="string" />
+      <element name="templateQuery" type="sgr:ResponseQuery" minOccurs="0" />
       <element name="valueMapping" type="sgr:MessagingValueMapping" minOccurs="0" />
     </sequence>
   </complexType>
