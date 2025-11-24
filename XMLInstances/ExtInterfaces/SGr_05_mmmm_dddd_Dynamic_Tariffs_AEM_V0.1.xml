@@ -14,6 +14,12 @@
       <author>SGr/mkr</author>
       <comment>Initial draft</comment>
     </changeLog>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2025-11-24</date>
+      <author>SGr/mkr</author>
+      <comment>use JSONata query</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -57,7 +63,7 @@
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
     <programmerHints>
@@ -71,34 +77,6 @@
       <uri>https://aem-production.cdn.prismic.io/aem-production/Z1mn9ZbqstJ98VNc_documento_tecnico_tariffa_dinamica.pdf</uri>
     </programmerHints>
   </deviceInformation>
-  <configurationList>
-    <configurationListElement>
-      <name>tariff_type</name>
-      <dataType>
-        <enum>
-          <enumEntry>
-            <literal>grid</literal>
-            <description>Grid</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>total</literal>
-            <description>Total</description>
-          </enumEntry>
-        </enum>
-      </dataType>
-      <defaultValue>total</defaultValue>
-      <configurationDescription>
-        <textElement>The tariff type to get</textElement>
-        <language>en</language>
-        <label>Tariff Type</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Gewünschter Tarif-Typ</textElement>
-        <language>de</language>
-        <label>Tarif-Typ</label>
-      </configurationDescription>
-    </configurationListElement>
-  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
@@ -458,15 +436,6 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    <![CDATA[
-                      <p>Maps the <code>{{tariff_type}}</code> property to match the <code>integrated</code> property required by SGr.</p>
-                      <p>Maps <code>name</code> property to <code>component</code>.</p>
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_object</dataType>
@@ -480,6 +449,10 @@
                   <requestMethod>GET</requestMethod>
                   <requestPath>/tariffe</requestPath>
                   <requestQuery>
+                    <parameter>
+                      <name>tariff_type</name>
+                      <value>total</value>
+                    </parameter>
                     <parameter>
                       <name>start</name>
                       <value>[[start_timestamp]]</value>
@@ -496,7 +469,7 @@
                         dynamic_prices[].{
                           "start_timestamp": start_timestamp,
                           "end_timestamp": end_timestamp,
-                          "integrated": {{tariff_type}}[].{
+                          "integrated": total[].{
                             "value": value,
                             "unit": $replace(unit, '_', '/'),
                             "component": component

@@ -14,6 +14,12 @@
       <author>SGr/mkr</author>
       <comment>Initial draft</comment>
     </changeLog>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2025-10-13</date>
+      <author>SGr/mkr</author>
+      <comment>use JSONata query</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -65,7 +71,7 @@
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
     <programmerHints>
@@ -83,40 +89,6 @@
     </programmerHints>
   </deviceInformation>
   <configurationList>
-    <configurationListElement>
-      <name>tariff_type</name>
-      <dataType>
-        <enum>
-          <enumEntry>
-            <literal>grid</literal>
-            <description>Grid fees</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>grid_usage</literal>
-            <description>Grid fees incl. ancillary services</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>electricity</literal>
-            <description>Electricity fees</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>integrated</literal>
-            <description>Electricity with all fees included</description>
-          </enumEntry>
-        </enum>
-      </dataType>
-      <defaultValue>integrated</defaultValue>
-      <configurationDescription>
-        <textElement>The tariff type to get</textElement>
-        <language>en</language>
-        <label>Tariff Type</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Gewünschter Tarif-Typ</textElement>
-        <language>de</language>
-        <label>Tarif-Typ</label>
-      </configurationDescription>
-    </configurationListElement>
     <configurationListElement>
       <name>tariff_name</name>
       <dataType>
@@ -502,15 +474,6 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    <![CDATA[
-                      <p>Maps the <code>{{tariff_type}}</code> property to match the <code>integrated</code> property required by SGr.</p>
-                      <p>The <code>component</code> property is not supported.</p>
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_object</dataType>
@@ -526,7 +489,7 @@
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>
-                      <value>{{tariff_type}}</value>
+                      <value>integrated</value>
                     </parameter>
                     <parameter>
                       <name>tariff_name</name>
@@ -545,10 +508,10 @@
                     <queryType>JSONataExpression</queryType>
                     <query>
                       <![CDATA[
-                        $.{
+                        prices[].{
                           "start_timestamp": start_timestamp,
                           "end_timestamp": end_timestamp,
-                          "integrated": {{tariff_type}}[].{
+                          "integrated": integrated[].{
                             "value": value,
                             "unit": $replace(unit, '_', '/')
                           }

@@ -14,6 +14,12 @@
       <author>SGr/mkr</author>
       <comment>Initial draft</comment>
     </changeLog>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2025-11-24</date>
+      <author>SGr/mkr</author>
+      <comment>use JSONata query</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -51,7 +57,7 @@
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://www.ekz.ch/de/blue/wissen/2025/dynamische-wahltarife-2026.html</uri>
+      <uri>https://www.ekz.ch/de/privatkunden/strom/tarife/dynamischer-wahltarif.html</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
@@ -88,7 +94,7 @@
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.ekz.ch/de/blue/wissen/2025/dynamische-wahltarife-2026.html</uri>
+      <uri>https://www.ekz.ch/de/privatkunden/strom/tarife/dynamischer-wahltarif.html</uri>
     </legibleDescription>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
@@ -99,7 +105,7 @@
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
     <programmerHints>
@@ -112,59 +118,6 @@
       <uri>https://www.ekz.ch/dam/ekz/privatkunden/strom/tarife-und-agb/Tarifdokumente/tarife-2026/EKZ_Dynamischer-Tarif-2026_technischer-Beschrieb.pdf</uri>
     </programmerHints>
   </deviceInformation>
-  <configurationList>
-    <configurationListElement>
-      <name>tariff_type</name>
-      <dataType>
-        <enum>
-          <enumEntry>
-            <literal>electricity</literal>
-            <description>Electricity</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>grid</literal>
-            <description>Grid</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>integrated</literal>
-            <description>Electricity with grid fees included</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>regional_fees</literal>
-            <description>Regional Fees</description>
-          </enumEntry>
-        </enum>
-      </dataType>
-      <defaultValue>integrated</defaultValue>
-      <configurationDescription>
-        <textElement>The tariff type to get</textElement>
-        <language>en</language>
-        <label>Tariff Type</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Gewünschter Tarif-Typ</textElement>
-        <language>de</language>
-        <label>Tarif-Typ</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>tariff_name</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue></defaultValue>
-      <configurationDescription>
-        <textElement>The actual tariff product to get</textElement>
-        <language>en</language>
-        <label>Tariff Name</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Gewünschtes Tarif-Produkt</textElement>
-        <language>de</language>
-        <label>Tarif-Name</label>
-      </configurationDescription>
-    </configurationListElement>
-  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
@@ -523,15 +476,6 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    <![CDATA[
-                      <p>Maps the <code>{{tariff_type}}</code> property to match the <code>integrated</code> property required by SGr.</p>
-                      <p>The <code>component</code> property is not supported.</p>
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_object</dataType>
@@ -547,11 +491,7 @@
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>
-                      <value>{{tariff_type}}</value>
-                    </parameter>
-                    <parameter>
-                      <name>tariff_name</name>
-                      <value>{{tariff_name}}</value>
+                      <value>integrated</value>
                     </parameter>
                     <parameter>
                       <name>start_timestamp</name>
@@ -569,7 +509,7 @@
                         prices[].{
                           "start_timestamp": start_timestamp,
                           "end_timestamp": end_timestamp,
-                          "integrated": {{tariff_type}}[].{
+                          "integrated": integrated[].{
                             "value": value,
                             "unit": unit
                           }
