@@ -6,22 +6,10 @@
   <releaseNotes>
     <state>Published</state>
     <changeLog>
-      <version>0.0.1</version>
-      <date>2023-11-29</date>
-      <author>CLAP/agb</author>
-      <comment>First draft</comment>
-    </changeLog>
-    <changeLog>
-      <version>0.1.0</version>
-      <date>2025-04-08</date>
-      <author>SGr/mkr</author>
-      <comment>Corrections, prepare for finalization</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
       <date>2025-04-14</date>
       <author>SGr/mkr</author>
-      <comment>Added dynamic parameters, prepare for publication</comment>
+      <comment>Publication</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
