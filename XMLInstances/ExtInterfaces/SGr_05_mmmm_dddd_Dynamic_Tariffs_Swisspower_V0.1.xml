@@ -9,10 +9,16 @@
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
-      <version>1.0.0</version>
+      <version>0.1.0</version>
       <date>2025-10-07</date>
       <author>SGr/mkr</author>
-      <comment>Added dynamic parameters, prepare for publication</comment>
+      <comment>prepare for publication</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2025-11-24</date>
+      <author>SGr/mkr</author>
+      <comment>use JSONata query</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -43,51 +49,13 @@
     <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>5</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>1</primaryVersionNumber>
-      <secondaryVersionNumber>0</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
-    <configurationListElement>
-      <name>tariff_type</name>
-      <dataType>
-        <enum>
-          <enumEntry>
-            <literal>electricity</literal>
-            <description>Electricity</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>grid</literal>
-            <description>Grid</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>integrated</literal>
-            <description>Electricity with grid fees included</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>dso</literal>
-            <description>DSO</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>feed_in</literal>
-            <description>Feed-in</description>
-          </enumEntry>
-        </enum>
-      </dataType>
-      <defaultValue>integrated</defaultValue>
-      <configurationDescription>
-        <textElement>The tariff type to get</textElement>
-        <language>en</language>
-        <label>Tariff Type</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Gewünschter Tarif-Typ</textElement>
-        <language>de</language>
-        <label>Tarif-Typ</label>
-      </configurationDescription>
-    </configurationListElement>
     <configurationListElement>
       <name>metering_code</name>
       <dataType>
@@ -481,14 +449,6 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    <![CDATA[
-                      <p>Maps the <code>{{tariff_type}}</code> property to match the <code>integrated</code> property required by SGr.</p>
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_object</dataType>
@@ -508,7 +468,7 @@
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>
-                      <value>{{tariff_type}}</value>
+                      <value>integrated</value>
                     </parameter>
                     <parameter>
                       <name>metering_code</name>
@@ -524,29 +484,20 @@
                     </parameter>
                   </requestQuery>
                   <responseQuery>
-                    <queryType>JMESPathMapping</queryType>
-                    <jmesPathMappings>
-                      <mapping>
-                        <from>prices[*].start_timestamp</from>
-                        <to>[*].start_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>prices[*].end_timestamp</from>
-                        <to>[*].end_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>prices[*].{{tariff_type}}[*].value</from>
-                        <to>[*].integrated[*].value</to>
-                      </mapping>
-                      <mapping>
-                        <from>prices[*].{{tariff_type}}[*].unit</from>
-                        <to>[*].integrated[*].unit</to>
-                      </mapping>
-                      <mapping>
-                        <from>prices[*].{{tariff_type}}[*].component</from>
-                        <to>[*].integrated[*].component</to>
-                      </mapping>
-                    </jmesPathMappings>
+                    <queryType>JSONataExpression</queryType>
+                    <query>
+                      <![CDATA[
+                        prices[].{
+                          "start_timestamp": start_timestamp,
+                          "end_timestamp": end_timestamp,
+                          "integrated": integrated[].{
+                            "value": value,
+                            "unit": unit,
+                            "component": component
+                          }
+                        }
+                      ]]>
+                    </query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>

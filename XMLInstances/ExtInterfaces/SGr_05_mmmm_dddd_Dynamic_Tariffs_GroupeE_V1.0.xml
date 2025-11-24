@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Groupe E Dynamic Tariffs</deviceName>
-  <manufacturerName>Groupe E</manufacturerName>
+  <deviceName>Groupe-e Dynamic Tariffs</deviceName>
+  <manufacturerName>Groupe-e</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Published</state>
@@ -13,6 +13,12 @@
       <date>2025-10-03</date>
       <author>SGr/mkr</author>
       <comment>Finalization</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.1</version>
+      <date>2025-11-24</date>
+      <author>SGr/mkr</author>
+      <comment>use JSONata query</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
@@ -57,7 +63,7 @@
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
     <programmerHints>
@@ -460,15 +466,6 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    <![CDATA[
-                      <p>Maps the <code>{{tariff_type}}</code> property to match the <code>integrated</code> property required by SGr.</p>
-                      <p>The <code>component</code> property is not supported.</p>
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
               </dataPoint>
               <restApiDataPointConfiguration>
                 <dataType>JSON_object</dataType>
@@ -492,25 +489,21 @@
                     </parameter>
                   </requestQuery>
                   <responseQuery>
-                    <queryType>JMESPathMapping</queryType>
-                    <jmesPathMappings>
-                      <mapping>
-                        <from>[*].start_timestamp</from>
-                        <to>[*].start_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].end_timestamp</from>
-                        <to>[*].end_timestamp</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].{{tariff_name}}</from>
-                        <to>[*].integrated[*].value</to>
-                      </mapping>
-                      <mapping>
-                        <from>[*].unit</from>
-                        <to>[*].integrated[*].unit</to>
-                      </mapping>
-                    </jmesPathMappings>
+                    <queryType>JSONataExpression</queryType>
+                    <query>
+                      <![CDATA[
+                        $.{
+                          "start_timestamp":start_timestamp,
+                          "end_timestamp":end_timestamp,
+                          "integrated": [
+                            {
+                              "value": {{tariff_name}},
+                              "unit": unit
+                            }
+                          ]
+                        }
+                      ]]>
+                    </query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
