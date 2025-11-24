@@ -19,14 +19,9 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>The Vario tariff is a 15-minute dynamic day-ahead grid usage tariff.</p>
-
-          <ul>
-            <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Time of Publication:</strong>&nbsp;until 18:00</li>
-            <li><strong>Binding Character:</strong>&nbsp;no change</li>
-            <li><strong>Non-dynamic Elements:</strong>&nbsp;Only the grid usage tariff is dynamic.</li>
-          </ul>
+          <p>Primeo NetzDynamisch is an alternative to the standard grid usage tariff.
+          You benefit from Primeo NetzDynamisch if you shift your electric consumption to times of day when the grid is under low load.
+          This also applies to times of day when a large amount of electricity is produced by photovoltaic systems and fed into the grid.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -35,14 +30,9 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Der Vario-Tarif ist ein 15-min dynamischer day-ahead Netznutzungstarif.</p>
-
-          <ul>
-            <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Publikationszeitpunkt:</strong>&nbsp;bis spätestens 18:00 Uhr</li>
-            <li><strong>Verbindlichkeit:</strong>&nbsp;keine Anpassung</li>
-            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Nur der Netznutzungstarif ist dynamisch.</li>
-          </ul>
+          <p>Primeo NetzDynamisch ist eine Alternative zum Standard-Netznutzungstarif.
+          Sie profitieren von Primeo NetzDynamisch, wenn Sie Ihren Strombezug in Zeiten verschieben, in denen das Stromnetz wenig belastet ist.
+          Dies gilt auch für Zeiten, wenn sehr viel Strom von Photovoltaikanlagen produziert und in die Netze eingespeist wird.</p>
         ]]>
       </textElement>
       <language>de</language>

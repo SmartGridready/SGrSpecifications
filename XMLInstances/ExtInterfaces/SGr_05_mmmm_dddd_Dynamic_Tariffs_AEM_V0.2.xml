@@ -3,19 +3,19 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Groupe-e Dynamic Tariffs V2</deviceName>
-  <manufacturerName>Groupe-e</manufacturerName>
+  <deviceName>AEM Dynamic Tariffs</deviceName>
+  <manufacturerName>AEM</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
-      <version>1.0.0</version>
+      <version>0.1.0</version>
       <date>2025-10-03</date>
       <author>SGr/mkr</author>
-      <comment>Finalization</comment>
+      <comment>Initial draft</comment>
     </changeLog>
     <changeLog>
-      <version>2.0.0</version>
+      <version>0.2.0</version>
       <date>2025-11-24</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
@@ -25,55 +25,56 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>The Vario tariff is a 15-minute dynamic day-ahead grid usage tariff.</p>
+          <p>Optional grid usage tariff with dynamic energy component (cts/kWh) and fixed peak load component (cts/kW), available via the website, customer app, and API.</p>
 
           <ul>
             <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Time of Publication:</strong>&nbsp;until 18:00</li>
-            <li><strong>Binding Character:</strong>&nbsp;no change</li>
-            <li><strong>Non-dynamic Elements:</strong>&nbsp;Only the grid usage tariff is dynamic.</li>
+            <li><strong>Time of Publication:</strong>&nbsp;18:00 on the day before</li>
+            <li><strong>Binding Character:</strong>&nbsp;18:00 on the day before, via API, web site, app</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy and volume of the grid component is dynamic; the peak component is not dynamic.</li>
           </ul>
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://www.groupe-e.ch/de/strom/vario</uri>
+      <uri>https://aemsa.ch/</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Der Vario-Tarif ist ein 15-min dynamischer day-ahead Netznutzungstarif.</p>
+          <p>Optionaler Netznutzungstarif mit dynamischer Energiekomponente (cts/kWh) und fixer Spitzenlastkomponente (cts/kW), verfügbar über die Website, die Kunden-App und die API.</p>
 
           <ul>
             <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Publikationszeitpunkt:</strong>&nbsp;bis spätestens 18:00 Uhr</li>
-            <li><strong>Verbindlichkeit:</strong>&nbsp;keine Anpassung</li>
-            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Nur der Netznutzungstarif ist dynamisch.</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;18.00 am Vortag</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;18.00 am Vortag durch API, webseite, App</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Nur der Energie-/Volumenanteil der Netzkomponente ist dynamisch; die Spitzenkomponente ist nicht dynamisch.</li>
           </ul>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.groupe-e.ch/de/strom/vario</uri>
+      <uri>https://aemsa.ch/</uri>
     </legibleDescription>
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
-    <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>AEMDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>5</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>2</primaryVersionNumber>
-      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>None</testState>
     <programmerHints>
       <textElement>
         <![CDATA[
+          <p>Für das Jahr 2026 wird eine aktualisierte Version des dynamischen Tarifs veröffentlicht, wobei sich die Formel für die dynamische Komponente leicht ändern wird.</p>
           <p>Link zur technischen Dokumentation:</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://groupee.sharepoint.com/sites/MediaPoint/Supports%20publicitaires/02_Fiches%20produits/Smart%20meter/vario-integration-web-api-de.pdf</uri>
+      <uri>https://aem-production.cdn.prismic.io/aem-production/Z1mn9ZbqstJ98VNc_documento_tecnico_tariffa_dinamica.pdf</uri>
     </programmerHints>
   </deviceInformation>
   <configurationList>
@@ -118,22 +119,9 @@
     <configurationListElement>
       <name>tariff_name</name>
       <dataType>
-        <enum>
-          <enumEntry>
-            <literal>vario_grid</literal>
-            <description>Vario Grid</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>vario_plus</literal>
-            <description>Vario PLUS</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>dt_plus</literal>
-            <description>Double PLUS</description>
-          </enumEntry>
-        </enum>
+        <string />
       </dataType>
-      <defaultValue>vario_plus</defaultValue>
+      <defaultValue></defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
@@ -150,8 +138,9 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://api.tariffs.groupe-e.ch</restApiUri>
+        <restApiUri>https://servizi.aemsa.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
+        <restApiVerifyCertificate>false</restApiVerifyCertificate>
       </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
@@ -517,7 +506,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/v2/tariffs</requestPath>
+                  <requestPath>/tariffe</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>
