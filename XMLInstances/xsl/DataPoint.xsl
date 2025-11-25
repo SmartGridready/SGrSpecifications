@@ -111,9 +111,9 @@
                             <xsl:when test="sgr:messagingDataPointConfiguration">
                                 <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
                                     <tr>
-                                  <td></td>
+                                        <td></td>
                                         <td style="color:red"><b>Constant data points cannot have a configuration</b></td>
-                                </tr>
+                                    </tr>
                                 </xsl:if>
                                 <xsl:apply-templates select="sgr:messagingDataPointConfiguration" />
                                 <xsl:apply-templates select="sgr:blockCacheIdentification" />

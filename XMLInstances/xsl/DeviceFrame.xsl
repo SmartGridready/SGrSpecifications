@@ -8,7 +8,7 @@
         <table style="border:hidden;">
             <thead><tr style="border:hidden;"><td>
                 <div class="documentheader">
-                <img src="https://smartgridready.ch/media/images/Logos/SGR_LOGO_REDESIGN_RGB.svg" height= "134px" />
+                <img src="/xsl/ressources/sgr_logo.svg" height= "134px" />
                 <span style="float:right;">Product Declaration</span></div>
             </td></tr></thead>
             <tbody><tr style="border:hidden;"><td>
