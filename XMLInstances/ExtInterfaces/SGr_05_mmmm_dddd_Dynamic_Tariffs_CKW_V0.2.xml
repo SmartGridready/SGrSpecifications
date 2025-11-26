@@ -16,7 +16,7 @@
     </changeLog>
     <changeLog>
       <version>0.2.0</version>
-      <date>2025-11-24</date>
+      <date>2025-11-26</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -179,134 +179,11 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <p>The dynamic tariff structure offers a price that can change every 15 minutes.</p>
-                  <p>It is based on the VSE specification <a href="https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025">Dynamic grid usage tariffs in the distribution grid</a>.</p>
-
-                  The schema of the JSON response returned by the REST API is
-
-<font size="1"><pre style="color:blue">
-{
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Dynamic Tariffs",
-  "description": "JSON schema for the delivery of dynamic tariff price values",
-  "type": "object",
-  "properties": {
-    "publication_timestamp": {
-      "description": "Time of tariff publication",
-      "type": "string",
-      "oneOf": [
-        { "format": "date-time" },
-        { "format": "empty" }
-      ]
-    },
-    "prices": {
-      "description": "Price values",
-      "type": "array",
-      "items": { "$ref": "#/$defs/price_item" }
-    }
-  },
-  "additionalProperties": true,
-  "required": [
-    "publication_timestamp",
-    "prices"
-  ],
-  "$defs": {
-    "price_item": {
-      "type": "object",
-      "properties": {
-        "start_timestamp": {
-          "description": "Start time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
-        },
-        "end_timestamp": {
-          "description": "End time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
-        },
-        "electricity": {
-          "description": "Electricity price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "feed_in": {
-          "description": "Feed-in price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "grid": {
-          "description": "Grid price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "integrated": {
-          "description": "Integrated price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "regional_fees": {
-          "description": "Regional fee price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        }
-      },
-      "additionalProperties": true,
-      "required": [
-        "start_timestamp",
-        "end_timestamp"
-      ]
-    },
-    "price_component_item": {
-      "type": "object",
-      "properties": {
-        "unit": {
-          "description": "The tariff unit of the price value",
-          "type": "string"
-        },
-        "value": {
-          "description": "The tariff price value",
-          "type": "number"
-        }
-      },
-      "additionalProperties": true,
-      "required": [
-        "unit",
-        "value"
-      ]
-    }
-  }
-}
-</pre></font>
-
-          A JSON example is:
-
-<font size="1"><pre style="color:blue">
-{
-  "publication_timestamp": "2025-01-01T00:00:00+01:00",
-  "prices": [
-    {
-      "start_timestamp": "2025-01-01T00:00:00+01:00",
-      "end_timestamp": "2025-01-01T00:15:00+01:00",
-      "integrated": [
-        {
-          "unit": "CHF_kWh",
-          "value": 0.4925
-        }
-      ]
-    },
-    {
-      "start_timestamp": "2025-01-01T00:15:00+01:00",
-      "end_timestamp": "2025-01-01T00:30:00+01:00",
-      "integrated": [
-        {
-          "unit": "CHF_kWh",
-          "value": 0.491133
-        }
-      ]
-    }
-  ]
-}
-</pre></font>
+                  <p>Dynamic electricity tariffs provide a price that can change every 15 minutes.
+                  EMS can retrieve the price data from a REST API and optimize energy usage based on the variable price.</p>
+                  <p><img src="ressources/dynamic_tariff.svg"/></p>
+                  <p>The functional profile is based on the VSE industry document <a href="https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025">Dynamic grid usage tariffs in the distribution grid</a>.
+                  It describes the JSON schema of the price data and the query parameters the REST API of a tariff supplier has to implement.</p>
                 ]]>
               </textElement>
               <language>en</language>
@@ -314,134 +191,11 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  <p>Die dynamische Tarif-Struktur bietet einen Strompreis, der sich alle 15 Minuten ändern kann.</p>
-                  <p>Sie basiert auf der VSE-Spezifikation <a href="https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025">Dynamische Netznutzungstarife im Verteilnetz</a>.</p>
-
-                  Das Schema der JSON-Response des REST API ist
-
-<font size="1"><pre style="color:blue">
-{
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Dynamic Tariffs",
-  "description": "JSON schema for the delivery of dynamic tariff price values",
-  "type": "object",
-  "properties": {
-    "publication_timestamp": {
-      "description": "Time of tariff publication",
-      "type": "string",
-      "oneOf": [
-        { "format": "date-time" },
-        { "format": "empty" }
-      ]
-    },
-    "prices": {
-      "description": "Price values",
-      "type": "array",
-      "items": { "$ref": "#/$defs/price_item" }
-    }
-  },
-  "additionalProperties": true,
-  "required": [
-    "publication_timestamp",
-    "prices"
-  ],
-  "$defs": {
-    "price_item": {
-      "type": "object",
-      "properties": {
-        "start_timestamp": {
-          "description": "Start time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
-        },
-        "end_timestamp": {
-          "description": "End time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
-        },
-        "electricity": {
-          "description": "Electricity price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "feed_in": {
-          "description": "Feed-in price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "grid": {
-          "description": "Grid price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "integrated": {
-          "description": "Integrated price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        },
-        "regional_fees": {
-          "description": "Regional fee price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
-        }
-      },
-      "additionalProperties": true,
-      "required": [
-        "start_timestamp",
-        "end_timestamp"
-      ]
-    },
-    "price_component_item": {
-      "type": "object",
-      "properties": {
-        "unit": {
-          "description": "The tariff unit of the price value",
-          "type": "string"
-        },
-        "value": {
-          "description": "The tariff price value",
-          "type": "number"
-        }
-      },
-      "additionalProperties": true,
-      "required": [
-        "unit",
-        "value"
-      ]
-    }
-  }
-}
-</pre></font>
-
-          Ein JSON-Beispiel ist:
-
-<font size="1"><pre style="color:blue">
-{
-  "publication_timestamp": "2025-01-01T00:00:00+01:00",
-  "prices": [
-    {
-      "start_timestamp": "2025-01-01T00:00:00+01:00",
-      "end_timestamp": "2025-01-01T00:15:00+01:00",
-      "integrated": [
-        {
-          "unit": "CHF_kWh",
-          "value": 0.4925
-        }
-      ]
-    },
-    {
-      "start_timestamp": "2025-01-01T00:15:00+01:00",
-      "end_timestamp": "2025-01-01T00:30:00+01:00",
-      "integrated": [
-        {
-          "unit": "CHF_kWh",
-          "value": 0.491133
-        }
-      ]
-    }
-  ]
-}
-</pre></font>
+                  <p>Dynamische Stromtarife ermöglichen einen Strompreis, der sich alle 15 Minuten ändern kann.
+                  EMS können die Tarifdaten über ein REST API abrufen und den Energieverbrauch anhand des variablen Strompreises optimieren.</p>
+                  <p><img src="ressources/dynamic_tariff.svg"/></p>
+                  <p>Das Funktionsprofil basiert auf dem VSE-Branchendokument <a href="https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025">Dynamische Netznutzungstarife im Verteilnetz</a>.
+                  Es beschreibt das JSON-Schema der Tarifdaten und die Abfrage-Parameter, die das REST API eines Tarifanbieters unterstützen muss.</p>
                 ]]>
               </textElement>
               <language>de</language>
@@ -501,7 +255,131 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <p>Tariff list - description see above</p>
+The schema of the JSON response returned by the REST API is
+
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs",
+  "description": "JSON schema for the delivery of dynamic tariff price values",
+  "type": "object",
+  "properties": {
+    "publication_timestamp": {
+      "description": "Time of tariff publication",
+      "type": "string",
+      "oneOf": [
+        { "format": "date-time" },
+        { "format": "empty" }
+      ]
+    },
+    "prices": {
+      "description": "Price values",
+      "type": "array",
+      "items": { "$ref": "#/$defs/price_item" }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "publication_timestamp",
+    "prices"
+  ],
+  "$defs": {
+    "price_item": {
+      "type": "object",
+      "properties": {
+        "start_timestamp": {
+          "description": "Start time stamp of the tariff interval",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_timestamp": {
+          "description": "End time stamp of the tariff interval",
+          "type": "string",
+          "format": "date-time"
+        },
+        "electricity": {
+          "description": "Electricity price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "feed_in": {
+          "description": "Feed-in price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "grid": {
+          "description": "Grid price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "integrated": {
+          "description": "Integrated price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "regional_fees": {
+          "description": "Regional fee price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "start_timestamp",
+        "end_timestamp"
+      ]
+    },
+    "price_component_item": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "description": "The tariff unit of the price value",
+          "type": "string"
+        },
+        "value": {
+          "description": "The tariff price value",
+          "type": "number"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "unit",
+        "value"
+      ]
+    }
+  }
+}
+</pre></font>
+
+A JSON example is:
+
+<font size="1"><pre style="color:blue">
+{
+  "publication_timestamp": "2025-01-01T00:00:00+01:00",
+  "prices": [
+    {
+      "start_timestamp": "2025-01-01T00:00:00+01:00",
+      "end_timestamp": "2025-01-01T00:15:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.4925
+        }
+      ]
+    },
+    {
+      "start_timestamp": "2025-01-01T00:15:00+01:00",
+      "end_timestamp": "2025-01-01T00:30:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.491133
+        }
+      ]
+    }
+  ]
+}
+</pre></font>
                     ]]>
                   </textElement>
                   <language>en</language>
@@ -509,7 +387,131 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <p>Tarif-Liste - Beschreibung siehe oben</p>
+Das Schema der JSON-Response des REST API ist
+
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs",
+  "description": "JSON schema for the delivery of dynamic tariff price values",
+  "type": "object",
+  "properties": {
+    "publication_timestamp": {
+      "description": "Time of tariff publication",
+      "type": "string",
+      "oneOf": [
+        { "format": "date-time" },
+        { "format": "empty" }
+      ]
+    },
+    "prices": {
+      "description": "Price values",
+      "type": "array",
+      "items": { "$ref": "#/$defs/price_item" }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "publication_timestamp",
+    "prices"
+  ],
+  "$defs": {
+    "price_item": {
+      "type": "object",
+      "properties": {
+        "start_timestamp": {
+          "description": "Start time stamp of the tariff interval",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_timestamp": {
+          "description": "End time stamp of the tariff interval",
+          "type": "string",
+          "format": "date-time"
+        },
+        "electricity": {
+          "description": "Electricity price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "feed_in": {
+          "description": "Feed-in price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "grid": {
+          "description": "Grid price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "integrated": {
+          "description": "Integrated price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        },
+        "regional_fees": {
+          "description": "Regional fee price values in the interval",
+          "type": "array",
+          "items": { "$ref": "#/$defs/price_component_item" }
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "start_timestamp",
+        "end_timestamp"
+      ]
+    },
+    "price_component_item": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "description": "The tariff unit of the price value",
+          "type": "string"
+        },
+        "value": {
+          "description": "The tariff price value",
+          "type": "number"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "unit",
+        "value"
+      ]
+    }
+  }
+}
+</pre></font>
+
+Ein JSON-Beispiel ist:
+
+<font size="1"><pre style="color:blue">
+{
+  "publication_timestamp": "2025-01-01T00:00:00+01:00",
+  "prices": [
+    {
+      "start_timestamp": "2025-01-01T00:00:00+01:00",
+      "end_timestamp": "2025-01-01T00:15:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.4925
+        }
+      ]
+    },
+    {
+      "start_timestamp": "2025-01-01T00:15:00+01:00",
+      "end_timestamp": "2025-01-01T00:30:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.491133
+        }
+      ]
+    }
+  ]
+}
+</pre></font>
                     ]]>
                   </textElement>
                   <language>de</language>
