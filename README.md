@@ -33,7 +33,7 @@ offering services for flexible load management).
 | Block | Description |
 |-------|-------------|
 | [Product Description](doc/product.md) | A machine- and human-readable description of the products communication interface. |
-| [Functional Profile](doc/functionalProfile.md) | A set of use-case related datapoints (read or write) offered by the product. |
+| [Functional Profile](doc/functionalProfile.md) | A set of use-case related data points (read or write) offered by the product. |
 | [Communicator Description](doc/communicator.md) | A machine- and human-readable description of the communicators capabilities |
 
 Every building block is described through a common [XML schema](doc/SGrSchema.md).

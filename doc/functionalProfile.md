@@ -58,11 +58,11 @@ in the product implementing this functional profile.
 
 Data Points that are connected to other data points can be modeled as sub data points.
 
-The connection between data point and sub data point are defined with naming conventions. If e.g. a data point has the name "MainDatapoint" and is connected with a sub data point "SubDatapoint" the sub data point name has the name "MainDatapoint.SubDatapoint" - this means, the sub data point name is appended to the main data point name separated with a dot.
+The connection between data point and sub data point are defined with naming conventions. If e.g. a data point has the name "MainDataPoint" and is connected with a sub data point "SubDataPoint" the sub data point name has the name "MainDataPoint.SubDataPoint" - this means, the sub data point name is appended to the main data point name separated with a dot.
 
 An example for a sub data point is "Voltage.Precision" as the precision of the data point "Voltage".
 
-## Using Functional Profiles for declaration 
+## Using Functional Profiles for declaration
 
 For the declaration of the a product the following flow is proposed:
 
@@ -110,7 +110,7 @@ A functional profile mainly defines a set of data points. The attributes of a da
 # Data Point Attributes
 | Element     | Description |
 |-------------|-------------|
-| datapointName | name of the data point. Should be unique within the functional profile |
+| dataPointName | name of the data point. Should be unique within the functional profile |
 | dataDirection | `R` if data point can be read, `W` for write, `P` for persistence |
 | presenceLevel | data point availability: Mandatory, Recommended, Optional |
 | unit | physical unit of data point |
