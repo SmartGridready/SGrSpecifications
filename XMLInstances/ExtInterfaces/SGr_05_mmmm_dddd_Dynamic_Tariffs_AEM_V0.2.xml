@@ -508,7 +508,7 @@ Ein JSON-Beispiel ist:
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/tariffe</requestPath>
+                  <requestPath>/tariffe_v2</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>
