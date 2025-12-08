@@ -25,7 +25,7 @@
                     </xsl:choose>
                 </colgroup>
                 <tr>
-                    <th>Datapoint</th>
+                    <th>Data Point</th>
                     <th>Description</th>
                     <th>Unit</th>
                     <th>Type</th>
@@ -111,9 +111,9 @@
                             <xsl:when test="sgr:messagingDataPointConfiguration">
                                 <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
                                     <tr>
-                                  <td></td>
+                                        <td></td>
                                         <td style="color:red"><b>Constant data points cannot have a configuration</b></td>
-                                </tr>
+                                    </tr>
                                 </xsl:if>
                                 <xsl:apply-templates select="sgr:messagingDataPointConfiguration" />
                                 <xsl:apply-templates select="sgr:blockCacheIdentification" />
@@ -184,12 +184,12 @@
                 <xsl:apply-templates select="sgr:dataType/sgr:bitmap" />
                 <xsl:if test="sgr:parameterList" >
                     <p />
-                    Dynamic parameters to provide when reading the Datapoint:
+                    <b>Dynamic parameters to provide when reading the data point:</b>
                     <table style="margin-left:10px;">
                         <xsl:for-each select="sgr:parameterList/sgr:parameterListElement">
                             <tr>
                                 <td class="noborder" style="padding-left:10px;">
-                                    <b><xsl:value-of select="sgr:name" />:</b><br />
+                                    <i><xsl:value-of select="sgr:name" />:</i><br />
                                     <xsl:value-of select="name(sgr:dataType/*[1])" />
                                 </td>
                                 <td class="noborder" style="padding-left:10px;">

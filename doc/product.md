@@ -239,7 +239,7 @@ The structure of the service call is
 | requestForm | the request form as list of parameters |
 | requestBody | the request body |
 | responseQuery | the response query with a JMES path mapping |
-| valueMapping | the mapping to map a response to the generic JSon |
+| valueMapping | the mapping to map a response to the generic JSON |
 
 ### Additional values for Modbus interface
 
@@ -254,7 +254,7 @@ Each Modbus data point requires additional information in a `modbusDataPointConf
 | timeToLiveMs | block cache time in milliseconds |
 | requestBody | the request body |
 | responseQuery | the response query with a JMES path mapping |
-| valueMapping | the mapping to map a response to the generic JSon |
+| valueMapping | the mapping to map a response to the generic JSON |
 
 Additionally, a `blockCacheIdentification` to handle reading of more than one register and holding them in a cache until `timeToLiveMs` is expired.
 

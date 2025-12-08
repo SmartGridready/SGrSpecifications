@@ -33,7 +33,7 @@ The API suports the following functions:
 ### Flow `unsubscribe()`
 TODO
 
-## Datapoint types
+## Data point types
 
 ### R readonly data-point supporting `subscribe()` only
 
@@ -99,7 +99,7 @@ written to the device.
 
 ### RW data point supports `setVal()`, `getVal()` and `subscribe()`
 
-A RW datapoint must support all three message elements:
+A RW data point must support all three message elements:
 
 ```xml
  <messagingDataPointConfiguration>

@@ -258,11 +258,11 @@
             <xsl:when test="sgr:int64U">int64U</xsl:when>
             <xsl:when test="sgr:float32">float</xsl:when>
             <xsl:when test="sgr:float64">double</xsl:when>
-            <xsl:when test="sgr:dateTime">date time</xsl:when>
+            <xsl:when test="sgr:dateTime">dateTime</xsl:when>
             <xsl:when test="sgr:string">string</xsl:when>
             <xsl:when test="sgr:enum">enum</xsl:when>
             <xsl:when test="sgr:bitmap">bitmap</xsl:when>
-            <xsl:when test="sgr:json">JSon</xsl:when>
+            <xsl:when test="sgr:json">JSON</xsl:when>
         </xsl:choose>
     </xsl:template>
 

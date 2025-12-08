@@ -91,11 +91,11 @@
                 <xsl:value-of select="./sgr:dataType" />
             </td>
         </tr>
-        <xsl:apply-templates select="sgr:restApiServiceCall" />
+        <xsl:apply-templates select="sgr:restApiServiceCall|sgr:restApiReadServiceCall|sgr:restApiWriteServiceCall" />
     </xsl:template>
 
     <!-- Rest Api Service Call -->
-    <xsl:template match="sgr:restApiServiceCall">
+    <xsl:template match="sgr:restApiServiceCall|sgr:restApiReadServiceCall|sgr:restApiWriteServiceCall">
         <tr class="transportDetails">
             <td>End Point</td>
             <td>

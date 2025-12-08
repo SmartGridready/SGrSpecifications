@@ -24,7 +24,7 @@ The functional profile covers the following main data points
 
 - **EMSCurrentLimit** (mandatory): The maximum current allowed for the charging station at this moment.
 - **SafeCurrent** (recommended):  In the event of a communication interruption with the EMS, the EVSE automatically adjusts its current limit to the Safe Current value.
-- **MaxReceiveTimeSec** (recommended):  The MaxReceiveTimeSec datapoint signifies the timeout for the stability
+- **MaxReceiveTimeSec** (recommended):  The MaxReceiveTimeSec data point signifies the timeout for the stability
              fallback. If the EVSE does not receive communication within the specified
 			 <em>MaxReceiveTimeSec</em>, it will automatically limit the current to the
 			 <em>SafeCurrent</em> value. 
@@ -32,7 +32,7 @@ The functional profile covers the following main data points
 
 ### Feedback Sub Data Points
 
-If the controller requires different datapoints to write and read the values <em>EMSCurrentLimit</em>, <em>SafeCurrent</em>, and <em>MaxReceiveTimeSec</em>,
+If the controller requires different data points to write and read the values <em>EMSCurrentLimit</em>, <em>SafeCurrent</em>, and <em>MaxReceiveTimeSec</em>,
 the data direction of can be changed from RW to W
 and an additional sub data point <em>Feedback</em> can be used to read the current value
 
@@ -70,7 +70,7 @@ Accordingly, the sub data points
   - <em>SafeCurrent.SmoothTransition_Delay</em>
   - <em>SafeCurrent.SmoothTransition_Duration</em>
 
-All six sub data point can be implemented in the device as constant data points if the value is constant or as regular datapoint if it can be read from the device.
+All six sub data point can be implemented in the device as constant data points if the value is constant or as regular data point if it can be read from the device.
 
 ## EVSE State
 
