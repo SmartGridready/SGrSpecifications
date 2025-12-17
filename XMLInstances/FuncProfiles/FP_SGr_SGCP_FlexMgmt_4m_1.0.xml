@@ -27,10 +27,10 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
-          Functional profile for energy management systems (EMS) that have a bidirectional communication interface to a flexibility manager (e.g., utility company/distribution system operator).
-          The interface enables both the retrieval of current data and the targeted control of power at the grid connection point via defined data points.
-          The data is divided into three categories:
+          <p><img src="ressources/fp_ems_to_pv_wp_evse.svg"/></p>
+          <p>Functional profile for energy management systems (EMS) that have a bidirectional communication interface to a flexibility manager (e.g., utility company/distribution system operator).
+          The interface enables both the retrieval of current data and the targeted control of power at the grid connection point via defined data points.</p>
+          <p>The data is divided into three categories:</p>
           <ul>
             <li>
               <h3>Settings (read):</h3>
@@ -45,7 +45,7 @@
               Temporary restriction (maximum value) of the power at the grid connection point (positive values for energy consumption, negative values for feed-in).
             </li>
           </ul>
-          The data points are transmitted in JSON format, which allows multiple data points to be updated simultaneously with a single query, thereby reducing network traffic.
+          <p>The data points are transmitted in JSON format, which allows multiple data points to be updated simultaneously with a single query, thereby reducing network traffic.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -53,10 +53,10 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <img src="ressources/fp_ems_to_pv_wp_evse.svg"/>
-          Funktionsprofil für Energiemanagement-Systeme (EMS), welche über eine bidirektionale Kommunikationsschnittstelle zu einem Flexibilitäts-Manager (z.B. EVU / VNB) verfügen.
-          Die Schnittstelle ermöglicht sowohl das Abrufen aktueller Daten als auch die gezielte Steuerung der Leistung am Netzanschlusspunkt über definierte Datenpunkte.
-          Die Daten werden in drei Kategorien unterteilt:
+          <p><img src="ressources/fp_ems_to_pv_wp_evse.svg"/></p>
+          <p>Funktionsprofil für Energiemanagement-Systeme (EMS), welche über eine bidirektionale Kommunikationsschnittstelle zu einem Flexibilitäts-Manager (z.B. EVU / VNB) verfügen.
+          Die Schnittstelle ermöglicht sowohl das Abrufen aktueller Daten als auch die gezielte Steuerung der Leistung am Netzanschlusspunkt über definierte Datenpunkte.</p>
+          <p>Die Daten werden in drei Kategorien unterteilt:</p>
           <ul>
             <li>
               <h3>Einstellungen (Lesen):</h3>
@@ -71,7 +71,7 @@
               Zeitlich begrenzte Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).
             </li>
           </ul>
-          Die Datenpunkte werden im JSON-Format übertragen, was die gleichzeitige Aktualisierung mehrerer Daten mit einer einzigen Abfrage ermöglicht und so den Netzwerkverkehr reduziert.
+          <p>Die Datenpunkte werden im JSON-Format übertragen, was die gleichzeitige Aktualisierung mehrerer Daten mit einer einzigen Abfrage ermöglicht und so den Netzwerkverkehr reduziert.</p>
         ]]>
       </textElement>
       <language>de</language>
@@ -96,8 +96,9 @@ Schema of the returned JSON object:
 
 <font size="1"><pre style="color:blue">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Get Settings - current settings",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Settings",
+  "description": "Current settings",
   "type": "object",
   "properties": {
     "Address": {
@@ -108,12 +109,10 @@ Schema of the returned JSON object:
           "description": "Street and number",
           "type": "string"
         },
-
         "ZipCode": {
           "description": "Zip code",
           "type": "string",
         },
-
         "City": {
           "description": "Location",
           "type": "string"
@@ -136,7 +135,7 @@ Schema of the returned JSON object:
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^PV$|^WP$|^EV$|^BESS$"
+        "enum": [ "PV", "WP", "EV", "BESS" ]
       }
     },
     "PVSize": {
@@ -201,8 +200,9 @@ Schema des gelieferten JSON-Objekts:
 
 <font size="1"><pre style="color:blue">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Get Settings - aktuelle Einstellungen",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Einstellungen",
+  "description": "Aktuelle Einstellungen",
   "type": "object",
   "properties": {
     "Address": {
@@ -213,12 +213,10 @@ Schema des gelieferten JSON-Objekts:
           "description": "Strasse und Hausnummer",
           "type": "string"
         },
-
         "ZipCode": {
           "description": "Postleitzahl",
           "type": "string",
         },
-
         "City": {
           "description": "Ort",
           "type": "string"
@@ -241,7 +239,7 @@ Schema des gelieferten JSON-Objekts:
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^PV$|^WP$|^EV$|^BESS$"
+        "enum": [ "PV", "WP", "EV", "BESS" ]
       }
     },
     "PVSize": {
@@ -317,22 +315,22 @@ Schema of the returned JSON object:
 
 <font size="1"><pre style="color:blue">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Get Data - current data and flexibilities",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Data",
+  "description": "Current data and flexibilities",
   "type": "object",
   "properties": {
     "EmsAvailable": {
       "description": "Status of the EMS",
       "type": "string",
-      "pattern": "^EMS_REACHABLE$|^EMS_NOT_REACHABLE$|^EMS_CONNECTION_FAULT$"
+      "enum": [ "EMS_REACHABLE", "EMS_NOT_REACHABLE", "EMS_CONNECTION_FAULT" ]
     },
     "PVPower": {
       "description": "Current power of production in [kW]",
       "type": "number"
     },
     "MeterPower": {
-      "description": "Current power at balance meter",
-      "description": "(+ consumption, - feed-In) in [kW]",
+      "description": "Current power at balance meter (+ consumption, - feed-In) in [kW]",
       "type": "number"
     },
     "AvailableFlexPositive": {
@@ -356,22 +354,19 @@ Schema of the returned JSON object:
       "type": "number"
     },
     "MeterVoltage": {
-      "description": "Feedback of all three voltage levels at the building connection point",
-      "description": "each in [Volt]",
+      "description": "Feedback of voltage levels at building connection point in [V]",
       "type": "object",
       "properties": {
         "Voltage1": {
-          "description": "Voltage of phase 1 in [Volt]",
+          "description": "Voltage of phase 1 in [V]",
           "type": "number"
         },
-
         "Voltage2": {
-          "description": "Voltage of phase 2 in [Volt]",
+          "description": "Voltage of phase 2 in [V]",
           "type": "number"
         },
-
         "Voltage3": {
-            "description": "Voltage of phase 3 in [Volt]",
+          "description": "Voltage of phase 3 in [V]",
           "type": "number"
         }
       },
@@ -418,22 +413,22 @@ Schema des gelieferten JSON-Objekts:
 
 <font size="1"><pre style="color:blue">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Get Data - aktuelle Daten und Flexibilitäten",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Daten",
+  "description": "Aktuelle Daten und Flexibilitäten",
   "type": "object",
   "properties": {
     "EmsAvailable": {
       "description": "Zustand des EMS",
       "type": "string",
-      "pattern": "^EMS_REACHABLE$|^EMS_NOT_REACHABLE$|^EMS_CONNECTION_FAULT$"
+      "enum": [ "EMS_REACHABLE", "EMS_NOT_REACHABLE", "EMS_CONNECTION_FAULT" ]
     },
     "PVPower": {
       "description": "Aktuelle Produktionsleistung in [kW]",
       "type": "number"
     },
     "MeterPower": {
-      "description": "Aktuelle Leistung am Bilanzzähler",
-      "description": "(+ Bezug, - Feed-In) in [kW]",
+      "description": "Aktuelle Leistung am Bilanzzähler (+ Bezug, - Feed-In) in [kW]",
       "type": "number"
     },
     "AvailableFlexPositive": {
@@ -457,22 +452,19 @@ Schema des gelieferten JSON-Objekts:
       "type": "number"
     },
     "MeterVoltage": {
-      "description": "Feedback aller drei Spannungslevel am Hausanschluss",
-      "description": "jeweils in [Volt]",
+      "description": "Feedback aller Spannungslevel am Hausanschluss in [V]",
       "type": "object",
       "properties": {
         "Voltage1": {
-          "description": "Spannung Phase 1 in [Volt]",
+          "description": "Spannung Phase 1 in [V]",
           "type": "number"
         },
-
         "Voltage2": {
-          "description": "Spannung Phase 2 in [Volt]",
+          "description": "Spannung Phase 2 in [V]",
           "type": "number"
         },
-
         "Voltage3": {
-            "description": "Spannung Phase 3 in [Volt]",
+          "description": "Spannung Phase 3 in [V]",
           "type": "number"
         }
       },
@@ -530,36 +522,39 @@ Schema of the JSON object to be sent:
 
 <font size="1"><pre style="color:blue">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Restrict Power - power restriction",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Restrict Power",
+  "description": "Set power restriction",
   "type": "object",
   "properties": {
-    "MaximumGridPointActive": {
+    "RestrictionActive": {
       "description": "Activation of power restriction",
       "type": "boolean"
     },
-    "MaximumGridPointPower": {
-      "description": "Maximal power",
+    "Restriction": {
+      "description": "Power restriction",
       "type": "object",
       "properties": {
-        "MaximumPowerKw": {
-          "description": "Power to restrict in [kW]. Positive values restrict",
-          "description": "import, negative values restrict export/feed-in",
+        "MinimumPowerKw": {
+          "description": "Minimum power (+ consumption, - feed-In) in [kW]",
           "type": "number"
         },
-
+        "MaximumPowerKw": {
+          "description": "Maximum power (+ consumption, - feed-In) in [kW]",
+          "type": "number"
+        },
         "DurationInMinutes": {
           "description": "Duration in [min]",
           "type": "integer"
         }
       },
       "required": [
-        "MaximumPowerKw", "DurationInMinutes"
+        "MinimumPowerKw", "MaximumPowerKw", "DurationInMinutes"
       ]
     }
   },
   "required": [
-    "MaximumGridPointActive", "MaximumGridPointPower"
+    "RestrictionActive", "Restriction"
   ]
 }
 </pre></font>
@@ -568,10 +563,11 @@ JSON example:
 
 <font size="1"><pre style="color:blue">
 {
-  "MaximumGridPointActive": true,
-  "MaximumGridPointPower": {
-    "MaximumPowerKw": 0,
-    "DurationInMinutes": 0
+  "RestrictionActive": true,
+  "Restriction": {
+    "MinimumPowerKw": -2,
+    "MaximumPowerKw": 8,
+    "DurationInMinutes": 30
   }
 }
 </pre></font>
@@ -588,36 +584,39 @@ Schema des zu übergebenden JSON-Objekts:
 
 <font size="1"><pre style="color:blue">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Restrict Power - Einschränkungen für die Leistung",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Einschränkungen für die Leistung",
+  "description": "Einschränkungen einstellen",
   "type": "object",
   "properties": {
-    "MaximumGridPointActive": {
+    "RestrictionActive": {
       "description": "Aktivierung der Leistungsreduktion",
       "type": "boolean"
     },
-    "MaximumGridPointPower": {
-      "description": "Maximale Leistung",
+    "Restriction": {
+      "description": "Leistungsreduktion",
       "type": "object",
       "properties": {
-        "MaximumPowerKw": {
-          "description": "Power to restrict in [kW]. Positive values restrict",
-          "description": "import, negative values restrict export/feed-in",
+        "MinimumPowerKw": {
+          "description": "Minimale Leistung (+ Bezug, - Feed-In) in [kW]",
           "type": "number"
         },
-
+        "MaximumPowerKw": {
+          "description": "Maximale Leistung (+ Bezug, - Feed-In) in [kW]",
+          "type": "number"
+        },
         "DurationInMinutes": {
-          "description": "Duration in [min]",
+          "description": "Dauer in [min]",
           "type": "integer"
         }
       },
       "required": [
-        "MaximumPowerKw", "DurationInMinutes"
+        "MinimumPowerKw", "MaximumPowerKw", "DurationInMinutes"
       ]
     }
   },
   "required": [
-    "MaximumGridPointActive", "MaximumGridPointPower"
+    "RestrictionActive", "Restriction"
   ]
 }
 </pre></font>
@@ -626,10 +625,11 @@ JSON-Beispiel:
 
 <font size="1"><pre style="color:blue">
 {
-  "MaximumGridPointActive": true,
-  "MaximumGridPointPower": {
-    "MaximumPowerKw": 0,
-    "DurationInMinutes": 0
+  "RestrictionActive": true,
+  "Restriction": {
+    "MinimumPowerKw": -2,
+    "MaximumPowerKw": 8,
+    "DurationInMinutes": 30
   }
 }
 </pre></font>
