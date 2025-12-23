@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-  <releaseNotes>
-    <state>Published</state>
-    <changeLog>
-      <version>1.0.0</version>
-      <date>2025-09-02</date>
-      <author>Ergo/ag,SGr/mkr</author>
-      <comment>Finalization</comment>
-    </changeLog>
-  </releaseNotes>
-  <functionalProfile>
-    <functionalProfileIdentification>
-      <specificationOwnerIdentification>0</specificationOwnerIdentification>
-      <functionalProfileCategory>SGCP</functionalProfileCategory>
-      <functionalProfileType>FlexMgmt</functionalProfileType>
-      <levelOfOperation>4m</levelOfOperation>
-      <versionNumber>
-        <primaryVersionNumber>1</primaryVersionNumber>
-        <secondaryVersionNumber>0</secondaryVersionNumber>
-        <subReleaseVersionNumber>0</subReleaseVersionNumber>
-      </versionNumber>
-    </functionalProfileIdentification>
-    <legibleDescription>
-      <textElement>
-        <![CDATA[
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+    <releaseNotes>
+        <state>Published</state>
+        <changeLog>
+            <version>1.0.0</version>
+            <date>2025-09-02</date>
+            <author>Ergo/ag,SGr/mkr</author>
+            <comment>Finalization</comment>
+        </changeLog>
+    </releaseNotes>
+    <functionalProfile>
+        <functionalProfileIdentification>
+            <specificationOwnerIdentification>0</specificationOwnerIdentification>
+            <functionalProfileCategory>SGCP</functionalProfileCategory>
+            <functionalProfileType>FlexMgmt</functionalProfileType>
+            <levelOfOperation>4m</levelOfOperation>
+            <versionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+            </versionNumber>
+        </functionalProfileIdentification>
+        <legibleDescription>
+            <textElement>
+                <![CDATA[
           <p><img src="ressources/fp_ems_to_pv_wp_evse.svg"/></p>
-          <p>Functional profile for energy management systems (EMS) that have a bidirectional communication interface to a flexibility manager (e.g., utility company/distribution system operator).
+          <p>Functional profile for energy management systems (EMS) that have a bidirectional communication interface to a flexibility manager (e.g., TSO/ DSO).
           The interface enables both the retrieval of current data and the targeted control of power at the grid connection point via defined data points.</p>
           <p>The data is divided into three categories:</p>
           <ul>
@@ -42,17 +42,17 @@
             </li>
             <li>
               <h3>Power restriction (control):</h3>
-              Temporary restriction (maximum value) of the power at the grid connection point (positive values for energy consumption, negative values for feed-in).
+              Temporary restriction of the allowed power range at the grid connection point by setting both a minimum and a maximum value (positive values for consumption, negative for feed-in). This allows, for example, to set the feed-in to 0 or to define a specific allowed range.
             </li>
           </ul>
           <p>The data points are transmitted in JSON format, which allows multiple data points to be updated simultaneously with a single query, thereby reducing network traffic.</p>
         ]]>
-      </textElement>
-      <language>en</language>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>
-        <![CDATA[
+            </textElement>
+            <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+            <textElement>
+                <![CDATA[
           <p><img src="ressources/fp_ems_to_pv_wp_evse.svg"/></p>
           <p>Funktionsprofil für Energiemanagement-Systeme (EMS), welche über eine bidirektionale Kommunikationsschnittstelle zu einem Flexibilitäts-Manager (z.B. EVU / VNB) verfügen.
           Die Schnittstelle ermöglicht sowohl das Abrufen aktueller Daten als auch die gezielte Steuerung der Leistung am Netzanschlusspunkt über definierte Datenpunkte.</p>
@@ -68,28 +68,28 @@
             </li>
             <li>
               <h3>Leistungsbeschränkung (Steuern):</h3>
-              Zeitlich begrenzte Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).
+              Zeitlich begrenzte Einschränkung des zulässigen Leistungsbereichs am Netzanschlusspunkt durch Setzen eines Minimal- und eines Maximalwerts (positive Werte für Bezug, negative für Einspeisung). Damit kann z.B. die Einspeisung auf 0 gesetzt oder ein spezifischer Bereich definiert werden.
             </li>
           </ul>
           <p>Die Datenpunkte werden im JSON-Format übertragen, was die gleichzeitige Aktualisierung mehrerer Daten mit einer einzigen Abfrage ermöglicht und so den Netzwerkverkehr reduziert.</p>
         ]]>
-      </textElement>
-      <language>de</language>
-    </legibleDescription>
-  </functionalProfile>
-  <dataPointList>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>GetSettings</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
-        <dataType>
-          <json />
-        </dataType>
-        <unit>NONE</unit>
-        <legibleDescription>
-          <textElement>
-            <![CDATA[
+            </textElement>
+            <language>de</language>
+        </legibleDescription>
+    </functionalProfile>
+    <dataPointList>
+        <dataPointListElement>
+            <dataPoint>
+                <dataPointName>GetSettings</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                    <json/>
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                    <textElement>
+                        <![CDATA[
               <p>Reading static installation data such as address, meter number, and installed flexibilities.</p>
 
 Schema of the returned JSON object:
@@ -188,12 +188,12 @@ JSON example:
 }
 </pre></font>
             ]]>
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            <![CDATA[
+                    </textElement>
+                    <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                    <textElement>
+                        <![CDATA[
               <p>Lesen der statischen Installationsdaten wie Adresse, Zählernummer und installierte Flexibilitäten.</p>
 
 Schema des gelieferten JSON-Objekts:
@@ -292,23 +292,23 @@ JSON-Beispiel:
 }
 </pre></font>
             ]]>
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>GetData</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
-        <dataType>
-          <json />
-        </dataType>
-        <unit>NONE</unit>
-        <legibleDescription>
-          <textElement>
-            <![CDATA[
+                    </textElement>
+                    <language>de</language>
+                </legibleDescription>
+            </dataPoint>
+        </dataPointListElement>
+        <dataPointListElement>
+            <dataPoint>
+                <dataPointName>GetData</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                    <json/>
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                    <textElement>
+                        <![CDATA[
               <p>Reading dynamic information, such as current PV production or power at the grid connection point.</p>
 
 Schema of the returned JSON object:
@@ -401,12 +401,12 @@ JSON example:
 }
 </pre></font>
             ]]>
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            <![CDATA[
+                    </textElement>
+                    <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                    <textElement>
+                        <![CDATA[
               <p>Lesen der dynamischen Informationen, beispielsweise die aktuelle PV-Produktion oder die Leistung am Netzanschlusspunkt.</p>
 
 Schema des gelieferten JSON-Objekts:
@@ -499,24 +499,29 @@ JSON-Beispiel:
 }
 </pre></font>
             ]]>
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>RestrictPower</dataPointName>
-        <dataDirection>W</dataDirection>
-        <presenceLevel>R</presenceLevel>
-        <dataType>
-          <json />
-        </dataType>
-        <unit>NONE</unit>
-        <legibleDescription>
-          <textElement>
-            <![CDATA[
-              <p>Setting the time-limited restriction (maximum value) of the power at the grid connection point (positive values for energy consumption, negative values for feed-in).</p>
+                    </textElement>
+                    <language>de</language>
+                </legibleDescription>
+            </dataPoint>
+        </dataPointListElement>
+        <dataPointListElement>
+            <dataPoint>
+                <dataPointName>RestrictPower</dataPointName>
+                <dataDirection>W</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                    <json/>
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                    <textElement>
+                        <![CDATA[
+                    <p>Setting a time-limited restriction for the allowed power range at the grid connection point. Both a minimum and a maximum value can be set (positive values for consumption, negative for feed-in).</p>
+      <p>Examples:</p>
+      <ul>
+        <li>Feed-in limited to 0, no restriction on consumption:<br>MinimumPowerKw = 0, MaximumPowerKw = 100</li>
+        <li>Allowed range: max. 10 kW feed-in, max. 5 kW consumption:<br>MinimumPowerKw = -100, MaximumPowerKw = 5</li>
+      </ul>
 
 Schema of the JSON object to be sent:
 
@@ -572,13 +577,18 @@ JSON example:
 }
 </pre></font>
             ]]>
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            <![CDATA[
-              <p>Setzen der zeitlich begrenzten Einschränkung (Maximalwert) der Leistung am Netzanschlusspunkt (positive Werte für Energiebezug, negative für Rückspeisung).</p>
+                    </textElement>
+                    <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                    <textElement>
+                        <![CDATA[
+              <p>Setzen einer zeitlich begrenzten Einschränkung für den zulässigen Leistungsbereich am Netzanschlusspunkt. Es können sowohl ein Minimal- als auch ein Maximalwert gesetzt werden (positive Werte für Bezug, negative für Einspeisung).</p>
+<p>Beispiele:</p>
+<ul>
+  <li>Einspeisung auf 0 begrenzt, keine Einschränkung beim Bezug:<br>MinimumPowerKw = 0, MaximumPowerKw = 100</li>
+  <li>Zulässiger Bereich: max. 10 kW Einspeisung, max. 5 kW Bezug:<br>MinimumPowerKw = -10, MaximumPowerKw = 5</li>
+</ul>
 
 Schema des zu übergebenden JSON-Objekts:
 
@@ -634,10 +644,10 @@ JSON-Beispiel:
 }
 </pre></font>
             ]]>
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-  </dataPointList>
+                    </textElement>
+                    <language>de</language>
+                </legibleDescription>
+            </dataPoint>
+        </dataPointListElement>
+    </dataPointList>
 </FunctionalProfileFrame>
