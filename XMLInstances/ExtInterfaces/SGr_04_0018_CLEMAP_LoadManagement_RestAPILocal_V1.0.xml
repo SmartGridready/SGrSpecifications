@@ -20,6 +20,12 @@
       <author>SGr/mkr</author>
       <comment>Text correction in BiDirFlexMgmt</comment>
     </changeLog>
+    <changeLog>
+      <version>1.0.2</version>
+      <date>2026-01-14</date>
+      <author>SGr/mkr</author>
+      <comment>Corrected level of operation</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -61,7 +67,7 @@
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>
-      <subReleaseVersionNumber>1</subReleaseVersionNumber>
+      <subReleaseVersionNumber>2</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
   </deviceInformation>
@@ -784,7 +790,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>SGCP</functionalProfileCategory>
               <functionalProfileType>BiDirFlexMgmt</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>
