@@ -7,7 +7,7 @@
     <state>Published</state>
     <changeLog>
       <version>1.0.0</version>
-      <date>2025-09-02</date>
+      <date>2026-01-14</date>
       <author>CLAP/ga,SGr/mkr</author>
       <comment>Finalization</comment>
     </changeLog>
@@ -17,7 +17,7 @@
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>SGCP</functionalProfileCategory>
       <functionalProfileType>BiDirFlexMgmt</functionalProfileType>
-      <levelOfOperation>4</levelOfOperation>
+      <levelOfOperation>4m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
         <secondaryVersionNumber>0</secondaryVersionNumber>
