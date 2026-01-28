@@ -16,7 +16,7 @@
     </changeLog>
     <changeLog>
       <version>0.2.0</version>
-      <date>2025-11-26</date>
+      <date>2026-01-27</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -247,11 +247,7 @@ The schema of the JSON response returned by the REST API is
   "properties": {
     "publication_timestamp": {
       "description": "Time of tariff publication",
-      "type": "string",
-      "oneOf": [
-        { "format": "date-time" },
-        { "format": "empty" }
-      ]
+      "$ref": "#/$defs/timestamp_type"
     },
     "prices": {
       "description": "Price values",
@@ -270,38 +266,31 @@ The schema of the JSON response returned by the REST API is
       "properties": {
         "start_timestamp": {
           "description": "Start time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
+          "$ref": "#/$defs/timestamp_type"
         },
         "end_timestamp": {
           "description": "End time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
+          "$ref": "#/$defs/timestamp_type"
         },
         "electricity": {
           "description": "Electricity price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "feed_in": {
           "description": "Feed-in price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "grid": {
           "description": "Grid price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "integrated": {
           "description": "Integrated price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "regional_fees": {
           "description": "Regional fee price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         }
       },
       "additionalProperties": true,
@@ -326,6 +315,21 @@ The schema of the JSON response returned by the REST API is
       "required": [
         "unit",
         "value"
+      ]
+    },
+    "timestamp_type": {
+      "description": "ISO-8601 time stamp",
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "string", "format": "empty" },
+        { "type": "null" }
+      ]
+    },
+    "price_component_array": {
+      "description": "Nullable array",
+      "anyOf": [
+        { "type": "array", "items": { "$ref": "#/$defs/price_component_item" }},
+        { "type": "null" }
       ]
     }
   }
@@ -379,11 +383,7 @@ Das Schema der JSON-Response des REST API ist
   "properties": {
     "publication_timestamp": {
       "description": "Time of tariff publication",
-      "type": "string",
-      "oneOf": [
-        { "format": "date-time" },
-        { "format": "empty" }
-      ]
+      "$ref": "#/$defs/timestamp_type"
     },
     "prices": {
       "description": "Price values",
@@ -402,38 +402,31 @@ Das Schema der JSON-Response des REST API ist
       "properties": {
         "start_timestamp": {
           "description": "Start time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
+          "$ref": "#/$defs/timestamp_type"
         },
         "end_timestamp": {
           "description": "End time stamp of the tariff interval",
-          "type": "string",
-          "format": "date-time"
+          "$ref": "#/$defs/timestamp_type"
         },
         "electricity": {
           "description": "Electricity price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "feed_in": {
           "description": "Feed-in price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "grid": {
           "description": "Grid price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "integrated": {
           "description": "Integrated price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         },
         "regional_fees": {
           "description": "Regional fee price values in the interval",
-          "type": "array",
-          "items": { "$ref": "#/$defs/price_component_item" }
+          "$ref": "#/$defs/price_component_array"
         }
       },
       "additionalProperties": true,
@@ -458,6 +451,21 @@ Das Schema der JSON-Response des REST API ist
       "required": [
         "unit",
         "value"
+      ]
+    },
+    "timestamp_type": {
+      "description": "ISO-8601 time stamp",
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "string", "format": "empty" },
+        { "type": "null" }
+      ]
+    },
+    "price_component_array": {
+      "description": "Nullable array",
+      "anyOf": [
+        { "type": "array", "items": { "$ref": "#/$defs/price_component_item" }},
+        { "type": "null" }
       ]
     }
   }
