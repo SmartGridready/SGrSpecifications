@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>ESIT / Swisspower Dynamic Tariffs by TariffName</deviceName>
-  <manufacturerName>ESIT / Swisspower</manufacturerName>
+  <deviceName>Swisspower Dynamic Tariffs by Tariff Name</deviceName>
+  <manufacturerName>Swisspower</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -25,7 +25,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Provides dynamic tariff prices of ESIT/Swisspower.</p>
+          <p>Provides dynamic tariff prices of Swisspower.</p>
           <p>This EID is a template for actual provider tariffs!</p>
         ]]>
       </textElement>
@@ -35,7 +35,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Stellt dynamische Strompreise von ESIT/Swisspower bereit.</p>
+          <p>Stellt dynamische Strompreise von Swisspower bereit.</p>
           <p>Diese EID ist eine Vorlage für konkrete Stromanbieter-Tarife!</p>
         ]]>
       </textElement>
@@ -53,7 +53,7 @@
       <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>

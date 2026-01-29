@@ -19,7 +19,8 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Provides dynamic tariff prices of Elektrizitätsgenossenschaft Aettenschwil.</p>
+          <p>Provides dynamic tariff prices of Elektrizitätsgenossenschaft Aettenschwil (EGA).</p>
+          <p>EGA uses the <i>Swisspower</i> platform to retrieve tariff data.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -28,7 +29,8 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Stellt dynamische Strompreise der Elektrizitätsgenossenschaft Aettenschwil bereit.</p>
+          <p>Stellt dynamische Strompreise der Elektrizitätsgenossenschaft Aettenschwil (EGA) bereit.</p>
+          <p>EGA nutzt die Plattform von <i>Swisspower</i>, um Tarifdaten abzurufen.</p>
         ]]>
       </textElement>
       <language>de</language>
