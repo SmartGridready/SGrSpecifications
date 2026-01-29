@@ -10,7 +10,7 @@
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2026-01-27</date>
+      <date>2026-01-29</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -506,7 +506,7 @@ Ein JSON-Beispiel ist:
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/metering_code</requestPath>
+                  <requestPath>/api/v2/metering_code</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>
