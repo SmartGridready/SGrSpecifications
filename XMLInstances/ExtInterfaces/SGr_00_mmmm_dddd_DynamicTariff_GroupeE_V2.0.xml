@@ -56,16 +56,16 @@
     </legibleDescription>
     <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
-    <softwareRevision>1.0.0</softwareRevision>
+    <softwareRevision>2.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
     <manufacturerSpecificationIdentification>GroupeEDynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>2</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
     <programmerHints>
       <textElement>
         <![CDATA[

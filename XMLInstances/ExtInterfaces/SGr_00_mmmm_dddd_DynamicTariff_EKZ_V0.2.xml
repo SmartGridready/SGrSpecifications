@@ -107,7 +107,7 @@
       <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
     <programmerHints>
       <textElement>
         <![CDATA[

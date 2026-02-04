@@ -44,7 +44,7 @@
     </legibleDescription>
     <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
-    <softwareRevision>1.0.0</softwareRevision>
+    <softwareRevision>2.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
     <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>

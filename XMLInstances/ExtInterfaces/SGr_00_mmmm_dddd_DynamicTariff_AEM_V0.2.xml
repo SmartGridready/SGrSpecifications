@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>AEM Dynamic Tariffs</deviceName>
+  <deviceName>AEM Dynamic Tariffs V2</deviceName>
   <manufacturerName>AEM</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -56,7 +56,7 @@
     </legibleDescription>
     <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
-    <softwareRevision>1.0.0</softwareRevision>
+    <softwareRevision>2.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
     <manufacturerSpecificationIdentification>AEMDynamicTariffs</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
@@ -65,7 +65,7 @@
       <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
     <programmerHints>
       <textElement>
         <![CDATA[
