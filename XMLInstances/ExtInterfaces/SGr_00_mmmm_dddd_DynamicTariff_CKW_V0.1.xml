@@ -20,6 +20,12 @@
       <author>SGr/mkr</author>
       <comment>use JSONata query</comment>
     </changeLog>
+    <changeLog>
+      <version>0.1.2</version>
+      <date>2026-02-04</date>
+      <author>SGr/mkr</author>
+      <comment>changed category/type/level</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -62,16 +68,16 @@
       <language>de</language>
       <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
     <manufacturerSpecificationIdentification>CKWDynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
-      <subReleaseVersionNumber>1</subReleaseVersionNumber>
+      <subReleaseVersionNumber>2</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
     <programmerHints>
@@ -129,9 +135,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>

@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>CKW Dynamic Tariffs</deviceName>
-  <manufacturerName>CKW</manufacturerName>
+  <deviceName>EKZ Dynamic Tariffs</deviceName>
+  <manufacturerName>EKZ</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -16,7 +16,7 @@
     </changeLog>
     <changeLog>
       <version>0.2.0</version>
-      <date>2026-01-27</date>
+      <date>2026-02-04</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -25,49 +25,83 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>CKW is offering two new dynamic tariff products for grid usage at grid level 7 for 2026.
-          CKW Home dynamic (customers with annual consumption <50MWh) and CKW Business dynamic (customers with annual consumption >50MWh).
-          The tariff profiles are based on the forecast grid load for the following day and are made available for the next day via an API by 6 p.m.
-          The tariff profile (working tariff for grid usage) is standardized to a volume-weighted average value.
-          The volume-weighted average value is slightly higher than the unit price of the standard grid product, but with a reduced power price.</p>
+          <p>EKZ's dynamic tariff consists of a dynamic energy tariff and a dynamic grid usage tariff.
+          The energy tariff and the grid usage tariff can change every 15 minutes, depending on the current electricity market price and grid utilization.
+          These two tariff components are calculated according to the same pattern and published daily.</p>
+          <p>Additional information on the tariffs can be found <a href="https://www.ekz.ch/de/ueber-ekz/unternehmen/ekz/gesetzliche-vorgaben.html">here</a>.</p>
+
+          <p>Who is the dynamic tariff suitable for?</p>
+          <p>The dynamic tariff is aimed at private and business customers with an annual consumption of less than 100,000 kWh.
+          It is particularly worthwhile for households and businesses that have large electricity consumers such as electric cars, heat pumps, boilers, or batteries and can control their consumption flexibly and automatically via an energy management system.</p>
+          <p>How does the dynamic tariff work?</p>
+          <p>With the dynamic tariff, the energy tariff and the grid usage tariff can change every 15 minutes, depending on the current electricity market price and the utilization of the grid.</p>
+
+          <p>These two tariff components change continuously:</p>
+          <ul>
+            <li>EKZ Energie Dynamisch: Tariff is based on the spot market</li>
+            <li>EKZ Netz 400D: Tariff is based on current grid utilization</li>
+          </ul>
+          <p>This protects you from sharp fluctuations:</p>
+          <p>The energy tariff may deviate by a maximum of ±5 cents/kWh from the standard tariff (EKZ Renewable Energy).</p>
+          <p>The grid usage tariff may be up to 5 cents/kWh below or up to 15 cents/kWh above the standard grid usage tariff (EKZ Grid 400ST).</p>
+          <p>With automatically controlled consumption (via EMS), you can make targeted use of times with favorable rates. This means that the average daily price can be lower than the standard rate.
+          Without proper control, however, consumption may fall into expensive time slots and your overall electricity costs may be higher.</p>
+          <p>As with all EKZ tariffs, statutory levies and surcharges are also charged.</p>
 
           <ul>
             <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Time of Publication:</strong>&nbsp;until 18:00 on the day before</li>
-            <li><strong>Binding Character:</strong>&nbsp;until 18:00 on the day before</li>
-            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy, system services, energy reserve, solidarized cost, grid fees</li>
+            <li><strong>Time of Publication:</strong>&nbsp;18:00 on the day before</li>
+            <li><strong>Binding Character:</strong>&nbsp;Adjustments can be made until the end of the previous day. If the EKZ API is not available by midnight on the previous day, the standard rate applies. This applies exclusively to the EKZ systems; end customers are responsible for receiving and processing the rate information.</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Basic energy rate, metering rate and additional fees</li>
           </ul>
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
+      <uri>https://www.ekz.ch/de/privatkunden/strom/tarife/dynamischer-wahltarif.html</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>CKW stellt für 2026 zwei neue dynamische Wahlprodukte für die Netznutzung auf Netzebene 7 zur Verfügung.
-          CKW Home dynamic (Kunden <50MWh Jahresverbrauch) und CKW Business dynamic (Kunden >50MWh Jahresverbrauch).
-          Die Tarifprofile orientieren sich an der prognostizierten Netzlast des Folgetages und werden jeweils bis 18:00 Uhr über eine API für den nächsten Tag zur Verfügung gestellt.
-          Das Tarifprofil (Arbeitstarif der Netznutzung) wird jeweils an einen mengengewichteten Mittelwert normiert.
-          Der mengengewichtete Mittelwert ist leicht höher als der Einheitspreis des Standardnetzproduktes, dafür mit einem reduzierten Leistungspreis.</p>
+          <p>Der dynamische Tarif von EKZ setzt sich aus einem dynamischen Energie- und einem dynamischen Netznutzungstarif zusammen.
+          Der Energietarif und der Netznutzungstarif können dabei alle 15 Minuten ändern, abhängig vom aktuellen Strommarktpreis und der Auslastung des Netzes.
+          Diese beiden Tarifkomponenten werden nach demselben Muster berechnet und täglich neu veröffentlicht.</p>
+          <p>Weitere Infos zu den Tarifen sind <a href="https://www.ekz.ch/de/ueber-ekz/unternehmen/ekz/gesetzliche-vorgaben.html">hier</a> zu finden.</p>
+
+          <p>Für wen eignet sich der dynamische Tarif?</p>
+          <p>Der dynamische Tarif richtet sich an Privat- und Geschäftskunden mit einem Jahresverbrauch unter 100'000 kWh.
+          Er lohnt sich besonders für Haushalte und Betriebe, die grosse Stromverbraucher wie Elektroauto, Wärmepumpe, Boiler oder Batterie besitzen und ihren Verbrauch flexibel und automatisch über ein Energiemanagementsystem steuern lassen können.</p>
+          <p>Wie funktioniert der dynamische Tarif?</p>
+          <p>Beim dynamischen Tarif können sich der Energietarif und der Netznutzungstarif alle 15 Minuten ändern, abhängig vom aktuellen Strommarktpreis und der Auslastung des Netzes.</p>
+
+          <p>Diese beiden Tarifbestandteile ändern sich laufend:</p>
+          <ul>
+            <li>EKZ Energie Dynamisch: Tarif richtet sich nach dem Spotmarkt</li>
+            <li>EKZ Netz 400D: Tarif richtet sich nach der aktuellen Netzauslastung</li>
+          </ul>
+          <p>So sind Sie vor starken Schwankungen geschützt:</p>
+          <p>Der Energietarif kann maximal ±5 Rp./kWh vom Standardtarif (EKZ Energie Erneuerbar) abweichen.</p>
+          <p>Der Netznutzungstarif kann bis zu 5 Rp./kWh unter oder bis zu 15 Rp./kWh über dem Standardnetznutzungstarif (EKZ Netz 400ST) liegen.</p>
+          <p>Mit einem automatisch gesteuerten Verbrauch (über EMS) können Sie gezielt Zeiten mit günstigen Tarifen nutzen. So kann der durchschnittliche Tagespreis tiefer liegen als im Standardtarif.
+          Ohne eine korrekte Steuerung hingegen kann der Verbrauch in teure Zeitfenster fallen und Ihre Stromkosten insgesamt höher ausfallen.</p>
+          <p>Wie bei allen EKZ-Tarifen werden zusätzlich die gesetzlichen Abgaben und Zuschläge verrechnet.</p>
 
           <ul>
             <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Publikationszeitpunkt:</strong>&nbsp;bis spätestens 18:00 Uhr am Vortag</li>
-            <li><strong>Verbindlichkeit:</strong>&nbsp;bis 18:00 Uhr am Vortag</li>
-            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Energie, SDL, Stromreserve, solidarisierte Kosten, Netzzuschlag</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;18:00 Uhr am Vortag</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;Anpassungen sind bis zum Ende des Vortages möglich. Sofern die API von EKZ bis 24.00 Uhr am Vortag nicht verfügbar ist, gilt der Standardtarif. Dies gilt ausschliesslich für den Teil der EKZ-Systeme; für den Empfang und die Verarbeitung der Tarifinformationen sind die Endkunden verantwortlich.</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Grundtarif Energie, Messtarif sowie Zuschläge und Abgaben</li>
           </ul>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
+      <uri>https://www.ekz.ch/de/privatkunden/strom/tarife/dynamischer-wahltarif.html</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
-    <manufacturerSpecificationIdentification>CKWDynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <manufacturerSpecificationIdentification>EKZDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>2</secondaryVersionNumber>
@@ -77,15 +111,11 @@
     <programmerHints>
       <textElement>
         <![CDATA[
-          <p>Bei der API kann der Tariftyp grid und integrated abgerufen werden.
-          Der grid Tarif beinhaltet den dynamischen Tarif (Arbeitspreis), die SDL, Stromreserve, die solidarisierten Kosten und den Netzzuschlag.
-          Der Tarif integrated beinhaltet zusätzlich den Energiepreis des Produktes CKW ClassicStrom.
-          Ausgenommen sind das Messentgelt, der Leistungspreis und die Konzessionsabgabe.</p>
           <p>Link zur technischen Dokumentation:</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
+      <uri>https://www.ekz.ch/dam/ekz/privatkunden/strom/tarife-und-agb/Tarifdokumente/tarife-2026/EKZ_Dynamischer-Tarif-2026_technischer-Beschrieb.pdf</uri>
     </programmerHints>
   </deviceInformation>
   <configurationList>
@@ -132,16 +162,16 @@
       <dataType>
         <enum>
           <enumEntry>
-            <literal>home_dynamic</literal>
-            <description>Home Dynamic (below 50 MWh/year)</description>
+            <literal>electricity_dynamic</literal>
+            <description>Energie Dynamisch</description>
           </enumEntry>
           <enumEntry>
-            <literal>business_dynamic</literal>
-            <description>Business Dynamic (above 50 MWh/year)</description>
+            <literal>grid_400D</literal>
+            <description>Netz 400D</description>
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>home_dynamic</defaultValue>
+      <defaultValue>electricity_dynamic</defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
@@ -158,7 +188,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://e-ckw-public-data.de-c1.eu1.cloudhub.io</restApiUri>
+        <restApiUri>https://api.tariffs.ekz.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
@@ -167,9 +197,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>2</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>
@@ -535,7 +565,7 @@ Ein JSON-Beispiel ist:
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/netzinformationen/energie/dynamische-preise</requestPath>
+                  <requestPath>/v1/tariffs</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>

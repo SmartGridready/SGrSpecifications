@@ -4,20 +4,20 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Published</state>
+    <state>Revoked</state>
     <changeLog>
       <version>1.0.0</version>
       <date>2025-04-14</date>
       <author>SGr/mkr</author>
-      <comment>Publication</comment>
+      <comment>Initial Publication</comment>
     </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
-      <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-      <functionalProfileType>Supplier</functionalProfileType>
-      <levelOfOperation>5</levelOfOperation>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>DynamicTariff</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
         <secondaryVersionNumber>0</secondaryVersionNumber>

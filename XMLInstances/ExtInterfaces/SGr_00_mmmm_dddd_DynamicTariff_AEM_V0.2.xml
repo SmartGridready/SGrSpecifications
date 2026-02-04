@@ -3,20 +3,20 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Swisspower Dynamic Tariffs by Tariff Name</deviceName>
-  <manufacturerName>Swisspower</manufacturerName>
+  <deviceName>AEM Dynamic Tariffs</deviceName>
+  <manufacturerName>AEM</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-10-07</date>
+      <date>2025-10-03</date>
       <author>SGr/mkr</author>
-      <comment>prepare for publication</comment>
+      <comment>Initial draft</comment>
     </changeLog>
     <changeLog>
       <version>0.2.0</version>
-      <date>2026-01-29</date>
+      <date>2026-02-04</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -25,35 +25,57 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Provides dynamic tariff prices of Swisspower.</p>
-          <p>This EID is a template for actual provider tariffs!</p>
+          <p>Optional grid usage tariff with dynamic energy component (cts/kWh) and fixed peak load component (cts/kW), available via the website, customer app, and API.</p>
+
+          <ul>
+            <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Time of Publication:</strong>&nbsp;18:00 on the day before</li>
+            <li><strong>Binding Character:</strong>&nbsp;18:00 on the day before, via API, web site, app</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy and volume of the grid component is dynamic; the peak component is not dynamic.</li>
+          </ul>
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://www.dynamische-stromtarife.ch/</uri>
+      <uri>https://aemsa.ch/</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Stellt dynamische Strompreise von Swisspower bereit.</p>
-          <p>Diese EID ist eine Vorlage für konkrete Stromanbieter-Tarife!</p>
+          <p>Optionaler Netznutzungstarif mit dynamischer Energiekomponente (cts/kWh) und fixer Spitzenlastkomponente (cts/kW), verfügbar über die Website, die Kunden-App und die API.</p>
+
+          <ul>
+            <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;18.00 am Vortag</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;18.00 am Vortag durch API, webseite, App</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Nur der Energie-/Volumenanteil der Netzkomponente ist dynamisch; die Spitzenkomponente ist nicht dynamisch.</li>
+          </ul>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.dynamische-stromtarife.ch/</uri>
+      <uri>https://aemsa.ch/</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
-    <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <manufacturerSpecificationIdentification>AEMDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>Verified</testState>
+    <testState>None</testState>
+    <programmerHints>
+      <textElement>
+        <![CDATA[
+          <p>Für das Jahr 2026 wird eine aktualisierte Version des dynamischen Tarifs veröffentlicht, wobei sich die Formel für die dynamische Komponente leicht ändern wird.</p>
+          <p>Link zur technischen Dokumentation:</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://aem-production.cdn.prismic.io/aem-production/Z1mn9ZbqstJ98VNc_documento_tecnico_tariffa_dinamica.pdf</uri>
+    </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -99,7 +121,7 @@
       <dataType>
         <string />
       </dataType>
-      <defaultValue>D1</defaultValue>
+      <defaultValue></defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
@@ -111,30 +133,14 @@
         <label>Tarif-Name</label>
       </configurationDescription>
     </configurationListElement>
-    <configurationListElement>
-      <name>token</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue></defaultValue>
-      <configurationDescription>
-        <textElement>Access token for the web service</textElement>
-        <language>en</language>
-        <label>Bearer Token</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Access-Token des Web-Service</textElement>
-        <language>de</language>
-        <label>Bearer Token</label>
-      </configurationDescription>
-    </configurationListElement>
   </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://esit.code-fabrik.ch</restApiUri>
+        <restApiUri>https://servizi.aemsa.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
+        <restApiVerifyCertificate>false</restApiVerifyCertificate>
       </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
@@ -142,9 +148,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>2</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>
@@ -508,13 +514,9 @@ Ein JSON-Beispiel ist:
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
-                    <header>
-                      <headerName>Authorization</headerName>
-                      <value>Bearer {{token}}</value>
-                    </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v2/tariff_name</requestPath>
+                  <requestPath>/tariffe_v2</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>

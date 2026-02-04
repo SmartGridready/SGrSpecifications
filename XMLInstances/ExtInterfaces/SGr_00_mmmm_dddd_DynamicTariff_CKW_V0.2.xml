@@ -3,14 +3,20 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Primeo Dynamic Tariffs</deviceName>
-  <manufacturerName>Primeo Energie</manufacturerName>
+  <deviceName>CKW Dynamic Tariffs</deviceName>
+  <manufacturerName>CKW</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2026-01-27</date>
+      <date>2025-10-13</date>
+      <author>SGr/mkr</author>
+      <comment>Initial draft</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.2.0</version>
+      <date>2026-02-04</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -19,45 +25,67 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Primeo NetzDynamisch is an alternative to the standard grid usage tariff.
-          You benefit from Primeo NetzDynamisch if you shift your electric consumption to times of day when the grid is under low load.
-          This also applies to times of day when a large amount of electricity is produced by photovoltaic systems and fed into the grid.</p>
+          <p>CKW is offering two new dynamic tariff products for grid usage at grid level 7 for 2026.
+          CKW Home dynamic (customers with annual consumption <50MWh) and CKW Business dynamic (customers with annual consumption >50MWh).
+          The tariff profiles are based on the forecast grid load for the following day and are made available for the next day via an API by 6 p.m.
+          The tariff profile (working tariff for grid usage) is standardized to a volume-weighted average value.
+          The volume-weighted average value is slightly higher than the unit price of the standard grid product, but with a reduced power price.</p>
+
+          <ul>
+            <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Time of Publication:</strong>&nbsp;until 18:00 on the day before</li>
+            <li><strong>Binding Character:</strong>&nbsp;until 18:00 on the day before</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy, system services, energy reserve, solidarized cost, grid fees</li>
+          </ul>
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://www.primeo-energie.ch/privatkunden/strom-beziehen/netzdynamisch.html</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Primeo NetzDynamisch ist eine Alternative zum Standard-Netznutzungstarif.
-          Sie profitieren von Primeo NetzDynamisch, wenn Sie Ihren Strombezug in Zeiten verschieben, in denen das Stromnetz wenig belastet ist.
-          Dies gilt auch für Zeiten, wenn sehr viel Strom von Photovoltaikanlagen produziert und in die Netze eingespeist wird.</p>
+          <p>CKW stellt für 2026 zwei neue dynamische Wahlprodukte für die Netznutzung auf Netzebene 7 zur Verfügung.
+          CKW Home dynamic (Kunden <50MWh Jahresverbrauch) und CKW Business dynamic (Kunden >50MWh Jahresverbrauch).
+          Die Tarifprofile orientieren sich an der prognostizierten Netzlast des Folgetages und werden jeweils bis 18:00 Uhr über eine API für den nächsten Tag zur Verfügung gestellt.
+          Das Tarifprofil (Arbeitstarif der Netznutzung) wird jeweils an einen mengengewichteten Mittelwert normiert.
+          Der mengengewichtete Mittelwert ist leicht höher als der Einheitspreis des Standardnetzproduktes, dafür mit einem reduzierten Leistungspreis.</p>
+
+          <ul>
+            <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;bis spätestens 18:00 Uhr am Vortag</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;bis 18:00 Uhr am Vortag</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Energie, SDL, Stromreserve, solidarisierte Kosten, Netzzuschlag</li>
+          </ul>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.primeo-energie.ch/privatkunden/strom-beziehen/netzdynamisch.html</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
-    <manufacturerSpecificationIdentification>PrimeoDynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <manufacturerSpecificationIdentification>CKWDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>None</testState>
     <programmerHints>
       <textElement>
         <![CDATA[
+          <p>Bei der API kann der Tariftyp grid und integrated abgerufen werden.
+          Der grid Tarif beinhaltet den dynamischen Tarif (Arbeitspreis), die SDL, Stromreserve, die solidarisierten Kosten und den Netzzuschlag.
+          Der Tarif integrated beinhaltet zusätzlich den Energiepreis des Produktes CKW ClassicStrom.
+          Ausgenommen sind das Messentgelt, der Leistungspreis und die Konzessionsabgabe.</p>
           <p>Link zur technischen Dokumentation:</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://www.primeo-energie.ch/magnolia/dam/jcr:2a776feb-30aa-481b-8bc0-7f157c00d955/FS_Merkblatt_Wahltarif%20Primeo_NetzDynamisch.pdf</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
     </programmerHints>
   </deviceInformation>
   <configurationList>
@@ -104,20 +132,16 @@
       <dataType>
         <enum>
           <enumEntry>
-            <literal>NetzDynamisch</literal>
-            <description>Netzgebiet von Primeo Energie</description>
+            <literal>home_dynamic</literal>
+            <description>Home Dynamic (below 50 MWh/year)</description>
           </enumEntry>
           <enumEntry>
-            <literal>NetzDynamischAVAG</literal>
-            <description>Netzgebiet von AVAG</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>NetzDynamischELAG</literal>
-            <description>Netzgebiet von ELAG</description>
+            <literal>business_dynamic</literal>
+            <description>Business Dynamic (above 50 MWh/year)</description>
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>NetzDynamisch</defaultValue>
+      <defaultValue>home_dynamic</defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
@@ -134,7 +158,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://tarife.primeo-energie.ch</restApiUri>
+        <restApiUri>https://e-ckw-public-data.de-c1.eu1.cloudhub.io</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
@@ -143,9 +167,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>2</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>
@@ -511,7 +535,7 @@ Ein JSON-Beispiel ist:
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/tariffs</requestPath>
+                  <requestPath>/api/v1/netzinformationen/energie/dynamische-preise</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>

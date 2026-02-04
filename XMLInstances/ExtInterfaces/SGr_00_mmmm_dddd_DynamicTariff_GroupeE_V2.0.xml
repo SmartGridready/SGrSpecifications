@@ -16,7 +16,7 @@
     </changeLog>
     <changeLog>
       <version>2.0.0</version>
-      <date>2026-01-27</date>
+      <date>2026-02-04</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -54,7 +54,7 @@
       <language>de</language>
       <uri>https://www.groupe-e.ch/de/strom/vario</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
@@ -120,20 +120,16 @@
       <dataType>
         <enum>
           <enumEntry>
-            <literal>vario_grid</literal>
-            <description>Vario Grid</description>
+            <literal>vario</literal>
+            <description>Vario</description>
           </enumEntry>
           <enumEntry>
-            <literal>vario_plus</literal>
-            <description>Vario PLUS</description>
-          </enumEntry>
-          <enumEntry>
-            <literal>dt_plus</literal>
+            <literal>double</literal>
             <description>Double PLUS</description>
           </enumEntry>
         </enum>
       </dataType>
-      <defaultValue>vario_plus</defaultValue>
+      <defaultValue>vario</defaultValue>
       <configurationDescription>
         <textElement>The actual tariff product to get</textElement>
         <language>en</language>
@@ -159,9 +155,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>2</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>

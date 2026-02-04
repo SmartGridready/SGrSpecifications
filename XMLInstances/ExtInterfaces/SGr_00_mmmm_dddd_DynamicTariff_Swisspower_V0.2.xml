@@ -3,14 +3,20 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Elektra Aettenschwil Dynamic Tariffs</deviceName>
-  <manufacturerName>Elektrizitätsgenossenschaft Aettenschwil</manufacturerName>
+  <deviceName>Swisspower Dynamic Tariffs by Metering Code</deviceName>
+  <manufacturerName>Swisspower</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2026-01-29</date>
+      <date>2025-10-07</date>
+      <author>SGr/mkr</author>
+      <comment>prepare for publication</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.2.0</version>
+      <date>2026-02-04</date>
       <author>SGr/mkr</author>
       <comment>Draft based on VSE</comment>
     </changeLog>
@@ -19,35 +25,35 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Provides dynamic tariff prices of Elektrizitätsgenossenschaft Aettenschwil (EGA).</p>
-          <p>EGA uses the <i>Swisspower</i> platform to retrieve tariff data.</p>
+          <p>Provides dynamic tariff prices of Swisspower.</p>
+          <p>This EID is a <b>template</b> for actual provider tariffs!</p>
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://elektra-aettenschwil.ch/einheitstarif-mit-dynamischem-netznutzungstarif-2026/</uri>
+      <uri>https://www.dynamische-stromtarife.ch/</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Stellt dynamische Strompreise der Elektrizitätsgenossenschaft Aettenschwil (EGA) bereit.</p>
-          <p>EGA nutzt die Plattform von <i>Swisspower</i>, um Tarifdaten abzurufen.</p>
+          <p>Stellt dynamische Strompreise von Swisspower bereit.</p>
+          <p>Diese EID ist eine <b>Vorlage</b> für konkrete Stromanbieter-Tarife!</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://elektra-aettenschwil.ch/einheitstarif-mit-dynamischem-netznutzungstarif-2026/</uri>
+      <uri>https://www.dynamische-stromtarife.ch/</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
-    <manufacturerSpecificationIdentification>EGADynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -136,9 +142,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>2</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>
