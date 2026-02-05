@@ -3,87 +3,131 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>AEM Dynamic Tariffs</deviceName>
-  <manufacturerName>AEM</manufacturerName>
+  <deviceName>CKW Dynamic Tariffs</deviceName>
+  <manufacturerName>CKW</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
     <changeLog>
       <version>0.1.0</version>
-      <date>2025-10-03</date>
+      <date>2025-10-13</date>
       <author>SGr/mkr</author>
       <comment>Initial draft</comment>
     </changeLog>
     <changeLog>
       <version>0.1.1</version>
-      <date>2025-11-24</date>
+      <date>2025-10-13</date>
       <author>SGr/mkr</author>
       <comment>use JSONata query</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.1.2</version>
+      <date>2026-02-04</date>
+      <author>SGr/mkr</author>
+      <comment>changed category/type/level</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Optional grid usage tariff with dynamic energy component (cts/kWh) and fixed peak load component (cts/kW), available via the website, customer app, and API.</p>
+          <p>CKW is offering two new dynamic tariff products for grid usage at grid level 7 for 2026.
+          CKW Home dynamic (customers with annual consumption <50MWh) and CKW Business dynamic (customers with annual consumption >50MWh).
+          The tariff profiles are based on the forecast grid load for the following day and are made available for the next day via an API by 6 p.m.
+          The tariff profile (working tariff for grid usage) is standardized to a volume-weighted average value.
+          The volume-weighted average value is slightly higher than the unit price of the standard grid product, but with a reduced power price.</p>
 
           <ul>
             <li><strong>Data Update Frequency:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Time of Publication:</strong>&nbsp;18:00 on the day before</li>
-            <li><strong>Binding Character:</strong>&nbsp;18:00 on the day before, via API, web site, app</li>
-            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy and volume of the grid component is dynamic; the peak component is not dynamic.</li>
+            <li><strong>Time of Publication:</strong>&nbsp;until 18:00 on the day before</li>
+            <li><strong>Binding Character:</strong>&nbsp;until 18:00 on the day before</li>
+            <li><strong>Non-dynamic Elements:</strong>&nbsp;Energy, system services, energy reserve, solidarized cost, grid fees</li>
           </ul>
         ]]>
       </textElement>
       <language>en</language>
-      <uri>https://aemsa.ch/</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
     </legibleDescription>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Optionaler Netznutzungstarif mit dynamischer Energiekomponente (cts/kWh) und fixer Spitzenlastkomponente (cts/kW), verfügbar über die Website, die Kunden-App und die API.</p>
+          <p>CKW stellt für 2026 zwei neue dynamische Wahlprodukte für die Netznutzung auf Netzebene 7 zur Verfügung.
+          CKW Home dynamic (Kunden <50MWh Jahresverbrauch) und CKW Business dynamic (Kunden >50MWh Jahresverbrauch).
+          Die Tarifprofile orientieren sich an der prognostizierten Netzlast des Folgetages und werden jeweils bis 18:00 Uhr über eine API für den nächsten Tag zur Verfügung gestellt.
+          Das Tarifprofil (Arbeitstarif der Netznutzung) wird jeweils an einen mengengewichteten Mittelwert normiert.
+          Der mengengewichtete Mittelwert ist leicht höher als der Einheitspreis des Standardnetzproduktes, dafür mit einem reduzierten Leistungspreis.</p>
 
           <ul>
             <li><strong>Häufigkeit der Datenaktualisierung:</strong>&nbsp;Day-ahead</li>
-            <li><strong>Publikationszeitpunkt:</strong>&nbsp;18.00 am Vortag</li>
-            <li><strong>Verbindlichkeit:</strong>&nbsp;18.00 am Vortag durch API, webseite, App</li>
-            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Nur der Energie-/Volumenanteil der Netzkomponente ist dynamisch; die Spitzenkomponente ist nicht dynamisch.</li>
+            <li><strong>Publikationszeitpunkt:</strong>&nbsp;bis spätestens 18:00 Uhr am Vortag</li>
+            <li><strong>Verbindlichkeit:</strong>&nbsp;bis 18:00 Uhr am Vortag</li>
+            <li><strong>Nicht-dynamische Elemente:</strong>&nbsp;Energie, SDL, Stromreserve, solidarisierte Kosten, Netzzuschlag</li>
           </ul>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://aemsa.ch/</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
-    <manufacturerSpecificationIdentification>AEMDynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <manufacturerSpecificationIdentification>CKWDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
-      <subReleaseVersionNumber>1</subReleaseVersionNumber>
+      <subReleaseVersionNumber>2</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
     <programmerHints>
       <textElement>
         <![CDATA[
-          <p>Für das Jahr 2026 wird eine aktualisierte Version des dynamischen Tarifs veröffentlicht, wobei sich die Formel für die dynamische Komponente leicht ändern wird.</p>
+          <p>Bei der API kann der Tariftyp grid und integrated abgerufen werden.
+          Der grid Tarif beinhaltet den dynamischen Tarif (Arbeitspreis), die SDL, Stromreserve, die solidarisierten Kosten und den Netzzuschlag.
+          Der Tarif integrated beinhaltet zusätzlich den Energiepreis des Produktes CKW ClassicStrom.
+          Ausgenommen sind das Messentgelt, der Leistungspreis und die Konzessionsabgabe.</p>
           <p>Link zur technischen Dokumentation:</p>
         ]]>
       </textElement>
       <language>de</language>
-      <uri>https://aem-production.cdn.prismic.io/aem-production/Z1mn9ZbqstJ98VNc_documento_tecnico_tariffa_dinamica.pdf</uri>
+      <uri>https://www.ckw.ch/energie/strom/dynamischer-tarif-fuer-privatkunden-und-unternehmen/dynamischer-tarif-technische-voraussetzungen</uri>
     </programmerHints>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>tariff_name</name>
+      <dataType>
+        <enum>
+          <enumEntry>
+            <literal>home_dynamic</literal>
+            <description>Home Dynamic (below 50 MWh/year)</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>business_dynamic</literal>
+            <description>Business Dynamic (above 50 MWh/year)</description>
+          </enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>home_dynamic</defaultValue>
+      <configurationDescription>
+        <textElement>The actual tariff product to get</textElement>
+        <language>en</language>
+        <label>Tariff Name</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Gewünschtes Tarif-Produkt</textElement>
+        <language>de</language>
+        <label>Tarif-Name</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://servizi.aemsa.ch</restApiUri>
+        <restApiUri>https://e-ckw-public-data.de-c1.eu1.cloudhub.io</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
-        <restApiVerifyCertificate>false</restApiVerifyCertificate>
       </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
@@ -91,9 +135,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>
@@ -447,18 +491,22 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/tariffe</requestPath>
+                  <requestPath>/api/v1/netzinformationen/energie/dynamische-preise</requestPath>
                   <requestQuery>
                     <parameter>
                       <name>tariff_type</name>
-                      <value>total</value>
+                      <value>integrated</value>
                     </parameter>
                     <parameter>
-                      <name>start</name>
+                      <name>tariff_name</name>
+                      <value>{{tariff_name}}</value>
+                    </parameter>
+                    <parameter>
+                      <name>start_timestamp</name>
                       <value>[[start_timestamp]]</value>
                     </parameter>
                     <parameter>
-                      <name>end</name>
+                      <name>end_timestamp</name>
                       <value>[[end_timestamp]]</value>
                     </parameter>
                   </requestQuery>
@@ -466,13 +514,12 @@
                     <queryType>JSONataExpression</queryType>
                     <query>
                       <![CDATA[
-                        dynamic_prices[].{
+                        prices[].{
                           "start_timestamp": start_timestamp,
                           "end_timestamp": end_timestamp,
-                          "integrated": total[].{
+                          "integrated": integrated[].{
                             "value": value,
-                            "unit": $replace(unit, '_', '/'),
-                            "component": component
+                            "unit": $replace(unit, '_', '/')
                           }
                         }
                       ]]>

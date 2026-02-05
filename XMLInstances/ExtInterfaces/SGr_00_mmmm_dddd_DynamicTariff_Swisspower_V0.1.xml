@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>ESIT / Swisspower Dynamic Tariffs</deviceName>
-  <manufacturerName>ESIT / Swisspower</manufacturerName>
+  <deviceName>Swisspower Dynamic Tariffs by Metering Code</deviceName>
+  <manufacturerName>Swisspower</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -16,17 +16,17 @@
     </changeLog>
     <changeLog>
       <version>0.1.1</version>
-      <date>2025-11-24</date>
+      <date>2026-02-04</date>
       <author>SGr/mkr</author>
-      <comment>use JSONata query</comment>
+      <comment>use JSONata query, updated title/text</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Provides dynamic tariff prices of ESIT/Swisspower.</p>
-          <p>This EID is a template for actual provider tariffs!</p>
+          <p>Provides dynamic tariff prices of Swisspower.</p>
+          <p>This EID is a <b>template</b> for actual provider tariffs!</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -35,19 +35,19 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          <p>Stellt dynamische Strompreise von ESIT/Swisspower bereit.</p>
-          <p>Diese EID ist eine Vorlage für konkrete Stromanbieter-Tarife!</p>
+          <p>Stellt dynamische Strompreise von Swisspower bereit.</p>
+          <p>Diese EID ist eine <b>Vorlage</b> für konkrete Stromanbieter-Tarife!</p>
         ]]>
       </textElement>
       <language>de</language>
       <uri>https://www.dynamische-stromtarife.ch/</uri>
     </legibleDescription>
-    <deviceCategory>DeviceInformation</deviceCategory>
+    <deviceCategory>SGCP</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
     <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
-    <levelOfOperation>5</levelOfOperation>
+    <levelOfOperation>m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -104,9 +104,9 @@
             <functionalProfileName>DynamicTariff</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>DynamicTariff</functionalProfileCategory>
-              <functionalProfileType>Supplier</functionalProfileType>
-              <levelOfOperation>5</levelOfOperation>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
                 <secondaryVersionNumber>0</secondaryVersionNumber>

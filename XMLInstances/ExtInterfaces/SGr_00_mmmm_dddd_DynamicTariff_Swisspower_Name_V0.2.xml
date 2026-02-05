@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+  <deviceName>Swisspower Dynamic Tariffs by Tariff Name</deviceName>
+  <manufacturerName>Swisspower</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2025-10-07</date>
+      <author>SGr/mkr</author>
+      <comment>prepare for publication</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.2.0</version>
+      <date>2026-02-04</date>
+      <author>SGr/mkr</author>
+      <comment>Draft based on VSE</comment>
+    </changeLog>
+  </releaseNotes>
+  <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Provides dynamic tariff prices of Swisspower.</p>
+          <p>This EID is a template for actual provider tariffs!</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+      <uri>https://www.dynamische-stromtarife.ch/</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Stellt dynamische Strompreise von Swisspower bereit.</p>
+          <p>Diese EID ist eine Vorlage für konkrete Stromanbieter-Tarife!</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+      <uri>https://www.dynamische-stromtarife.ch/</uri>
+    </legibleDescription>
+    <deviceCategory>SGCP</deviceCategory>
+    <isLocalControl>false</isLocalControl>
+    <softwareRevision>2.0.0</softwareRevision>
+    <hardwareRevision>-</hardwareRevision>
+    <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
+    <levelOfOperation>m</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>2</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+    <testState>Verified</testState>
+  </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>tariff_type</name>
+      <dataType>
+        <enum>
+          <enumEntry>
+            <literal>electricity</literal>
+            <description>Electricity</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>grid</literal>
+            <description>Grid</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>feed_in</literal>
+            <description>Feed-in</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>integrated</literal>
+            <description>Electricity with grid fees included</description>
+          </enumEntry>
+          <enumEntry>
+            <literal>regional_fees</literal>
+            <description>Regional Fees</description>
+          </enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>integrated</defaultValue>
+      <configurationDescription>
+        <textElement>The tariff type to get</textElement>
+        <language>en</language>
+        <label>Tariff Type</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Gewünschter Tarif-Typ</textElement>
+        <language>de</language>
+        <label>Tarif-Typ</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tariff_name</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>D1</defaultValue>
+      <configurationDescription>
+        <textElement>The actual tariff product to get</textElement>
+        <language>en</language>
+        <label>Tariff Name</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Gewünschtes Tarif-Produkt</textElement>
+        <language>de</language>
+        <label>Tarif-Name</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>token</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>Access token for the web service</textElement>
+        <language>en</language>
+        <label>Bearer Token</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Access-Token des Web-Service</textElement>
+        <language>de</language>
+        <label>Bearer Token</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
+  <interfaceList>
+    <restApiInterface>
+      <restApiInterfaceDescription>
+        <restApiInterfaceSelection>URI</restApiInterfaceSelection>
+        <restApiUri>https://esit.code-fabrik.ch</restApiUri>
+        <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
+      </restApiInterfaceDescription>
+      <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>DynamicTariff</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>DynamicTariff</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>2</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <p>Dynamic electricity tariffs provide a price that can change every 15 minutes.
+                  EMS can retrieve the price data from a REST API and optimize energy usage based on the variable price.</p>
+                  <p><img src="ressources/dynamic_tariff.svg"/></p>
+                  <p>The functional profile is based on the VSE industry document <a href="https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025">Dynamic grid usage tariffs in the distribution grid</a>.
+                  It describes the JSON schema of the price data and the query parameters the REST API of a tariff supplier has to implement.</p>
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <p>Dynamische Stromtarife ermöglichen einen Strompreis, der sich alle 15 Minuten ändern kann.
+                  EMS können die Tarifdaten über ein REST API abrufen und den Energieverbrauch anhand des variablen Strompreises optimieren.</p>
+                  <p><img src="ressources/dynamic_tariff.svg"/></p>
+                  <p>Das Funktionsprofil basiert auf dem VSE-Branchendokument <a href="https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025">Dynamische Netznutzungstarife im Verteilnetz</a>.
+                  Es beschreibt das JSON-Schema der Tarifdaten und die Abfrage-Parameter, die das REST API eines Tarifanbieters unterstützen muss.</p>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>TariffSupply</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <json />
+                </dataType>
+                <unit>NONE</unit>
+                <parameterList>
+                  <parameterListElement>
+                    <name>start_timestamp</name>
+                    <dataType>
+                      <string />
+                    </dataType>
+                    <parameterDescription>
+                      <textElement>
+                        Begin of tariff period to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
+                      </textElement>
+                      <language>en</language>
+                      <label>Period start time stamp</label>
+                    </parameterDescription>
+                    <parameterDescription>
+                      <textElement>
+                        Beginn der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
+                      </textElement>
+                      <language>de</language>
+                      <label>Start-Zeitpunkt Periode</label>
+                    </parameterDescription>
+                  </parameterListElement>
+                  <parameterListElement>
+                    <name>end_timestamp</name>
+                    <dataType>
+                      <string />
+                    </dataType>
+                    <parameterDescription>
+                      <textElement>
+                        End of tariff period to be queried. Format according ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
+                      </textElement>
+                      <language>en</language>
+                      <label>Period end time stamp</label>
+                    </parameterDescription>
+                    <parameterDescription>
+                      <textElement>
+                        Ende der abzurufenden Tarifperiode. Format gem. ISO 8601: YYYY-MM-DDThh:mm:ssTZD.
+                      </textElement>
+                      <language>de</language>
+                      <label>End-Zeitpunkt Periode</label>
+                    </parameterDescription>
+                  </parameterListElement>
+                </parameterList>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+The schema of the JSON response returned by the REST API is
+
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs",
+  "description": "JSON schema for the delivery of dynamic tariff price values",
+  "type": "object",
+  "properties": {
+    "publication_timestamp": {
+      "description": "Time of tariff publication",
+      "$ref": "#/$defs/timestamp_type"
+    },
+    "prices": {
+      "description": "Price values",
+      "type": "array",
+      "items": { "$ref": "#/$defs/price_item" }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "publication_timestamp",
+    "prices"
+  ],
+  "$defs": {
+    "price_item": {
+      "type": "object",
+      "properties": {
+        "start_timestamp": {
+          "description": "Start time stamp of the tariff interval",
+          "$ref": "#/$defs/timestamp_type"
+        },
+        "end_timestamp": {
+          "description": "End time stamp of the tariff interval",
+          "$ref": "#/$defs/timestamp_type"
+        },
+        "electricity": {
+          "description": "Electricity price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "feed_in": {
+          "description": "Feed-in price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "grid": {
+          "description": "Grid price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "integrated": {
+          "description": "Integrated price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "regional_fees": {
+          "description": "Regional fee price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "start_timestamp",
+        "end_timestamp"
+      ]
+    },
+    "price_component_item": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "description": "The tariff unit of the price value",
+          "type": "string"
+        },
+        "value": {
+          "description": "The tariff price value",
+          "type": "number"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "unit",
+        "value"
+      ]
+    },
+    "timestamp_type": {
+      "description": "ISO-8601 time stamp",
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "string", "format": "empty" },
+        { "type": "null" }
+      ]
+    },
+    "price_component_array": {
+      "description": "Nullable array",
+      "anyOf": [
+        { "type": "array", "items": { "$ref": "#/$defs/price_component_item" }},
+        { "type": "null" }
+      ]
+    }
+  }
+}
+</pre></font>
+
+A JSON example is:
+
+<font size="1"><pre style="color:blue">
+{
+  "publication_timestamp": "2025-01-01T00:00:00+01:00",
+  "prices": [
+    {
+      "start_timestamp": "2025-01-01T00:00:00+01:00",
+      "end_timestamp": "2025-01-01T00:15:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.4925
+        }
+      ]
+    },
+    {
+      "start_timestamp": "2025-01-01T00:15:00+01:00",
+      "end_timestamp": "2025-01-01T00:30:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.491133
+        }
+      ]
+    }
+  ]
+}
+</pre></font>
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+Das Schema der JSON-Response des REST API ist
+
+<font size="1"><pre style="color:blue">
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs",
+  "description": "JSON schema for the delivery of dynamic tariff price values",
+  "type": "object",
+  "properties": {
+    "publication_timestamp": {
+      "description": "Time of tariff publication",
+      "$ref": "#/$defs/timestamp_type"
+    },
+    "prices": {
+      "description": "Price values",
+      "type": "array",
+      "items": { "$ref": "#/$defs/price_item" }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "publication_timestamp",
+    "prices"
+  ],
+  "$defs": {
+    "price_item": {
+      "type": "object",
+      "properties": {
+        "start_timestamp": {
+          "description": "Start time stamp of the tariff interval",
+          "$ref": "#/$defs/timestamp_type"
+        },
+        "end_timestamp": {
+          "description": "End time stamp of the tariff interval",
+          "$ref": "#/$defs/timestamp_type"
+        },
+        "electricity": {
+          "description": "Electricity price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "feed_in": {
+          "description": "Feed-in price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "grid": {
+          "description": "Grid price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "integrated": {
+          "description": "Integrated price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "regional_fees": {
+          "description": "Regional fee price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "start_timestamp",
+        "end_timestamp"
+      ]
+    },
+    "price_component_item": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "description": "The tariff unit of the price value",
+          "type": "string"
+        },
+        "value": {
+          "description": "The tariff price value",
+          "type": "number"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "unit",
+        "value"
+      ]
+    },
+    "timestamp_type": {
+      "description": "ISO-8601 time stamp",
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "string", "format": "empty" },
+        { "type": "null" }
+      ]
+    },
+    "price_component_array": {
+      "description": "Nullable array",
+      "anyOf": [
+        { "type": "array", "items": { "$ref": "#/$defs/price_component_item" }},
+        { "type": "null" }
+      ]
+    }
+  }
+}
+</pre></font>
+
+Ein JSON-Beispiel ist:
+
+<font size="1"><pre style="color:blue">
+{
+  "publication_timestamp": "2025-01-01T00:00:00+01:00",
+  "prices": [
+    {
+      "start_timestamp": "2025-01-01T00:00:00+01:00",
+      "end_timestamp": "2025-01-01T00:15:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.4925
+        }
+      ]
+    },
+    {
+      "start_timestamp": "2025-01-01T00:15:00+01:00",
+      "end_timestamp": "2025-01-01T00:30:00+01:00",
+      "integrated": [
+        {
+          "unit": "CHF_kWh",
+          "value": 0.491133
+        }
+      ]
+    }
+  ]
+}
+</pre></font>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <restApiDataPointConfiguration>
+                <dataType>JSON_object</dataType>
+                <restApiReadServiceCall>
+                  <requestHeader>
+                    <header>
+                      <headerName>Accept</headerName>
+                      <value>application/json</value>
+                    </header>
+                    <header>
+                      <headerName>Authorization</headerName>
+                      <value>Bearer {{token}}</value>
+                    </header>
+                  </requestHeader>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/api/v2/tariff_name</requestPath>
+                  <requestQuery>
+                    <parameter>
+                      <name>tariff_type</name>
+                      <value>{{tariff_type}}</value>
+                    </parameter>
+                    <parameter>
+                      <name>tariff_name</name>
+                      <value>{{tariff_name}}</value>
+                    </parameter>
+                    <parameter>
+                      <name>start_timestamp</name>
+                      <value>[[start_timestamp]]</value>
+                    </parameter>
+                    <parameter>
+                      <name>end_timestamp</name>
+                      <value>[[end_timestamp]]</value>
+                    </parameter>
+                  </requestQuery>
+                </restApiReadServiceCall>
+              </restApiDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+      </functionalProfileList>
+    </restApiInterface>
+  </interfaceList>
+</DeviceFrame>
