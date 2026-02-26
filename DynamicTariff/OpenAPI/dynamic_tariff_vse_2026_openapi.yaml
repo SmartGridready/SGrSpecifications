@@ -1,0 +1,263 @@
+# OpenAPI Specification TEMPLATE for a Dynamic Tariff Price API.
+# Based on the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
+# This template contains the essential endpoints and schemas.
+#
+# Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
+# Author: Matthias Krebs
+#
+# Version 1.0.3 (2026-02-04)
+#
+# Enable security if required - see at the bottom of this file.
+
+openapi: 3.0.3
+info:
+  title: Dynamic Tariff Price Retrieval API
+  description: >
+    API to retrieve dynamic tariff prices of an electricity provider.
+    Follows the VSE standard.
+  version: '1.0.3'
+servers:
+  # TODO: Replace this with your actual API URL
+  - url: https://tariffs.example.org/
+    description: Example server
+paths:
+  /tariffs:
+    get:
+      summary: Retrieve dynamic tariff prices
+      description: This endpoint retrieves dynamic tariff prices in a given time period.
+      operationId: get-tariffs
+      parameters:
+        - name: tariff_name
+          in: query
+          description: Filters by a specific tariff product of the provider. If omitted, the provider's default tariff is returned.
+          schema:
+            $ref: '#/components/schemas/TariffName'
+        - name: tariff_type
+          in: query
+          description: Filters by tariff type. If omitted, all available tariff types are returned.
+          schema:
+            $ref: '#/components/schemas/TariffType'
+        - name: start_timestamp
+          in: query
+          description: Marks the beginning of the price retrieval period. If omitted, the current day is returned as period.
+          schema:
+            $ref: '#/components/schemas/TimeStamp'
+        - name: end_timestamp
+          in: query
+          description: Marks the end of the price retrieval period. If omitted, the current day is returned as period.
+          schema:
+            $ref: '#/components/schemas/TimeStamp'
+      responses:
+        '200':
+          description: Dynamic tariff prices retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffPriceResponse'
+              example:
+                publication_timestamp: '2025-10-31T18:00:00+01:00'
+                prices:
+                  - start_timestamp: '2025-11-01T00:00:00+01:00'
+                    end_timestamp: '2025-11-02T00:15:00+01:00'
+                    grid:
+                      - unit: CHF_kWh
+                        value: 0.113
+                      - unit: CHF_m
+                        value: 5
+                    integrated:
+                      - unit: CHF_kWh
+                        value: 0.234
+                  - start_timestamp: '2025-11-01T00:15:00+01:00'
+                    end_timestamp: '2025-11-02T00:30:00+01:00'
+                    grid:
+                      - unit: CHF_kWh
+                        value: 0.102
+                      - unit: CHF_m
+                        value: 5
+                    integrated:
+                      - unit: CHF_kWh
+                        value: 0.225
+        '400':
+          description: Incorrect query parameters were given.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Invalid tariff_name 'xyz'. Allowed values: 'my_tariff'."
+        '500':
+          description: An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: An internal error occurred.
+components:
+  schemas:
+    PriceArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Price'
+      description: Contains the price component of time intervals.
+    Price:
+      type: object
+      required:
+        - start_timestamp
+        - end_timestamp
+      properties:
+        start_timestamp:
+          type: string
+          format: date-time
+        end_timestamp:
+          type: string
+          format: date-time
+      anyOf:
+        - properties:
+            electricity:
+              $ref: '#/components/schemas/PriceComponentArray'
+        - properties:
+            grid:
+              $ref: '#/components/schemas/PriceComponentArray'
+        - properties:
+            feed_in:
+              $ref: '#/components/schemas/PriceComponentArray'
+        - properties:
+            integrated:
+              $ref: '#/components/schemas/PriceComponentArray'
+        - properties:
+            regional_fees:
+              $ref: '#/components/schemas/PriceComponentArray'
+      description: A price item of a time interval, contains price components.
+    PriceComponentArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/PriceComponent'
+      description: Price components of a tariff component.
+    PriceComponent:
+      type: object
+      required:
+        - unit
+        - value
+      properties:
+        unit:
+          $ref: '#/components/schemas/PriceUnit'
+        value:
+          $ref: '#/components/schemas/PriceValue'
+      additionalProperties: true
+    TariffName:
+      type: string
+      enum:
+      # TODO: Define your actual tariff product names here
+        - my_tariff
+      description: >
+        Tariff names specified by DSO
+          * `my_tariff` - An example tariff
+    TariffType:
+      type: string
+      enum:
+        - electricity
+        - grid
+        - feed_in
+        - integrated
+        - regional_fees
+      description: >
+        Tariff types specified by VSE
+          * `electricity` - Electricity only
+          * `grid` - Grid fees
+          * `feed_in` - Feed-in back into grid
+          * `integrated` - Combines electricity and grid fees
+          * `regional_fees` - Additional regional fees
+    PriceUnit:
+      type: string
+      enum:
+        - CHF_kWh
+        - CHF_y
+        - CHF_m
+        - CHF_w
+        - CHF_d
+        - CHF_12h
+        - CHF_6h
+        - CHF_4h
+        - CHF_2h
+        - CHF_1h
+        - CHF_30min
+        - CHF_15min
+        - CHF_kW_y
+        - CHF_kW_m
+        - CHF_kW_w
+        - CHF_kW_d
+        - CHF_kW_12h
+        - CHF_kW_6h
+        - CHF_kW_4h
+        - CHF_kW_2h
+        - CHF_kW_1h
+        - CHF_kW_30min
+        - CHF_kW_15min
+      description: >
+        Price unit:
+          * `CHF_kWh` - CHF per kWh
+          * `CHF_y` - CHF per year
+          * `CHF_m` - CHF per month
+          * `CHF_w` - CHF per week
+          * `CHF_d` - CHF per day
+          * `CHF_12h` - CHF per 12 hours
+          * `CHF_6h` - CHF per 6 hours
+          * `CHF_4h` - CHF per 4 hours
+          * `CHF_2h` - CHF per 2 hours
+          * `CHF_1h` - CHF per hour
+          * `CHF_30min` - CHF per 30 minutes
+          * `CHF_15min` - CHF per 15 minutes
+          * `CHF_kW_y` - CHF per kW per year
+          * `CHF_kW_m` - CHF per kW per month
+          * `CHF_kW_w` - CHF per kW per week
+          * `CHF_kW_d` - CHF per kW per day
+          * `CHF_kW_12h` - CHF per kW per 12 hours
+          * `CHF_kW_6h` - CHF per kW per 6 hours
+          * `CHF_kW_4h` - CHF per kW per 4 hours
+          * `CHF_kW_2h` - CHF per kW per 2 hours
+          * `CHF_kW_1h` - CHF per kW per hour
+          * `CHF_kW_30min` - CHF per kW per 30 minutes
+          * `CHF_kW_15min` - CHF per kW per 15 minutes
+    PriceValue:
+      type: number
+      format: decimal
+      description: A numeric price value.
+    TimeStamp:
+      type: string
+      anyOf:
+        - format: date-time
+        - format: empty
+      description: An ISO-8601 time stamp.
+      example: '2025-06-23T13:30:00+02:00'
+    TariffPriceResponse:
+      type: object
+      required:
+        - publication_timestamp
+        - prices
+      properties:
+        publication_timestamp:
+          $ref: '#/components/schemas/TimeStamp'
+        prices:
+          $ref: '#/components/schemas/PriceArray'
+      additionalProperties: true
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: The error message.
+  securitySchemes:
+    # uncomment the schemes your server supports, defaults to no authentication
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+security:
+  # uncomment the schemes you want to use in your API
+  - BasicAuth: []
+  - BearerAuth: []

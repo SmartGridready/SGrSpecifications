@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs VSE",
+  "description": "JSON schema for the delivery of dynamic tariff price values (VSE 2026)",
+  "type": "object",
+  "properties": {
+    "publication_timestamp": {
+      "description": "Time of tariff publication",
+      "$ref": "#/$defs/timestamp_type"
+    },
+    "prices": {
+      "description": "Price values",
+      "type": "array",
+      "items": { "$ref": "#/$defs/price_item" }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "publication_timestamp",
+    "prices"
+  ],
+  "$defs": {
+    "price_item": {
+      "type": "object",
+      "properties": {
+        "start_timestamp": {
+          "description": "Start time stamp of the tariff interval",
+          "$ref": "#/$defs/timestamp_type"
+        },
+        "end_timestamp": {
+          "description": "End time stamp of the tariff interval",
+          "$ref": "#/$defs/timestamp_type"
+        },
+        "electricity": {
+          "description": "Electricity price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "feed_in": {
+          "description": "Feed-in price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "grid": {
+          "description": "Grid price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "integrated": {
+          "description": "Integrated price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "regional_fees": {
+          "description": "Regional fee price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "start_timestamp",
+        "end_timestamp"
+      ]
+    },
+    "price_component_item": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "description": "The tariff unit of the price value",
+          "type": "string"
+        },
+        "value": {
+          "description": "The tariff price value",
+          "type": "number"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "unit",
+        "value"
+      ]
+    },
+    "timestamp_type": {
+      "description": "ISO-8601 time stamp",
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "string", "format": "empty" },
+        { "type": "null" }
+      ]
+    },
+    "price_component_array": {
+      "description": "Nullable array",
+      "anyOf": [
+        { "type": "array", "items": { "$ref": "#/$defs/price_component_item" }},
+        { "type": "null" }
+      ]
+    }
+  }
+}
