@@ -11,10 +11,10 @@
 
 openapi: 3.0.3
 info:
-  title: Dynamic Tariff Price Retrieval API
+  title: Dynamic Tariff Retrieval API
   description: >
     API to retrieve dynamic tariff prices of an electricity provider.
-    Follows the VSE standard.
+    Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
   version: '1.0.3'
 servers:
   # TODO: Replace this with your actual API URL
@@ -27,16 +27,16 @@ paths:
       description: This endpoint retrieves dynamic tariff prices in a given time period.
       operationId: get-tariffs
       parameters:
-        - name: tariff_name
-          in: query
-          description: Filters by a specific tariff product of the provider. If omitted, the provider's default tariff is returned.
-          schema:
-            $ref: '#/components/schemas/TariffName'
         - name: tariff_type
           in: query
           description: Filters by tariff type. If omitted, all available tariff types are returned.
           schema:
             $ref: '#/components/schemas/TariffType'
+        - name: tariff_name
+          in: query
+          description: Filters by a specific tariff product of the provider. If omitted, the provider's default tariff is returned.
+          schema:
+            $ref: '#/components/schemas/TariffName'
         - name: start_timestamp
           in: query
           description: Marks the beginning of the price retrieval period. If omitted, the current day is returned as period.
@@ -53,12 +53,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TariffPriceResponse'
+                $ref: '#/components/schemas/TariffResponse'
               example:
                 publication_timestamp: '2025-10-31T18:00:00+01:00'
                 prices:
                   - start_timestamp: '2025-11-01T00:00:00+01:00'
                     end_timestamp: '2025-11-02T00:15:00+01:00'
+                    electricity:
+                      - unit: CHF_kWh
+                        value: 0.121
                     grid:
                       - unit: CHF_kWh
                         value: 0.113
@@ -69,6 +72,9 @@ paths:
                         value: 0.234
                   - start_timestamp: '2025-11-01T00:15:00+01:00'
                     end_timestamp: '2025-11-02T00:30:00+01:00'
+                    electricity:
+                      - unit: CHF_kWh
+                        value: 0.123
                     grid:
                       - unit: CHF_kWh
                         value: 0.102
@@ -99,7 +105,7 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Price'
-      description: Contains the price component of time intervals.
+      description: Contains the prices for the requested time intervals.
     Price:
       type: object
       required:
@@ -120,15 +126,21 @@ components:
             grid:
               $ref: '#/components/schemas/PriceComponentArray'
         - properties:
-            feed_in:
+            integrated:
               $ref: '#/components/schemas/PriceComponentArray'
         - properties:
-            integrated:
+            metering:
               $ref: '#/components/schemas/PriceComponentArray'
         - properties:
             regional_fees:
               $ref: '#/components/schemas/PriceComponentArray'
-      description: A price item of a time interval, contains price components.
+        - properties:
+            refund_storage:
+              $ref: '#/components/schemas/PriceComponentArray'
+        - properties:
+            feed_in:
+              $ref: '#/components/schemas/PriceComponentArray'
+      description: A price item of a time interval, contains tariff components.
     PriceComponentArray:
       type: array
       items:
@@ -148,7 +160,7 @@ components:
     TariffName:
       type: string
       enum:
-      # TODO: Define your actual tariff product names here
+      # TODO: Define your actual tariff product names here, since they are provider-specific
         - my_tariff
       description: >
         Tariff names specified by DSO
@@ -158,20 +170,25 @@ components:
       enum:
         - electricity
         - grid
-        - feed_in
         - integrated
+        - metering
         - regional_fees
+        - refund_storage
+        - feed_in
       description: >
-        Tariff types specified by VSE
-          * `electricity` - Electricity only
-          * `grid` - Grid fees
-          * `feed_in` - Feed-in back into grid
+        Tariff types (components) specified by VSE
+          * `electricity` - Electricity fees only
+          * `grid` - Grid usage fees
           * `integrated` - Combines electricity and grid fees
+          * `metering` - Metering infrastructure fees
           * `regional_fees` - Additional regional fees
+          * `refund_storage` - Refund of grid usage for storage facilities with end consumption
+          * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
     PriceUnit:
       type: string
       enum:
         - CHF_kWh
+        - CHF_kVarh
         - CHF_y
         - CHF_m
         - CHF_w
@@ -197,6 +214,7 @@ components:
       description: >
         Price unit:
           * `CHF_kWh` - CHF per kWh
+          * `CHF_kVarh` - CHF per kVarh
           * `CHF_y` - CHF per year
           * `CHF_m` - CHF per month
           * `CHF_w` - CHF per week
@@ -230,7 +248,7 @@ components:
         - format: empty
       description: An ISO-8601 time stamp.
       example: '2025-06-23T13:30:00+02:00'
-    TariffPriceResponse:
+    TariffResponse:
       type: object
       required:
         - publication_timestamp
