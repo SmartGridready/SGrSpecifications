@@ -5,7 +5,7 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
-## [unreleased]
+## [1.0.4]] - 2026-03-17
 
 ### Added
 
@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- renamed OpenAPI specification and schema
 - title of OpenAPI specification
 - order of request parameters in OpenAPI specification
 - renamed response to `TariffResponse`

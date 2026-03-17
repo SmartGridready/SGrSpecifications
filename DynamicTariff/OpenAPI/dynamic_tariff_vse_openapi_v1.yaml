@@ -5,7 +5,7 @@
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
 # Author: Matthias Krebs
 #
-# Version 1.0.3 (2026-02-04)
+# Version 1.0.4 (2026-03-17)
 #
 # Enable security if required - see at the bottom of this file.
 
@@ -15,7 +15,7 @@ info:
   description: >
     API to retrieve dynamic tariff prices of an electricity provider.
     Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
-  version: '1.0.3'
+  version: '1.0.4'
 servers:
   # TODO: Replace this with your actual API URL
   - url: https://tariffs.example.org/
@@ -39,12 +39,12 @@ paths:
             $ref: '#/components/schemas/TariffName'
         - name: start_timestamp
           in: query
-          description: Marks the beginning of the price retrieval period. If omitted, the current day is returned as period.
+          description: Marks the beginning of the price retrieval period. If omitted, the begin of the current day is utilized.
           schema:
             $ref: '#/components/schemas/TimeStamp'
         - name: end_timestamp
           in: query
-          description: Marks the end of the price retrieval period. If omitted, the current day is returned as period.
+          description: Marks the end of the price retrieval period. If omitted, the end of the current day is utilized.
           schema:
             $ref: '#/components/schemas/TimeStamp'
       responses:
@@ -55,10 +55,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TariffResponse'
               example:
-                publication_timestamp: '2025-10-31T18:00:00+01:00'
+                publication_timestamp: '2026-01-31T18:00:00+01:00'
                 prices:
-                  - start_timestamp: '2025-11-01T00:00:00+01:00'
-                    end_timestamp: '2025-11-02T00:15:00+01:00'
+                  - start_timestamp: '2026-02-01T00:00:00+01:00'
+                    end_timestamp: '2026-02-01T00:15:00+01:00'
                     electricity:
                       - unit: CHF_kWh
                         value: 0.121
@@ -70,8 +70,8 @@ paths:
                     integrated:
                       - unit: CHF_kWh
                         value: 0.234
-                  - start_timestamp: '2025-11-01T00:15:00+01:00'
-                    end_timestamp: '2025-11-02T00:30:00+01:00'
+                  - start_timestamp: '2026-02-01T00:15:00+01:00'
+                    end_timestamp: '2026-02-01T00:30:00+01:00'
                     electricity:
                       - unit: CHF_kWh
                         value: 0.123
@@ -182,7 +182,7 @@ components:
           * `integrated` - Combines electricity and grid fees
           * `metering` - Metering infrastructure fees
           * `regional_fees` - Additional regional fees
-          * `refund_storage` - Refund of grid usage for storage facilities with end consumption
+          * `refund_storage` - Refund for grid supportive storage operation
           * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
     PriceUnit:
       type: string
