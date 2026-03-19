@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - renamed response to `TariffResponse`
 - improved description of schemas
 
+### Fixed
+
+- example of `TariffResponse`
+
 
 ## [1.0.3] - 2026-02-04
 
