@@ -5,6 +5,13 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
+## [2.0.0] - unreleased
+
+### Added
+
+- tariff types `metering` and `refund_storage`
+
+
 ## [1.0.5] - 2026-05-28
 
 ### Changed
