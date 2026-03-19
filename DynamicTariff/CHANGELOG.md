@@ -5,11 +5,10 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
-## [1.0.4]] - 2026-03-17
+## [1.0.4]] - 2026-03-19
 
 ### Added
 
-- tariff types `metering` and `refund_storage`
 - price unit `CHF_kVarh`
 
 ### Changed

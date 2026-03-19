@@ -5,7 +5,7 @@
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
 # Author: Matthias Krebs
 #
-# Version 1.0.4 (2026-03-17)
+# Version 1.0.4 (2026-03-19)
 #
 # Enable security if required - see at the bottom of this file.
 
@@ -129,13 +129,7 @@ components:
             integrated:
               $ref: '#/components/schemas/PriceComponentArray'
         - properties:
-            metering:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
             regional_fees:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
-            refund_storage:
               $ref: '#/components/schemas/PriceComponentArray'
         - properties:
             feed_in:
@@ -171,18 +165,14 @@ components:
         - electricity
         - grid
         - integrated
-        - metering
         - regional_fees
-        - refund_storage
         - feed_in
       description: >
         Tariff types (components) specified by VSE
           * `electricity` - Electricity fees only
           * `grid` - Grid usage fees
           * `integrated` - Combines electricity and grid fees
-          * `metering` - Metering infrastructure fees
           * `regional_fees` - Additional regional fees
-          * `refund_storage` - Refund for grid supportive storage operation
           * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
     PriceUnit:
       type: string
