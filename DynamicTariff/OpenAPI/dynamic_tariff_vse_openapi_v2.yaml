@@ -70,6 +70,8 @@ paths:
                     integrated:
                       - unit: CHF_kWh
                         value: 0.234
+                      - unit: CHF_m
+                        value: 5
                   - start_timestamp: '2026-02-01T00:15:00+01:00'
                     end_timestamp: '2026-02-01T00:30:00+01:00'
                     electricity:
@@ -83,6 +85,8 @@ paths:
                     integrated:
                       - unit: CHF_kWh
                         value: 0.225
+                      - unit: CHF_m
+                        value: 5
         '400':
           description: Incorrect query parameters were given.
           content:
