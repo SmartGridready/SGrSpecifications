@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2026-04-02</date>
+      <author>SGr/mkr</author>
+      <comment>First Draft with Data Point Blocks</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>DataPointBlockTest</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p>Dies ist ein erster Entwurf eines Funktionsprofils mit Gruppierung von Datenpunkten und Auswahlsendung.</p>
+          <p>
+            Ein Datenpunkt-Block kann Pflicht oder optional sein
+          </p>
+          <p>
+            Varianten (Kombinationen von Datenpunktlisten):
+            <ul>
+              <li>AnyOf: Mindestens eine Variante</li>
+              <li>OneOf: Genau eine Variante</li>
+            </ul>
+          </p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <!-- Fallback = alte "dataPointList" -->
+  <dataPointBlockList>
+    <dataPointBlock>
+      <name>Voltage</name>
+      <presenceLevel>M</presenceLevel>
+      <selector>AnyOf</selector>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint>
+            <dataPointName>VoltageACL1_L2</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>VOLTS</unit>
+            <legibleDescription>
+              <textElement>Erfassung der Spannung zwischen Phase 1-2</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint>
+            <dataPointName>VoltageACL1_L3</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>VOLTS</unit>
+            <legibleDescription>
+              <textElement>Erfassung der Spannung zwischen Phase 1-3</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint>
+            <dataPointName>VoltageACL2_L3</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>VOLTS</unit>
+            <legibleDescription>
+              <textElement>Erfassung der Spannung zwischen Phase 2-3</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+        </dataPointListElement>
+      </dataPointList>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint>
+            <dataPointName>VoltageACL1_N</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>VOLTS</unit>
+            <legibleDescription>
+              <textElement>Erfassung der Spannung zwischen Phase 1 und Nullleiter</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint>
+            <dataPointName>VoltageACL2_N</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>VOLTS</unit>
+            <legibleDescription>
+              <textElement>Erfassung der Spannung zwischen Phase 2 und Nullleiter</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint>
+            <dataPointName>VoltageACL3_N</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
+            <dataType>
+              <float64 />
+            </dataType>
+            <unit>VOLTS</unit>
+            <legibleDescription>
+              <textElement>Erfassung der Spannung zwischen Phase 3 und Nullleiter</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+        </dataPointListElement>
+      </dataPointList>
+    </dataPointBlock>
+  </dataPointBlockList>
+</FunctionalProfileFrame>
