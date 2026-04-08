@@ -1,17 +1,17 @@
-# OpenAPI Specification TEMPLATE for SGCP FlexMgmt API.
+# OpenAPI Specification TEMPLATE for SGCP Flexibility Management API.
 # Based on the functional profile https://library.smartgridready.ch/FP_SGr_SGCP_FlexMgmt_4m_1.0.xml?viewProfile.
 # This template contains the essential endpoints and schemas.
 #
 # Provided by SmartGridready.
 # Author: Matthias Krebs
 #
-# Version 1.0.0 (UNRELEASED)
+# Version 1.0.0 (WORK IN PROGRESS)
 #
 # Enable security if required - see at the bottom of this file.
 
 openapi: 3.0.3
 info:
-  title: SGCP FlexMgmt API
+  title: SGCP Flexibility Management API
   description: >
     API to dynamically restrict power to manage flexibility.
   version: '1.0.0'
@@ -20,73 +20,15 @@ servers:
   - url: https://sgcp.example.org/
     description: Example server
 paths:
-  /sgcp/{smId}/settings:
+  /flexmgmt/{smId}/settings:
     get:
-      description: SGCP Get settings
-      parameters:
-      - name: smId
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Successful
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  Address:
-                    type: object
-                    description: Adresse des Energiemanagers
-                    properties:
-                      Street:
-                        type: string
-                        description: Strasse und Hausnummer
-                      ZipCode:
-                        type: string
-                        description: Postleitzahl
-                      City:
-                        type: string
-                        description: Ort
-                  MeterNumber:
-                    type: string
-                    description: Nummer auf dem Zähler
-                  MeasuringPointName:
-                    type: string
-                    description: Messpunktbezeichnung im System
-                  AvailableFlexibilities:
-                    type: array
-                    description: Liste der vorhandenen Flexibilitäten (PV, WP, EV, BESS)
-                    items:
-                      type: string
-                      enum:
-                        - PV
-                        - WP
-                        - EV
-                        - BESS
-                  PVSize:
-                    type: number
-                    description: Grösse PV Anlage (DC seitig) in [kWp]
-                  BatteryCapacity:
-                    type: number
-                    description: Battery Capacity in [kWh]
-                  HeatpumpPower:
-                    type: number
-                    description: Leistung Wärmepumpe elektrisch in [kW]
-                  WriteAccess:
-                    type: boolean
-                    description: Kunde gibt Schreibzugriff auf Anlage an VNB
-                  PVControl:
-                    type: boolean
-                    description: ist PV Reduzierung verfügbar ja oder nein
-  /sgcp/{smId}/data:
-    get:
-      description: SGCP Get data
+      summary: Get current settings
+      description: Gets the current settings
+      operationId: get-settings
       parameters:
         - name: smId
           in: path
+          description: Solar Manager ID
           required: true
           schema:
             type: string
@@ -96,55 +38,35 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  EmsAvailable:
-                    type: string
-                    description: Zustand des EMS
-                    enum:
-                      - EMS_REACHABLE
-                      - EMS_NOT_REACHABLE
-                      - EMS_CONNECTION_FAULT
-                  PVPower:
-                    type: number
-                    description: Aktuelle Produktionsleistung in [kW]
-                  MeterPower:
-                    type: number
-                    description: Aktuelle Leistung am Bilanzzähler (+ Bezug, - Feed-In) in [kW]
-                  AvailableFlexPositive:
-                    type: number
-                    description: verfügbare Flexibilität positiv (Bezug) in [kW]
-                  AvailableFlexNegative:
-                    type: number
-                    description: verfügbare Flexibilität negativ (Produktion) in [kW]
-                  BESSSoc:
-                    type: integer
-                    description: Aktueller Ladestand Speicher in [%]
-                  BESSCapacityNegative:
-                    type: number
-                    description: mögliche Kapazität zum Laden bis Limite in [kWh]
-                  BESSCapacityPositive:
-                    type: number
-                    description: mögliche Kapazität zum Entladen bis Limite in [kWh]
-                  MeterVoltage:
-                    type: object
-                    description: Feedback aller drei Spannungslevel am Hausanschluss jeweils in [Volt]
-                    properties:
-                      Voltage1:
-                        type: number
-                        description: Spannung Phase 1 in [Volt]
-                      Voltage2:
-                        type: number
-                        description: Spannung Phase 2 in [Volt]
-                      Voltage3:
-                        type: number
-                        description: Spannung Phase 3 in [Volt]
-  /sgcp/{smId}/restrictPower:
-    post:
-      description: SGCP Restrict power
+                $ref: '#/components/schemas/SettingsResponse'
+  /flexmgmt/{smId}/data:
+    get:
+      summary: Get current data
+      description: Gets the current data and flexibilities
+      operationId: get-data
       parameters:
         - name: smId
           in: path
+          description: Solar Manager ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse'
+  /flexmgmt/{smId}/restrictPower:
+    post:
+      summary: Set power restriction
+      description: Sets restrictions of power consumption or feed-in
+      operationId: set-restrict-power
+      parameters:
+        - name: smId
+          in: path
+          description: Solar Manager ID
           required: true
           schema:
             type: string
@@ -152,27 +74,141 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                RestrictionActive:
-                  type: boolean
-                  description: Aktivierung der Leistungsreduktion
-                Restriction:
-                  type: object
-                  properties:
-                    MinimumPowerKw:
-                      type: number
-                      description: Minimum power to restrict in [kW]. Positive values restrict import, negative values restrict export/feed-in
-                    MaximumPowerKw:
-                      type: number
-                      description: Maximum power to restrict in [kW]. Positive values restrict import, negative values restrict export/feed-in
-                    DurationInMinutes:
-                      type: integer
-                      description: Duration in [min]
+              $ref: '#/components/schemas/RestrictPowerRequest'
       responses:
         '204':
           description: Successful
 components:
+  schemas:
+    Address:
+      type: object
+      description: Energy manager address
+      properties:
+        Street:
+          type: string
+          description: Street and number
+        ZipCode:
+          type: string
+          description: Zip code
+        City:
+          type: string
+          description: Location
+    FlexibilityType:
+      type: string
+      enum:
+        - PV
+        - WP
+        - EV
+        - BESS
+      description: >
+        Type of flexibility
+          * `PV` - Photovoltaics
+          * `WP` - Heat pump
+          * `EV` - Electric vehicle
+          * `BESS` - Battery system
+    EmsAvailability:
+      type: string
+      enum:
+        - EMS_REACHABLE
+        - EMS_NOT_REACHABLE
+        - EMS_CONNECTION_FAULT
+      description: >
+        Status of the EMS
+          * `EMS_REACHABLE` - EMS is online
+          * `EMS_NOT_REACHABLE` - EMS is offline
+          * `EMS_CONNECTION_FAULT` - EMS connection failed
+    MeterVoltage:
+      type: object
+      description: Feedback of voltage levels at building connection point in [V]
+      properties:
+        Voltage1:
+          type: number
+          description: Voltage of phase 1 in [V]
+        Voltage2:
+          type: number
+          description: Voltage of phase 2 in [V]
+        Voltage3:
+          type: number
+          description: Voltage of phase 3 in [V]
+    Restriction:
+      type: object
+      properties:
+        MinimumPowerKw:
+          type: number
+          description: Minimum power (+ consumption, - feed-In) in [kW]
+        MaximumPowerKw:
+          type: number
+          description: Maximum power (+ consumption, - feed-In) in [kW]
+        DurationInMinutes:
+          type: integer
+          description: Duration in [min]
+    SettingsResponse:
+      type: object
+      properties:
+        Address:
+          $ref: '#/components/schemas/Address'
+        MeterNumber:
+          type: string
+          description: Meter number
+        MeasuringPointName:
+          type: string
+          description: Measurement identifier in the system
+        AvailableFlexibilities:
+          type: array
+          description: List of available flexibilities (PV, WP, EV, BESS)
+          items:
+            $ref: '#/components/schemas/FlexibilityType'
+        PVSize:
+          type: number
+          description: PV plant size (DC side) in [kWp]
+        BatteryCapacity:
+          type: number
+          description: Battery Capacity in [kWh]
+        HeatpumpPower:
+          type: number
+          description: Electrical power of heat pump in [kW]
+        WriteAccess:
+          type: boolean
+          description: Customer grants write access to DSO
+        PVControl:
+          type: boolean
+          description: is PV restriction available yes or no
+    DataResponse:
+      type: object
+      properties:
+        EmsAvailable:
+          $ref: '#/components/schemas/Restriction'
+        PVPower:
+          type: number
+          description: Current power of production in [kW]
+        MeterPower:
+          type: number
+          description: Current power at balance meter (+ consumption, - feed-In) in [kW]
+        AvailableFlexPositive:
+          type: number
+          description: Available positive flexibility (consumption) in [kW]
+        AvailableFlexNegative:
+          type: number
+          description: Available negative flexibility (production) in [kW]
+        BESSSoc:
+          type: integer
+          description: Current state of charge of storage in [%]
+        BESSCapacityNegative:
+          type: number
+          description: Charging capacity up to limit in [kWh]
+        BESSCapacityPositive:
+          type: number
+          description: Discharging capacity down to limit in [kWh]
+        MeterVoltage:
+          $ref: '#/components/schemas/MeterVoltage'
+    RestrictPowerRequest:
+      type: object
+      properties:
+        RestrictionActive:
+          type: boolean
+          description: Activation of power restriction
+        Restriction:
+          $ref: '#/components/schemas/Restriction'
   securitySchemes:
     # uncomment the schemes your server supports, defaults to no authentication
     BasicAuth:
