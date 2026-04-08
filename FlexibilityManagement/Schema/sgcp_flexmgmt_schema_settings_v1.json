@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Settings",
+  "description": "Current settings",
+  "type": "object",
+  "properties": {
+    "Address": {
+      "description": "Address of the energy manager",
+      "type": "object",
+      "properties": {
+        "Street": {
+          "description": "Street and number",
+          "type": "string"
+        },
+        "ZipCode": {
+          "description": "Zip code",
+          "type": "string",
+        },
+        "City": {
+          "description": "Location",
+          "type": "string"
+        }
+      },
+      "required": [
+        "Street", "ZipCode", "City"
+      ]
+    },
+    "MeterNumber": {
+      "description": "Meter number",
+      "type": "string"
+    },
+    "MeasuringPointName": {
+      "description": "Measurement identifier in the system",
+      "type": "string"
+    },
+    "AvailableFlexibilities": {
+      "description": "List of available flexibilities (PV, WP, EV, BESS)",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [ "PV", "WP", "EV", "BESS" ]
+      }
+    },
+    "PVSize": {
+      "description": "PV plant size (DC side) in [kWp]",
+      "type": "number"
+    },
+    "BatteryCapacity": {
+      "description": "Battery Capacity in [kWh]",
+      "type": "number"
+    },
+    "HeatpumpPower": {
+      "description": "Electrical power of heat pump in [kW]",
+      "type": "number"
+    },
+    "WriteAccess": {
+      "description": "Customer grants write access to DSO",
+      "type": "boolean"
+    },
+    "PVControl": {
+      "description": "is PV restriction available yes or no",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "Address", "MeterNumber", "MeasuringPointName", "AvailableFlexibilities",
+    "PVSize", "BatteryCapacity", "HeatpumpPower", "WriteAccess", "PVControl"
+  ]
+}

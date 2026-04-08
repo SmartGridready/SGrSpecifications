@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Restrict Power",
+  "description": "Set power restriction",
+  "type": "object",
+  "properties": {
+    "RestrictionActive": {
+      "description": "Activation of power restriction",
+      "type": "boolean"
+    },
+    "Restriction": {
+      "description": "Power restriction",
+      "type": "object",
+      "properties": {
+        "MinimumPowerKw": {
+          "description": "Minimum power (+ consumption, - feed-In) in [kW]",
+          "type": "number"
+        },
+        "MaximumPowerKw": {
+          "description": "Maximum power (+ consumption, - feed-In) in [kW]",
+          "type": "number"
+        },
+        "DurationInMinutes": {
+          "description": "Duration in [min]",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "MinimumPowerKw", "MaximumPowerKw", "DurationInMinutes"
+      ]
+    }
+  },
+  "required": [
+    "RestrictionActive", "Restriction"
+  ]
+}

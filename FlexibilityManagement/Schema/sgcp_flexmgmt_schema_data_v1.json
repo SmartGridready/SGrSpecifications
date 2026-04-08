@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Data",
+  "description": "Current data and flexibilities",
+  "type": "object",
+  "properties": {
+    "EmsAvailable": {
+      "description": "Status of the EMS",
+      "type": "string",
+      "enum": [ "EMS_REACHABLE", "EMS_NOT_REACHABLE", "EMS_CONNECTION_FAULT" ]
+    },
+    "PVPower": {
+      "description": "Current power of production in [kW]",
+      "type": "number"
+    },
+    "MeterPower": {
+      "description": "Current power at balance meter (+ consumption, - feed-In) in [kW]",
+      "type": "number"
+    },
+    "AvailableFlexPositive": {
+      "description": "Available positive flexibility (consumption) in [kW]",
+      "type": "number"
+    },
+    "AvailableFlexNegative": {
+      "description": "Available negative flexibility (production) in [kW]",
+      "type": "number"
+    },
+    "BESSSoc": {
+      "description": "Current state of charge of storage in [%]",
+      "type": "integer"
+    },
+    "BESSCapacityNegative": {
+      "description": "Charging capacity up to limit in [kWh]",
+      "type": "number"
+    },
+    "BESSCapacityPositive": {
+      "description": "Discharging capacity down to limit in [kWh]",
+      "type": "number"
+    },
+    "MeterVoltage": {
+      "description": "Feedback of voltage levels at building connection point in [V]",
+      "type": "object",
+      "properties": {
+        "Voltage1": {
+          "description": "Voltage of phase 1 in [V]",
+          "type": "number"
+        },
+        "Voltage2": {
+          "description": "Voltage of phase 2 in [V]",
+          "type": "number"
+        },
+        "Voltage3": {
+          "description": "Voltage of phase 3 in [V]",
+          "type": "number"
+        }
+      },
+      "required": [
+        "Voltage1", "Voltage2", "Voltage3"
+      ]
+    }
+  },
+  "required": [
+    "EmsAvailable", "PVPower", "MeterPower", "BESSSoc", "MeterVoltage"
+  ]
+}

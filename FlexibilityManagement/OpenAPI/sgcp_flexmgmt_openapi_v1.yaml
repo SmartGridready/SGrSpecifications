@@ -1,0 +1,187 @@
+# OpenAPI Specification TEMPLATE for SGCP FlexMgmt API.
+# Based on the functional profile https://library.smartgridready.ch/FP_SGr_SGCP_FlexMgmt_4m_1.0.xml?viewProfile.
+# This template contains the essential endpoints and schemas.
+#
+# Provided by SmartGridready.
+# Author: Matthias Krebs
+#
+# Version 1.0.0 (UNRELEASED)
+#
+# Enable security if required - see at the bottom of this file.
+
+openapi: 3.0.3
+info:
+  title: SGCP FlexMgmt API
+  description: >
+    API to dynamically restrict power to manage flexibility.
+  version: '1.0.0'
+servers:
+  # TODO: Replace this with your actual API URL
+  - url: https://sgcp.example.org/
+    description: Example server
+paths:
+  /sgcp/{smId}/settings:
+    get:
+      description: SGCP Get settings
+      parameters:
+      - name: smId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Address:
+                    type: object
+                    description: Adresse des Energiemanagers
+                    properties:
+                      Street:
+                        type: string
+                        description: Strasse und Hausnummer
+                      ZipCode:
+                        type: string
+                        description: Postleitzahl
+                      City:
+                        type: string
+                        description: Ort
+                  MeterNumber:
+                    type: string
+                    description: Nummer auf dem Zähler
+                  MeasuringPointName:
+                    type: string
+                    description: Messpunktbezeichnung im System
+                  AvailableFlexibilities:
+                    type: array
+                    description: Liste der vorhandenen Flexibilitäten (PV, WP, EV, BESS)
+                    items:
+                      type: string
+                      enum:
+                        - PV
+                        - WP
+                        - EV
+                        - BESS
+                  PVSize:
+                    type: number
+                    description: Grösse PV Anlage (DC seitig) in [kWp]
+                  BatteryCapacity:
+                    type: number
+                    description: Battery Capacity in [kWh]
+                  HeatpumpPower:
+                    type: number
+                    description: Leistung Wärmepumpe elektrisch in [kW]
+                  WriteAccess:
+                    type: boolean
+                    description: Kunde gibt Schreibzugriff auf Anlage an VNB
+                  PVControl:
+                    type: boolean
+                    description: ist PV Reduzierung verfügbar ja oder nein
+  /sgcp/{smId}/data:
+    get:
+      description: SGCP Get data
+      parameters:
+        - name: smId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  EmsAvailable:
+                    type: string
+                    description: Zustand des EMS
+                    enum:
+                      - EMS_REACHABLE
+                      - EMS_NOT_REACHABLE
+                      - EMS_CONNECTION_FAULT
+                  PVPower:
+                    type: number
+                    description: Aktuelle Produktionsleistung in [kW]
+                  MeterPower:
+                    type: number
+                    description: Aktuelle Leistung am Bilanzzähler (+ Bezug, - Feed-In) in [kW]
+                  AvailableFlexPositive:
+                    type: number
+                    description: verfügbare Flexibilität positiv (Bezug) in [kW]
+                  AvailableFlexNegative:
+                    type: number
+                    description: verfügbare Flexibilität negativ (Produktion) in [kW]
+                  BESSSoc:
+                    type: integer
+                    description: Aktueller Ladestand Speicher in [%]
+                  BESSCapacityNegative:
+                    type: number
+                    description: mögliche Kapazität zum Laden bis Limite in [kWh]
+                  BESSCapacityPositive:
+                    type: number
+                    description: mögliche Kapazität zum Entladen bis Limite in [kWh]
+                  MeterVoltage:
+                    type: object
+                    description: Feedback aller drei Spannungslevel am Hausanschluss jeweils in [Volt]
+                    properties:
+                      Voltage1:
+                        type: number
+                        description: Spannung Phase 1 in [Volt]
+                      Voltage2:
+                        type: number
+                        description: Spannung Phase 2 in [Volt]
+                      Voltage3:
+                        type: number
+                        description: Spannung Phase 3 in [Volt]
+  /sgcp/{smId}/restrictPower:
+    post:
+      description: SGCP Restrict power
+      parameters:
+        - name: smId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RestrictionActive:
+                  type: boolean
+                  description: Aktivierung der Leistungsreduktion
+                Restriction:
+                  type: object
+                  properties:
+                    MinimumPowerKw:
+                      type: number
+                      description: Minimum power to restrict in [kW]. Positive values restrict import, negative values restrict export/feed-in
+                    MaximumPowerKw:
+                      type: number
+                      description: Maximum power to restrict in [kW]. Positive values restrict import, negative values restrict export/feed-in
+                    DurationInMinutes:
+                      type: integer
+                      description: Duration in [min]
+      responses:
+        '204':
+          description: Successful
+components:
+  securitySchemes:
+    # uncomment the schemes your server supports, defaults to no authentication
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+security:
+  # uncomment the schemes you want to use in your API
+  - BasicAuth: []
+  - BearerAuth: []
