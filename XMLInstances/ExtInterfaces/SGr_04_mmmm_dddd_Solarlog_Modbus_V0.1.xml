@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+  <deviceName>Solar-Log</deviceName>
+  <manufacturerName>Solar-Log</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2026-04-10</date>
+      <author>SGr/mkr</author>
+      <comment>Draft for demo project</comment>
+    </changeLog>
+  </releaseNotes>
+  <deviceInformation>
+    <deviceCategory>CEM</deviceCategory>
+    <isLocalControl>true</isLocalControl>
+    <softwareRevision>0.0.0</softwareRevision>
+    <hardwareRevision>-</hardwareRevision>
+    <levelOfOperation>4m</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+  </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>tcp_address</name>
+      <dataType>
+        <string />
+      </dataType>
+      <defaultValue>0.0.0.0</defaultValue>
+      <configurationDescription>
+        <textElement>The IP address</textElement>
+        <language>en</language>
+        <label>TCP/IP address</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
+  <interfaceList>
+    <modbusInterface>
+      <modbusInterfaceDescription>
+        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+        <modbusTcp>
+          <port>502</port>
+          <address>{{tcp_address}}</address>
+          <slaveId>1</slaveId>
+        </modbusTcp>
+        <firstRegisterAddressIsOne>true</firstRegisterAddressIsOne>
+        <bitOrder>ChangeWordOrder</bitOrder>
+      </modbusInterfaceDescription>
+      <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>FeedInCurtailment</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>FeedInCurtailmentSolarlog</functionalProfileType>
+              <levelOfOperation>4m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_ems_to_pv_evse.svg"/>
+                  <p><b>Controlling functional profile for the curtailment of PV grid feed-in</b></p>
+
+                  <p>This functional profile is used by a smart grid operator or flexibility manager (communicator) to control a PV system via Solarlog EMS and limit its AC feed-in to the grid. The system can be controlled via a local interface (Modbus TCP).</p>
+
+                  <p>Note: If the requested active power cannot be achieved within a given time limit, the power plant must be shut off.</p>
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_ems_to_pv_evse.svg"/>
+                  <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV-Einspeisung</b></p>
+
+                  <p>Dieses Funktionsprofil wird vom Smart-Grid-Operator oder Flexibilitätsmanager (Communicator) verwendet, um eine PV-Anlage per Solarlog EMS anzusteuern und die AC-seitige Einspeisung zu begrenzen. Die Regelung kann über eine lokale Protokoll-Schnittstelle (Modbus TCP) erfolgen.</p>
+
+                  <p>Ergänzung: Kann der Wirkleistungssollwert innerhalb des vorgegebenen Zeitraums nicht erreicht werden, ist die Anlage abzuschalten.</p>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PLimit_Type</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>NO_DIRECT_MARKETING</literal>
+                      <ordinal>0</ordinal>
+                      <description>No direct marketing</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>NONE</literal>
+                      <ordinal>1</ordinal>
+                      <description>No curtailment</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>PERCENT_FIXED</literal>
+                      <ordinal>2</ordinal>
+                      <description>Curtailment by fixed percentage</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>PERCENT_USAGE</literal>
+                      <ordinal>3</ordinal>
+                      <description>Curtailment by percentage and own usage</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Type of feed-in curtailment</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Typ der Einspeisebegrenzung</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <readAddress>10600</readAddress>
+                <writeAddress>10400</writeAddress>
+                <readRegisterType>InputRegister</readRegisterType>
+                <writeRegisterType>HoldRegister</writeRegisterType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PLimitPerc</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <int16U />
+                </dataType>
+                <unit>PERCENT</unit>
+                <legibleDescription>
+                  <textElement>Maximum feed-in limit as percentage of nominal active power [0%...100%]</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Maximale einzuspeisende Wirkleistung als Prozentwert der Nenn-Wirkleistung [0%...100%]</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>10401</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>WatchDog_Tag</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <int32U />
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Marker to be set by flex manager side, at least every 300s</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Marker, der vom Flexmanager gesetzt werden muss, mind. alle 300s</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>10404</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>Status</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>OK</literal>
+                      <ordinal>0</ordinal>
+                      <description>OK</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>NOK</literal>
+                      <ordinal>1</ordinal>
+                      <description>Not OK</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>Status of curtailment</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Status der Einspeisebegrenzung</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>10900</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ProdW</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <int32U />
+                </dataType>
+                <unit>WATTS</unit>
+                <legibleDescription>
+                  <textElement>Current output power</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Aktuelle Erzeugungsleistung</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>10904</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ConsW</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <int32U />
+                </dataType>
+                <unit>WATTS</unit>
+                <legibleDescription>
+                  <textElement>Current consumption power</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Aktuelle Verbrauchsleistung</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>10908</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PLimitPercN</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <int16U />
+                </dataType>
+                <unit>PERCENT</unit>
+                <legibleDescription>
+                  <textElement>Curtailment of grid operator [0%...100%]</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Regelstufe des Netzbetreibers [0%...100%]</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>10901</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PLimitN</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <int32U />
+                </dataType>
+                <unit>WATTS</unit>
+                <legibleDescription>
+                  <textElement>Curtailment of grid operator in W</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Regelstufe des Netzbetreibers in W</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>10901</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PossibleProdW</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <int32U />
+                </dataType>
+                <unit>WATTS</unit>
+                <legibleDescription>
+                  <textElement>Estimated potential PV power in W, optional sensor required</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Geschätzte mögliche Anlagenleistung in W, optionaler Sensor vorausgesetzt</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>10906</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>GridfeedW</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <int32U />
+                </dataType>
+                <unit>WATTS</unit>
+                <legibleDescription>
+                  <textElement>Import power in W, calculated or via measurement</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Bezug in W, berechnet oder via Messung</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>10910</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+      </functionalProfileList>
+    </modbusInterface>
+  </interfaceList>
+</DeviceFrame>
