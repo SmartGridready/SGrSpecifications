@@ -34,19 +34,25 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
-          <p><b>Controlling functional profile for the curtailment of PV grid feed-in</b></p>
+          <p><b>Controlling functional profile for the dynamic curtailment of PV feed-in at the grid connection point</b></p>
 
-          <p>This functional profile is used by a smart grid operator or flexibility manager (communicator) to control a PV system via EMS or inverter and limit its AC feed-in to the grid. The system can be controlled via a local interface (Modbus TCP / IEC-61850) or a cloud API.</p>
+          <p>This functional profile is used by a flexibility manager to control a PV system via an Energy Management System (EMS) or directly via the inverter and to limit AC-side feed-in at the grid connection point. Integration is possible via local interfaces or cloud interfaces. Protocols such as Modbus TCP, communication standards such as IEC 61850, or cloud APIs can be used.</p>
 
-          <p>One of the following approaches of voltage measurement must be applied when implementing the functional profile:
+          <p>The control explicitly refers to feed-in at the grid connection point. If the required limitation is achieved by increasing local consumption, for example by switching on additional loads, no reduction of PV production is required.</p>
+
+          <p>The limitation of AC-side feed-in power can be implemented either as an absolute value in kilowatts (MaximumFeedInPower) or as a relative value in percent referenced to the DC rated power of the PV system (MaximumFeedInPercent). Both data points are marked as Mandatory in the profile and form an alternative requirement group. A compliant implementation must support at least one of these two data points.</p>
+
+          <p>The implementation of additional data points is recommended, especially for setting reactive power values and defining fallback values in case of communication failure. Optional measurements such as irradiation can be used to estimate non-utilized energy yield.</p>
+
+          <p>Data points with read and write access can either be mapped to the same logical endpoint or split into separate setpoints and actual values, for example to different Modbus registers or corresponding objects in other communication standards.</p>
+
+          <p>If voltage measurement is implemented, one of the following variants shall be used:
           <ul>
-            <li>Single-phase devices use the total voltage with the first data point (VoltageACL1_N)</li>
-            <li>Three-phase devices in star configuration provide the voltage per phase vs. neutral using three data points (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
-            <li>Three-phase devices in delta configuration provide the voltage between phases using three data points (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+            <li>Single-phase devices provide the voltage of the first phase to neutral (<b>VoltageACL1_N</b>).</li>
+            <li>Three-phase devices in star configuration provide the voltage of each phase to neutral (<b>VoltageACL1_N</b>, <b>VoltageACL2_N</b>, <b>VoltageACL3_N</b>).</li>
+            <li>Three-phase devices in delta configuration provide the line-to-line voltages between phases (<b>VoltageACL1_L2</b>, <b>VoltageACL1_L3</b>, <b>VoltageACL2_L3</b>).</li>
           </ul>
           </p>
-
-          <p>Note: If the requested active power cannot be achieved within a given time limit, the power plant must be shut off.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -55,25 +61,32 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
-          <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV-Einspeisung</b></p>
+          <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV Einspeisung am Netzanschlusspunkt</b></p>
 
-          <p>Dieses Funktionsprofil wird vom Smart-Grid-Operator oder Flexibilitätsmanager (Communicator) verwendet, um eine PV-Anlage per EMS oder Wechselrichter anzusteuern und die AC-seitige Einspeisung zu begrenzen. Die Regelung kann über eine lokale Protokoll-Schnittstelle (z. B. Modbus TCP / IEC-61850) oder ein Cloud-API erfolgen.</p>
+          <p>Dieses Funktionsprofil wird von einem Flexibilitätsmanager verwendet, um eine PV Anlage über ein Energy Management System (EMS) oder direkt über den Wechselrichter anzusteuern und die AC seitige Einspeisung am Netzanschlusspunkt zu begrenzen. Die Anbindung erfolgt über lokale Schnittstellen oder Cloud Schnittstellen. Dabei können Protokolle wie Modbus TCP, Kommunikationsstandards wie IEC 61850 oder Cloud APIs eingesetzt werden.</p>
 
-          <p>Eine der folgenden Varianten der Spannungsmessung muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+          <p>Die Steuerung bezieht sich explizit auf die Einspeisung am Netzanschlusspunkt. Wird die geforderte Begrenzung durch eine Erhöhung des lokalen Verbrauchs erreicht, zum Beispiel durch das Zuschalten von Lasten, ist keine Reduktion der PV Produktion erforderlich.</p>
+
+          <p>Die Begrenzung der AC seitigen Einspeiseleistung kann entweder über einen absoluten Wert in Kilowatt (MaximumFeedInPower) oder über einen relativen Wert in Prozent bezogen auf die DC Nennleistung der PV Anlage (MaximumFeedInPercent) erfolgen. Beide Datenpunkte sind im Profil als Mandatory gekennzeichnet und bilden gemeinsam eine alternative Anforderungsgruppe. Eine konforme Implementierung muss mindestens einen der beiden Datenpunkte unterstützen.</p>
+
+          <p>Die Umsetzung weiterer Datenpunkte wird empfohlen, insbesondere zur Vorgabe von Blindleistungswerten sowie zur Definition von Rückfallwerten für den Fall eines Kommunikationsausfalls. Optionale Messgrössen wie die Einstrahlung können zur Abschätzung des nicht genutzten Ertrags herangezogen werden.</p>
+
+          <p>Datenpunkte mit Lese und Schreibzugriff können entweder auf denselben logischen Endpunkt abgebildet werden oder in getrennte Sollwerte (Setpoints) und Istwerte (Actual Values) aufgeteilt sein, beispielsweise auf unterschiedliche Modbus Register oder entsprechende Objekte in anderen Kommunikationsstandards.</p>
+
+          <p>Falls eine Spannungsmessung implementiert wird, ist eine der folgenden Varianten umzusetzen:
           <ul>
-            <li>Einphasige Geräte geben die Spannung über die erste Phase an (VoltageACL1_N)</li>
-            <li>3-phasige Geräte in Sternschaltung geben die Spannung pro Phase gegen den Nullleiter an (VoltageACL1_N, VoltageACL2_N, VoltageACL2_N).</li>
-            <li>3-phasige Geräte in Dreiecksschaltung geben die Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
+            <li>Einphasige Geräte geben die Spannung der ersten Phase gegen Nullleiter an (<b>VoltageACL1_N</b>).</li>
+            <li>Dreiphasige Geräte in Sternschaltung geben die Spannung jeder Phase gegen Nullleiter an (<b>VoltageACL1_N</b>, <b>VoltageACL2_N</b>, <b>VoltageACL3_N</b>).</li>
+            <li>Dreiphasige Geräte in Dreiecksschaltung geben die verkettete Spannung zwischen den Phasen an (<b>VoltageACL1_L2</b>, <b>VoltageACL1_L3</b>, <b>VoltageACL2_L3</b>).</li>
           </ul>
           </p>
-
-          <p>Ergänzung: Kann der Wirkleistungssollwert innerhalb des vorgegebenen Zeitraums nicht erreicht werden, ist die Anlage abzuschalten.</p>
         ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
   <dataPointList>
+    <!-- Mandatory datapoints -->
     <dataPointListElement>
       <dataPoint>
         <dataPointName>MaximumFeedInPower</dataPointName>
@@ -114,6 +127,45 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
+        <dataPointName>ActivePowerOutput</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Active power at the inverter output</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Wirkleistung am Ausgang des Wechselrichters</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerFeedIn</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Active power feed-in at grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Eingespeiste Wirkleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- Recommended datapoints -->
+    <dataPointListElement>
+      <dataPoint>
         <dataPointName>ReactivePower</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
@@ -152,44 +204,6 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>NominalDCPower</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
-        <dataType>
-          <float64 />
-        </dataType>
-        <unit>KILOWATTS</unit>
-        <legibleDescription>
-          <textElement>Nominal DC power of the PV plant</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>DC-Nennleistung der PV-Anlage</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActivePowerOutput</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>M</presenceLevel>
-        <dataType>
-          <float64 />
-        </dataType>
-        <unit>KILOWATTS</unit>
-        <legibleDescription>
-          <textElement>Active power at the inverter output</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Wirkleistung am Ausgang des Wechselrichters</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
         <dataPointName>ReactivePowerOutput</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
@@ -209,25 +223,6 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActivePowerFeedIn</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>M</presenceLevel>
-        <dataType>
-          <float64 />
-        </dataType>
-        <unit>KILOWATTS</unit>
-        <legibleDescription>
-          <textElement>Active power feed-in at grid connection point</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Eingespeiste Wirkleistung am Netzanschlusspunkt</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
         <dataPointName>ReactivePowerFeedIn</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>R</presenceLevel>
@@ -241,6 +236,63 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>Eingespeiste Blindleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>FallbackMaxFeedInPower</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Fallback feed-in limit active power, when the controlled system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfallwert der Einspeiseleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>FallbackMaxFeedInPercent</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Fallback feed-in limit as percentage of active power, when the controlled system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfallwert der Einspeiseleistung als Prozentwert der Wirkleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>NominalDCPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Nominal DC power of the PV plant</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>DC-Nennleistung der PV-Anlage</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -283,6 +335,7 @@
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
+    <!-- Optional datapoints -->
     <dataPointListElement>
       <dataPoint>
         <dataPointName>VoltageACL1_L2</dataPointName>
@@ -431,44 +484,6 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>Klassifizierung und Priorität der Abregelung</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>FallbackMaxFeedInPower</dataPointName>
-        <dataDirection>RW</dataDirection>
-        <presenceLevel>R</presenceLevel>
-        <dataType>
-          <float64 />
-        </dataType>
-        <unit>KILOWATTS</unit>
-        <legibleDescription>
-          <textElement>Fallback feed-in limit active power, when the controlled system is unreachable</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Rückfallwert der Einspeiseleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>FallbackMaxFeedInPercent</dataPointName>
-        <dataDirection>RW</dataDirection>
-        <presenceLevel>R</presenceLevel>
-        <dataType>
-          <float64 />
-        </dataType>
-        <unit>PERCENT</unit>
-        <legibleDescription>
-          <textElement>Fallback feed-in limit as percentage of active power, when the controlled system is unreachable</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Rückfallwert der Einspeiseleistung als Prozentwert der Wirkleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
