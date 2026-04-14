@@ -48,9 +48,9 @@
 
           <p>If voltage measurement is implemented, one of the following variants shall be used:
           <ul>
-            <li>Single-phase devices provide the voltage of the first phase to neutral (<b>VoltageACL1_N</b>).</li>
-            <li>Three-phase devices in star configuration provide the voltage of each phase to neutral (<b>VoltageACL1_N</b>, <b>VoltageACL2_N</b>, <b>VoltageACL3_N</b>).</li>
-            <li>Three-phase devices in delta configuration provide the line-to-line voltages between phases (<b>VoltageACL1_L2</b>, <b>VoltageACL1_L3</b>, <b>VoltageACL2_L3</b>).</li>
+            <li>Single-phase devices provide the voltage of the first phase to neutral (VoltageACL1_N).</li>
+            <li>Three-phase devices in star configuration provide the voltage of each phase to neutral (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
+            <li>Three-phase devices in delta configuration provide the line-to-line voltages between phases (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
           </ul>
           </p>
         ]]>
@@ -75,9 +75,9 @@
 
           <p>Falls eine Spannungsmessung implementiert wird, ist eine der folgenden Varianten umzusetzen:
           <ul>
-            <li>Einphasige Geräte geben die Spannung der ersten Phase gegen Nullleiter an (<b>VoltageACL1_N</b>).</li>
-            <li>Dreiphasige Geräte in Sternschaltung geben die Spannung jeder Phase gegen Nullleiter an (<b>VoltageACL1_N</b>, <b>VoltageACL2_N</b>, <b>VoltageACL3_N</b>).</li>
-            <li>Dreiphasige Geräte in Dreiecksschaltung geben die verkettete Spannung zwischen den Phasen an (<b>VoltageACL1_L2</b>, <b>VoltageACL1_L3</b>, <b>VoltageACL2_L3</b>).</li>
+            <li>Einphasige Geräte geben die Spannung der ersten Phase gegen Nullleiter an (VoltageACL1_N).</li>
+            <li>Dreiphasige Geräte in Sternschaltung geben die Spannung jeder Phase gegen Nullleiter an (VoltageACL1_N, VoltageACL2_N, VoltageACL3_N).</li>
+            <li>Dreiphasige Geräte in Dreiecksschaltung geben die verkettete Spannung zwischen den Phasen an (VoltageACL1_L2, VoltageACL1_L3, VoltageACL2_L3).</li>
           </ul>
           </p>
         ]]>
