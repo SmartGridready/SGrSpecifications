@@ -36,7 +36,7 @@
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Controlling functional profile for the dynamic curtailment of PV feed-in at the grid connection point</b></p>
 
-          <p>This functional profile is used by a flexibility manager to control a PV system via an Energy Management System (EMS) or directly via the inverter and to limit AC-side feed-in at the grid connection point. Integration is possible via local interfaces or cloud interfaces. Protocols such as Modbus TCP, communication standards such as IEC 61850, or cloud APIs can be used.</p>
+          <p>This functional profile is used by a flexibility manager to control a PV system via an Energy Management System (EMS) or directly via the inverter and to limit AC-side feed-in at the grid connection point. For the connection, protocols such as Modbus TCP as well as manufacturer-specific local or cloud interfaces can be used.</p>
 
           <p>The control explicitly refers to feed-in at the grid connection point. If the required limitation is achieved by increasing local consumption, for example by switching on additional loads, no reduction of PV production is required.</p>
 
@@ -63,7 +63,7 @@
           <img src="ressources/fp_ems_to_pv_evse.svg"/>
           <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV Einspeisung am Netzanschlusspunkt</b></p>
 
-          <p>Dieses Funktionsprofil wird von einem Flexibilitätsmanager verwendet, um eine PV Anlage über ein Energy Management System (EMS) oder direkt über den Wechselrichter anzusteuern und die AC seitige Einspeisung am Netzanschlusspunkt zu begrenzen. Die Anbindung erfolgt über lokale Schnittstellen oder Cloud Schnittstellen. Dabei können Protokolle wie Modbus TCP, Kommunikationsstandards wie IEC 61850 oder Cloud APIs eingesetzt werden.</p>
+          <p>Dieses Funktionsprofil wird von einem Flexibilitätsmanager verwendet, um eine PV Anlage über ein Energy Management System (EMS) oder direkt über den Wechselrichter anzusteuern und die AC seitige Einspeisung am Netzanschlusspunkt zu begrenzen. Für die Anbindung können Protokolle wie Modbus TCP sowie herstellerspezifische lokale oder Cloud-Schnittstellen eingesetzt werden.</p>
 
           <p>Die Steuerung bezieht sich explizit auf die Einspeisung am Netzanschlusspunkt. Wird die geforderte Begrenzung durch eine Erhöhung des lokalen Verbrauchs erreicht, zum Beispiel durch das Zuschalten von Lasten, ist keine Reduktion der PV Produktion erforderlich.</p>
 
@@ -465,25 +465,6 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>Einstrahlung aus Sensor-Box, wenn vorhanden</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ClassificationCurtailment</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <int32 />
-        </dataType>
-        <unit>NONE</unit>
-        <legibleDescription>
-          <textElement>Classification and priority of the curtailment</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Klassifizierung und Priorität der Abregelung</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
