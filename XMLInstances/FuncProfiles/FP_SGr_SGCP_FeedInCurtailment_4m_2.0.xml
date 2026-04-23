@@ -48,9 +48,9 @@
 
           <p>If voltage measurement is implemented, one of the following variants shall be used:
           <ul>
-            <li>Single-phase devices provide the voltage of the first phase to neutral (VoltageMeasuredPhaseL1N).</li>
-            <li>Three-phase devices in star configuration provide the voltage of each phase to neutral (VoltageMeasuredPhaseL1N, VoltageMeasuredPhaseL2N, VoltageMeasuredPhaseL3N).</li>
-            <li>Three-phase devices in delta configuration provide the line-to-line voltages between phases (VoltageMeasuredPhaseL1L2, VoltageMeasuredPhaseL1L3, VoltageMeasuredPhaseL2L3).</li>
+            <li>Single-phase devices provide the voltage of the first phase to neutral (VoltageMeasuredL1N).</li>
+            <li>Three-phase devices in star configuration provide the voltage of each phase to neutral (VoltageMeasuredL1N, VoltageMeasuredL2N, VoltageMeasuredL3N).</li>
+            <li>Three-phase devices in delta configuration provide the line-to-line voltages between phases (VoltageMeasuredL1L2, VoltageMeasuredL1L3, VoltageMeasuredL2L3).</li>
           </ul>
           </p>
         ]]>
@@ -75,9 +75,9 @@
 
           <p>Falls eine Spannungsmessung implementiert wird, ist eine der folgenden Varianten umzusetzen:
           <ul>
-            <li>Einphasige Geräte geben die Spannung der ersten Phase gegen Nullleiter an (VoltageMeasuredPhaseL1N).</li>
-            <li>Dreiphasige Geräte in Sternschaltung geben die Spannung jeder Phase gegen Nullleiter an (VoltageMeasuredPhaseL1N, VoltageMeasuredPhaseL2N, VoltageMeasuredPhaseL3N).</li>
-            <li>Dreiphasige Geräte in Dreiecksschaltung geben die verkettete Spannung zwischen den Phasen an (VoltageMeasuredPhaseL1L2, VoltageMeasuredPhaseL1L3, VoltageMeasuredPhaseL2L3).</li>
+            <li>Einphasige Geräte geben die Spannung der ersten Phase gegen Nullleiter an (VoltageMeasuredL1N).</li>
+            <li>Dreiphasige Geräte in Sternschaltung geben die Spannung jeder Phase gegen Nullleiter an (VoltageMeasuredL1N, VoltageMeasuredL2N, VoltageMeasuredL3N).</li>
+            <li>Dreiphasige Geräte in Dreiecksschaltung geben die verkettete Spannung zwischen den Phasen an (VoltageMeasuredL1L2, VoltageMeasuredL1L3, VoltageMeasuredL2L3).</li>
           </ul>
           </p>
         ]]>
@@ -338,7 +338,7 @@
     <!-- Optional datapoints -->
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>VoltageMeasuredPhaseL1L2</dataPointName>
+        <dataPointName>VoltageMeasuredL1L2</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -350,14 +350,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der Spannung zwischen Phase L1-L2</textElement>
+          <textElement>Gemessene Spannung zwischen Phasen L1-L2</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>VoltageMeasuredPhaseL1L3</dataPointName>
+        <dataPointName>VoltageMeasuredL1L3</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -369,14 +369,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der Spannung zwischen Phase L1-L3</textElement>
+          <textElement>Gemessene Spannung zwischen Phasen L1-L3</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>VoltageMeasuredPhaseL2L3</dataPointName>
+        <dataPointName>VoltageMeasuredL2L3</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -388,14 +388,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Erfassung der Spannung zwischen Phase L2-L3</textElement>
+          <textElement>Gemessene Spannung zwischen Phasen L2-L3</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>VoltageMeasuredPhaseL1N</dataPointName>
+        <dataPointName>VoltageMeasuredL1N</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -403,18 +403,18 @@
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
-          <textElement>Measured voltage between phase 1 and neutral</textElement>
+          <textElement>Measured voltage between phase L1 and neutral</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Gemessene Spannung zwischen Phase 1 und Nullleiter</textElement>
+          <textElement>Gemessene Spannung zwischen Phase L1 und Nullleiter</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>VoltageMeasuredPhaseL2N</dataPointName>
+        <dataPointName>VoltageMeasuredL2N</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -422,18 +422,18 @@
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
-          <textElement>Measured voltage between phase 2 and neutral</textElement>
+          <textElement>Measured voltage between phase L2 and neutral</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Gemessene Spannung zwischen Phase 2 und Nullleiter</textElement>
+          <textElement>Gemessene Spannung zwischen Phase L2 und Nullleiter</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>VoltageMeasuredPhaseL3N</dataPointName>
+        <dataPointName>VoltageMeasuredL3N</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -441,11 +441,11 @@
         </dataType>
         <unit>VOLTS</unit>
         <legibleDescription>
-          <textElement>Measured voltage between phase 3 and neutral</textElement>
+          <textElement>Measured voltage between phase L3 and neutral</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Gemessene Spannung zwischen Phase 3 und Nullleiter</textElement>
+          <textElement>Gemessene Spannung zwischen Phase L3 und Nullleiter</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -460,11 +460,11 @@
         </dataType>
         <unit>WATTS_PER_SQUARE_METER</unit>
         <legibleDescription>
-          <textElement>Measured irradiation from a sensor box</textElement>
+          <textElement>Measured irradiation from a sensor</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Gemessene Einstrahlung aus Sensor-Box</textElement>
+          <textElement>Gemessene Einstrahlung von einem Sensor</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
