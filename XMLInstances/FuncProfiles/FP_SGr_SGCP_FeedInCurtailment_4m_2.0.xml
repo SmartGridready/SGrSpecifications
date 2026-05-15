@@ -40,7 +40,9 @@
 
           <p>The control explicitly refers to feed-in at the grid connection point. If the required limitation is achieved by increasing local consumption, for example by switching on additional loads, no reduction of PV production is required.</p>
 
-          <p>The limitation of AC-side feed-in power can be implemented either as an absolute value in kilowatts (ActivePowerMaxFeedIn) or as a relative value in percent referenced to the nominal DC power of the PV system (ActivePowerMaxPercentFeedIn). Both data points are marked as mandatory in the profile and form an alternative requirement group. A compliant implementation must support at least one of these two data points.</p>
+          <p>The limitation of AC-side feed-in power can be implemented either as an absolute value in kilowatts (ActivePowerMaxFeedIn) or as a relative value in percent referenced to the nominal DC power of the PV system (ActivePowerMaxPercentFeedIn). Both data points are marked as mandatory (M) in the profile and form an alternative requirement group. A compliant implementation must support at least one of these two data points.</p>
+
+          <p>The measurement of actual active power is provided through three data points: measured power at the inverter output (ActivePowerMeasuredInverter), measured feed-in power at the grid connection point (ActivePowerMeasuredFeedIn), and measured local consumption (ActivePowerMeasuredConsumption). All three data points are marked as mandatory in the profile and form a mandatory alternative requirement group, where at least two of the three data points must be implemented. The third value can be calculated from the other two: ActivePowerMeasuredFeedIn = ActivePowerMeasuredInverter - ActivePowerMeasuredConsumption.</p>
 
           <p>The implementation of additional data points is recommended, especially for reactive power setpoints (ReactivePowerSetpoint, PowerFactorSetpoint) and fallback limits in case of communication failure (ActivePowerMaxFeedInFallback, ActivePowerMaxPercentFeedInFallback). Optional measurements such as irradiation (IrradiationMeasured) can be used to estimate unused energy yield.</p>
 
@@ -68,6 +70,8 @@
           <p>Die Steuerung bezieht sich explizit auf die Einspeisung am Netzanschlusspunkt. Wird die geforderte Begrenzung durch eine Erhöhung des lokalen Verbrauchs erreicht, zum Beispiel durch das Zuschalten von Lasten, ist keine Reduktion der PV-Produktion erforderlich.</p>
 
           <p>Die Begrenzung der AC-seitigen Einspeiseleistung kann entweder über einen absoluten Wert in Kilowatt (ActivePowerMaxFeedIn) oder über einen relativen Wert in Prozent bezogen auf die DC-Nennleistung der PV-Anlage erfolgen (ActivePowerMaxPercentFeedIn). Beide Datenpunkte sind im Profil als Mandatory (M) gekennzeichnet und bilden gemeinsam eine alternative Anforderungsgruppe. Eine konforme Implementierung muss mindestens einen der beiden Datenpunkte unterstützen.</p>
+
+          <p>Die Messung der aktuellen Wirkleistung wird durch drei Datenpunkte bereitgestellt: gemessene Leistung am Ausgang des Wechselrichters (ActivePowerMeasuredInverter), gemessene Einspeiseleistung am Netzanschlusspunkt (ActivePowerMeasuredFeedIn) und gemessener lokaler Verbrauch (ActivePowerMeasuredConsumption). Alle drei Datenpunkte sind im Profil als Mandatory (M) gekennzeichnet und bilden gemeinsam eine obligatorische alternative Anforderungsgruppe, bei der mindestens zwei der drei Datenpunkte implementiert werden müssen. Der dritte Wert kann aus den anderen beiden berechnet werden: ActivePowerMeasuredFeedIn = ActivePowerMeasuredInverter - ActivePowerMeasuredConsumption.</p>
 
           <p>Die Umsetzung weiterer Datenpunkte wird empfohlen, insbesondere zur Vorgabe von Blindleistungs-Sollwerten (ReactivePowerSetpoint, PowerFactorSetpoint) sowie zur Definition von Rückfallgrenzen für den Fall eines Kommunikationsausfalls (ActivePowerMaxFeedInFallback, ActivePowerMaxPercentFeedInFallback). Optionale Messgrössen wie die Einstrahlung (IrradiationMeasured) können zur Abschätzung des nicht genutzten Ertrags herangezogen werden.</p>
 
@@ -159,6 +163,25 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>Gemessene eingespeiste Wirkleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMeasuredConsumption</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Measured active power consumption in kW</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Wirkleistung des Verbrauchs in kW</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
