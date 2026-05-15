@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Published</state>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2025-09-02</date>
+      <author>SGr/mkr</author>
+      <comment>Finalized</comment>
+    </changeLog>
+    <changeLog>
+      <version>2.0.0</version>
+      <date>2026-04-14</date>
+      <author>SGr/kar</author>
+      <comment>Harmonized datapoints</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>FeedInCurtailment</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>2</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
+          <p><b>Controlling functional profile for the dynamic curtailment of PV feed-in at the grid connection point</b></p>
+
+          <p>This functional profile is used by a flexibility manager to control a PV system via an Energy Management System (EMS) or directly via the inverter and to limit AC-side feed-in at the grid connection point. For integration, protocols such as Modbus TCP as well as manufacturer-specific local or cloud interfaces can be used.</p>
+
+          <p>The control explicitly refers to feed-in at the grid connection point. If the required limitation is achieved by increasing local consumption, for example by switching on additional loads, no reduction of PV production is required.</p>
+
+          <p>The limitation of AC-side feed-in power can be implemented either as an absolute value in kilowatts (ActivePowerMaxFeedIn) or as a relative value in percent referenced to the nominal DC power of the PV system (ActivePowerMaxPercentFeedIn). Both data points are marked as mandatory (M) in the profile and form an alternative requirement group. A compliant implementation must support at least one of these two data points.</p>
+
+          <p>The measurement of actual active power is provided through three data points: measured power at the inverter output (ActivePowerMeasuredInverter), measured feed-in power at the grid connection point (ActivePowerMeasuredFeedIn), and measured local consumption (ActivePowerMeasuredConsumption). All three data points are marked as mandatory in the profile and form a mandatory alternative requirement group, where at least two of the three data points must be implemented. The third value can be calculated from the other two: ActivePowerMeasuredFeedIn = ActivePowerMeasuredInverter - ActivePowerMeasuredConsumption.</p>
+
+          <p>The implementation of additional data points is recommended, especially for reactive power setpoints (ReactivePowerSetpoint, PowerFactorSetpoint) and fallback limits in case of communication failure (ActivePowerMaxFeedInFallback, ActivePowerMaxPercentFeedInFallback). Optional measurements such as irradiation (IrradiationMeasured) can be used to estimate unused energy yield.</p>
+
+          <p>In a product declaration, data points with read and write access can either be mapped to the same logical endpoint or split into separate setpoint values and actual values, for example into different Modbus registers or corresponding objects in other communication standards.</p>
+
+          <p>If voltage measurement is implemented, one of the following variants shall be used:
+          <ul>
+            <li>Single-phase devices provide the voltage of the first phase to neutral (VoltageMeasuredL1N).</li>
+            <li>Three-phase devices in star configuration provide the voltage of each phase to neutral (VoltageMeasuredL1N, VoltageMeasuredL2N, VoltageMeasuredL3N).</li>
+            <li>Three-phase devices in delta configuration provide the line-to-line voltages between phases (VoltageMeasuredL1L2, VoltageMeasuredL1L3, VoltageMeasuredL2L3).</li>
+          </ul>
+          </p>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_ems_to_pv_evse.svg"/>
+          <p><b>Steuerndes Funktionsprofil für die dynamische Abregelung der PV Einspeisung am Netzanschlusspunkt</b></p>
+
+          <p>Dieses Funktionsprofil wird von einem Flexibilitätsmanager verwendet, um eine PV-Anlage über ein Energy Management System (EMS) oder direkt über den Wechselrichter anzusteuern und die AC-seitige Einspeisung am Netzanschlusspunkt zu begrenzen. Für die Anbindung können Protokolle wie Modbus TCP sowie herstellerspezifische lokale oder Cloud-Schnittstellen eingesetzt werden.</p>
+
+          <p>Die Steuerung bezieht sich explizit auf die Einspeisung am Netzanschlusspunkt. Wird die geforderte Begrenzung durch eine Erhöhung des lokalen Verbrauchs erreicht, zum Beispiel durch das Zuschalten von Lasten, ist keine Reduktion der PV-Produktion erforderlich.</p>
+
+          <p>Die Begrenzung der AC-seitigen Einspeiseleistung kann entweder über einen absoluten Wert in Kilowatt (ActivePowerMaxFeedIn) oder über einen relativen Wert in Prozent bezogen auf die DC-Nennleistung der PV-Anlage erfolgen (ActivePowerMaxPercentFeedIn). Beide Datenpunkte sind im Profil als Mandatory (M) gekennzeichnet und bilden gemeinsam eine alternative Anforderungsgruppe. Eine konforme Implementierung muss mindestens einen der beiden Datenpunkte unterstützen.</p>
+
+          <p>Die Messung der aktuellen Wirkleistung wird durch drei Datenpunkte bereitgestellt: gemessene Leistung am Ausgang des Wechselrichters (ActivePowerMeasuredInverter), gemessene Einspeiseleistung am Netzanschlusspunkt (ActivePowerMeasuredFeedIn) und gemessener lokaler Verbrauch (ActivePowerMeasuredConsumption). Alle drei Datenpunkte sind im Profil als Mandatory (M) gekennzeichnet und bilden gemeinsam eine obligatorische alternative Anforderungsgruppe, bei der mindestens zwei der drei Datenpunkte implementiert werden müssen. Der dritte Wert kann aus den anderen beiden berechnet werden: ActivePowerMeasuredFeedIn = ActivePowerMeasuredInverter - ActivePowerMeasuredConsumption.</p>
+
+          <p>Die Umsetzung weiterer Datenpunkte wird empfohlen, insbesondere zur Vorgabe von Blindleistungs-Sollwerten (ReactivePowerSetpoint, PowerFactorSetpoint) sowie zur Definition von Rückfallgrenzen für den Fall eines Kommunikationsausfalls (ActivePowerMaxFeedInFallback, ActivePowerMaxPercentFeedInFallback). Optionale Messgrössen wie die Einstrahlung (IrradiationMeasured) können zur Abschätzung des nicht genutzten Ertrags herangezogen werden.</p>
+
+          <p>Datenpunkte mit Lese- und Schreibzugriff können in einer Produktdeklaration entweder auf denselben logischen Endpunkt abgebildet werden oder in getrennte Sollwerte (Setpoint Values) und Istwerte (Actual Values) aufgeteilt sein, beispielsweise auf unterschiedliche Modbus-Register oder entsprechende Objekte in anderen Kommunikationsstandards.</p>
+
+          <p>Falls eine Spannungsmessung implementiert wird, ist eine der folgenden Varianten umzusetzen:
+          <ul>
+            <li>Einphasige Geräte geben die Spannung der ersten Phase gegen Nullleiter an (VoltageMeasuredL1N).</li>
+            <li>Dreiphasige Geräte in Sternschaltung geben die Spannung jeder Phase gegen Nullleiter an (VoltageMeasuredL1N, VoltageMeasuredL2N, VoltageMeasuredL3N).</li>
+            <li>Dreiphasige Geräte in Dreiecksschaltung geben die verkettete Spannung zwischen den Phasen an (VoltageMeasuredL1L2, VoltageMeasuredL1L3, VoltageMeasuredL2L3).</li>
+          </ul>
+          </p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <!-- Mandatory datapoints -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxFeedIn</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Maximum feed-in active power at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Maximale einzuspeisende Wirkleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxPercentFeedIn</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Maximum feed-in active power as percentage of nominal DC power [0%...100%]</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Maximale einzuspeisende Wirkleistung als Prozentwert der DC-Nennleistung [0%...100%]</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMeasuredInverter</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Measured active power at the inverter output</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Wirkleistung am Ausgang des Wechselrichters</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMeasuredFeedIn</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Measured active power feed-in at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene eingespeiste Wirkleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMeasuredConsumption</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Measured active power consumption in kW</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Wirkleistung des Verbrauchs in kW</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- Recommended datapoints -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerSetpoint</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Setpoint for reactive power Q (absolute value in kVAr), positive: inductive, negative: capacitive</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Sollwert für Blindleistung Q (absoluter Wert in kVAr), positiv: induktiv, negativ: kapazitiv</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PowerFactorSetpoint</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Setpoint for the power factor cosφ [-0.9...0.9], &gt;0 inductive, &lt;0: capacitive</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Sollwert für den Leistungsfaktor cosφ [-0.9...0.9], &gt;0: induktiv, &lt;0: kapazitiv</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerMeasuredInverter</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Measured reactive power at the inverter output</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Blindleistung am Ausgang des Wechselrichters</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerMeasuredFeedIn</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Measured reactive power feed-in at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene eingespeiste Blindleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxFeedInFallback</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Fallback maximum feed-in active power if the controlled system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfallwert der maximalen Einspeise-Wirkleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxPercentFeedInFallback</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Fallback maximum feed-in active power as percentage of nominal DC power, if the controlled system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfallwert der maximalen Einspeise-Wirkleistung als Prozentwert der DC-Nennleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerNominalDC</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Nominal DC power of the PV plant (reference value for percentage-based limits)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>DC-Nennleistung der PV-Anlage (Referenzwert für prozentbasierte Begrenzungen)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EnergyMeasuredInverter</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Measured total energy produced by the inverter (cumulative)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene gesamterzeugte Energie des Wechselrichters (kumuliert)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EnergyMeasuredFeedIn</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Measured total energy fed into the grid (cumulative)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene gesamteingespeiste Energie ins Netz (kumuliert)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- Optional datapoints -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL1L2</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phases L1-L2</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phasen L1-L2</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL1L3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phases L1-L3</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phasen L1-L3</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL2L3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phases L2-L3</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phasen L2-L3</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL1N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phase L1 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phase L1 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL2N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phase L2 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phase L2 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL3N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phase L3 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phase L3 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>IrradiationMeasured</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>WATTS_PER_SQUARE_METER</unit>
+        <legibleDescription>
+          <textElement>Measured irradiation from a sensor</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Einstrahlung von einem Sensor</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
