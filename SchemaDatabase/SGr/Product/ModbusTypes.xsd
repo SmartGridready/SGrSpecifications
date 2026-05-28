@@ -4,7 +4,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
   attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  
+
   <include schemaLocation="../Generic/SGrSerialIntCapability.xsd" />
   <include schemaLocation="../Generic/BaseTypes.xsd" />
 
@@ -40,6 +40,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="layer6Deviation" type="sgr:ModbusLayer6Deviation" minOccurs="0" />
     </all>
   </complexType>
+
   <complexType name="TimeSyncBlockNotification">
     <annotation>
       <documentation>Time sync block notifications are used to describe a block of registers that
@@ -73,6 +74,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
     </sequence>
   </complexType>
+
   <complexType name="ModbusInterfaceDescription">
     <annotation>
       <documentation>Modbus interface properties</documentation>
@@ -90,6 +92,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="masterFunctionsSupportedList" type="sgr:MasterFunctionsSupportedList" minOccurs="0" />
     </sequence>
   </complexType>
+
   <simpleType name="ModbusInterfaceSelection">
     <annotation>
       <documentation>Type of Modbus interface</documentation>
@@ -104,21 +107,36 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="RTU-TCPIP" />
     </restriction>
   </simpleType>
+
   <complexType name="ModbusDataPointConfiguration">
     <annotation>
       <documentation>Detailed configuration for modbus data point</documentation>
     </annotation>
     <sequence>
       <element name="modbusDataType" type="sgr:ModbusDataType" />
-      <element name="address" type="nonNegativeInteger">
-        <annotation>
-          <documentation> 2-bytes-word address: could be a register address (to address a modbus
-            register - inputRegister or holdRegister) or a part of a bit address (together with
-            bitRank coil - discreteInput) </documentation>
-        </annotation>
-      </element>
+      <choice>
+        <element name="address" type="nonNegativeInteger">
+          <annotation>
+            <documentation>
+              2-bytes-word address: could be a register address (to address a modbus
+              register - inputRegister or holdRegister) or a part of a bit address (together with
+              bitRank coil - discreteInput)
+            </documentation>
+          </annotation>
+        </element>
+        <sequence>
+          <element name="readAddress" type="nonNegativeInteger"/>
+          <element name="writeAddress" type="nonNegativeInteger"/>
+        </sequence>
+      </choice>
       <element name="bitRank" type="sgr:BitRank" minOccurs="0" />
-      <element name="registerType" type="sgr:RegisterType" />
+      <choice>
+        <element name="registerType" type="sgr:RegisterType" />
+        <sequence>
+          <element name="readRegisterType" type="sgr:RegisterType"/>
+          <element name="writeRegisterType" type="sgr:RegisterType"/>
+        </sequence>
+      </choice>
       <element name="numberOfRegisters" type="int">
         <annotation>
           <documentation>Number of 16-bit registers of this data point</documentation>
@@ -126,6 +144,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
     </sequence>
   </complexType>
+
   <complexType name="MasterFunctionsSupportedList">
     <annotation>
       <documentation>
@@ -135,11 +154,12 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         WriteSingleHoldingRegister (code:6) WriteMultipleHoldingRegisters (code:16) the enum "Primitives" means, that the current register Type supports Single Trasnactions If dpSizeNrRegistarts
         is &gt;1, also the multiple access functions must be supported 
       </documentation>
-    </annotation>    
+    </annotation>
     <sequence>
       <element name="masterFunctionsSupported" type="sgr:MasterFunctionsSupported" maxOccurs="unbounded"/>
     </sequence>
-  </complexType>  
+  </complexType>
+
   <simpleType name="MasterFunctionsSupported">
     <annotation>
       <documentation> Available function/command codes for Master / Clients The various reading,
@@ -259,6 +279,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </enumeration>
     </restriction>
   </simpleType>
+
   <complexType name="AccessProtectionEnabled">
     <annotation>
       <documentation> Modbus data points may be protected by execptions. If this is the case, a
@@ -271,6 +292,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="isEnabled" type="boolean" />
     </sequence>
   </complexType>
+
   <simpleType name="ModbusLayer6Deviation">
     <annotation>
       <documentation>this type is used to manage non standard data type definitions at ISO/OSI Layer
@@ -291,6 +313,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </enumeration>
     </restriction>
   </simpleType>
+
   <complexType name="ModbusTcp">
     <annotation>
       <documentation> Modbus IP address:Specific P elements for Modbus over IP protocol. This
@@ -304,6 +327,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="timeout" type="sgr:unsignedIntParameter" minOccurs="0" />
     </sequence>
   </complexType>
+
   <simpleType name="ModbusIpAddress">
     <annotation>
       <documentation>Modbus device address</documentation>
@@ -312,7 +336,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <pattern value="\d+\.\d+\.\d+\.\d+|\{\{.*\}\}"></pattern>
     </restriction>
   </simpleType>
-    <simpleType name="BitOrder">
+
+  <simpleType name="BitOrder">
     <annotation>
       <documentation> Modbus bit orders are used to apply different conversion transformations to
         data between Modbus device and IEC61850 devices. </documentation>
@@ -325,6 +350,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="ChangeBitOrder" />
     </restriction>
   </simpleType>
+
   <!-- **************************** -->
   <!-- Modbus Address section -->
   <!-- **************************** -->
@@ -341,6 +367,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="HoldRegister" />
     </restriction>
   </simpleType>
+
   <simpleType name="BitRank">
     <annotation>
       <documentation>The bit rank used to define a bit address for coils and discreteInput (bitAddress = addr x 16 +
@@ -351,6 +378,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <maxInclusive value="15" />
     </restriction>
   </simpleType>
+
   <simpleType name="ModbusExceptionCode">
     <annotation>
       <documentation>Type of the Modbus Exceptions sent by Slave (Server) responses.</documentation>
@@ -419,6 +447,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </enumeration>
     </restriction>
   </simpleType>
+
   <!-- actual serial interface configuration -->
   <complexType name="ModbusRtu">
     <annotation>
@@ -434,6 +463,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="serialInterfaceCapability" type="sgr:SerialInterfaceCapability" />
     </sequence>
   </complexType>
+
   <!-- modbus data types -->
   <complexType name="ModbusBoolean">
     <annotation>
@@ -444,6 +474,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="falseValue" type="unsignedShort"  minOccurs="0" />
     </choice>
   </complexType>
+
   <complexType name="ModbusDataType">
     <annotation>
       <documentation>Modbus specific data types</documentation>
