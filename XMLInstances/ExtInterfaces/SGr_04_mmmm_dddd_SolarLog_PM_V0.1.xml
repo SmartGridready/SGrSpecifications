@@ -169,9 +169,11 @@
                 <modbusDataType>
                   <int16U />
                 </modbusDataType>
-                <!-- TODO distinguish read/write addresses (10600, 10201) -->
-                <address>10201</address>
-                <registerType>HoldRegister</registerType>
+                <!-- distinguish read/write addresses (10600, 10201) -->
+                <readAddress>10600</readAddress>
+                <writeAddress>10201</writeAddress>
+                <readRegisterType>InputRegister</readRegisterType>
+                <writeRegisterType>HoldRegister</writeRegisterType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
