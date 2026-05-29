@@ -5,7 +5,19 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
-## [1.0.4]] - 2026-03-19
+## [1.0.5] - 2026-05-28
+
+### Changed
+
+- removed authentication mechanisms, since it is a pure public API
+- examples and descriptions
+
+### Fixed
+
+- schema of time stamps in response
+
+
+## [1.0.4] - 2026-03-19
 
 ### Added
 

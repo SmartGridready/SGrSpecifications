@@ -5,20 +5,19 @@
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
 # Author: Matthias Krebs
 #
-# Version 1.0.4 (2026-03-19)
+# Version 1.0.5 (2026-05-28)
 #
-# Enable security if required - see at the bottom of this file.
 
 openapi: 3.0.3
 info:
   title: Dynamic Tariff Retrieval API
-  description: >
+  description: |
     API to retrieve dynamic tariff prices of an electricity provider.
     Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
-  version: '1.0.4'
+  version: '1.0.5'
 servers:
-  # TODO: Replace this with your actual API URL
-  - url: https://tariffs.example.org/
+  # TODO: Replace this with your actual API URL - endpoint paths will be relative to this URL
+  - url: https://tariffs.example.org/api/v1
     description: Example server
 paths:
   /tariffs:
@@ -39,14 +38,20 @@ paths:
             $ref: '#/components/schemas/TariffName'
         - name: start_timestamp
           in: query
-          description: Marks the beginning of the price retrieval period. If omitted, the begin of the current day is utilized.
+          description: |
+            Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
+            The `start_timestamp` of the first returned interval should match this parameter.
           schema:
             $ref: '#/components/schemas/TimeStamp'
+          example: '2026-01-01T00:00:00+01:00'
         - name: end_timestamp
           in: query
-          description: Marks the end of the price retrieval period. If omitted, the end of the current day is utilized.
+          description: |
+            Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
+            The `end_timestamp` of the last returned interval should match this parameter.
           schema:
             $ref: '#/components/schemas/TimeStamp'
+          example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
           description: Dynamic tariff prices retrieved successfully.
@@ -94,7 +99,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
-                error: "Invalid tariff_name 'xyz'. Allowed values: 'my_tariff'."
+                error: "Invalid tariff_name 'xyz'. Allowed values: 'example_tariff'."
         '500':
           description: An internal server error occurred.
           content:
@@ -117,11 +122,9 @@ components:
         - end_timestamp
       properties:
         start_timestamp:
-          type: string
-          format: date-time
+          $ref: '#/components/schemas/TimeStamp'
         end_timestamp:
-          type: string
-          format: date-time
+          $ref: '#/components/schemas/TimeStamp'
       anyOf:
         - properties:
             electricity:
@@ -159,10 +162,10 @@ components:
       type: string
       enum:
       # TODO: Define your actual tariff product names here, since they are provider-specific
-        - my_tariff
-      description: >
+        - example_tariff
+      description: |
         Tariff names specified by DSO
-          * `my_tariff` - An example tariff
+          * `example_tariff` - An example tariff
     TariffType:
       type: string
       enum:
@@ -171,12 +174,12 @@ components:
         - integrated
         - regional_fees
         - feed_in
-      description: >
+      description: |
         Tariff types (components) specified by VSE
-          * `electricity` - Electricity fees only
-          * `grid` - Grid usage fees
-          * `integrated` - Combines electricity and grid fees
-          * `regional_fees` - Additional regional fees
+          * `electricity` - Electricity energy supply to end consumers
+          * `grid` - Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid
+          * `integrated` - Combination of `electricity` and `grid`
+          * `regional_fees` - Local or regional surcharges (e.g., concession fees)
           * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
     PriceUnit:
       type: string
@@ -205,7 +208,7 @@ components:
         - CHF_kW_1h
         - CHF_kW_30min
         - CHF_kW_15min
-      description: >
+      description: |
         Price unit:
           * `CHF_kWh` - CHF per kWh
           * `CHF_kVarh` - CHF per kVarh
@@ -240,8 +243,8 @@ components:
       anyOf:
         - format: date-time
         - format: empty
-      description: An ISO-8601 time stamp.
-      example: '2025-06-23T13:30:00+02:00'
+      description: An ISO-8601 time stamp with time zone offset.
+      example: '2026-05-23T13:30:00+02:00'
     TariffResponse:
       type: object
       required:
@@ -261,15 +264,3 @@ components:
         error:
           type: string
           description: The error message.
-  securitySchemes:
-    # uncomment the schemes your server supports, defaults to no authentication
-    BasicAuth:
-      type: http
-      scheme: basic
-    BearerAuth:
-      type: http
-      scheme: bearer
-security:
-  # uncomment the schemes you want to use in your API
-  - BasicAuth: []
-  - BearerAuth: []
