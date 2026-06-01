@@ -39,24 +39,32 @@
           "description": "Grid price values in the interval",
           "$ref": "#/$defs/price_component_array"
         },
-        "integrated": {
-          "description": "Integrated price values in the interval",
-          "$ref": "#/$defs/price_component_array"
-        },
         "metering": {
           "description": "Metering price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "national_fees": {
+          "description": "National fee price values in the interval",
           "$ref": "#/$defs/price_component_array"
         },
         "regional_fees": {
           "description": "Regional fee price values in the interval",
           "$ref": "#/$defs/price_component_array"
         },
-        "refund_storage": {
-          "description": "Storage refund price values in the interval",
+        "dso": {
+          "description": "DSO price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "integrated": {
+          "description": "Integrated price values in the interval",
           "$ref": "#/$defs/price_component_array"
         },
         "feed_in": {
           "description": "Feed-in price values in the interval",
+          "$ref": "#/$defs/price_component_array"
+        },
+        "refund": {
+          "description": "Storage refund price values in the interval",
           "$ref": "#/$defs/price_component_array"
         }
       },
@@ -69,6 +77,10 @@
     "price_component_item": {
       "type": "object",
       "properties": {
+        "component": {
+          "description": "The price component",
+          "type": "string"
+        },
         "unit": {
           "description": "The tariff unit of the price value",
           "type": "string"
@@ -80,6 +92,7 @@
       },
       "additionalProperties": true,
       "required": [
+        "component",
         "unit",
         "value"
       ]

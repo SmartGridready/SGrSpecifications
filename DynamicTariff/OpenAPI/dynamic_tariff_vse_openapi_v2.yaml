@@ -7,24 +7,25 @@
 #
 # Version 2.0.0 (WORK IN PROGRESS)
 #
-# Enable security if required - see at the bottom of this file.
 
 openapi: 3.0.3
 info:
   title: Dynamic Tariff Retrieval API
-  description: >
+  description: |
     API to retrieve dynamic tariff prices of an electricity provider.
     Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
   version: '2.0.0'
 servers:
-  # TODO: Replace this with your actual API URL
-  - url: https://tariffs.example.org/
+  # TODO: Replace this with your actual API URL - endpoint paths will be relative to this URL
+  - url: https://tariffs.example.org/api/v2
     description: Example server
 paths:
   /tariffs:
     get:
       summary: Retrieve dynamic tariff prices
-      description: This endpoint retrieves dynamic tariff prices in a given time period.
+      description: |
+        This endpoint retrieves dynamic tariff prices in a given time period.
+        The endpoint is public and requires no authentication.
       operationId: get-tariffs
       parameters:
         - name: tariff_type
@@ -39,14 +40,20 @@ paths:
             $ref: '#/components/schemas/TariffName'
         - name: start_timestamp
           in: query
-          description: Marks the beginning of the price retrieval period. If omitted, the begin of the current day is utilized.
+          description: |
+            Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
+            The `start_timestamp` of the first returned interval should match this parameter.
           schema:
             $ref: '#/components/schemas/TimeStamp'
+          example: '2026-01-01T00:00:00+01:00'
         - name: end_timestamp
           in: query
-          description: Marks the end of the price retrieval period. If omitted, the end of the current day is utilized.
+          description: |
+            Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
+            The `end_timestamp` of the last returned interval should match this parameter.
           schema:
             $ref: '#/components/schemas/TimeStamp'
+          example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
           description: Dynamic tariff prices retrieved successfully.
@@ -60,32 +67,32 @@ paths:
                   - start_timestamp: '2026-02-01T00:00:00+01:00'
                     end_timestamp: '2026-02-01T00:15:00+01:00'
                     electricity:
-                      - unit: CHF_kWh
+                      - unit: CHF/kWh
                         value: 0.121
                     grid:
-                      - unit: CHF_kWh
+                      - unit: CHF/kWh
                         value: 0.113
-                      - unit: CHF_m
+                      - unit: CHF/m
                         value: 5
                     integrated:
-                      - unit: CHF_kWh
+                      - unit: CHF/kWh
                         value: 0.234
-                      - unit: CHF_m
+                      - unit: CHF/m
                         value: 5
                   - start_timestamp: '2026-02-01T00:15:00+01:00'
                     end_timestamp: '2026-02-01T00:30:00+01:00'
                     electricity:
-                      - unit: CHF_kWh
+                      - unit: CHF/kWh
                         value: 0.123
                     grid:
-                      - unit: CHF_kWh
+                      - unit: CHF/kWh
                         value: 0.102
-                      - unit: CHF_m
+                      - unit: CHF/m
                         value: 5
                     integrated:
-                      - unit: CHF_kWh
+                      - unit: CHF/kWh
                         value: 0.225
-                      - unit: CHF_m
+                      - unit: CHF/m
                         value: 5
         '400':
           description: Incorrect query parameters were given.
@@ -94,7 +101,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
-                error: "Invalid tariff_name 'xyz'. Allowed values: 'my_tariff'."
+                error: "Invalid tariff_name 'xyz'. Allowed values: 'example_tariff'."
         '500':
           description: An internal server error occurred.
           content:
@@ -103,25 +110,25 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
                 error: An internal error occurred.
+      security:
+        - {}
 components:
   schemas:
     PriceArray:
       type: array
       items:
-        $ref: '#/components/schemas/Price'
+        $ref: '#/components/schemas/PriceItem'
       description: Contains the prices for the requested time intervals.
-    Price:
+    PriceItem:
       type: object
       required:
         - start_timestamp
         - end_timestamp
       properties:
         start_timestamp:
-          type: string
-          format: date-time
+          $ref: '#/components/schemas/TimeStamp'
         end_timestamp:
-          type: string
-          format: date-time
+          $ref: '#/components/schemas/TimeStamp'
       anyOf:
         - properties:
             electricity:
@@ -133,13 +140,7 @@ components:
             integrated:
               $ref: '#/components/schemas/PriceComponentArray'
         - properties:
-            metering:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
             regional_fees:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
-            refund_storage:
               $ref: '#/components/schemas/PriceComponentArray'
         - properties:
             feed_in:
@@ -148,14 +149,17 @@ components:
     PriceComponentArray:
       type: array
       items:
-        $ref: '#/components/schemas/PriceComponent'
+        $ref: '#/components/schemas/PriceComponentItem'
       description: Price components of a tariff component.
-    PriceComponent:
+    PriceComponentItem:
       type: object
       required:
+        - component
         - unit
         - value
       properties:
+        component:
+          $ref: '#/components/schemas/PriceComponent'
         unit:
           $ref: '#/components/schemas/PriceUnit'
         value:
@@ -165,93 +169,109 @@ components:
       type: string
       enum:
       # TODO: Define your actual tariff product names here, since they are provider-specific
-        - my_tariff
-      description: >
+        - example_tariff
+      description: |
         Tariff names specified by DSO
-          * `my_tariff` - An example tariff
+          * `example_tariff` - An example tariff
     TariffType:
       type: string
       enum:
         - electricity
         - grid
-        - integrated
         - metering
+        - national_fees
         - regional_fees
-        - refund_storage
+        - integrated
         - feed_in
-      description: >
-        Tariff types (components) specified by VSE
-          * `electricity` - Electricity fees only
-          * `grid` - Grid usage fees
-          * `integrated` - Combines electricity and grid fees
+        - refund
+      description: |
+        Tariff types (tariff components) specified by VSE
+          * `electricity` - Electricity energy supply to end consumers
+          * `grid` - Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid
           * `metering` - Metering infrastructure fees
-          * `regional_fees` - Additional regional fees
-          * `refund_storage` - Refund for grid supportive storage operation
+          * `national_fees` - National surcharges (e.g. Swissgrid)
+          * `regional_fees` - Local or regional surcharges (e.g. concession fees)
+          * `dso` - Combination of `grid`, `metering` and `national_fees`
+          * `integrated` - Combination of `electricity` and `dso`
           * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
+          * `refund` - Refund for grid supportive storage operation
     PriceUnit:
       type: string
       enum:
-        - CHF_kWh
-        - CHF_kVarh
-        - CHF_y
-        - CHF_m
-        - CHF_w
-        - CHF_d
-        - CHF_12h
-        - CHF_6h
-        - CHF_4h
-        - CHF_2h
-        - CHF_1h
-        - CHF_30min
-        - CHF_15min
-        - CHF_kW_y
-        - CHF_kW_m
-        - CHF_kW_w
-        - CHF_kW_d
-        - CHF_kW_12h
-        - CHF_kW_6h
-        - CHF_kW_4h
-        - CHF_kW_2h
-        - CHF_kW_1h
-        - CHF_kW_30min
-        - CHF_kW_15min
-      description: >
+        - CHF/kWh
+        - CHF/kVarh
+        - CHF/y
+        - CHF/m
+        - CHF/w
+        - CHF/d
+        - CHF/12h
+        - CHF/6h
+        - CHF/4h
+        - CHF/2h
+        - CHF/1h
+        - CHF/30min
+        - CHF/15min
+        - CHF/kW/y
+        - CHF/kW/m
+        - CHF/kW/w
+        - CHF/kW/d
+        - CHF/kW/12h
+        - CHF/kW/6h
+        - CHF/kW/4h
+        - CHF/kW/2h
+        - CHF/kW/1h
+        - CHF/kW/30min
+        - CHF/kW/15min
+      description: |
         Price unit:
-          * `CHF_kWh` - CHF per kWh
-          * `CHF_kVarh` - CHF per kVarh
-          * `CHF_y` - CHF per year
-          * `CHF_m` - CHF per month
-          * `CHF_w` - CHF per week
-          * `CHF_d` - CHF per day
-          * `CHF_12h` - CHF per 12 hours
-          * `CHF_6h` - CHF per 6 hours
-          * `CHF_4h` - CHF per 4 hours
-          * `CHF_2h` - CHF per 2 hours
-          * `CHF_1h` - CHF per hour
-          * `CHF_30min` - CHF per 30 minutes
-          * `CHF_15min` - CHF per 15 minutes
-          * `CHF_kW_y` - CHF per kW per year
-          * `CHF_kW_m` - CHF per kW per month
-          * `CHF_kW_w` - CHF per kW per week
-          * `CHF_kW_d` - CHF per kW per day
-          * `CHF_kW_12h` - CHF per kW per 12 hours
-          * `CHF_kW_6h` - CHF per kW per 6 hours
-          * `CHF_kW_4h` - CHF per kW per 4 hours
-          * `CHF_kW_2h` - CHF per kW per 2 hours
-          * `CHF_kW_1h` - CHF per kW per hour
-          * `CHF_kW_30min` - CHF per kW per 30 minutes
-          * `CHF_kW_15min` - CHF per kW per 15 minutes
+          * `CHF/kWh` - CHF per kWh
+          * `CHF/kVarh` - CHF per kVarh
+          * `CHF/y` - CHF per year
+          * `CHF/m` - CHF per month
+          * `CHF/w` - CHF per week
+          * `CHF/d` - CHF per day
+          * `CHF/12h` - CHF per 12 hours
+          * `CHF/6h` - CHF per 6 hours
+          * `CHF/4h` - CHF per 4 hours
+          * `CHF/2h` - CHF per 2 hours
+          * `CHF/1h` - CHF per hour
+          * `CHF/30min` - CHF per 30 minutes
+          * `CHF/15min` - CHF per 15 minutes
+          * `CHF/kW/y` - CHF per kW per year
+          * `CHF/kW/m` - CHF per kW per month
+          * `CHF/kW/w` - CHF per kW per week
+          * `CHF/kW/d` - CHF per kW per day
+          * `CHF/kW/12h` - CHF per kW per 12 hours
+          * `CHF/kW/6h` - CHF per kW per 6 hours
+          * `CHF/kW/4h` - CHF per kW per 4 hours
+          * `CHF/kW/2h` - CHF per kW per 2 hours
+          * `CHF/kW/1h` - CHF per kW per hour
+          * `CHF/kW/30min` - CHF per kW per 30 minutes
+          * `CHF/kW/15min` - CHF per kW per 15 minutes
     PriceValue:
       type: number
       format: decimal
       description: A numeric price value.
+    PriceComponent:
+      type: string
+      enum:
+        - base
+        - energy
+        - power
+        - reactive_power
+      description: |
+        Price components:
+        * `base` - Base tariff
+        * `energy` - Energy
+        * `power` - Active power
+        * `reactive_power` - Reactive power
     TimeStamp:
       type: string
       anyOf:
         - format: date-time
         - format: empty
-      description: An ISO-8601 time stamp.
-      example: '2025-06-23T13:30:00+02:00'
+      description: An ISO-8601 time stamp with time zone offset.
+      example: '2026-05-23T13:30:00+02:00'
     TariffResponse:
       type: object
       required:
@@ -272,14 +292,17 @@ components:
           type: string
           description: The error message.
   securitySchemes:
-    # uncomment the schemes your server supports, defaults to no authentication
-    BasicAuth:
-      type: http
-      scheme: basic
-    BearerAuth:
-      type: http
-      scheme: bearer
+    OAuthPKCE:
+      type: oauth2
+      description: OAuth with PKCE
+      flows:
+        authorizationCode:
+          # TODO: Replace this with your actual OAuth server URL, may be different from API server
+          authorizationUrl: https://tariffs.example.org/oauth2/authorize
+          tokenUrl: https://tariffs.example.org/oauth2/token
+          refreshUrl: https://tariffs.example.org/oauth2/token
+          scopes:
+            openid: minimal
+            offline: refresh token
 security:
-  # uncomment the schemes you want to use in your API
-  - BasicAuth: []
-  - BearerAuth: []
+  - OAuthPKCE: [openid, offline]
