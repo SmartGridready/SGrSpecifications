@@ -27,6 +27,8 @@ paths:
         This endpoint retrieves dynamic tariff prices in a given time period.
         The endpoint is public and requires no authentication.
       operationId: get-tariffs
+      tags:
+        - public
       parameters:
         - name: tariff_type
           in: query
@@ -67,32 +69,42 @@ paths:
                   - start_timestamp: '2026-02-01T00:00:00+01:00'
                     end_timestamp: '2026-02-01T00:15:00+01:00'
                     electricity:
-                      - unit: CHF/kWh
+                      - component: energy
+                        unit: CHF/kWh
                         value: 0.121
                     grid:
-                      - unit: CHF/kWh
+                      - component: energy
+                        unit: CHF/kWh
                         value: 0.113
-                      - unit: CHF/m
+                      - component: base
+                        unit: CHF/m
                         value: 5
                     integrated:
-                      - unit: CHF/kWh
+                      - component: energy
+                        unit: CHF/kWh
                         value: 0.234
-                      - unit: CHF/m
+                      - component: base
+                        unit: CHF/m
                         value: 5
                   - start_timestamp: '2026-02-01T00:15:00+01:00'
                     end_timestamp: '2026-02-01T00:30:00+01:00'
                     electricity:
-                      - unit: CHF/kWh
+                      - component: energy
+                        unit: CHF/kWh
                         value: 0.123
                     grid:
-                      - unit: CHF/kWh
+                      - component: energy
+                        unit: CHF/kWh
                         value: 0.102
-                      - unit: CHF/m
+                      - component: base
+                        unit: CHF/m
                         value: 5
                     integrated:
-                      - unit: CHF/kWh
+                      - component: energy
+                        unit: CHF/kWh
                         value: 0.225
-                      - unit: CHF/m
+                      - component: base
+                        unit: CHF/m
                         value: 5
         '400':
           description: Incorrect query parameters were given.
@@ -112,6 +124,129 @@ paths:
                 error: An internal error occurred.
       security:
         - {}
+  /customerTariffs:
+    get:
+      summary: Retrieve dynamic tariff prices
+      description: |
+        This endpoint retrieves dynamic tariff prices in a given time period.
+        The endpoint is protected.
+      operationId: get-customer-tariffs
+      tags:
+        - protected
+      parameters:
+        - name: ems_instance_id
+          in: query
+          required: true
+          description: |
+            EMS installation/serial identifier; used to identify the EMS instance and its binding to a metering point
+          schema:
+            type: string
+            maxLength: 128
+        - name: tariff_type
+          in: query
+          description: Filters by tariff type. If omitted, all available tariff types are returned.
+          schema:
+            $ref: '#/components/schemas/TariffType'
+        - name: start_timestamp
+          in: query
+          description: |
+            Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
+            The `start_timestamp` of the first returned interval should match this parameter.
+          schema:
+            $ref: '#/components/schemas/TimeStamp'
+          example: '2026-01-01T00:00:00+01:00'
+        - name: end_timestamp
+          in: query
+          description: |
+            Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
+            The `end_timestamp` of the last returned interval should match this parameter.
+          schema:
+            $ref: '#/components/schemas/TimeStamp'
+          example: '2026-01-02T00:00:00+01:00'
+      responses:
+        '200':
+          description: Dynamic tariff prices retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffResponse'
+              example:
+                publication_timestamp: '2026-01-31T18:00:00+01:00'
+                prices:
+                  - start_timestamp: '2026-02-01T00:00:00+01:00'
+                    end_timestamp: '2026-02-01T00:15:00+01:00'
+                    electricity:
+                      - component: energy
+                        unit: CHF/kWh
+                        value: 0.121
+                    grid:
+                      - component: energy
+                        unit: CHF/kWh
+                        value: 0.113
+                      - component: base
+                        unit: CHF/m
+                        value: 5
+                    integrated:
+                      - component: energy
+                        unit: CHF/kWh
+                        value: 0.234
+                      - component: base
+                        unit: CHF/m
+                        value: 5
+                  - start_timestamp: '2026-02-01T00:15:00+01:00'
+                    end_timestamp: '2026-02-01T00:30:00+01:00'
+                    electricity:
+                      - component: energy
+                        unit: CHF/kWh
+                        value: 0.123
+                    grid:
+                      - component: energy
+                        unit: CHF/kWh
+                        value: 0.102
+                      - component: base
+                        unit: CHF/m
+                        value: 5
+                    integrated:
+                      - component: energy
+                        unit: CHF/kWh
+                        value: 0.225
+                      - component: base
+                        unit: CHF/m
+                        value: 5
+        '400':
+          description: Incorrect query parameters were given.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Invalid tariff_name 'xyz'. Allowed values: 'example_tariff'."
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Unauthorized.
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: EMS not linked to your account.
+        '500':
+          description: An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: An internal error occurred.
+      security:
+        - OAuthPKCE: [openid, offline]
 components:
   schemas:
     PriceArray:
@@ -304,5 +439,3 @@ components:
           scopes:
             openid: minimal
             offline: refresh token
-security:
-  - OAuthPKCE: [openid, offline]
