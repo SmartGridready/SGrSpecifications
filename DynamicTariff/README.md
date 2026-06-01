@@ -12,7 +12,7 @@ for VSE-compatible dynamic tariffs:
 
 ### Version 2 - 2027
 
-- [JSON Schema](./Schema/dynamic_tariff_vse_schema_v2.json)
+- [JSON Schema of Tariff Response](./Schema/dynamic_tariff_vse_tariffresponse_schema_v2.json)
 - [OpenAPI Specification Template](./OpenAPI/dynamic_tariff_vse_openapi_v2.yaml)
 
 ## Documentation

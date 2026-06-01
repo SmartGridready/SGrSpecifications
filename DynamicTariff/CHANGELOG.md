@@ -9,7 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- tariff types `metering` and `refund_storage`
+- tariff types `metering`, `national_fees`, `dso`, `refund`
+- price components `base`, `energy`, `power`, `reactive_power`
+- authentication using OAuth with authorization code flow
+- protected endpoints to link or unlink EMS and to retrieve tariff prices of linked EMS
 
 
 ## [1.0.5] - 2026-05-28
