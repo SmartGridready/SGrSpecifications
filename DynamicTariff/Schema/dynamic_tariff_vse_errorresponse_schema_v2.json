@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs VSE",
+  "description": "JSON schema for error responses of the dynamic tariff price API",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string",
+      "description": "The error message."
+    }
+  }
+}

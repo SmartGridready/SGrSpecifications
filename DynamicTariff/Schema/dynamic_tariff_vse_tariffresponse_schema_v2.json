@@ -5,13 +5,17 @@
   "type": "object",
   "properties": {
     "publication_timestamp": {
-      "description": "Time of tariff publication",
-      "$ref": "#/$defs/timestamp_type"
+      "description": "The time stamp of tariff publication, may be empty if not published",
+      "type": "string",
+      "anyOf": [
+        { "format": "date-time" },
+        { "format": "empty" }
+      ]
     },
     "prices": {
-      "description": "Price values",
+      "description": "Contains the prices for the requested time intervals",
       "type": "array",
-      "items": { "$ref": "#/$defs/price_item" }
+      "items": { "$ref": "#/$defs/tariff_price_item" }
     }
   },
   "additionalProperties": true,
@@ -20,96 +24,127 @@
     "prices"
   ],
   "$defs": {
-    "price_item": {
+    "tariff_price_item": {
       "type": "object",
       "properties": {
         "start_timestamp": {
-          "description": "Start time stamp of the tariff interval",
-          "$ref": "#/$defs/timestamp_type"
+          "description": "Begin of the time interval",
+          "type": "string",
+          "format": "date-time"
         },
         "end_timestamp": {
-          "description": "End time stamp of the tariff interval",
-          "$ref": "#/$defs/timestamp_type"
+          "description": "End of the time interval",
+          "type": "string",
+          "format": "date-time"
         },
         "electricity": {
           "description": "Electricity price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "$ref": "#/$defs/tariff_type_item"
         },
         "grid": {
           "description": "Grid price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "allOf": [
+            { "$ref": "#/$defs/grid_tariff_type" },
+            { "$ref": "#/$defs/tariff_type_item" }
+          ]
         },
         "metering": {
           "description": "Metering price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "$ref": "#/$defs/tariff_type_item"
         },
         "national_fees": {
           "description": "National fee price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "$ref": "#/$defs/tariff_type_item"
         },
         "regional_fees": {
           "description": "Regional fee price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "allOf": [
+            { "$ref": "#/$defs/regional_fees_tariff_type" },
+            { "$ref": "#/$defs/tariff_type_item" }
+          ]
         },
         "dso": {
           "description": "DSO price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "$ref": "#/$defs/tariff_type_item"
         },
         "integrated": {
           "description": "Integrated price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "$ref": "#/$defs/tariff_type_item"
         },
         "feed_in": {
           "description": "Feed-in price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "$ref": "#/$defs/tariff_type_item"
         },
         "refund": {
           "description": "Storage refund price values in the interval",
-          "$ref": "#/$defs/price_component_array"
+          "$ref": "#/$defs/tariff_type_item"
         }
       },
-      "additionalProperties": true,
       "required": [
         "start_timestamp",
         "end_timestamp"
-      ]
+      ],
+      "additionalProperties": true
     },
-    "price_component_item": {
+    "tariff_type_item": {
       "type": "object",
       "properties": {
-        "component": {
-          "description": "The price component",
-          "type": "string"
+        "base": {
+          "description": "Base prices",
+          "$ref": "#/$defs/tariff_component_item"
         },
+        "energy": {
+          "description": "Energy-based prices",
+          "$ref": "#/$defs/tariff_component_item"
+        },
+        "power": {
+          "description": "Power-based prices",
+          "$ref": "#/$defs/tariff_component_item"
+        },
+        "reactive_power": {
+          "description": "Reactive-power-based prices",
+          "$ref": "#/$defs/tariff_component_item"
+        }
+      }
+    },
+    "grid_tariff_type": {
+      "type": "object",
+      "properties": {
+        "municipality_number": {
+          "description": "The municipality number from BFS",
+          "type": "number",
+          "format": "integer"
+        },
+        "municipality_name": {
+          "description": "The municipality name",
+          "type": "string"
+        }
+      }
+    },
+    "regional_fees_tariff_type": {
+      "type": "object",
+      "properties": {
+        "standard": {
+          "description": "Defines if the tariff is a standard tariff",
+          "type": "boolean"
+        }
+      }
+    },
+    "tariff_component_item": {
+      "type": "object",
+      "properties": {
         "unit": {
-          "description": "The tariff unit of the price value",
+          "description": "The tariff unit",
           "type": "string"
         },
         "value": {
-          "description": "The tariff price value",
+          "description": "The numeric price value",
           "type": "number"
         }
       },
-      "additionalProperties": true,
       "required": [
-        "component",
         "unit",
         "value"
-      ]
-    },
-    "timestamp_type": {
-      "description": "ISO-8601 time stamp",
-      "anyOf": [
-        { "type": "string", "format": "date-time" },
-        { "type": "string", "format": "empty" },
-        { "type": "null" }
-      ]
-    },
-    "price_component_array": {
-      "description": "Nullable array",
-      "anyOf": [
-        { "type": "array", "items": { "$ref": "#/$defs/price_component_item" }},
-        { "type": "null" }
       ]
     }
   }

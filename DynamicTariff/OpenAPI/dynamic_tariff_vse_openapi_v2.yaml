@@ -46,7 +46,8 @@ paths:
             Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
             The `start_timestamp` of the first returned interval should match this parameter.
           schema:
-            $ref: '#/components/schemas/TimeStamp'
+            type: string
+            format: date-time
           example: '2026-01-01T00:00:00+01:00'
         - name: end_timestamp
           in: query
@@ -54,7 +55,8 @@ paths:
             Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
             The `end_timestamp` of the last returned interval should match this parameter.
           schema:
-            $ref: '#/components/schemas/TimeStamp'
+            type: string
+            format: date-time
           example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
@@ -69,41 +71,41 @@ paths:
                   - start_timestamp: '2026-02-01T00:00:00+01:00'
                     end_timestamp: '2026-02-01T00:15:00+01:00'
                     electricity:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.121
                     grid:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.113
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
                     integrated:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.234
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
                   - start_timestamp: '2026-02-01T00:15:00+01:00'
                     end_timestamp: '2026-02-01T00:30:00+01:00'
                     electricity:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.123
                     grid:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.102
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
                     integrated:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.225
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
         '400':
@@ -153,7 +155,8 @@ paths:
             Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
             The `start_timestamp` of the first returned interval should match this parameter.
           schema:
-            $ref: '#/components/schemas/TimeStamp'
+            type: string
+            format: date-time
           example: '2026-01-01T00:00:00+01:00'
         - name: end_timestamp
           in: query
@@ -161,7 +164,8 @@ paths:
             Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
             The `end_timestamp` of the last returned interval should match this parameter.
           schema:
-            $ref: '#/components/schemas/TimeStamp'
+            type: string
+            format: date-time
           example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
@@ -176,41 +180,41 @@ paths:
                   - start_timestamp: '2026-02-01T00:00:00+01:00'
                     end_timestamp: '2026-02-01T00:15:00+01:00'
                     electricity:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.121
                     grid:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.113
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
                     integrated:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.234
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
                   - start_timestamp: '2026-02-01T00:15:00+01:00'
                     end_timestamp: '2026-02-01T00:30:00+01:00'
                     electricity:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.123
                     grid:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.102
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
                     integrated:
-                      - component: energy
+                      energy:
                         unit: CHF/kWh
                         value: 0.225
-                      - component: base
+                      base:
                         unit: CHF/m
                         value: 5
         '400':
@@ -249,57 +253,6 @@ paths:
         - OAuthPKCE: [openid, offline]
 components:
   schemas:
-    PriceArray:
-      type: array
-      items:
-        $ref: '#/components/schemas/PriceItem'
-      description: Contains the prices for the requested time intervals.
-    PriceItem:
-      type: object
-      required:
-        - start_timestamp
-        - end_timestamp
-      properties:
-        start_timestamp:
-          $ref: '#/components/schemas/TimeStamp'
-        end_timestamp:
-          $ref: '#/components/schemas/TimeStamp'
-      anyOf:
-        - properties:
-            electricity:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
-            grid:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
-            integrated:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
-            regional_fees:
-              $ref: '#/components/schemas/PriceComponentArray'
-        - properties:
-            feed_in:
-              $ref: '#/components/schemas/PriceComponentArray'
-      description: A price item of a time interval, contains tariff components.
-    PriceComponentArray:
-      type: array
-      items:
-        $ref: '#/components/schemas/PriceComponentItem'
-      description: Price components of a tariff component.
-    PriceComponentItem:
-      type: object
-      required:
-        - component
-        - unit
-        - value
-      properties:
-        component:
-          $ref: '#/components/schemas/PriceComponent'
-        unit:
-          $ref: '#/components/schemas/PriceUnit'
-        value:
-          $ref: '#/components/schemas/PriceValue'
-      additionalProperties: true
     TariffName:
       type: string
       enum:
@@ -316,6 +269,7 @@ components:
         - metering
         - national_fees
         - regional_fees
+        - dso
         - integrated
         - feed_in
         - refund
@@ -330,7 +284,7 @@ components:
           * `integrated` - Combination of `electricity` and `dso`
           * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
           * `refund` - Refund for grid supportive storage operation
-    PriceUnit:
+    TariffUnit:
       type: string
       enum:
         - CHF/kWh
@@ -383,30 +337,104 @@ components:
           * `CHF/kW/1h` - CHF per kW per hour
           * `CHF/kW/30min` - CHF per kW per 30 minutes
           * `CHF/kW/15min` - CHF per kW per 15 minutes
-    PriceValue:
-      type: number
-      format: decimal
-      description: A numeric price value.
-    PriceComponent:
-      type: string
-      enum:
-        - base
-        - energy
-        - power
-        - reactive_power
-      description: |
-        Price components:
-        * `base` - Base tariff
-        * `energy` - Energy
-        * `power` - Active power
-        * `reactive_power` - Reactive power
-    TimeStamp:
-      type: string
+    TariffPriceItem:
+      type: object
+      required:
+        - start_timestamp
+        - end_timestamp
+      properties:
+        start_timestamp:
+          type: string
+          format: date-time
+          description: The begin of the time interval, formatted as ISO-8601 time stamp.
+        end_timestamp:
+          type: string
+          format: date-time
+          description: The end of the time interval, formatted as ISO-8601 time stamp.
       anyOf:
-        - format: date-time
-        - format: empty
-      description: An ISO-8601 time stamp with time zone offset.
-      example: '2026-05-23T13:30:00+02:00'
+        - properties:
+            electricity:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            grid:
+              allOf:
+                - $ref: '#/components/schemas/TariffTypeItem'
+                - $ref: '#/components/schemas/GridTariffType'
+        - properties:
+            metering:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            national_fees:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            regional_fees:
+              allOf:
+                - $ref: '#/components/schemas/TariffTypeItem'
+                - $ref: '#/components/schemas/RegionalFeesTariffType'
+        - properties:
+            dso:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            integrated:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            feed_in:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            refund:
+              $ref: '#/components/schemas/TariffTypeItem'
+      description: A price item of a time interval, contains tariff types.
+    TariffTypeItem:
+      type: object
+      properties:
+        tariff_name:
+          type: string
+          description: The tariff name assigned to the tariff type.
+      anyOf:
+        - properties:
+            base:
+              $ref: '#/components/schemas/TariffComponentItem'
+        - properties:
+            energy:
+              $ref: '#/components/schemas/TariffComponentItem'
+        - properties:
+            power:
+              $ref: '#/components/schemas/TariffComponentItem'
+        - properties:
+            reactive_power:
+              $ref: '#/components/schemas/TariffComponentItem'
+      description: A tariff type in a time interval, contains tariff components.
+    TariffComponentItem:
+      type: object
+      required:
+        - unit
+        - value
+      properties:
+        unit:
+          $ref: '#/components/schemas/TariffUnit'
+        value:
+          type: number
+          format: decimal
+          description: The numeric price value
+      additionalProperties: true
+    GridTariffType:
+      type: object
+      properties:
+        standard:
+          type: boolean
+          description: Defines if the tariff is a standard tariff.
+      description: Grid-specific parameters.
+    RegionalFeesTariffType:
+      type: object
+      properties:
+        municipality_number:
+          type: number
+          format: integer
+          description: The municipality number from BFS.
+        municipality_name:
+          type: string
+          description: The municipality name.
+      description: Regional-fees-specific parameters.
     TariffResponse:
       type: object
       required:
@@ -414,9 +442,16 @@ components:
         - prices
       properties:
         publication_timestamp:
-          $ref: '#/components/schemas/TimeStamp'
+          type: string
+          anyOf:
+            - format: date-time
+            - format: empty
+          description: The time stamp of tariff publication, may be empty if not published.
         prices:
-          $ref: '#/components/schemas/PriceArray'
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffPriceItem'
+          description: Contains the prices for the requested time intervals.
       additionalProperties: true
     ErrorResponse:
       type: object
