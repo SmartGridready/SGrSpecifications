@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs VSE",
+  "description": "JSON schema for EMS link status responses of the dynamic tariff price API",
+  "type": "object",
+  "properties": {
+    "link_status": {
+      "type": "string",
+      "description": "The linking process status."
+    },
+    "linking_process_redirect_uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "The linking process redirect URI."
+    }
+  },
+  "required": [
+    "link_status",
+    "linking_process_redirect_uri"
+  ]
+}

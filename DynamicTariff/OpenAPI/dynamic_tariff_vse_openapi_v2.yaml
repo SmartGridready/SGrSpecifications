@@ -138,9 +138,9 @@ paths:
       parameters:
         - name: ems_instance_id
           in: query
-          required: true
           description: |
             EMS installation/serial identifier; used to identify the EMS instance and its binding to a metering point
+          required: true
           schema:
             type: string
             maxLength: 128
@@ -251,6 +251,93 @@ paths:
                 error: An internal error occurred.
       security:
         - OAuthPKCE: [openid, offline]
+  /emsLinkStatus:
+    # TODO finalize after feedback
+    get:
+      summary: Retrieve information about EMS link status for the EMS-Instance.
+      description: |
+        This endpoint is used to retrieve information about the current link status of the customer and EMS instance. 
+        Linking in this context means, establishing a persistent connection between the EMS instance and the customer account, which also entails letting the customer select a metering point that is from then on used for providing the data for the  `/customerTariffs` endpoint. Therefore it is required to complete the linking process before calling the `/customerTariffs` endpoint.
+        The response also contains the URI, to which the customer can be redirected to complete the linking process for the first time or to repeat it in order to change the selected metering point.
+        The EMS must not assume the current status remains valid indefinitely since the user can rewoke the connection within myEKZ.
+        
+        Flow
+        1) The EMS calls the `/emsLinkStatus` endpoint with a **Bearer access token** and the `ems_instance_id` and `redirect_uri` query parameters.
+           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+           - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
+        2) Server validates the token, derives the customer identity, and decides:
+           - If the customer has already completed the linking process, the response contains `link_status: "link_established"`.
+           - If the customer has not yet completed the linking process, the response contains `link_status: "link_required"`.
+           - If linking is currently not possible (e.g. if the customer is currently not able to access any valid metering points), the response contains `link_status: "link_unavailable"`.
+        3) The EMS decides the next step in accordance to the response:
+           - `link_unavailable`: It is currently impossible to complete the linking process and the EMS should handle this case accordingly. The EMS should not redirect the user to the `linking_process_redirect_uri`.
+           - `link_required`: The EMS must redirect the customer to the URI provided in `linking_process_redirect_uri`, before calling the `/customerTariffs` endpoint. After the user finishes the process, a return link to the EMS will be presented to the user. The EMS is free to define any valid https:// URI that points to the EMS web application as return URI, towards which the user is guided after completing the process. Other URI schemes than https or URIs that point to other locations than the EMS web application are not allowed. The EMS must ensure the validity of the return URI.
+           - `link_established`: The EMS link has already been established and the EMS can proceed with calling the `/customerTariffs` endpoint. The customer can also be redirected to the URI provided in `linking_process_redirect_uri`, in order to repeat the process, which might entail changing the metering point selection.
+        4) After the linking process is completed the EMS may use the `/customerTariffs` endpoint to retrieve tariff information for the selected metering endpoint.
+      operationId: get-ems-link-status
+      tags:
+        - protected
+      parameters:
+        - name: ems_instance_id
+          in: query
+          schema:
+            type: string
+            maxLength: 128
+          description: |
+            EMS installation/serial identifier; will be stored with the binding.
+          required: true
+        - name: redirect_uri
+          in: query
+          description: |
+            The EMS-provided callback URL where the user is guided to after completing the linking process.
+            Must not exceed a maximum length of 400 characters.
+          schema:
+            type: string
+            format: uri
+          required: true
+      responses:
+        '200':
+          description: EMS status retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmsLinkStatusResponse'
+        '400':
+          description: Incorrect query parameters were given.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Invalid tariff_name 'xyz'. Allowed values: 'example_tariff'."
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Unauthorized.
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: EMS not linked to your account.
+        '500':
+          description: An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: An internal error occurred.
+      security:
+        - OAuthPKCE: [openid, offline]
+
+
 components:
   schemas:
     TariffName:
@@ -461,6 +548,32 @@ components:
         error:
           type: string
           description: The error message.
+    EmsLinkStatusCode:
+      type: string
+      enum:
+        - link_unavailable
+        - link_required
+        - link_established
+      description: |
+        EMS link status codes:
+          * `link_unavailable` - No metering point available
+          * `link_required` - EMS is not linked
+          * `link_established` - EMS has been linked successfully
+    EmsLinkStatusResponse:
+      type: object
+      properties:
+        link_status:
+          $ref: '#/components/schemas/EmsLinkStatusCode'
+        linking_process_redirect_uri:
+          type: string
+          format: uri
+          description: |
+            The linking process redirect URI can be used to redirect the logged in user to the process page,
+            to establish or edit the EMS link, which entails selecting the metering point at the EMS location.
+            The URI contains a parameter `ems_access_token`, that holds the bearer token that was used to authenticate
+            the endpoint request. The token has to be valid at the time of the redirect or otherwise the request
+            will be rejected. If there is a delay between calling the endpoint and initiating the redirect, the EMS has
+            to ensure the token has not expired or must update the parameter with a fresh token.
   securitySchemes:
     OAuthPKCE:
       type: oauth2
