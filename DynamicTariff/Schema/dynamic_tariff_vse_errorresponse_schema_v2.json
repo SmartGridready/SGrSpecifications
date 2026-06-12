@@ -8,5 +8,6 @@
       "description": "The error message.",
       "type": "string"
     }
-  }
+  },
+  "required": ["error"]
 }

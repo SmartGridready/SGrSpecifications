@@ -9,9 +9,7 @@
       "$ref": "#/$defs/ems_unlink_status_code"
     }
   },
-  "required": [
-    "unlink_status"
-  ],
+  "required": ["unlink_status"],
   "$defs": {
     "ems_unlink_status_code": {
       "description": "EMS unlink status codes.",

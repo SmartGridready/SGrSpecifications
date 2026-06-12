@@ -139,6 +139,10 @@
       "description": "A tariff type in a time interval, contains tariff components.",
       "type": "object",
       "properties": {
+        "tariff_name": {
+          "description": "The tariff product associated with the tariff type.",
+          "type": "string"
+        },
         "standard_basegroup": {
           "description": "Defines if the tariff is a standard grid usage tariff for a base customer group",
           "type": "boolean"
@@ -209,7 +213,7 @@
       "properties": {
         "unit": {
           "description": "The tariff unit",
-          "type": "string"
+          "$ref": "#/$defs/tariff_unit"
         },
         "value": {
           "description": "The numeric price value",
@@ -221,5 +225,35 @@
         "value"
       ]
     }
+  },
+  "tariff_unit": {
+    "description": "Price units.",
+    "type": "string",
+    "enum": [
+      "CHF/kWh",
+      "CHF/kVarh",
+      "CHF/y",
+      "CHF/m",
+      "CHF/w",
+      "CHF/d",
+      "CHF/12h",
+      "CHF/6h",
+      "CHF/4h",
+      "CHF/2h",
+      "CHF/1h",
+      "CHF/30min",
+      "CHF/15min",
+      "CHF/kW/y",
+      "CHF/kW/m",
+      "CHF/kW/w",
+      "CHF/kW/d",
+      "CHF/kW/12h",
+      "CHF/kW/6h",
+      "CHF/kW/4h",
+      "CHF/kW/2h",
+      "CHF/kW/1h",
+      "CHF/kW/30min",
+      "CHF/kW/15min"
+    ]
   }
 }

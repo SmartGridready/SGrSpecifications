@@ -144,6 +144,14 @@ paths:
       description: |
         This endpoint retrieves dynamic tariff prices in a given time period.
         The endpoint is protected and requires an EMS linked to the customer account.
+
+        **Flow**
+        1) The EMS calls the `GET /customerTariffs` endpoint with a **Bearer access token** and the `ems_instance_id` query parameter.
+           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+           - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
+        2) Server validates the token, derives the customer identity, and decides:
+           - If the EMS was previously linked, the response contains the tariff prices.
+           - If the EMS was not linked, an error 403 is returned.
       operationId: get-customer-tariffs
       tags:
         - dynamic-individual
@@ -655,6 +663,9 @@ components:
           * `link_removed` - EMS has been unlinked successfully
     EmsLinkResponse:
       type: object
+      required:
+        - link_status
+        - linking_process_redirect_uri
       properties:
         link_status:
           $ref: '#/components/schemas/EmsLinkStatusCode'
@@ -671,6 +682,8 @@ components:
       description: An EMS link status response.
     EmsUnlinkResponse:
       type: object
+      required:
+        - unlink_status
       properties:
         unlink_status:
           $ref: '#/components/schemas/EmsUnlinkStatusCode'
