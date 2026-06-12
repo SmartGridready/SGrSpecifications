@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariffs EMS Link Response",
+  "description": "JSON schema for EMS link status responses of the dynamic tariff price API",
+  "type": "object",
+  "properties": {
+    "link_status": {
+      "description": "The linking process status.",
+      "$ref": "#/$defs/ems_link_status_code"
+    },
+    "linking_process_redirect_uri": {
+      "description": "The linking process redirect URI.",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "link_status",
+    "linking_process_redirect_uri"
+  ],
+  "$defs": {
+    "ems_link_status_code": {
+      "description": "EMS link status codes.",
+      "type": "string",
+      "enum": [
+        "link_unavailable",
+        "link_required",
+        "link_established"
+      ]
+    }
+  }
+}
