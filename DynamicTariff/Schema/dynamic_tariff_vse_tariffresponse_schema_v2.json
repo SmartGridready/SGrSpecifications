@@ -202,9 +202,6 @@
             }
           }
         }
-      ],
-      "required": [
-        "tariff_name"
       ]
     },
     "tariff_component_item": {
