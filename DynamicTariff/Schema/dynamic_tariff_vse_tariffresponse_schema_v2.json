@@ -25,7 +25,7 @@
   ],
   "$defs": {
     "tariff_price_item": {
-      "description": "A price item of a time interval, contains tariff types.",
+      "description": "A price item of a time interval, contains tariff types",
       "type": "object",
       "properties": {
         "start_timestamp": {
@@ -43,7 +43,7 @@
         {
           "properties": {
             "electricity": {
-              "description": "Electricity price values in the interval",
+              "description": "Electricity energy supply to end consumers",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -51,7 +51,7 @@
         {
           "properties": {
             "grid": {
-              "description": "Grid price values in the interval",
+              "description": "Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -59,7 +59,7 @@
         {
           "properties": {
             "metering": {
-              "description": "Metering price values in the interval",
+              "description": "Metering infrastructure fees",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -67,7 +67,7 @@
         {
           "properties": {
             "national_fees": {
-              "description": "National fee price values in the interval",
+              "description": "National surcharges (e.g. Swissgrid)",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -75,7 +75,7 @@
         {
           "properties": {
             "regional_fees": {
-              "description": "Regional fee price values in the interval",
+              "description": "Local or regional surcharges (e.g. concession fees)",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -83,7 +83,7 @@
         {
           "properties": {
             "dso": {
-              "description": "DSO price values in the interval",
+              "description": "DSO tariff type (`grid`, `metering` and `national_fees`)",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -91,7 +91,7 @@
         {
           "properties": {
             "dso_complete": {
-              "description": "DSO price values in the interval (complete)",
+              "description": "Complete DSO tariff type (`grid`, `metering`, `national_fees` and `regional_fees`)",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -99,7 +99,7 @@
         {
           "properties": {
             "integrated": {
-              "description": "Integrated price values in the interval",
+              "description": "Integrated tariff type (`dso` and `electricity`)",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -107,7 +107,7 @@
         {
           "properties": {
             "integrated_complete": {
-              "description": "Integrated price values in the interval (complete)",
+              "description": "Complete integrated tariff type (`dso_complete` and `electricity`)",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -115,7 +115,7 @@
         {
           "properties": {
             "feed_in": {
-              "description": "Feed-in price values in the interval",
+              "description": "Compensation for feed-in into grid (positive value means reimbursement of customer)",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -123,7 +123,7 @@
         {
           "properties": {
             "refund": {
-              "description": "Storage refund price values in the interval",
+              "description": "Refund for grid supportive storage operation",
               "$ref": "#/$defs/tariff_type_item"
             }
           }
@@ -136,11 +136,11 @@
       "additionalProperties": true
     },
     "tariff_type_item": {
-      "description": "A tariff type in a time interval, contains tariff components.",
+      "description": "A tariff type in a time interval, contains tariff components",
       "type": "object",
       "properties": {
         "tariff_name": {
-          "description": "The tariff product associated with the tariff type.",
+          "description": "The tariff product associated with the tariff type",
           "type": "string"
         },
         "standard_basegroup": {
@@ -205,15 +205,15 @@
       ]
     },
     "tariff_component_item": {
-      "description": "A tariff component value.",
+      "description": "A tariff component price value",
       "type": "object",
       "properties": {
         "unit": {
-          "description": "The tariff unit",
+          "description": "The tariff component price unit",
           "$ref": "#/$defs/tariff_unit"
         },
         "value": {
-          "description": "The numeric price value",
+          "description": "The numeric tariff component price value",
           "type": "number"
         }
       },
@@ -224,7 +224,7 @@
     }
   },
   "tariff_unit": {
-    "description": "Price units.",
+    "description": "Tariff component price units",
     "type": "string",
     "enum": [
       "CHF/kWh",

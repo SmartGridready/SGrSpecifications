@@ -5,11 +5,11 @@
   "type": "object",
   "properties": {
     "link_status": {
-      "description": "The linking process status.",
+      "description": "The linking process status",
       "$ref": "#/$defs/ems_link_status_code"
     },
     "linking_process_redirect_uri": {
-      "description": "The linking process redirect URI.",
+      "description": "The linking process redirect URI",
       "type": "string",
       "format": "uri"
     }
@@ -20,7 +20,7 @@
   ],
   "$defs": {
     "ems_link_status_code": {
-      "description": "EMS link status codes.",
+      "description": "EMS link status codes",
       "type": "string",
       "enum": [
         "link_unavailable",

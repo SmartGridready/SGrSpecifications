@@ -5,14 +5,14 @@
   "type": "object",
   "properties": {
     "unlink_status": {
-      "description": "The unlinking process status.",
+      "description": "The unlinking process status",
       "$ref": "#/$defs/ems_unlink_status_code"
     }
   },
   "required": ["unlink_status"],
   "$defs": {
     "ems_unlink_status_code": {
-      "description": "EMS unlink status codes.",
+      "description": "EMS unlink status codes",
       "type": "string",
       "enum": [
         "link_removed",

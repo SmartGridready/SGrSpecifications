@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "error": {
-      "description": "The error message.",
+      "description": "The error message",
       "type": "string"
     }
   },
