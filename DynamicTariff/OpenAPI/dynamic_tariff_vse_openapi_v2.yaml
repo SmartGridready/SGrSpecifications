@@ -15,7 +15,7 @@ info:
     API specification template to retrieve tariffs of an electricity provider.
     Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
 
-    One tariff per tariff_type should be marked as "standard_basegroup": true, since this will be returned if no tariff_name is provided for tariff retrieval.
+    One tariff per tariff_type should be marked as `"standard_basegroup": true`, since this will be returned if no tariff_name is provided for tariff retrieval.
     
     Use this template to implement your tariff API.
   version: '2.0.0'
@@ -248,7 +248,7 @@ paths:
         The endpoint is protected and requires an EMS linked to the customer account and metering point.
 
         **Flow**
-        1) The EMS calls the `GET /customerTariffs` endpoint with a **Bearer access token** in **HTTP Basic** header and the `ems_instance_id` query parameter.
+        1) The EMS calls the `GET /customerTariffs` endpoint with a **Bearer access token** and the `ems_instance_id` query parameter.
            - The bearer access token can initially be acquired using the OIDC Authorization Code Flow. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the access token, derives the customer identity, and decides:
@@ -500,7 +500,7 @@ paths:
         The EMS must not assume that the link remains valid indefinitely, since the customer can unlink the EMS at any given moment.
         
         **Flow**
-        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token**  in **HTTP Basic** header, the `ems_instance_id` and `redirect_uri` query parameters.
+        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token**, the `ems_instance_id` and `redirect_uri` query parameters.
            - The bearer access token can initially be acquired using the OIDC Authorization Code Flow. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the token, derives the customer identity, and decides:
@@ -588,16 +588,16 @@ paths:
         This endpoint is used to unlink a previously linked EMS instance. 
 
         **Flow**
-        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token**  in **HTTP Basic** header, the `ems_instance_id` and `redirect_uri` query parameters.
+        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token**, the `ems_instance_id` and `redirect_uri` query parameters.
            - The bearer access token can initially be acquired using the OIDC Authorization Code Flow. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the token, derives the customer identity, and decides:
            - If the EMS was previously linked, the response contains `unlink_status: "link_removed"`.
            - If the EMS was not linked, the response contains `error: "link_not_found"`.
         3) After the unlinking process is completed the EMS may no longer use the `/customerTariffs` endpoint.
-      operationId: delete-ems-link
+      operationId: delete-ems-link-v2
       tags:
-        - dynamic-individual
+        - individual
       parameters:
         - name: ems_instance_id
           in: query
@@ -696,7 +696,7 @@ components:
           * `integrated` - Combination of `electricity` and `dso`
           * `integrated_complete` - Combination of `electricity` and `dso_complete`
           * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
-          * `refund` - Refund for grid supportive storage operation
+          * `refund` - Refund for grid supportive storage operation (positive value means reimbursement of customer)
     TariffUnit:
       type: string
       enum:
@@ -784,7 +784,13 @@ components:
             dso:
               $ref: '#/components/schemas/TariffTypeItem'
         - properties:
+            dso_complete:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
             integrated:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            integrated_complete:
               $ref: '#/components/schemas/TariffTypeItem'
         - properties:
             feed_in:
@@ -796,6 +802,8 @@ components:
       additionalProperties: true
     TariffTypeItem:
       type: object
+      required: 
+        - tariff_name
       properties:
         tariff_name:
           type: string
@@ -805,17 +813,17 @@ components:
           description: Defines if the tariff is a standard grid usage tariff for a base customer group.
         canton_taxes:
           type: boolean
-          description: Defines if cantonal taxes are required.
+          description: Defines if cantonal taxes are applicable.
         canton_name:
           type: string
           description: The canton name.
         municipality_taxes:
           type: boolean
-          description: Defines if municipality taxes are required.
+          description: Defines if municipality taxes are applicable.
         municipality_number:
           type: number
           format: integer
-          description: The municipality number from BFS.
+          description: The municipality number from BFS (Hist. code with 5 digits).
         municipality_name:
           type: string
           description: The municipality name.
@@ -845,7 +853,7 @@ components:
         value:
           type: number
           format: decimal
-          description: The numeric price value
+          description: The numeric price value without VAT-taxes.
       description: A tariff component value.
     TariffResponse:
       type: object
@@ -855,8 +863,7 @@ components:
       properties:
         publication_timestamp:
           type: string
-          anyOf:
-            - format: date-time
+          format: date-time
           description: The time stamp of tariff publication.
         prices:
           type: array
@@ -923,9 +930,22 @@ components:
       description: An EMS unlink status response.
   securitySchemes:
     OpenIdConnect:
-      type: openIdConnect
-      description: OpenID Connect
-      # TODO:
-      # Replace this with the URL to your actual OpenID configuration.
-      # Swagger UI will only work with a real OIDC server!
-      openIdConnectUrl: https://tariffs.example.org/oauth/.well-known/openid-configuration
+      type: oauth2
+      description: |
+        OAuth2 with OpenID Connect. Use the Authorization Code flow below to get an access token.
+        Confidential clients authenticate via **HTTP Basic** header.
+        1) Redirect the user to the **Authorization URL** for login/consent (PKCE recommended for confidential clients, mandatory for public clients).
+        2) Exchange the returned `code` for tokens at **Token URL**, authenticating the client. Confidential clients authenticate via **HTTP Basic** header.
+        3) Call protected API endpoints with `Authorization: Bearer <access_token>`.
+      flows:
+        authorizationCode:
+          # TODO:
+          # Replace this with the URL to your actual OpenID configuration.
+          # AUTH endpoint (end-user login/consent):
+          authorizationUrl: https://tariffs.example.ch/oauth/protocol/openid-connect/auth
+          # TOKEN endpoint (Authorization Code Grant & Refresh Token Grant):
+          tokenUrl: https://tariffs.example.ch/oauth/protocol/openid-connect/token
+          scopes:
+            openid: OpenID Connect ID token
+            offline_access: Request refresh token for offline access
+      x-usePkceWithAuthorizationCodeGrant: true
