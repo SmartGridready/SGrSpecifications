@@ -548,7 +548,7 @@ paths:
         This endpoint is used to unlink a previously linked EMS instance. 
 
         **Flow**
-        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token**, the `ems_instance_id` and `redirect_uri` query parameters.
+        1) The EMS calls the `DELETE /emsLink` endpoint with a **Bearer access token** and the `ems_instance_id` query parameters.
            - The bearer access token can initially be acquired using the OIDC Authorization Code Flow. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the token, derives the customer identity, and decides:
