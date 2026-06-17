@@ -155,26 +155,6 @@ paths:
                           reactive_energy:
                             unit: CHF/kVarh
                             value: 0.04
-                        dso_complete:
-                          tariff_name: example_dso_complete
-                          standard_basegroup: false
-                          canton_taxes: true
-                          canton_name: Zürich
-                          municipality_taxes: true
-                          municipality_number: 12389
-                          municipality_name: Menzingen
-                          base:
-                            unit: CHF/m
-                            value: 9.0
-                          energy:
-                            unit: CHF/kWh
-                            value: 0.1161
-                          power:
-                            unit: CHF/kW/m
-                            value: 2.0
-                          reactive_energy:
-                            unit: CHF/kVarh
-                            value: 0.04
                         integrated:
                           tariff_name: example_integrated
                           standard_basegroup: true
@@ -184,26 +164,6 @@ paths:
                           energy:
                             unit: CHF/kWh
                             value: 0.2006
-                          power:
-                            unit: CHF/kW/m
-                            value: 2.0
-                          reactive_energy:
-                            unit: CHF/kVarh
-                            value: 0.04
-                        integrated_complete:
-                          tariff_name: example_integrated_complete
-                          standard_basegroup: false
-                          canton_taxes: true
-                          canton_name: Zürich
-                          municipality_taxes: true
-                          municipality_number: 12389
-                          municipality_name: Menzingen
-                          base:
-                            unit: CHF/m
-                            value: 14.0
-                          energy:
-                            unit: CHF/kWh
-                            value: 0.2071
                           power:
                             unit: CHF/kW/m
                             value: 2.0
