@@ -614,6 +614,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EmsUnlinkResponse'
+              example:
+                error: link_removed
         '400':
           description: Incorrect query parameters were given.
           content:
@@ -643,7 +645,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/EmsUnlinkResponse'
               example:
                 error: link_not_found
         '500':
@@ -855,8 +857,7 @@ components:
           type: string
           anyOf:
             - format: date-time
-            - format: empty
-          description: The time stamp of tariff publication, may be empty if not published.
+          description: The time stamp of tariff publication.
         prices:
           type: array
           items:
