@@ -10,29 +10,31 @@
 
 openapi: 3.0.3
 info:
-  title: Dynamic Tariff Retrieval API
+  title: Tariff Retrieval API
   description: |
-    API specification template to retrieve dynamic tariff prices of an electricity provider.
+    API specification template to retrieve tariffs of an electricity provider.
     Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
 
-    Use this template to implement your dynamic tariff API.
+    One tariff per tariff_type should be marked as "standard_basegroup": true, since this will be returned if no tariff_name is provided for tariff retrieval.
+    
+    Use this template to implement your tariff API.
   version: '2.0.0'
 servers:
   # TODO:
   # Replace this with your actual API server URL, including base path.
   # Endpoint paths will be relative to this URL!
-  - url: https://tariffs.example.org/api/v2
+  - url: https://api.tariffs.example.ch/v2
     description: Example API server base URL
 paths:
   /tariffs:
     get:
-      summary: Retrieves dynamic tariff prices.
+      summary: Retrieves tariffs.
       description: |
-        This endpoint retrieves dynamic tariff prices in a given time period.
+        This endpoint retrieves tariffs in a given time period.
         The endpoint is public and requires no authentication.
-      operationId: get-tariffs
+      operationId: get-tariffs-v2
       tags:
-        - dynamic-public
+        - public
       parameters:
         - name: tariff_type
           in: query
@@ -41,14 +43,14 @@ paths:
             $ref: '#/components/schemas/TariffType'
         - name: tariff_name
           in: query
-          description: Filters by a specific tariff product of the provider. If omitted, the provider's default tariff is returned.
+          description: Filters by a specific tariff product of the provider. If omitted, the provider's default ("standard_basegroup") tariff is returned.
           schema:
             $ref: '#/components/schemas/TariffName'
         - name: start_timestamp
           in: query
           description: |
             Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
-            The `start_timestamp` of the first returned interval should match this parameter.
+            The `start_timestamp` of the first returned interval should match or be prior to this parameter.
           schema:
             type: string
             format: date-time
@@ -56,22 +58,22 @@ paths:
         - name: end_timestamp
           in: query
           description: |
-            Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
-            The `end_timestamp` of the last returned interval should match this parameter.
+            Marks the end of the price retrieval period. If omitted, one day after the start_timestamp is utilized.
+            The `end_timestamp` of the last returned interval should match or be after this parameter.
           schema:
             type: string
             format: date-time
           example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
-          description: Dynamic tariff prices retrieved successfully.
+          description: Tariffs retrieved successfully.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TariffResponse'
               examples:
                 minimal:
-                  summary: Minimal tariff types example.
+                  summary: Minimal tariff response example (grid only).
                   value:
                     publication_timestamp: '2026-01-31T18:00:00+01:00'
                     prices:
@@ -79,21 +81,15 @@ paths:
                         end_timestamp: '2026-02-01T00:15:00+01:00'
                         grid:
                           tariff_name: example_grid
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 6.0
+                            value: 3.0
                           energy:
                             unit: CHF/kWh
                             value: 0.083
-                          power:
-                            unit: CHF/kW/m
-                            value: 2.0
-                          reactive_energy:
-                            unit: CHF/kVarh
-                            value: 0.04
                 complete:
-                  summary: Complete tariff types example.
+                  summary: Complete tariff response example.
                   value:
                     publication_timestamp: '2026-01-31T18:00:00+01:00'
                     prices:
@@ -101,18 +97,19 @@ paths:
                         end_timestamp: '2026-02-01T00:15:00+01:00'
                         electricity:
                           tariff_name: example_electricity
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 20.0
+                            value: 5.0
                           energy:
                             unit: CHF/kWh
                             value: 0.091
                         grid:
                           tariff_name: example_grid
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 6.0
+                            value: 3.0
                           energy:
                             unit: CHF/kWh
                             value: 0.083
@@ -124,31 +121,34 @@ paths:
                             value: 0.04
                         metering:
                           tariff_name: example_metering
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
                             value: 6.0
                         national_fees:
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.0266
                         regional_fees:
-                          canton_taxes: false
+                          standard_basegroup: false
+                          canton_taxes: true
                           canton_name: Zürich
-                          municipality_taxes: false
-                          municipality_number: 261
-                          municipality_name: Zürich
+                          municipality_taxes: true
+                          municipality_number: 12389
+                          municipality_name: Menzingen
                           energy:
                             unit: CHF/kWh
-                            value: 0.0255
+                            value: 0.0065
                         dso:
                           tariff_name: example_dso
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 12.0
+                            value: 9.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.1296
+                            value: 0.1096
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -158,17 +158,17 @@ paths:
                         dso_complete:
                           tariff_name: example_dso_complete
                           standard_basegroup: false
-                          canton_taxes: false
+                          canton_taxes: true
                           canton_name: Zürich
-                          municipality_taxes: false
-                          municipality_number: 261
-                          municipality_name: Zürich
+                          municipality_taxes: true
+                          municipality_number: 12389
+                          municipality_name: Menzingen
                           base:
                             unit: CHF/m
-                            value: 12.0
+                            value: 9.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.1561
+                            value: 0.1161
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -177,13 +177,13 @@ paths:
                             value: 0.04
                         integrated:
                           tariff_name: example_integrated
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 32.0
+                            value: 14.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.2206
+                            value: 0.2006
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -193,17 +193,17 @@ paths:
                         integrated_complete:
                           tariff_name: example_integrated_complete
                           standard_basegroup: false
-                          canton_taxes: false
+                          canton_taxes: true
                           canton_name: Zürich
-                          municipality_taxes: false
-                          municipality_number: 261
-                          municipality_name: Zürich
+                          municipality_taxes: true
+                          municipality_number: 12389
+                          municipality_name: Menzingen
                           base:
                             unit: CHF/m
-                            value: 32.0
+                            value: 14.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.2511
+                            value: 0.2071
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -212,11 +212,13 @@ paths:
                             value: 0.04
                         feed_in:
                           tariff_name: example_pv
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.081
                         refund:
                           tariff_name: example_storage
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.055
@@ -240,21 +242,21 @@ paths:
         - {}
   /customerTariffs:
     get:
-      summary: Retrieves dynamic tariff prices.
+      summary: Retrieves tariffs specific for the customer's metering point.
       description: |
-        This endpoint retrieves dynamic tariff prices in a given time period.
-        The endpoint is protected and requires an EMS linked to the customer account.
+        This endpoint retrieves tariffs specific for the customer's metering point in a given time period.
+        The endpoint is protected and requires an EMS linked to the customer account and metering point.
 
         **Flow**
-        1) The EMS calls the `GET /customerTariffs` endpoint with a **Bearer access token** and the `ems_instance_id` query parameter.
-           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+        1) The EMS calls the `GET /customerTariffs` endpoint with a **Bearer access token** in **HTTP Basic** header and the `ems_instance_id` query parameter.
+           - The bearer access token can initially be acquired using the OIDC Authorization Code Flow with scopes **openid** and **offlice_access**. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
-        2) Server validates the token, derives the customer identity, and decides:
+        2) Server validates the access token, derives the customer identity, and decides:
            - If the EMS was previously linked, the response contains the tariff prices.
            - If the EMS was not linked, an error 403 is returned.
-      operationId: get-customer-tariffs
+      operationId: get-customer-tariffs-v2
       tags:
-        - dynamic-individual
+        - individual
       parameters:
         - name: ems_instance_id
           in: query
@@ -266,14 +268,14 @@ paths:
             maxLength: 128
         - name: tariff_type
           in: query
-          description: Filters by tariff type. If omitted, all available tariff types are returned.
+          description: Filters by tariff type. If omitted, all applicable tariff types are returned.
           schema:
             $ref: '#/components/schemas/TariffType'
         - name: start_timestamp
           in: query
           description: |
             Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
-            The `start_timestamp` of the first returned interval should match this parameter.
+            The `start_timestamp` of the first returned interval should match or be prior to this parameter.
           schema:
             type: string
             format: date-time
@@ -281,22 +283,22 @@ paths:
         - name: end_timestamp
           in: query
           description: |
-            Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
-            The `end_timestamp` of the last returned interval should match this parameter.
+            Marks the end of the price retrieval period. If omitted, one day after the start_timestamp is utilized.
+            The `end_timestamp` of the last returned interval should match or be after this parameter.
           schema:
             type: string
             format: date-time
           example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
-          description: Dynamic tariff prices retrieved successfully.
+          description: Tariffs retrieved successfully.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TariffResponse'
               examples:
                 minimal:
-                  summary: Minimal tariff types example.
+                  summary: Minimal tariff response example (grid only).
                   value:
                     publication_timestamp: '2026-01-31T18:00:00+01:00'
                     prices:
@@ -304,21 +306,15 @@ paths:
                         end_timestamp: '2026-02-01T00:15:00+01:00'
                         grid:
                           tariff_name: example_grid
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 6.0
+                            value: 3.0
                           energy:
                             unit: CHF/kWh
                             value: 0.083
-                          power:
-                            unit: CHF/kW/m
-                            value: 2.0
-                          reactive_energy:
-                            unit: CHF/kVarh
-                            value: 0.04
                 complete:
-                  summary: Complete tariff types example.
+                  summary: Complete tariff response example.
                   value:
                     publication_timestamp: '2026-01-31T18:00:00+01:00'
                     prices:
@@ -326,18 +322,19 @@ paths:
                         end_timestamp: '2026-02-01T00:15:00+01:00'
                         electricity:
                           tariff_name: example_electricity
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 20.0
+                            value: 5.0
                           energy:
                             unit: CHF/kWh
                             value: 0.091
                         grid:
                           tariff_name: example_grid
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 6.0
+                            value: 3.0
                           energy:
                             unit: CHF/kWh
                             value: 0.083
@@ -349,31 +346,34 @@ paths:
                             value: 0.04
                         metering:
                           tariff_name: example_metering
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
                             value: 6.0
                         national_fees:
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.0266
                         regional_fees:
-                          canton_taxes: false
+                          standard_basegroup: false
+                          canton_taxes: true
                           canton_name: Zürich
-                          municipality_taxes: false
-                          municipality_number: 261
-                          municipality_name: Zürich
+                          municipality_taxes: true
+                          municipality_number: 12389
+                          municipality_name: Menzingen
                           energy:
                             unit: CHF/kWh
-                            value: 0.0255
+                            value: 0.0065
                         dso:
                           tariff_name: example_dso
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 12.0
+                            value: 9.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.1296
+                            value: 0.1096
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -383,17 +383,17 @@ paths:
                         dso_complete:
                           tariff_name: example_dso_complete
                           standard_basegroup: false
-                          canton_taxes: false
+                          canton_taxes: true
                           canton_name: Zürich
-                          municipality_taxes: false
-                          municipality_number: 261
-                          municipality_name: Zürich
+                          municipality_taxes: true
+                          municipality_number: 12389
+                          municipality_name: Menzingen
                           base:
                             unit: CHF/m
-                            value: 12.0
+                            value: 9.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.1561
+                            value: 0.1161
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -402,13 +402,13 @@ paths:
                             value: 0.04
                         integrated:
                           tariff_name: example_integrated
-                          standard_basegroup: false
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
-                            value: 32.0
+                            value: 14.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.2206
+                            value: 0.2006
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -418,17 +418,17 @@ paths:
                         integrated_complete:
                           tariff_name: example_integrated_complete
                           standard_basegroup: false
-                          canton_taxes: false
+                          canton_taxes: true
                           canton_name: Zürich
-                          municipality_taxes: false
-                          municipality_number: 261
-                          municipality_name: Zürich
+                          municipality_taxes: true
+                          municipality_number: 12389
+                          municipality_name: Menzingen
                           base:
                             unit: CHF/m
-                            value: 32.0
+                            value: 14.0
                           energy:
                             unit: CHF/kWh
-                            value: 0.2511
+                            value: 0.2071
                           power:
                             unit: CHF/kW/m
                             value: 2.0
@@ -437,11 +437,13 @@ paths:
                             value: 0.04
                         feed_in:
                           tariff_name: example_pv
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.081
                         refund:
                           tariff_name: example_storage
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.055
@@ -461,7 +463,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
                 error: Unauthorized.
-        '403':
+        '422':
           description: Forbidden.
           content:
             application/json:
@@ -478,7 +480,7 @@ paths:
               example:
                 error: An internal error occurred.
       security:
-        - OpenIdConnect: []
+        - OpenIdConnect: [openid, offline_access]
   /emsLink:
     get:
       summary: Retrieves EMS link status and initiates linking process.
@@ -502,7 +504,7 @@ paths:
            - `link_required`: The EMS must redirect the customer to the URI provided in `linking_process_redirect_uri`, before calling the `/customerTariffs` endpoint. After the user finishes the process, a return link to the EMS will be presented to the user. The EMS is free to define any valid `https://` URI that points to the EMS web application as return URI, where the user is guided to after completing the process. Other URI schemes than `https` or URIs that point to other locations than the EMS web application are not allowed. The EMS must ensure the validity of the return URI.
            - `link_established`: The EMS link has already been established and the EMS can proceed with calling the `/customerTariffs` endpoint. The customer can also be redirected to the URI provided in `linking_process_redirect_uri`, in order to repeat the process, which might entail changing the metering point selection.
         4) After the linking process is completed the EMS may use the `/customerTariffs` endpoint to retrieve tariff information for the selected metering endpoint.
-      operationId: get-ems-link
+      operationId: get-ems-link-v2
       tags:
         - dynamic-individual
       parameters:
