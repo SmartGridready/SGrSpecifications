@@ -249,7 +249,7 @@ paths:
 
         **Flow**
         1) The EMS calls the `GET /customerTariffs` endpoint with a **Bearer access token** in **HTTP Basic** header and the `ems_instance_id` query parameter.
-           - The bearer access token can initially be acquired using the OIDC Authorization Code Flow with scopes **openid** and **offlice_access**. Once expired a new access token can be obtained at the token endpoint with the refresh token.
+           - The bearer access token can initially be acquired using the OIDC Authorization Code Flow. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the access token, derives the customer identity, and decides:
            - If the EMS was previously linked, the response contains the tariff prices.
@@ -463,7 +463,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
                 error: Unauthorized.
-        '422':
+        '403':
           description: Forbidden.
           content:
             application/json:
@@ -471,6 +471,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
                 error: EMS not linked to your account.
+        '422':
+          description: Unprocessable entity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Parameter `redirect_uri` is not a valid URI.
         '500':
           description: An internal server error occurred.
           content:
@@ -483,17 +491,17 @@ paths:
         - OpenIdConnect: [openid, offline_access]
   /emsLink:
     get:
-      summary: Retrieves EMS link status and initiates linking process.
+      summary: Retrieves EMS link status for the EMS instance.
       description: |
         This endpoint is used to retrieve information about the current link status of the customer and EMS instance.
         Linking in this context means to establish a logical connection between the EMS instance and the customer account, which also entails letting the customer select a metering point, which determines the tariff product to be used by the `/customerTariffs` endpoint.
         It is therefore required to complete the linking process before calling the `/customerTariffs` endpoint.
-        In addition to the link status, the response also contains a redirect URI, where the customer is redirected to in order to complete the linking process for or to change the selected metering point.
+        In addition to the link status, the response also contains a redirect URI, to which the customer can be redirected to complete the linking process or to change the selected metering point.
         The EMS must not assume that the link remains valid indefinitely, since the customer can unlink the EMS at any given moment.
         
         **Flow**
-        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token** and the `ems_instance_id` and `redirect_uri` query parameters.
-           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token**  in **HTTP Basic** header, the `ems_instance_id` and `redirect_uri` query parameters.
+           - The bearer access token can initially be acquired using the OIDC Authorization Code Flow. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the token, derives the customer identity, and decides:
            - If the customer has already completed the linking process, the response contains `link_status: "link_established"`.
@@ -503,10 +511,10 @@ paths:
            - `link_unavailable`: It is currently impossible to complete the linking process and the EMS should handle this case accordingly. The EMS should not redirect the user to the `linking_process_redirect_uri`.
            - `link_required`: The EMS must redirect the customer to the URI provided in `linking_process_redirect_uri`, before calling the `/customerTariffs` endpoint. After the user finishes the process, a return link to the EMS will be presented to the user. The EMS is free to define any valid `https://` URI that points to the EMS web application as return URI, where the user is guided to after completing the process. Other URI schemes than `https` or URIs that point to other locations than the EMS web application are not allowed. The EMS must ensure the validity of the return URI.
            - `link_established`: The EMS link has already been established and the EMS can proceed with calling the `/customerTariffs` endpoint. The customer can also be redirected to the URI provided in `linking_process_redirect_uri`, in order to repeat the process, which might entail changing the metering point selection.
-        4) After the linking process is completed the EMS may use the `/customerTariffs` endpoint to retrieve tariff information for the selected metering endpoint.
+        4) After the linking process is completed the EMS may use the `/customerTariffs` endpoint to retrieve tariff information for the selected metering point.
       operationId: get-ems-link-v2
       tags:
-        - dynamic-individual
+        - individual
       parameters:
         - name: ems_instance_id
           in: query
@@ -527,7 +535,7 @@ paths:
             maxLength: 400
       responses:
         '200':
-          description: EMS status retrieved successfully.
+          description: EMS link status retrieved successfully.
           content:
             application/json:
               schema:
@@ -548,6 +556,22 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
                 error: Unauthorized.
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Insufficient scope.
+        '422':
+          description: Unprocessable entity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Parameter `redirect_uri` is not a valid URI.
         '500':
           description: An internal server error occurred.
           content:
@@ -557,15 +581,15 @@ paths:
               example:
                 error: An internal error occurred.
       security:
-        - OpenIdConnect: []
+        - OpenIdConnect: [openid, offline_access]
     delete:
       summary: Unlinks an EMS instance.
       description: |
         This endpoint is used to unlink a previously linked EMS instance. 
 
         **Flow**
-        1) The EMS calls the `DELETE /emsLink` endpoint with a **Bearer access token** and the `ems_instance_id` query parameter.
-           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token**  in **HTTP Basic** header, the `ems_instance_id` and `redirect_uri` query parameters.
+           - The bearer access token can initially be acquired using the OIDC Authorization Code Flow. Once expired a new access token can be obtained at the token endpoint with the refresh token.
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the token, derives the customer identity, and decides:
            - If the EMS was previously linked, the response contains `unlink_status: "link_removed"`.
@@ -606,6 +630,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
                 error: Unauthorized.
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Insufficient scope.
         '404':
           description: EMS link not found.
           content:
@@ -623,7 +655,7 @@ paths:
               example:
                 error: An internal error occurred.
       security:
-        - OpenIdConnect: []
+        - OpenIdConnect: [openid, offline_access]
 components:
   schemas:
     TariffName:
