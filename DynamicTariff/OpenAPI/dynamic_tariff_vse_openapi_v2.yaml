@@ -50,7 +50,7 @@ paths:
           in: query
           description: |
             Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
-            The `start_timestamp` of the first returned interval should match or be prior to this parameter.
+            The `start_timestamp` of the first returned interval should match or be the one prior to this parameter.
           schema:
             type: string
             format: date-time
@@ -59,7 +59,7 @@ paths:
           in: query
           description: |
             Marks the end of the price retrieval period. If omitted, one day after the start_timestamp is utilized.
-            The `end_timestamp` of the last returned interval should match or be after this parameter.
+            The `end_timestamp` of the last returned interval should match or be the one after this parameter.
           schema:
             type: string
             format: date-time
@@ -126,11 +126,13 @@ paths:
                             unit: CHF/m
                             value: 6.0
                         national_fees:
+                          tariff_name: example_national_fees
                           standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.0266
                         regional_fees:
+                          tariff_name: example_regional_fees
                           standard_basegroup: false
                           canton_taxes: true
                           canton_name: Zürich
@@ -235,7 +237,7 @@ paths:
           in: query
           description: |
             Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
-            The `start_timestamp` of the first returned interval should match or be prior to this parameter.
+            The `start_timestamp` of the first returned interval should match or be the one prior to this parameter.
           schema:
             type: string
             format: date-time
@@ -244,7 +246,7 @@ paths:
           in: query
           description: |
             Marks the end of the price retrieval period. If omitted, one day after the start_timestamp is utilized.
-            The `end_timestamp` of the last returned interval should match or be after this parameter.
+            The `end_timestamp` of the last returned interval should match or be the one after this parameter.
           schema:
             type: string
             format: date-time
@@ -311,11 +313,13 @@ paths:
                             unit: CHF/m
                             value: 6.0
                         national_fees:
+                          tariff_name: example_national_fees
                           standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.0266
                         regional_fees:
+                          tariff_name: example_regional_fees
                           standard_basegroup: false
                           canton_taxes: true
                           canton_name: Zürich
