@@ -5,14 +5,16 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
-## [2.0.0] - unreleased
+## [2.0.0-preview] - 2026-06-19
+
+First preview release of the upcoming specification.
 
 ### Added
 
-- tariff types `metering`, `national_fees`, `dso`, `refund`
-- tariff components `base`, `energy`, `power`, `reactive_power`
-- authentication using OAuth with authorization code flow
-- protected endpoints to link or unlink EMS and to retrieve tariff prices of linked EMS, instead of specifying tariff name
+- tariff types `metering`, `national_fees`, `dso`, `refund`, `dso_complete`, `integrated_complete`
+- tariff components `base`, `energy`, `power`, `reactive_energy`
+- authentication using OpenID Connect (OIDC)
+- protected API endpoints to link or unlink EMS and to retrieve tariff prices assigned to the EMS, instead of using the public API with explicit tariff name
 
 
 ## [1.0.5] - 2026-05-28

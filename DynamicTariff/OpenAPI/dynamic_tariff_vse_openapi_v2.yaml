@@ -5,7 +5,7 @@
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
 # Author: Matthias Krebs
 #
-# Version 2.0.0 (WORK IN PROGRESS)
+# Version 2.0.0-preview (2026-06-19)
 #
 
 openapi: 3.0.3
@@ -21,7 +21,7 @@ servers:
   # TODO:
   # Replace this with your actual API server URL, including base path.
   # Endpoint paths will be relative to this URL!
-  - url: https://tariffs.example.org/api/v2
+  - url: https://api.tariffs.example.org/v2
     description: Example API server base URL
 paths:
   /tariffs:
@@ -891,6 +891,6 @@ components:
       type: openIdConnect
       description: OpenID Connect
       # TODO:
-      # Replace this with the URL to your actual OpenID configuration.
+      # Replace this with the URL to your the OpenID configuration provided by your authentication server.
       # Swagger UI will only work with a real OIDC server!
-      openIdConnectUrl: https://tariffs.example.org/oauth/.well-known/openid-configuration
+      openIdConnectUrl: https://auth.tariffs.example.org/oauth/.well-known/openid-configuration
