@@ -1,0 +1,896 @@
+# OpenAPI Specification TEMPLATE for a Dynamic Tariff Price API.
+# Based on the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
+# This template contains the essential endpoints and schemas.
+#
+# Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
+# Author: Matthias Krebs
+#
+# Version 2.0.0-preview (2026-06-19)
+#
+
+openapi: 3.0.3
+info:
+  title: Dynamic Tariff Retrieval API
+  description: |
+    API specification template to retrieve dynamic tariff prices of an electricity provider.
+    Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
+
+    Use this template to implement your dynamic tariff API.
+  version: '2.0.0'
+servers:
+  # TODO:
+  # Replace this with your actual API server URL, including base path.
+  # Endpoint paths will be relative to this URL!
+  - url: https://api.tariffs.example.org/v2
+    description: Example API server base URL
+paths:
+  /tariffs:
+    get:
+      summary: Retrieves dynamic tariff prices.
+      description: |
+        This endpoint retrieves dynamic tariff prices in a given time period.
+        The endpoint is public and requires no authentication.
+      operationId: get-tariffs
+      tags:
+        - dynamic-public
+      parameters:
+        - name: tariff_type
+          in: query
+          description: Filters by tariff type. If omitted, all available tariff types are returned.
+          schema:
+            $ref: '#/components/schemas/TariffType'
+        - name: tariff_name
+          in: query
+          description: Filters by a specific tariff product of the provider. If omitted, the provider's default tariff is returned.
+          schema:
+            $ref: '#/components/schemas/TariffName'
+        - name: start_timestamp
+          in: query
+          description: |
+            Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
+            The `start_timestamp` of the first returned interval should match this parameter.
+          schema:
+            type: string
+            format: date-time
+          example: '2026-01-01T00:00:00+01:00'
+        - name: end_timestamp
+          in: query
+          description: |
+            Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
+            The `end_timestamp` of the last returned interval should match this parameter.
+          schema:
+            type: string
+            format: date-time
+          example: '2026-01-02T00:00:00+01:00'
+      responses:
+        '200':
+          description: Dynamic tariff prices retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffResponse'
+              examples:
+                minimal:
+                  summary: Minimal tariff types example.
+                  value:
+                    publication_timestamp: '2026-01-31T18:00:00+01:00'
+                    prices:
+                      - start_timestamp: '2026-02-01T00:00:00+01:00'
+                        end_timestamp: '2026-02-01T00:15:00+01:00'
+                        grid:
+                          tariff_name: example_grid
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 6.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.083
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                complete:
+                  summary: Complete tariff types example.
+                  value:
+                    publication_timestamp: '2026-01-31T18:00:00+01:00'
+                    prices:
+                      - start_timestamp: '2026-02-01T00:00:00+01:00'
+                        end_timestamp: '2026-02-01T00:15:00+01:00'
+                        electricity:
+                          tariff_name: example_electricity
+                          base:
+                            unit: CHF/m
+                            value: 20.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.091
+                        grid:
+                          tariff_name: example_grid
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 6.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.083
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        metering:
+                          tariff_name: example_metering
+                          base:
+                            unit: CHF/m
+                            value: 6.0
+                        national_fees:
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.0266
+                        regional_fees:
+                          canton_taxes: false
+                          canton_name: Zürich
+                          municipality_taxes: false
+                          municipality_number: 261
+                          municipality_name: Zürich
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.0255
+                        dso:
+                          tariff_name: example_dso
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 12.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.1296
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        dso_complete:
+                          tariff_name: example_dso_complete
+                          standard_basegroup: false
+                          canton_taxes: false
+                          canton_name: Zürich
+                          municipality_taxes: false
+                          municipality_number: 261
+                          municipality_name: Zürich
+                          base:
+                            unit: CHF/m
+                            value: 12.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.1561
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        integrated:
+                          tariff_name: example_integrated
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 32.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.2206
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        integrated_complete:
+                          tariff_name: example_integrated_complete
+                          standard_basegroup: false
+                          canton_taxes: false
+                          canton_name: Zürich
+                          municipality_taxes: false
+                          municipality_number: 261
+                          municipality_name: Zürich
+                          base:
+                            unit: CHF/m
+                            value: 32.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.2511
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        feed_in:
+                          tariff_name: example_pv
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.081
+                        refund:
+                          tariff_name: example_storage
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.055
+        '400':
+          description: Incorrect query parameters were given.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Invalid tariff_name 'xyz'.
+        '500':
+          description: An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: An internal error occurred.
+      security:
+        - {}
+  /customerTariffs:
+    get:
+      summary: Retrieves dynamic tariff prices.
+      description: |
+        This endpoint retrieves dynamic tariff prices in a given time period.
+        The endpoint is protected and requires an EMS linked to the customer account.
+
+        **Flow**
+        1) The EMS calls the `GET /customerTariffs` endpoint with a **Bearer access token** and the `ems_instance_id` query parameter.
+           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+           - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
+        2) Server validates the token, derives the customer identity, and decides:
+           - If the EMS was previously linked, the response contains the tariff prices.
+           - If the EMS was not linked, an error 403 is returned.
+      operationId: get-customer-tariffs
+      tags:
+        - dynamic-individual
+      parameters:
+        - name: ems_instance_id
+          in: query
+          description: |
+            EMS installation/serial identifier; used to identify the EMS instance and its binding to a metering point
+          required: true
+          schema:
+            type: string
+            maxLength: 128
+        - name: tariff_type
+          in: query
+          description: Filters by tariff type. If omitted, all available tariff types are returned.
+          schema:
+            $ref: '#/components/schemas/TariffType'
+        - name: start_timestamp
+          in: query
+          description: |
+            Marks the begin of the price retrieval period. If omitted, the begin of the current day is utilized.
+            The `start_timestamp` of the first returned interval should match this parameter.
+          schema:
+            type: string
+            format: date-time
+          example: '2026-01-01T00:00:00+01:00'
+        - name: end_timestamp
+          in: query
+          description: |
+            Marks the end of the price retrieval period. If omitted, the begin of the following day is utilized.
+            The `end_timestamp` of the last returned interval should match this parameter.
+          schema:
+            type: string
+            format: date-time
+          example: '2026-01-02T00:00:00+01:00'
+      responses:
+        '200':
+          description: Dynamic tariff prices retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffResponse'
+              examples:
+                minimal:
+                  summary: Minimal tariff types example.
+                  value:
+                    publication_timestamp: '2026-01-31T18:00:00+01:00'
+                    prices:
+                      - start_timestamp: '2026-02-01T00:00:00+01:00'
+                        end_timestamp: '2026-02-01T00:15:00+01:00'
+                        grid:
+                          tariff_name: example_grid
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 6.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.083
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                complete:
+                  summary: Complete tariff types example.
+                  value:
+                    publication_timestamp: '2026-01-31T18:00:00+01:00'
+                    prices:
+                      - start_timestamp: '2026-02-01T00:00:00+01:00'
+                        end_timestamp: '2026-02-01T00:15:00+01:00'
+                        electricity:
+                          tariff_name: example_electricity
+                          base:
+                            unit: CHF/m
+                            value: 20.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.091
+                        grid:
+                          tariff_name: example_grid
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 6.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.083
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        metering:
+                          tariff_name: example_metering
+                          base:
+                            unit: CHF/m
+                            value: 6.0
+                        national_fees:
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.0266
+                        regional_fees:
+                          canton_taxes: false
+                          canton_name: Zürich
+                          municipality_taxes: false
+                          municipality_number: 261
+                          municipality_name: Zürich
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.0255
+                        dso:
+                          tariff_name: example_dso
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 12.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.1296
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        dso_complete:
+                          tariff_name: example_dso_complete
+                          standard_basegroup: false
+                          canton_taxes: false
+                          canton_name: Zürich
+                          municipality_taxes: false
+                          municipality_number: 261
+                          municipality_name: Zürich
+                          base:
+                            unit: CHF/m
+                            value: 12.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.1561
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        integrated:
+                          tariff_name: example_integrated
+                          standard_basegroup: false
+                          base:
+                            unit: CHF/m
+                            value: 32.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.2206
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        integrated_complete:
+                          tariff_name: example_integrated_complete
+                          standard_basegroup: false
+                          canton_taxes: false
+                          canton_name: Zürich
+                          municipality_taxes: false
+                          municipality_number: 261
+                          municipality_name: Zürich
+                          base:
+                            unit: CHF/m
+                            value: 32.0
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.2511
+                          power:
+                            unit: CHF/kW/m
+                            value: 2.0
+                          reactive_energy:
+                            unit: CHF/kVarh
+                            value: 0.04
+                        feed_in:
+                          tariff_name: example_pv
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.081
+                        refund:
+                          tariff_name: example_storage
+                          energy:
+                            unit: CHF/kWh
+                            value: 0.055
+        '400':
+          description: Incorrect query parameters were given.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Invalid tariff_name 'xyz'.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Unauthorized.
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: EMS not linked to your account.
+        '500':
+          description: An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: An internal error occurred.
+      security:
+        - OpenIdConnect: []
+  /emsLink:
+    get:
+      summary: Retrieves EMS link status and initiates linking process.
+      description: |
+        This endpoint is used to retrieve information about the current link status of the customer and EMS instance.
+        Linking in this context means to establish a logical connection between the EMS instance and the customer account, which also entails letting the customer select a metering point, which determines the tariff product to be used by the `/customerTariffs` endpoint.
+        It is therefore required to complete the linking process before calling the `/customerTariffs` endpoint.
+        In addition to the link status, the response also contains a redirect URI, where the customer is redirected to in order to complete the linking process for or to change the selected metering point.
+        The EMS must not assume that the link remains valid indefinitely, since the customer can unlink the EMS at any given moment.
+        
+        **Flow**
+        1) The EMS calls the `GET /emsLink` endpoint with a **Bearer access token** and the `ems_instance_id` and `redirect_uri` query parameters.
+           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+           - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
+        2) Server validates the token, derives the customer identity, and decides:
+           - If the customer has already completed the linking process, the response contains `link_status: "link_established"`.
+           - If the customer has not yet completed the linking process, the response contains `link_status: "link_required"`.
+           - If linking is currently not possible (e.g. if the customer is currently not able to access any valid metering points), the response contains `link_status: "link_unavailable"`.
+        3) The EMS decides the next step in accordance to the response:
+           - `link_unavailable`: It is currently impossible to complete the linking process and the EMS should handle this case accordingly. The EMS should not redirect the user to the `linking_process_redirect_uri`.
+           - `link_required`: The EMS must redirect the customer to the URI provided in `linking_process_redirect_uri`, before calling the `/customerTariffs` endpoint. After the user finishes the process, a return link to the EMS will be presented to the user. The EMS is free to define any valid `https://` URI that points to the EMS web application as return URI, where the user is guided to after completing the process. Other URI schemes than `https` or URIs that point to other locations than the EMS web application are not allowed. The EMS must ensure the validity of the return URI.
+           - `link_established`: The EMS link has already been established and the EMS can proceed with calling the `/customerTariffs` endpoint. The customer can also be redirected to the URI provided in `linking_process_redirect_uri`, in order to repeat the process, which might entail changing the metering point selection.
+        4) After the linking process is completed the EMS may use the `/customerTariffs` endpoint to retrieve tariff information for the selected metering endpoint.
+      operationId: get-ems-link
+      tags:
+        - dynamic-individual
+      parameters:
+        - name: ems_instance_id
+          in: query
+          description: |
+            EMS installation/serial identifier; will be stored with the binding.
+          required: true
+          schema:
+            type: string
+            maxLength: 128
+        - name: redirect_uri
+          in: query
+          description: |
+            The EMS-provided callback URL where the user is guided to after completing the linking process.
+          required: true
+          schema:
+            type: string
+            format: uri
+            maxLength: 400
+      responses:
+        '200':
+          description: EMS status retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmsLinkResponse'
+        '400':
+          description: Incorrect query parameters were given.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Missing query parameter 'ems_instance_id'.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Unauthorized.
+        '500':
+          description: An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: An internal error occurred.
+      security:
+        - OpenIdConnect: []
+    delete:
+      summary: Unlinks an EMS instance.
+      description: |
+        This endpoint is used to unlink a previously linked EMS instance. 
+
+        **Flow**
+        1) The EMS calls the `DELETE /emsLink` endpoint with a **Bearer access token** and the `ems_instance_id` query parameter.
+           - The bearer access token can be acquired using the OIDC Authorization Code Flow.
+           - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
+        2) Server validates the token, derives the customer identity, and decides:
+           - If the EMS was previously linked, the response contains `unlink_status: "link_removed"`.
+           - If the EMS was not linked, the response contains `error: "link_not_found"`.
+        3) After the unlinking process is completed the EMS may no longer use the `/customerTariffs` endpoint.
+      operationId: delete-ems-link
+      tags:
+        - dynamic-individual
+      parameters:
+        - name: ems_instance_id
+          in: query
+          description: |
+            EMS installation/serial identifier.
+          required: true
+          schema:
+            type: string
+            maxLength: 128
+      responses:
+        '200':
+          description: EMS unlinked successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmsUnlinkResponse'
+        '400':
+          description: Incorrect query parameters were given.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Missing query parameter 'ems_instance_id'.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Unauthorized.
+        '404':
+          description: EMS link not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: link_not_found
+        '500':
+          description: An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: An internal error occurred.
+      security:
+        - OpenIdConnect: []
+components:
+  schemas:
+    TariffName:
+      type: string
+      enum:
+      # TODO:
+      # Define your actual tariff product names here, since they are provider-specific.
+      # If you do not offer different tariffs, remove the 'enum' part and ignore the query parameter in your implementation.
+        - example_tariff
+      description: |
+        Tariff names specified by DSO
+          * `example_tariff` - An example tariff
+    TariffType:
+      type: string
+      enum:
+        - electricity
+        - grid
+        - metering
+        - national_fees
+        - regional_fees
+        - dso
+        - dso_complete
+        - integrated
+        - integrated_complete
+        - feed_in
+        - refund
+      description: |
+        Tariff types specified by VSE
+          * `electricity` - Electricity energy supply to end consumers
+          * `grid` - Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid
+          * `metering` - Metering infrastructure fees
+          * `national_fees` - National surcharges (e.g. Swissgrid)
+          * `regional_fees` - Local or regional surcharges (e.g. concession fees)
+          * `dso` - Combination of `grid`, `metering` and `national_fees`
+          * `dso_complete` - Combination of `grid`, `metering`, `national_fees` and `regional_fees`
+          * `integrated` - Combination of `electricity` and `dso`
+          * `integrated_complete` - Combination of `electricity` and `dso_complete`
+          * `feed_in` - Compensation for feed-in into grid (positive value means reimbursement of customer)
+          * `refund` - Refund for grid supportive storage operation
+    TariffUnit:
+      type: string
+      enum:
+        - CHF/kWh
+        - CHF/kVarh
+        - CHF/y
+        - CHF/m
+        - CHF/w
+        - CHF/d
+        - CHF/12h
+        - CHF/6h
+        - CHF/4h
+        - CHF/2h
+        - CHF/1h
+        - CHF/30min
+        - CHF/15min
+        - CHF/kW/y
+        - CHF/kW/m
+        - CHF/kW/w
+        - CHF/kW/d
+        - CHF/kW/12h
+        - CHF/kW/6h
+        - CHF/kW/4h
+        - CHF/kW/2h
+        - CHF/kW/1h
+        - CHF/kW/30min
+        - CHF/kW/15min
+      description: |
+        Price unit:
+          * `CHF/kWh` - CHF per kWh
+          * `CHF/kVarh` - CHF per kVarh
+          * `CHF/y` - CHF per year
+          * `CHF/m` - CHF per month
+          * `CHF/w` - CHF per week
+          * `CHF/d` - CHF per day
+          * `CHF/12h` - CHF per 12 hours
+          * `CHF/6h` - CHF per 6 hours
+          * `CHF/4h` - CHF per 4 hours
+          * `CHF/2h` - CHF per 2 hours
+          * `CHF/1h` - CHF per hour
+          * `CHF/30min` - CHF per 30 minutes
+          * `CHF/15min` - CHF per 15 minutes
+          * `CHF/kW/y` - CHF per kW per year
+          * `CHF/kW/m` - CHF per kW per month
+          * `CHF/kW/w` - CHF per kW per week
+          * `CHF/kW/d` - CHF per kW per day
+          * `CHF/kW/12h` - CHF per kW per 12 hours
+          * `CHF/kW/6h` - CHF per kW per 6 hours
+          * `CHF/kW/4h` - CHF per kW per 4 hours
+          * `CHF/kW/2h` - CHF per kW per 2 hours
+          * `CHF/kW/1h` - CHF per kW per hour
+          * `CHF/kW/30min` - CHF per kW per 30 minutes
+          * `CHF/kW/15min` - CHF per kW per 15 minutes
+    TariffPriceItem:
+      type: object
+      required:
+        - start_timestamp
+        - end_timestamp
+      properties:
+        start_timestamp:
+          type: string
+          format: date-time
+          description: The begin of the time interval, formatted as ISO-8601 time stamp.
+        end_timestamp:
+          type: string
+          format: date-time
+          description: The end of the time interval, formatted as ISO-8601 time stamp.
+      anyOf:
+        - properties:
+            electricity:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            grid:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            metering:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            national_fees:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            regional_fees:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            dso:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            integrated:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            feed_in:
+              $ref: '#/components/schemas/TariffTypeItem'
+        - properties:
+            refund:
+              $ref: '#/components/schemas/TariffTypeItem'
+      description: A price item of a time interval, contains tariff types.
+      additionalProperties: true
+    TariffTypeItem:
+      type: object
+      properties:
+        tariff_name:
+          type: string
+          description: The tariff name assigned to the tariff type.
+        standard_basegroup:
+          type: boolean
+          description: Defines if the tariff is a standard grid usage tariff for a base customer group.
+        canton_taxes:
+          type: boolean
+          description: Defines if cantonal taxes are required.
+        canton_name:
+          type: string
+          description: The canton name.
+        municipality_taxes:
+          type: boolean
+          description: Defines if municipality taxes are required.
+        municipality_number:
+          type: number
+          format: integer
+          description: The municipality number from BFS.
+        municipality_name:
+          type: string
+          description: The municipality name.
+      anyOf:
+        - properties:
+            base:
+              $ref: '#/components/schemas/TariffComponentItem'
+        - properties:
+            energy:
+              $ref: '#/components/schemas/TariffComponentItem'
+        - properties:
+            power:
+              $ref: '#/components/schemas/TariffComponentItem'
+        - properties:
+            reactive_energy:
+              $ref: '#/components/schemas/TariffComponentItem'
+      description: A tariff type in a time interval, contains tariff components.
+      additionalProperties: true
+    TariffComponentItem:
+      type: object
+      required:
+        - unit
+        - value
+      properties:
+        unit:
+          $ref: '#/components/schemas/TariffUnit'
+        value:
+          type: number
+          format: decimal
+          description: The numeric price value
+      description: A tariff component value.
+    TariffResponse:
+      type: object
+      required:
+        - publication_timestamp
+        - prices
+      properties:
+        publication_timestamp:
+          type: string
+          anyOf:
+            - format: date-time
+            - format: empty
+          description: The time stamp of tariff publication, may be empty if not published.
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffPriceItem'
+          description: Contains the prices for the requested time intervals.
+      description: A dynamic tariff price response.
+      additionalProperties: true
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: The error message.
+      description: An generic API error response.
+    EmsLinkStatusCode:
+      type: string
+      enum:
+        - link_unavailable
+        - link_required
+        - link_established
+      description: |
+        EMS link status codes:
+          * `link_unavailable` - No metering point available for linking
+          * `link_required` - EMS is not yet linked
+          * `link_established` - EMS has been linked successfully
+    EmsUnlinkStatusCode:
+      type: string
+      enum:
+        - link_not_found
+        - link_removed
+      description: |
+        EMS link status codes:
+          * `link_not_found` - EMS not linked
+          * `link_removed` - EMS has been unlinked successfully
+    EmsLinkResponse:
+      type: object
+      required:
+        - link_status
+        - linking_process_redirect_uri
+      properties:
+        link_status:
+          $ref: '#/components/schemas/EmsLinkStatusCode'
+        linking_process_redirect_uri:
+          type: string
+          format: uri
+          description: |
+            The linking process redirect URI can be used to redirect the logged in user to the process page,
+            to establish or edit the EMS link, which entails selecting the metering point at the EMS location.
+            The URI contains a parameter `ems_access_token`, that holds the bearer token that was used to authenticate
+            the endpoint request. The token has to be valid at the time of the redirect or otherwise the request
+            will be rejected. If there is a delay between calling the endpoint and initiating the redirect, the EMS has
+            to ensure the token has not expired or must update the parameter with a fresh token.
+      description: An EMS link status response.
+    EmsUnlinkResponse:
+      type: object
+      required:
+        - unlink_status
+      properties:
+        unlink_status:
+          $ref: '#/components/schemas/EmsUnlinkStatusCode'
+      description: An EMS unlink status response.
+  securitySchemes:
+    OpenIdConnect:
+      type: openIdConnect
+      description: OpenID Connect
+      # TODO:
+      # Replace this with the URL to your the OpenID configuration provided by your authentication server.
+      # Swagger UI will only work with a real OIDC server!
+      openIdConnectUrl: https://auth.tariffs.example.org/oauth/.well-known/openid-configuration

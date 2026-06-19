@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dynamic Tariff Prices Response",
+  "description": "JSON schema for the delivery of dynamic tariff price values (VSE 2027)",
+  "type": "object",
+  "properties": {
+    "publication_timestamp": {
+      "description": "The time stamp of tariff publication, may be empty if not published",
+      "type": "string",
+      "anyOf": [
+        { "format": "date-time" },
+        { "format": "empty" }
+      ]
+    },
+    "prices": {
+      "description": "Contains the prices for the requested time intervals",
+      "type": "array",
+      "items": { "$ref": "#/$defs/tariff_price_item" }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "publication_timestamp",
+    "prices"
+  ],
+  "$defs": {
+    "tariff_price_item": {
+      "description": "A price item of a time interval, contains tariff types",
+      "type": "object",
+      "properties": {
+        "start_timestamp": {
+          "description": "Begin of the time interval",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_timestamp": {
+          "description": "End of the time interval",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "anyOf": [
+        {
+          "properties": {
+            "electricity": {
+              "description": "Electricity energy supply to end consumers",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "grid": {
+              "description": "Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "metering": {
+              "description": "Metering infrastructure fees",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "national_fees": {
+              "description": "National surcharges (e.g. Swissgrid)",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "regional_fees": {
+              "description": "Local or regional surcharges (e.g. concession fees)",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "dso": {
+              "description": "DSO tariff type (`grid`, `metering` and `national_fees`)",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "dso_complete": {
+              "description": "Complete DSO tariff type (`grid`, `metering`, `national_fees` and `regional_fees`)",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "integrated": {
+              "description": "Integrated tariff type (`dso` and `electricity`)",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "integrated_complete": {
+              "description": "Complete integrated tariff type (`dso_complete` and `electricity`)",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "feed_in": {
+              "description": "Compensation for feed-in into grid (positive value means reimbursement of customer)",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "refund": {
+              "description": "Refund for grid supportive storage operation",
+              "$ref": "#/$defs/tariff_type_item"
+            }
+          }
+        }
+      ],
+      "required": [
+        "start_timestamp",
+        "end_timestamp"
+      ],
+      "additionalProperties": true
+    },
+    "tariff_type_item": {
+      "description": "A tariff type in a time interval, contains tariff components",
+      "type": "object",
+      "properties": {
+        "tariff_name": {
+          "description": "The tariff product associated with the tariff type",
+          "type": "string"
+        },
+        "standard_basegroup": {
+          "description": "Defines if the tariff is a standard grid usage tariff for a base customer group",
+          "type": "boolean"
+        },
+        "canton_taxes": {
+          "description": "Defines if cantonal taxes are required",
+          "type": "boolean"
+        },
+        "canton_name": {
+          "description": "The canton name",
+          "type": "string"
+        },
+        "municipality_taxes": {
+          "description": "Defines if municipality taxes are required",
+          "type": "boolean"
+        },
+        "municipality_number": {
+          "description": "The municipality number from BFS",
+          "type": "number",
+          "format": "integer"
+        },
+        "municipality_name": {
+          "description": "The municipality name",
+          "type": "string"
+        }
+      },
+      "anyOf": [
+        {
+          "properties": {
+            "base": {
+              "description": "Base prices",
+              "$ref": "#/$defs/tariff_component_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "energy": {
+              "description": "Energy-based prices",
+              "$ref": "#/$defs/tariff_component_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "power": {
+              "description": "Power-based prices",
+              "$ref": "#/$defs/tariff_component_item"
+            }
+          }
+        },
+        {
+          "properties": {
+            "reactive_energy": {
+              "description": "Reactive-energy-based prices",
+              "$ref": "#/$defs/tariff_component_item"
+            }
+          }
+        }
+      ]
+    },
+    "tariff_component_item": {
+      "description": "A tariff component price value",
+      "type": "object",
+      "properties": {
+        "unit": {
+          "description": "The tariff component price unit",
+          "$ref": "#/$defs/tariff_unit"
+        },
+        "value": {
+          "description": "The numeric tariff component price value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "unit",
+        "value"
+      ]
+    }
+  },
+  "tariff_unit": {
+    "description": "Tariff component price units",
+    "type": "string",
+    "enum": [
+      "CHF/kWh",
+      "CHF/kVarh",
+      "CHF/y",
+      "CHF/m",
+      "CHF/w",
+      "CHF/d",
+      "CHF/12h",
+      "CHF/6h",
+      "CHF/4h",
+      "CHF/2h",
+      "CHF/1h",
+      "CHF/30min",
+      "CHF/15min",
+      "CHF/kW/y",
+      "CHF/kW/m",
+      "CHF/kW/w",
+      "CHF/kW/d",
+      "CHF/kW/12h",
+      "CHF/kW/6h",
+      "CHF/kW/4h",
+      "CHF/kW/2h",
+      "CHF/kW/1h",
+      "CHF/kW/30min",
+      "CHF/kW/15min"
+    ]
+  }
+}
