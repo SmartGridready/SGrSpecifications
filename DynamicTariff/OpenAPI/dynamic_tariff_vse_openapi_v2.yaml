@@ -766,7 +766,6 @@ components:
       additionalProperties: true
     TariffTypeItem:
       type: object
-      nullable: true
       required: 
         - tariff_name
       properties:
@@ -775,28 +774,22 @@ components:
           description: The tariff name assigned to the tariff type.
         standard_basegroup:
           type: boolean
-          nullable: true
           description: Defines if the tariff is a standard grid usage tariff for a base customer group.
         canton_taxes:
           type: boolean
-          nullable: true
           description: Defines if cantonal taxes are applicable.
         canton_name:
           type: string
-          nullable: true
           description: The canton name.
         municipality_taxes:
           type: boolean
-          nullable: true
           description: Defines if municipality taxes are applicable.
         municipality_number:
           type: number
           format: integer
-          nullable: true
           description: The municipality number from BFS (Hist. code with 5 digits).
         municipality_name:
           type: string
-          nullable: true
           description: The municipality name.
         base:
           $ref: '#/components/schemas/TariffComponentItem'
@@ -810,7 +803,6 @@ components:
       additionalProperties: true
     TariffComponentItem:
       type: object
-      nullable: true
       required:
         - unit
         - value
