@@ -5,9 +5,9 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
-## [2.0.0-preview] - 2026-06-19
+## [2.0.0-preview] - 2026-07-01
 
-First preview release of the upcoming specification.
+Preview release of the upcoming specification.
 
 ### Added
 

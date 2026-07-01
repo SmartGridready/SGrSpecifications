@@ -738,40 +738,28 @@ components:
           type: string
           format: date-time
           description: The end of the time interval, formatted as ISO-8601 time stamp.
-      anyOf:
-        - properties:
-            electricity:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            grid:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            metering:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            national_fees:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            regional_fees:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            dso:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            dso_complete:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            integrated:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            integrated_complete:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            feed_in:
-              $ref: '#/components/schemas/TariffTypeItem'
-        - properties:
-            refund:
-              $ref: '#/components/schemas/TariffTypeItem'
+        electricity:
+          $ref: '#/components/schemas/TariffTypeItem'
+        grid:
+          $ref: '#/components/schemas/TariffTypeItem'
+        metering:
+          $ref: '#/components/schemas/TariffTypeItem'
+        national_fees:
+          $ref: '#/components/schemas/TariffTypeItem'
+        regional_fees:
+          $ref: '#/components/schemas/TariffTypeItem'
+        dso:
+          $ref: '#/components/schemas/TariffTypeItem'
+        dso_complete:
+          $ref: '#/components/schemas/TariffTypeItem'
+        integrated:
+          $ref: '#/components/schemas/TariffTypeItem'
+        integrated_complete:
+          $ref: '#/components/schemas/TariffTypeItem'
+        feed_in:
+          $ref: '#/components/schemas/TariffTypeItem'
+        refund:
+          $ref: '#/components/schemas/TariffTypeItem'
       description: A price item of a time interval, contains tariff types.
       additionalProperties: true
     TariffTypeItem:
@@ -808,19 +796,14 @@ components:
           type: string
           nullable: true
           description: The municipality name.
-      anyOf:
-        - properties:
-            base:
-              $ref: '#/components/schemas/TariffComponentItem'
-        - properties:
-            energy:
-              $ref: '#/components/schemas/TariffComponentItem'
-        - properties:
-            power:
-              $ref: '#/components/schemas/TariffComponentItem'
-        - properties:
-            reactive_energy:
-              $ref: '#/components/schemas/TariffComponentItem'
+        base:
+          $ref: '#/components/schemas/TariffComponentItem'
+        energy:
+          $ref: '#/components/schemas/TariffComponentItem'
+        power:
+          $ref: '#/components/schemas/TariffComponentItem'
+        reactive_energy:
+          $ref: '#/components/schemas/TariffComponentItem'
       description: A tariff type in a time interval, contains tariff components.
       additionalProperties: true
     TariffComponentItem:
