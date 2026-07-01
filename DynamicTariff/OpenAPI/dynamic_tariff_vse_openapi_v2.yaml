@@ -12,7 +12,7 @@ openapi: 3.0.3
 info:
   title: Dynamic Tariff Retrieval API
   description: |
-    API specification template to retrieve dynamic tariff prices of an electricity provider.
+    API specification template to retrieve tariff prices of an electricity provider.
     Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
 
     Use this template to implement your dynamic tariff API.
@@ -26,13 +26,13 @@ servers:
 paths:
   /tariffs:
     get:
-      summary: Retrieves dynamic tariff prices.
+      summary: Retrieves tariff prices.
       description: |
         This endpoint retrieves dynamic tariff prices in a given time period.
         The endpoint is public and requires no authentication.
       operationId: get-tariffs-v2
       tags:
-        - dynamic-public
+        - public
       parameters:
         - name: tariff_type
           in: query
@@ -49,9 +49,8 @@ paths:
           description: |
             Marks the begin of the price retrieval period.
             If omitted, one day before the `end_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the start of the current day is applied.
             The `start_timestamp` of the first returned interval should be identical to or the one prior to this parameter.
-            A maximal retrieval period is not defined.
           schema:
             type: string
             format: date-time
@@ -61,16 +60,15 @@ paths:
           description: |
             Marks the end of the price retrieval period.
             If omitted, one day after the `start_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the end of the current day is applied.
             The `end_timestamp` of the last returned interval should be identical to or the one after this parameter.
-            A maximal retrieval period is not defined.
           schema:
             type: string
             format: date-time
           example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
-          description: Dynamic tariff prices retrieved successfully.
+          description: Tariff prices retrieved successfully.
           content:
             application/json:
               schema:
@@ -179,6 +177,7 @@ paths:
                             value: 0.04
                         integrated:
                           tariff_name: example_integrated
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
                             value: 14.0
@@ -193,6 +192,7 @@ paths:
                             value: 0.04
                         integrated_complete:
                           tariff_name: example_integrated_complete
+                          standard_basegroup: true
                           canton_taxes: true
                           canton_name: Zürich
                           municipality_taxes: true
@@ -217,6 +217,7 @@ paths:
                             value: 0.081
                         refund:
                           tariff_name: example_storage
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.055
@@ -240,7 +241,7 @@ paths:
         - {}
   /customerTariffs:
     get:
-      summary: Retrieves dynamic tariff prices specific to the customer's metering point.
+      summary: Retrieves tariff prices specific to the customer's metering point.
       description: |
         This endpoint retrieves tariffs specific for the customer's metering point in a given time period.
         The endpoint is protected and requires an EMS linked to the customer account and metering point.
@@ -254,7 +255,7 @@ paths:
            - If the EMS was not linked, an error 403 is returned.
       operationId: get-customer-tariffs-v2
       tags:
-        - dynamic-individual
+        - individual
       parameters:
         - name: ems_instance_id
           in: query
@@ -274,9 +275,8 @@ paths:
           description: |
             Marks the begin of the price retrieval period.
             If omitted, one day before the `end_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the start of the current day is applied.
             The `start_timestamp` of the first returned interval should be identical to or the one prior to this parameter.
-            A maximal retrieval period is not defined.
           schema:
             type: string
             format: date-time
@@ -286,16 +286,15 @@ paths:
           description: |
             Marks the end of the price retrieval period.
             If omitted, one day after the `start_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the end of the current day is applied.
             The `end_timestamp` of the last returned interval should be identical to or the one after this parameter.
-            A maximal retrieval period is not defined.
           schema:
             type: string
             format: date-time
           example: '2026-01-02T00:00:00+01:00'
       responses:
         '200':
-          description: Dynamic tariff prices retrieved successfully.
+          description: Tariff prices retrieved successfully.
           content:
             application/json:
               schema:
@@ -404,6 +403,7 @@ paths:
                             value: 0.04
                         integrated:
                           tariff_name: example_integrated
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
                             value: 14.0
@@ -418,6 +418,7 @@ paths:
                             value: 0.04
                         integrated_complete:
                           tariff_name: example_integrated_complete
+                          standard_basegroup: true
                           canton_taxes: true
                           canton_name: Zürich
                           municipality_taxes: true
@@ -442,6 +443,7 @@ paths:
                             value: 0.081
                         refund:
                           tariff_name: example_storage
+                          standard_basegroup: true
                           energy:
                             unit: CHF/kWh
                             value: 0.055
@@ -504,7 +506,7 @@ paths:
         4) After the linking process is completed the EMS may use the `/customerTariffs` endpoint to retrieve tariff information for the selected metering point.
       operationId: get-ems-link-v2
       tags:
-        - dynamic-individual
+        - individual
       parameters:
         - name: ems_instance_id
           in: query
@@ -579,7 +581,7 @@ paths:
         3) After the unlinking process is completed the EMS may no longer use the `/customerTariffs` endpoint.
       operationId: delete-ems-link-v2
       tags:
-        - dynamic-individual
+        - individual
       parameters:
         - name: ems_instance_id
           in: query
