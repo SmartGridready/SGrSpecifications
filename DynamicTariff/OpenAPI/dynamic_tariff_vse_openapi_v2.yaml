@@ -577,7 +577,7 @@ paths:
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the token, derives the customer identity, and decides:
            - If the EMS was previously linked, the response contains `unlink_status: "link_removed"`.
-           - If the EMS was not linked, the response contains `error: "link_not_found"`.
+           - If the EMS was not linked, the response contains `unlink_status: "link_not_found"`.
         3) After the unlinking process is completed the EMS may no longer use the `/customerTariffs` endpoint.
       operationId: delete-ems-link-v2
       tags:
