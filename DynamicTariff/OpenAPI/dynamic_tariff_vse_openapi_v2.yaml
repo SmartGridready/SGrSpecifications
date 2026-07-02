@@ -5,7 +5,7 @@
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
 # Author: Matthias Krebs
 #
-# Version 2.0.0-preview (2026-07-01)
+# Version 2.0.0-preview3 (2026-07-02)
 #
 
 openapi: 3.0.3
@@ -41,9 +41,11 @@ paths:
             $ref: '#/components/schemas/TariffType'
         - name: tariff_name
           in: query
-          description: Filters by a specific tariff product of the provider. If omitted, the provider's default tariff is returned.
+          description: |
+            Filters by a specific tariff product of the provider. If omitted, the provider's default tariff is returned.
+            Providers can publish valid tariff names using the machine-readable format for tariff publication.
           schema:
-            $ref: '#/components/schemas/TariffName'
+            type: string
         - name: start_timestamp
           in: query
           description: |
@@ -179,6 +181,7 @@ paths:
                             value: 0.04
                         integrated:
                           tariff_name: example_integrated
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
                             value: 14.0
@@ -193,6 +196,7 @@ paths:
                             value: 0.04
                         integrated_complete:
                           tariff_name: example_integrated_complete
+                          standard_basegroup: true
                           canton_taxes: true
                           canton_name: Zürich
                           municipality_taxes: true
@@ -274,7 +278,7 @@ paths:
           description: |
             Marks the begin of the price retrieval period.
             If omitted, one day before the `end_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied as retrieval period.
             The `start_timestamp` of the first returned interval should be identical to or the one prior to this parameter.
             A maximal retrieval period is not defined.
           schema:
@@ -286,7 +290,7 @@ paths:
           description: |
             Marks the end of the price retrieval period.
             If omitted, one day after the `start_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied as retrieval period.
             The `end_timestamp` of the last returned interval should be identical to or the one after this parameter.
             A maximal retrieval period is not defined.
           schema:
@@ -404,6 +408,7 @@ paths:
                             value: 0.04
                         integrated:
                           tariff_name: example_integrated
+                          standard_basegroup: true
                           base:
                             unit: CHF/m
                             value: 14.0
@@ -418,6 +423,7 @@ paths:
                             value: 0.04
                         integrated_complete:
                           tariff_name: example_integrated_complete
+                          standard_basegroup: true
                           canton_taxes: true
                           canton_name: Zürich
                           municipality_taxes: true
@@ -634,16 +640,6 @@ paths:
         - OpenIdConnect: [openid, offline_access]
 components:
   schemas:
-    TariffName:
-      type: string
-      enum:
-      # TODO:
-      # Define your actual tariff product names here, since they are provider-specific.
-      # If you do not offer different tariffs, remove the 'enum' part and do not process the query parameter in your implementation.
-        - example_tariff
-      description: |
-        Tariff names specified by DSO
-          * `example_tariff` - An example tariff
     TariffType:
       type: string
       enum:
@@ -764,7 +760,6 @@ components:
       additionalProperties: true
     TariffTypeItem:
       type: object
-      nullable: true
       required: 
         - tariff_name
       properties:
@@ -773,28 +768,22 @@ components:
           description: The tariff name assigned to the tariff type.
         standard_basegroup:
           type: boolean
-          nullable: true
           description: Defines if the tariff is a standard grid usage tariff for a base customer group.
         canton_taxes:
           type: boolean
-          nullable: true
           description: Defines if cantonal taxes are applicable.
         canton_name:
           type: string
-          nullable: true
           description: The canton name.
         municipality_taxes:
           type: boolean
-          nullable: true
           description: Defines if municipality taxes are applicable.
         municipality_number:
           type: number
           format: integer
-          nullable: true
           description: The municipality number from BFS (Hist. code with 5 digits).
         municipality_name:
           type: string
-          nullable: true
           description: The municipality name.
         base:
           $ref: '#/components/schemas/TariffComponentItem'
@@ -808,7 +797,6 @@ components:
       additionalProperties: true
     TariffComponentItem:
       type: object
-      nullable: true
       required:
         - unit
         - value

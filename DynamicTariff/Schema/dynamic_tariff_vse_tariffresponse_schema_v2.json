@@ -87,7 +87,7 @@
     },
     "tariff_type_item": {
       "description": "A tariff type in a time interval, contains tariff components",
-      "type": ["object", "null"],
+      "type": "object",
       "properties": {
         "tariff_name": {
           "description": "The tariff product associated with the tariff type",
@@ -139,7 +139,7 @@
     },
     "tariff_component_item": {
       "description": "A tariff component price value",
-      "type": ["object", "null"],
+      "type": "object",
       "properties": {
         "unit": {
           "description": "The tariff component price unit",
