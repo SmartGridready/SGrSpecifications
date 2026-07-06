@@ -5,7 +5,32 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
-## [2.0.0-preview] - 2026-06-19
+## [2.0.0-preview3] - 2026-07-02
+
+### Changed
+
+- changed `TariffName` from enum to simple string
+- tariff types, their parameters and tariff components not nullable
+
+### Fixed
+
+- `standard_basegroup` of integrated
+
+
+## [2.0.0-preview2] - 2026-07-01
+
+### Changed
+
+- EMS unlink response
+- OIDC security scheme changed back to `oauth2`
+- publication timestamp, tariff types, their parameters and tariff components are nullable
+
+### Fixed
+
+- Description and examples
+
+
+## [2.0.0-preview1] - 2026-06-19
 
 First preview release of the upcoming specification.
 

@@ -6,11 +6,7 @@
   "properties": {
     "publication_timestamp": {
       "description": "The time stamp of tariff publication, may be empty if not published",
-      "type": "string",
-      "anyOf": [
-        { "format": "date-time" },
-        { "format": "empty" }
-      ]
+      "type": ["string", "null"]
     },
     "prices": {
       "description": "Contains the prices for the requested time intervals",
@@ -37,98 +33,52 @@
           "description": "End of the time interval",
           "type": "string",
           "format": "date-time"
+        },
+        "electricity": {
+          "description": "Electricity energy supply to end consumers",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "grid": {
+          "description": "Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "metering": {
+          "description": "Metering infrastructure fees",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "national_fees": {
+          "description": "National surcharges (e.g. Swissgrid)",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "regional_fees": {
+          "description": "Local or regional surcharges (e.g. concession fees)",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "dso": {
+          "description": "DSO tariff type (`grid`, `metering` and `national_fees`)",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "dso_complete": {
+          "description": "Complete DSO tariff type (`grid`, `metering`, `national_fees` and `regional_fees`)",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "integrated": {
+          "description": "Integrated tariff type (`dso` and `electricity`)",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "integrated_complete": {
+          "description": "Complete integrated tariff type (`dso_complete` and `electricity`)",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "feed_in": {
+          "description": "Compensation for feed-in into grid (positive value means reimbursement of customer)",
+          "$ref": "#/$defs/tariff_type_item"
+        },
+        "refund": {
+          "description": "Refund for grid supportive storage operation (positive value means reimbursement of customer)",
+          "$ref": "#/$defs/tariff_type_item"
         }
       },
-      "anyOf": [
-        {
-          "properties": {
-            "electricity": {
-              "description": "Electricity energy supply to end consumers",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "grid": {
-              "description": "Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "metering": {
-              "description": "Metering infrastructure fees",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "national_fees": {
-              "description": "National surcharges (e.g. Swissgrid)",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "regional_fees": {
-              "description": "Local or regional surcharges (e.g. concession fees)",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "dso": {
-              "description": "DSO tariff type (`grid`, `metering` and `national_fees`)",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "dso_complete": {
-              "description": "Complete DSO tariff type (`grid`, `metering`, `national_fees` and `regional_fees`)",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "integrated": {
-              "description": "Integrated tariff type (`dso` and `electricity`)",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "integrated_complete": {
-              "description": "Complete integrated tariff type (`dso_complete` and `electricity`)",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "feed_in": {
-              "description": "Compensation for feed-in into grid (positive value means reimbursement of customer)",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "refund": {
-              "description": "Refund for grid supportive storage operation",
-              "$ref": "#/$defs/tariff_type_item"
-            }
-          }
-        }
-      ],
       "required": [
         "start_timestamp",
         "end_timestamp"
@@ -167,42 +117,25 @@
         "municipality_name": {
           "description": "The municipality name",
           "type": "string"
+        },
+        "base": {
+          "description": "Base prices",
+          "$ref": "#/$defs/tariff_component_item"
+        },
+        "energy": {
+          "description": "Energy-based prices",
+          "$ref": "#/$defs/tariff_component_item"
+        },
+        "power": {
+          "description": "Power-based prices",
+          "$ref": "#/$defs/tariff_component_item"
+        },
+        "reactive_energy": {
+          "description": "Reactive-energy-based prices",
+          "$ref": "#/$defs/tariff_component_item"
         }
       },
-      "anyOf": [
-        {
-          "properties": {
-            "base": {
-              "description": "Base prices",
-              "$ref": "#/$defs/tariff_component_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "energy": {
-              "description": "Energy-based prices",
-              "$ref": "#/$defs/tariff_component_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "power": {
-              "description": "Power-based prices",
-              "$ref": "#/$defs/tariff_component_item"
-            }
-          }
-        },
-        {
-          "properties": {
-            "reactive_energy": {
-              "description": "Reactive-energy-based prices",
-              "$ref": "#/$defs/tariff_component_item"
-            }
-          }
-        }
-      ]
+      "required": ["tariff_name"]
     },
     "tariff_component_item": {
       "description": "A tariff component price value",
@@ -221,36 +154,36 @@
         "unit",
         "value"
       ]
+    },
+    "tariff_unit": {
+      "description": "Tariff component price units",
+      "type": "string",
+      "enum": [
+        "CHF/kWh",
+        "CHF/kVarh",
+        "CHF/y",
+        "CHF/m",
+        "CHF/w",
+        "CHF/d",
+        "CHF/12h",
+        "CHF/6h",
+        "CHF/4h",
+        "CHF/2h",
+        "CHF/1h",
+        "CHF/30min",
+        "CHF/15min",
+        "CHF/kW/y",
+        "CHF/kW/m",
+        "CHF/kW/w",
+        "CHF/kW/d",
+        "CHF/kW/12h",
+        "CHF/kW/6h",
+        "CHF/kW/4h",
+        "CHF/kW/2h",
+        "CHF/kW/1h",
+        "CHF/kW/30min",
+        "CHF/kW/15min"
+      ]
     }
-  },
-  "tariff_unit": {
-    "description": "Tariff component price units",
-    "type": "string",
-    "enum": [
-      "CHF/kWh",
-      "CHF/kVarh",
-      "CHF/y",
-      "CHF/m",
-      "CHF/w",
-      "CHF/d",
-      "CHF/12h",
-      "CHF/6h",
-      "CHF/4h",
-      "CHF/2h",
-      "CHF/1h",
-      "CHF/30min",
-      "CHF/15min",
-      "CHF/kW/y",
-      "CHF/kW/m",
-      "CHF/kW/w",
-      "CHF/kW/d",
-      "CHF/kW/12h",
-      "CHF/kW/6h",
-      "CHF/kW/4h",
-      "CHF/kW/2h",
-      "CHF/kW/1h",
-      "CHF/kW/30min",
-      "CHF/kW/15min"
-    ]
   }
 }
