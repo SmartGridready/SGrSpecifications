@@ -35,7 +35,7 @@
 
           <p>In the event of a communication failure, the charging park shall hold the last received limitation value and restore it from non-volatile memory after an auxiliary power failure.</p>
 
-          <p>The data point for the active power at the grid connection point (ActivePowerMeasured) is also mandatory. The implementation of additional data points is recommended, especially for providing reactive power setpoints at the grid connection point. Optional measurements such as the cumulative active energy at the grid connection point (EnergyMeasured) and the application-level life sign (Heartbeat) can be helpful for operation.</p>
+          <p>The data point for the active power at the grid connection point (ActivePowerMeasured) is also mandatory. The implementation of additional data points is recommended, especially for providing reactive power setpoints at the grid connection point. Optional measurements such as the cumulative active energy at the grid connection point (EnergyMeasured) and the operational readiness status (Health) can be helpful for operation.</p>
 
           <p>In a product declaration, data points with read and write access can either be mapped to the same logical endpoint or split into separate setpoint values and actual values, for example into different Modbus registers or corresponding objects in other communication standards.</p>
         ]]>
@@ -53,7 +53,7 @@
 
           <p>Der Ladepark soll bei einem Kommunikationsausfall den zuletzt empfangenen Begrenzungswert halten und stellt ihn nach einem Hilfsspannungsausfall aus einem nichtflüchtigen Speicher wieder her.</p>
 
-          <p>Der Datenpunkt für die Wirkleistung am Netzanschlusspunkt (ActivePowerMeasured) ist ebenfalls Pflicht. Die Umsetzung weiterer Datenpunkte wird empfohlen, insbesondere zur Vorgabe von Blindleistungs-Sollwerten am Netzanschlusspunkt. Optionale Messgrössen wie die kumulierte Wirkenergie am Netzanschlusspunkt (EnergyMeasured) und das applikationsseitige Lebenszeichen (Heartbeat) können für den Betrieb hilfreich sein.</p>
+          <p>Der Datenpunkt für die Wirkleistung am Netzanschlusspunkt (ActivePowerMeasured) ist ebenfalls Pflicht. Die Umsetzung weiterer Datenpunkte wird empfohlen, insbesondere zur Vorgabe von Blindleistungs-Sollwerten am Netzanschlusspunkt. Optionale Messgrössen wie die kumulierte Wirkenergie am Netzanschlusspunkt (EnergyMeasured) und die Betriebsbereitschaft (Health) können für den Betrieb hilfreich sein.</p>
 
           <p>Datenpunkte mit Lese- und Schreibzugriff können in einer Produktdeklaration entweder auf denselben logischen Endpunkt abgebildet werden oder in getrennte Sollwerte (Setpoint Values) und Istwerte (Actual Values) aufgeteilt sein, beispielsweise auf unterschiedliche Modbus-Register oder entsprechende Objekte in anderen Kommunikationsstandards.</p>
         ]]>
@@ -161,25 +161,6 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ReactivePowerMeasured</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>R</presenceLevel>
-        <dataType>
-          <float64 />
-        </dataType>
-        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
-        <legibleDescription>
-          <textElement>Measured reactive power at the grid connection point</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Gemessene Blindleistung am Netzanschlusspunkt</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
         <dataPointName>PowerFactorSetpoint</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
@@ -193,6 +174,25 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>Sollwert für den Leistungsfaktor cosφ [-0.9...0.9], &gt;0: induktiv, &lt;0: kapazitiv. Alternative zu ReactivePowerSetpoint</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerMeasured</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Measured reactive power at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Blindleistung am Netzanschlusspunkt</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -219,19 +219,19 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>Heartbeat</dataPointName>
-        <dataDirection>RW</dataDirection>
+        <dataPointName>Health</dataPointName>
+        <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
           <boolean />
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Application-level life sign of the charging park controller, enabling the control system to monitor its operational readiness</textElement>
+          <textElement>Health status of the charging park controller. Can be read by the control system to determine whether the charging park is operationally ready</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Applikationsseitiges Lebenszeichen der Ladepark-Steuerung. Ermöglicht dem Leitsystem die Überwachung der Betriebsbereitschaft</textElement>
+          <textElement>Betriebsbereitschaft (Health) der Ladepark-Steuerung. Kann vom Leitsystem abgefragt werden, um festzustellen, ob der Ladepark einsatzbereit ist</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
