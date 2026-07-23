@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2026-07-20</date>
+      <author>SGr/kar</author>
+      <comment>Initial draft</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>FlexibilityPortfolioManagement</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p><b>Controlling functional profile for the dynamic curtailment of the aggregated power of a flexibility portfolio manager</b></p>
+
+          <p>This functional profile is used by a flexibility manager, for example a utility or DSO, to control a flexibility portfolio manager, commonly referred to as an orchestrator or aggregator platform, that manages multiple prosumer sites. The flexibility portfolio manager exposes a single aggregated flexibility interface: it distributes a power restriction issued by the flexibility manager across the individual sites and enforces it across the entire portfolio. The sites' data is aggregated by the portfolio manager into a single set of data points.</p>
+
+          <p>The data points cover four areas: portfolio metadata (e.g. PortfolioManagerId, ManagedSites, AvailableFlexibilities), current aggregated portfolio data (e.g. ActivePowerTotal, LimitSource), the power restriction command (RestrictionActive, ActivePowerMinimum, ActivePowerMaximum, RestrictionDuration) and an optional flexibility forecast. A concrete product declaration, for example a REST interface, can combine several data points into a single endpoint.</p>
+
+          <p>The restriction of the aggregated power at the portfolio boundary is set together with RestrictionActive, ActivePowerMinimum and ActivePowerMaximum, and stays active for RestrictionDuration (positive values for consumption, negative for feed-in). The forecast data points as a whole are optional and can be helpful for planning; however, once a product implements forecasting, the data points marked mandatory within that block (ForecastFlexPositive, ForecastFlexNegative) must be provided.</p>
+
+          <p>CommandType selects between three restriction modes. "immediate" applies ActivePowerMinimum and ActivePowerMaximum for RestrictionDuration and temporarily overrides any active schedule; "schedule_absolute" and "schedule_delta" instead follow a time-ordered schedule (SchedulePowerMinimum and SchedulePowerMaximum, 96 slots starting at ScheduleStartTimestamp with a slot duration of ScheduleResolution). Priority is "immediate" &gt; active schedule slot &gt; unrestricted, and if two commands of the same kind overlap, the most recently received one applies. A restriction of 0 to 0 blocks both consumption and feed-in completely. In "schedule_delta", the schedule values are a signed offset from the forecasted baseline (ForecastBaseline) instead of an absolute power, so a restriction can be issued relative to expected demand without knowing the site's absolute consumption.</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p><b>Steuerndes Funktionsprofil für die dynamische Begrenzung der aggregierten Leistung eines Flexibilitätsportfolio-Managers</b></p>
+
+          <p>Dieses Funktionsprofil wird von einem Flexibilitätsmanager, zum Beispiel einem Energieversorgungsunternehmen (EVU) oder Verteilnetzbetreiber (VNB), verwendet, um einen Flexibilitätsportfolio-Manager anzusteuern, üblicherweise als Orchestrator- oder Aggregator-Plattform bezeichnet, der mehrere Prosumer-Standorte verwaltet. Der Flexibilitätsportfolio-Manager stellt eine einzige aggregierte Flexibilitäts-Schnittstelle bereit: er verteilt eine vom Flexibilitätsmanager vorgegebene Leistungsbegrenzung auf die einzelnen Standorte und setzt sie über das gesamte Portfolio durch. Die Daten der Standorte werden vom Portfolio-Manager zu einem einzigen Satz von Datenpunkten aggregiert.</p>
+
+          <p>Die Datenpunkte decken vier Bereiche ab: Portfolio-Metadaten (z.B. PortfolioManagerId, ManagedSites, AvailableFlexibilities), aktuelle aggregierte Portfolio-Daten (z.B. ActivePowerTotal, LimitSource), den Leistungsbegrenzungsbefehl (RestrictionActive, ActivePowerMinimum, ActivePowerMaximum, RestrictionDuration) sowie eine optionale Flexibilitätsprognose. Eine konkrete Produktdeklaration, zum Beispiel eine REST-Schnittstelle, kann mehrere Datenpunkte zu einem gemeinsamen Endpoint zusammenfassen.</p>
+
+          <p>Die Begrenzung der aggregierten Leistung an der Portfolio-Grenze wird zusammen mit RestrictionActive, ActivePowerMinimum und ActivePowerMaximum gesetzt und bleibt für RestrictionDuration aktiv (positive Werte für Bezug, negative für Einspeisung). Die Prognose-Datenpunkte als Ganzes sind optional und können für die Planung hilfreich sein; wird die Prognose jedoch implementiert, müssen die darin als mandatory markierten Datenpunkte (ForecastFlexPositive, ForecastFlexNegative) bereitgestellt werden.</p>
+
+          <p>CommandType wählt zwischen drei Begrenzungsmodi. "immediate" setzt ActivePowerMinimum und ActivePowerMaximum für RestrictionDuration und überschreibt dabei vorübergehend einen allfällig aktiven Fahrplan; "schedule_absolute" und "schedule_delta" folgen stattdessen einem zeitlich geordneten Fahrplan (SchedulePowerMinimum und SchedulePowerMaximum, 96 Slots ab ScheduleStartTimestamp mit einer Slot-Dauer von ScheduleResolution). Die Priorität ist "immediate" &gt; aktiver Fahrplan-Slot &gt; unbeschränkt, und überlappen sich zwei gleichartige Befehle, gilt der zuletzt empfangene. Eine Begrenzung von 0 bis 0 blockiert Bezug und Einspeisung vollständig. Bei "schedule_delta" sind die Fahrplan-Werte ein vorzeichenbehafteter Versatz zur prognostizierten Basislinie (ForecastBaseline) statt einer absoluten Leistung, damit kann eine Begrenzung relativ zum erwarteten Bedarf vorgegeben werden, ohne den absoluten Verbrauch des Standorts zu kennen.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <!-- Settings: static portfolio metadata -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PortfolioManagerId</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <string />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Unique identifier for the portfolio manager instance</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Eindeutige Kennung der Portfolio-Manager-Instanz</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ManagedSites</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <string />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Comma-separated list of identifiers of the sites managed by this portfolio manager instance (comma-separated because functional profiles do not support string arrays)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Kommagetrennte Liste der Kennungen der von dieser Portfolio-Manager-Instanz verwalteten Standorte (kommagetrennt, da Funktionsprofile keine String-Arrays unterstützen)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AvailableFlexibilities</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <string />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Comma-separated list of flexibility types available across the portfolio (PV, HP, EV, BESS)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Kommagetrennte Liste der im Portfolio verfügbaren Flexibilitätsarten (PV, HP, EV, BESS)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BatteryCapacity</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Sum of battery energy capacity across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Summe der Batteriekapazität über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BatteryChargePowerMax</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Sum of maximum charge power across all batteries in the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Summe der maximalen Ladeleistung aller Batterien im Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BatteryDischargePowerMax</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Sum of maximum discharge power across all batteries in the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Summe der maximalen Entladeleistung aller Batterien im Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PVPeakPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Sum of DC-side PV peak power across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Summe der DC-seitigen PV-Spitzenleistung über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HeatPumpPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Sum of maximum heat pump electrical power across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Summe der maximalen elektrischen Wärmepumpenleistung über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EVChargerPower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Sum of maximum EV charger power across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Summe der maximalen EV-Ladeleistung über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>WriteAccess</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Whether the DSO has write access for power restriction commands (true = write access granted, false = read-only)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Ob der VNB Schreibzugriff für Leistungsbegrenzungsbefehle hat (true = Schreibzugriff gewährt, false = nur lesend)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- Data: current aggregated portfolio values -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ConnectionStatus</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>ONLINE</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>OFFLINE</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>CONNECTION_FAULT</literal>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Portfolio manager service status and/or connectivity to the managed sites</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Status des Portfolio-Manager-Dienstes und/oder der Konnektivität zu den verwalteten Standorten</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AvailableFlexibilityPositive</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Total positive flexibility (consumption) across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gesamte positive Flexibilität (Bezug) über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AvailableFlexibilityNegative</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Total negative flexibility (feed-in) across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gesamte negative Flexibilität (Einspeisung) über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AvailableCapacityNegative</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Total chargeable energy across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gesamte ladbare Energie über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>AvailableCapacityPositive</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Total dischargeable energy across the portfolio</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gesamte entladbare Energie über das Portfolio</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>DataTimestamp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <dateTime />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>UTC timestamp of the last measurement</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>UTC-Zeitstempel der letzten Messung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerTotal</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Total power across all sites (+ consumption, - feed-in)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gesamtleistung über alle Standorte (+ Bezug, - Einspeisung)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PVPowerTotal</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Total PV generation across all sites</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gesamte PV-Produktion über alle Standorte</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>BatterySoc</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Capacity-weighted average state of charge across all batteries</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Kapazitätsgewichteter durchschnittlicher Ladezustand aller Batterien</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>RestrictionInEffect</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <boolean />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Whether a power restriction is currently in effect (true = active, false = inactive). False if LimitSource is 'none'</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Ob aktuell eine Leistungsbegrenzung wirksam ist (true = aktiv, false = inaktiv). False, wenn LimitSource 'none' ist</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EffectivePowerMin</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Effective minimum allowed power now (feed-in floor). Only meaningful when RestrictionInEffect is true</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Aktuell wirksame minimale zulässige Leistung (Einspeise-Untergrenze). Nur relevant, wenn RestrictionInEffect true ist</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EffectivePowerMax</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Effective maximum allowed power now (import ceiling). Only meaningful when RestrictionInEffect is true</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Aktuell wirksame maximale zulässige Leistung (Bezugs-Obergrenze). Nur relevant, wenn RestrictionInEffect true ist</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>LimitSource</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>schedule_absolute</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>schedule_delta</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>immediate</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>none</literal>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Source of the currently active limit, mirrors CommandType, plus 'none' when unrestricted</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Quelle des aktuell wirksamen Limits, spiegelt CommandType, plus 'none' wenn unbeschränkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- RestrictPower: power restriction command (immediate, schedule_absolute, schedule_delta) -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>RestrictionActive</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Master switch. True applies this command, false deactivates and clears any stored schedule or immediate override; the effective restriction then returns to none</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Hauptschalter. True aktiviert diesen Befehl, false deaktiviert und löscht einen gespeicherten Fahrplan oder Immediate-Override; die wirksame Begrenzung fällt danach auf none zurück</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>CommandType</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>immediate</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>schedule_absolute</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>schedule_delta</literal>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Selects which restriction mode is used: immediate, schedule_absolute or schedule_delta, see profile description for details</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Wählt den Begrenzungsmodus: immediate, schedule_absolute oder schedule_delta, Details siehe Profilbeschreibung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMinimum</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Minimum allowed power (+ consumption, - feed-in) for CommandType immediate. Must satisfy ActivePowerMinimum &lt;= ActivePowerMaximum</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Minimal zulässige Leistung (+ Bezug, - Einspeisung) für CommandType immediate. Es muss gelten ActivePowerMinimum &lt;= ActivePowerMaximum</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaximum</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Maximum allowed power (+ consumption, - feed-in) for CommandType immediate. A full shutdown is Minimum=0 and Maximum=0</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Maximal zulässige Leistung (+ Bezug, - Einspeisung) für CommandType immediate. Eine vollständige Abschaltung entspricht Minimum=0 und Maximum=0</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>RestrictionDuration</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <int32 />
+        </dataType>
+        <unit>MINUTES</unit>
+        <legibleDescription>
+          <textElement>Duration this immediate restriction stays active, from receipt</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Dauer, während der diese Immediate-Begrenzung ab Empfang aktiv bleibt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ScheduleStartTimestamp</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <dateTime />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>UTC start timestamp of the first schedule slot (slot 0). Authoritative for CommandType schedule_absolute/schedule_delta</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>UTC-Startzeitstempel des ersten Fahrplan-Slots (Slot 0). Massgeblich für CommandType schedule_absolute/schedule_delta</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ScheduleResolution</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <int32 />
+        </dataType>
+        <unit>MINUTES</unit>
+        <legibleDescription>
+          <textElement>Duration of each schedule slot</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Dauer eines Fahrplan-Slots</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SchedulePowerMinimum</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <arrayLength>96</arrayLength>
+        <legibleDescription>
+          <textElement>Per-slot minimum power (schedule_absolute) or offset from ForecastBaseline (schedule_delta)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Minimalwert pro Slot (schedule_absolute) oder Versatz zu ForecastBaseline (schedule_delta)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SchedulePowerMaximum</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <arrayLength>96</arrayLength>
+        <legibleDescription>
+          <textElement>Per-slot maximum power (schedule_absolute) or offset from ForecastBaseline (schedule_delta)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Maximalwert pro Slot (schedule_absolute) oder Versatz zu ForecastBaseline (schedule_delta)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- Forecast: optional flexibility forecast -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastTimestamp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <dateTime />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>UTC timestamp when this forecast was generated</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>UTC-Zeitstempel der Prognoseerstellung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastStartTimestamp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <dateTime />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>UTC timestamp of the first forecast slot</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>UTC-Zeitstempel des ersten Prognose-Slots</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastHorizon</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <int32 />
+        </dataType>
+        <unit>MINUTES</unit>
+        <legibleDescription>
+          <textElement>How far ahead the forecast extends</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Prognosehorizont</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastResolution</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <int32 />
+        </dataType>
+        <unit>MINUTES</unit>
+        <legibleDescription>
+          <textElement>Time resolution of forecast slots</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Zeitliche Auflösung der Prognose-Slots</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastFlexPositive</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <arrayLength>96</arrayLength>
+        <legibleDescription>
+          <textElement>Positive flexibility time series</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Zeitreihe der positiven Flexibilität</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastFlexNegative</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <arrayLength>96</arrayLength>
+        <legibleDescription>
+          <textElement>Negative flexibility time series</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Zeitreihe der negativen Flexibilität</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastFlexPositiveEnergy</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <arrayLength>96</arrayLength>
+        <legibleDescription>
+          <textElement>Per-slot positive flexibility energy</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Positive Flexibilitätsenergie pro Slot</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastFlexNegativeEnergy</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <arrayLength>96</arrayLength>
+        <legibleDescription>
+          <textElement>Per-slot negative flexibility energy</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Negative Flexibilitätsenergie pro Slot</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastBaseline</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <arrayLength>96</arrayLength>
+        <legibleDescription>
+          <textElement>Forecasted uncontrolled demand, baseline for schedule_delta</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Prognostizierter unbeeinflusster Bedarf, Basislinie für schedule_delta</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ForecastConfidence</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Normalized confidence in the flex forecast (0 = certain, 1 = maximum uncertainty)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Normalisierte Konfidenz der Flexibilitätsprognose (0 = sicher, 1 = maximale Unsicherheit)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
