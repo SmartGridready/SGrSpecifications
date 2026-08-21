@@ -5,7 +5,7 @@
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
 # Author: Matthias Krebs
 #
-# Version 2.0.0-preview3 (2026-07-02)
+# Version 2.0.0-preview4 (2026-08-10)
 #
 
 openapi: 3.0.3
@@ -51,7 +51,7 @@ paths:
           description: |
             Marks the begin of the price retrieval period.
             If omitted, one day before the `end_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the most recent day with published data is applied.
             The `start_timestamp` of the first returned interval should be identical to or the one prior to this parameter.
             A maximal retrieval period is not defined.
           schema:
@@ -63,7 +63,7 @@ paths:
           description: |
             Marks the end of the price retrieval period.
             If omitted, one day after the `start_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied.
+            If both `start_timestamp` and `end_timestamp` are omitted, the most recent day with published data is applied.
             The `end_timestamp` of the last returned interval should be identical to or the one after this parameter.
             A maximal retrieval period is not defined.
           schema:
@@ -278,7 +278,7 @@ paths:
           description: |
             Marks the begin of the price retrieval period.
             If omitted, one day before the `end_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied as retrieval period.
+            If both `start_timestamp` and `end_timestamp` are omitted, the most recent day with published data is applied.
             The `start_timestamp` of the first returned interval should be identical to or the one prior to this parameter.
             A maximal retrieval period is not defined.
           schema:
@@ -290,7 +290,7 @@ paths:
           description: |
             Marks the end of the price retrieval period.
             If omitted, one day after the `start_timestamp` is applied.
-            If both `start_timestamp` and `end_timestamp` are omitted, the current day is applied as retrieval period.
+            If both `start_timestamp` and `end_timestamp` are omitted, the most recent day with published data is applied.
             The `end_timestamp` of the last returned interval should be identical to or the one after this parameter.
             A maximal retrieval period is not defined.
           schema:
@@ -581,7 +581,7 @@ paths:
            - The `ems_instance_id` must be unique and persistent. Best practice is to use the serial number of the EMS instance.
         2) Server validates the token, derives the customer identity, and decides:
            - If the EMS was previously linked, the response contains `unlink_status: "link_removed"`.
-           - If the EMS was not linked, the response contains `error: "link_not_found"`.
+           - If the EMS was not linked, the response contains `unlink_status: "link_not_found"`.
         3) After the unlinking process is completed the EMS may no longer use the `/customerTariffs` endpoint.
       operationId: delete-ems-link-v2
       tags:
@@ -852,7 +852,7 @@ components:
         - link_not_found
         - link_removed
       description: |
-        EMS link status codes:
+        EMS unlink status codes:
           * `link_not_found` - EMS not linked
           * `link_removed` - EMS has been unlinked successfully
     EmsLinkResponse:

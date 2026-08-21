@@ -5,6 +5,17 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
+## [2.0.0-preview4] - 2026-08-10
+
+### Changed
+
+- omitting `start_timestamp` and `end_timestamp` retrieves latest day with published data instead of current day
+
+### Fixed
+
+- consistency of EMS unlink status
+
+
 ## [2.0.0-preview3] - 2026-07-02
 
 ### Changed
