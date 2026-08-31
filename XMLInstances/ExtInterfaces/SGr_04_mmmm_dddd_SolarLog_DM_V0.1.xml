@@ -28,7 +28,7 @@
     </legibleDescription>
     <deviceCategory>CEM</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>0.0.0</softwareRevision>
+    <softwareRevision>6.4.2</softwareRevision>
     <hardwareRevision>-</hardwareRevision>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
@@ -36,7 +36,7 @@
       <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
-    <testState>None</testState>
+    <testState>Verified</testState>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
