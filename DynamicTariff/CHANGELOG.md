@@ -5,6 +5,16 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
+## [2.0.0] - 2026-09-01
+
+Final release of the new specification.
+
+### Fixed
+
+- length of EMS link redirect URI
+- details of `national_fees` tariff type
+
+
 ## [2.0.0-preview4] - 2026-08-10
 
 ### Changed
