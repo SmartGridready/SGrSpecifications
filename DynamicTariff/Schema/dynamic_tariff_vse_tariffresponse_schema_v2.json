@@ -39,7 +39,7 @@
           "$ref": "#/$defs/tariff_type_item"
         },
         "grid": {
-          "description": "Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid",
+          "description": "Grid usage (distribution and transmission networks) including general and individual system services (SDL)",
           "$ref": "#/$defs/tariff_type_item"
         },
         "metering": {
@@ -47,7 +47,7 @@
           "$ref": "#/$defs/tariff_type_item"
         },
         "national_fees": {
-          "description": "National surcharges (e.g. Swissgrid)",
+          "description": "National surcharges, e.g. grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid; excluding general and individual system services (SDL)",
           "$ref": "#/$defs/tariff_type_item"
         },
         "regional_fees": {

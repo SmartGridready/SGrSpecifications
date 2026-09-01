@@ -3,9 +3,9 @@
 # This template contains the essential endpoints and schemas.
 #
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
-# Author: Matthias Krebs
+# Author: Matthias Krebs (matthias.krebs@fhnw.ch)
 #
-# Version 2.0.0-preview4 (2026-08-10)
+# Version 2.0.0 (2026-09-01)
 #
 
 openapi: 3.0.3
@@ -528,7 +528,7 @@ paths:
           schema:
             type: string
             format: uri
-            maxLength: 400
+            maxLength: 600
       responses:
         '200':
           description: EMS link status retrieved successfully.
@@ -657,9 +657,9 @@ components:
       description: |
         Tariff types specified by VSE
           * `electricity` - Electricity energy supply to end consumers
-          * `grid` - Grid usage (distribution and transmission networks) including general and individual system services, grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid
+          * `grid` - Grid usage (distribution and transmission networks) including general and individual system services (SDL)
           * `metering` - Metering infrastructure fees
-          * `national_fees` - National surcharges (e.g. Swissgrid)
+          * `national_fees` - National surcharges, e.g. grid surcharge according to Art. 35 EnG + electricity reserve + socialized costs via the transmission grid; excluding general and individual system services (SDL)
           * `regional_fees` - Local or regional surcharges (e.g. concession fees)
           * `dso` - Combination of `grid`, `metering` and `national_fees`
           * `dso_complete` - Combination of `grid`, `metering`, `national_fees` and `regional_fees`
@@ -866,6 +866,7 @@ components:
         linking_process_redirect_uri:
           type: string
           format: uri
+          maxLength: 600
           description: |
             The linking process redirect URI can be used to redirect the logged in user to the process page,
             to establish or edit the EMS link, which entails selecting the metering point at the EMS location.
