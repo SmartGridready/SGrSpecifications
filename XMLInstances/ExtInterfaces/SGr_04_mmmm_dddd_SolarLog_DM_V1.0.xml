@@ -3,26 +3,26 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Solar-Log Power Management</deviceName>
+  <deviceName>Solar-Log Direct Marketing</deviceName>
   <manufacturerName>Solar-Log</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Draft</state>
+    <state>Published</state>
     <changeLog>
-      <version>0.1.0</version>
-      <date>2026-05-27</date>
+      <version>1.0.0</version>
+      <date>2026-09-10</date>
       <author>SGr/mkr</author>
-      <comment>Draft for declaration</comment>
+      <comment>First release</comment>
     </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
-      <textElement>Solar-Log with Modbus TCP PM License.</textElement>
+      <textElement>Solar-Log with Direct Marketing License.</textElement>
       <language>en</language>
       <uri>https://www.solar-log.com/en/products-solutions/licenses</uri>
     </legibleDescription>
     <legibleDescription>
-      <textElement>Solar-Log mit Modbus TCP PM Lizenz.</textElement>
+      <textElement>Solar-Log mit Direktvermarktungs-Lizenz.</textElement>
       <language>de</language>
       <uri>https://www.solar-log.com/produkte-loesungen/lizenzen</uri>
     </legibleDescription>
@@ -32,8 +32,8 @@
     <hardwareRevision>-</hardwareRevision>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
@@ -169,11 +169,9 @@
                 <modbusDataType>
                   <int16U />
                 </modbusDataType>
-                <!-- distinguish read/write addresses (10600, 10201) -->
-                <readAddress>10600</readAddress>
-                <writeAddress>10201</writeAddress>
-                <readRegisterType>InputRegister</readRegisterType>
-                <writeRegisterType>HoldRegister</writeRegisterType>
+                <!-- TODO distinguish read/write addresses (10600, 10201) -->
+                <address>10401</address>
+                <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -187,7 +185,7 @@
                 <unit>KILOWATTS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
-                  <manufName>Pac total inv</manufName>
+                  <manufName>ProdW</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Measured active power at the inverter output</textElement>
@@ -202,7 +200,7 @@
                 <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>10602</address>
+                <address>10904</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -217,7 +215,7 @@
                 <unit>KILOWATTS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
-                  <manufName>Pac</manufName>
+                  <manufName>GridfeedW</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Measured active power feed-in at the grid connection point</textElement>
@@ -232,243 +230,39 @@
                 <modbusDataType>
                   <int32 />
                 </modbusDataType>
-                <address>10503</address>
+                <address>10910</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PowerFactorSetpoint</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>NONE</unit>
-                <alternativeNames>
-                  <manufName>CosPhi_Fix</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Setpoint for the power factor cosφ [-0.9...0.9], &gt;0 inductive, &lt;0: capacitive</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Sollwert für den Leistungsfaktor cosφ [-0.9...0.9], &gt;0: induktiv, &lt;0: kapazitiv</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <float32 />
-                </modbusDataType>
-                <address>10205</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ReactivePowerMeasuredInverter</dataPointName>
+                <dataPointName>ActivePowerMeasuredConsumption</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+                <unit>KILOWATTS</unit>
                 <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
                 <alternativeNames>
-                  <manufName>Qac total inv</manufName>
+                  <manufName>ConsW</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Measured reactive power at the inverter output</textElement>
+                  <textElement>Measured active power consumption in kW</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Gemessene Blindleistung am Ausgang des Wechselrichters</textElement>
+                  <textElement>Gemessene Wirkleistung des Verbrauchs in kW</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32 />
+                  <int32U />
                 </modbusDataType>
-                <address>10604</address>
+                <address>10908</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ReactivePowerMeasuredFeedIn</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOVOLT_AMPERES_REACTIVE</unit>
-                <unitConversionMultiplicator>0.001</unitConversionMultiplicator>
-                <alternativeNames>
-                  <manufName>Q</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Measured reactive power feed-in at the grid connection point</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Gemessene eingespeiste Blindleistung am Netzanschlusspunkt</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>10511</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerMaxPercentFeedInFallback</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>PERCENT</unit>
-                <alternativeNames>
-                  <manufName>WatchDog_Limit</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Fallback maximum feed-in active power as percentage of nominal DC power, if the controlled system is unreachable</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Rückfallwert der maximalen Einspeise-Wirkleistung als Prozentwert der DC-Nennleistung, wenn das zu steuernde System nicht erreicht werden kann</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10215</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageMeasuredL1L2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>VOLTS</unit>
-                <alternativeNames>
-                  <manufName>Uac (Phase 1-2)</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Measured voltage between phases L1-L2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Gemessene Spannung zwischen Phasen L1-L2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10518</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageMeasuredL1L3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>VOLTS</unit>
-                <alternativeNames>
-                  <manufName>Uac (Phase 3-1)</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Measured voltage between phases L1-L3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Gemessene Spannung zwischen Phasen L1-L3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10520</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageMeasuredL2L3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>VOLTS</unit>
-                <alternativeNames>
-                  <manufName>Uac (Phase 2-3)</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Measured voltage between phases L2-L3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Gemessene Spannung zwischen Phasen L2-L3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10519</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>IrradiationMeasured</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>WATTS_PER_SQUARE_METER</unit>
-                <alternativeNames>
-                  <manufName>Solar-Irradiation</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Measured irradiation from a sensor</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Gemessene Einstrahlung von einem Sensor</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10513</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
 
@@ -518,7 +312,7 @@
                 <modbusDataType>
                   <int16U />
                 </modbusDataType>
-                <address>10200</address>
+                <address>10400</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -558,9 +352,67 @@
                 <modbusDataType>
                   <int16U />
                 </modbusDataType>
-                <address>10601</address>
+                <address>10900</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PLimitPercN</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <int16U />
+                </dataType>
+                <unit>PERCENT</unit>
+                <alternativeNames>
+                  <manufName>PLimitPercN</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Current control setting of DSO (feed-in management)</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Aktuelle Regelstufe des Netzbetreibers (Einspeisemanagement)</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>10901</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PLimitN</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <alternativeNames>
+                  <manufName>PLimitPercN</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Current control setting of DSO in kW</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Aktuelle Regelstufe des Netzbetreibers in kW</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>10902</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
@@ -587,175 +439,9 @@
                 <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>10211</address>
+                <address>10404</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>Reactive_Type</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <enum>
-                    <enumEntry>
-                      <literal>Off</literal>
-                      <ordinal>0</ordinal>
-                      <description>Off</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>Cos_Phi</literal>
-                      <ordinal>1</ordinal>
-                      <description>Cos Phi</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>Cos_Phi_Fix</literal>
-                      <ordinal>2</ordinal>
-                      <description>Cos Phi Fix</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>Q_Fix_Perc</literal>
-                      <ordinal>4</ordinal>
-                      <description>Q Fix Percent</description>
-                    </enumEntry>
-                  </enum>
-                </dataType>
-                <unit>NONE</unit>
-                <alternativeNames>
-                  <manufName>Reactive_Type</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Mode of reactive power control</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Modus Blindleistungssteuerung</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10204</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>WatchDog_Time</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <int32U />
-                </dataType>
-                <unit>SECONDS</unit>
-                <alternativeNames>
-                  <manufName>WatchDog_Time</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Watchdog Timeout</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Watchdog-Timeout</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>10213</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>PLimit_Confirm</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>PERCENT</unit>
-                <alternativeNames>
-                  <manufName>PLimit_Confirm</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Retrieval of set PLimit</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Rückmeldung der gesetzten PLimit</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10502</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>Pac_Cos_Phi</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>NONE</unit>
-                <alternativeNames>
-                  <manufName>Pac_Cos_Phi</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Measured power factor of utility meter</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Gemessener Leistungsfaktor vom Utility-Meter</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10509</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>Fac</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>HERTZ</unit>
-                <alternativeNames>
-                  <manufName>Fac</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Grid frequency of utility meter</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Netzfrequenz vom Utility-Meter</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>10508</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
