@@ -209,10 +209,17 @@
                 </xsl:call-template>
             </td>
             <td>
-                <xsl:if test="sgr:arrayLength">
-                    <xsl:value-of select="sgr:arrayLength" /> x </xsl:if>
-
                 <xsl:apply-templates select="sgr:dataType" />
+                <xsl:if test="sgr:arrayLength">
+                    <xsl:choose>
+                        <xsl:when test="sgr:arrayLength &lt; 0">
+                            [*]
+                        </xsl:when>
+                        <xsl:otherwise>
+                            [<xsl:value-of select="sgr:arrayLength" />]
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:if>
             </td>
                 <xsl:if test="not(/sgr:DeviceFrame)">
                     <td>

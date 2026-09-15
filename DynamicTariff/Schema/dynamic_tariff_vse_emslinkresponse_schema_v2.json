@@ -11,7 +11,8 @@
     "linking_process_redirect_uri": {
       "description": "The linking process redirect URI",
       "type": "string",
-      "format": "uri"
+      "format": "uri",
+      "maxLength": 600
     }
   },
   "required": [
