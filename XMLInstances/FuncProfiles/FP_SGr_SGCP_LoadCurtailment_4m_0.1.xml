@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Draft</state>
+    <changeLog>
+      <version>0.1.0</version>
+      <date>2026-10-02</date>
+      <author>SGr/kar</author>
+      <comment>Initial draft</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>SGCP</functionalProfileCategory>
+      <functionalProfileType>LoadCurtailment</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>1</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p><b>Controlling functional profile for the dynamic curtailment of the load at the grid connection point</b></p>
+
+          <p>This functional profile is used by a flexibility manager, for example a grid control system (SCADA), to dynamically limit the AC-side active power consumption at the grid connection point. The controlled quantity is the active power at the grid connection point, which is the quantity relevant for the grid. Control is typically exercised through a superordinate control unit such as an Energy Management System (EMS), via protocols such as Modbus TCP or manufacturer-specific local or cloud interfaces.</p>
+
+          <p>This profile is recommended whenever grid connection point metering and a superordinate control unit (EMS) are available. The EMS keeps the power at the grid connection point within the requested limit by balancing across several assets. For example, in a charging park with a large battery that buffers load peaks, the flexible load (ActivePowerMeasuredFlexLoad) may be high while the power at the grid connection point (ActivePowerMeasuredGridConnectionPoint) stays low. The limitation therefore applies at the grid connection point and not at the individual flexible loads. For a single, directly controlled asset without an EMS or grid connection point metering, see the derived profile FlexLoadCurtailment.</p>
+
+          <p>The limitation can be given as an absolute value in kilowatts (ActivePowerMaxLoad) or as a percentage (ActivePowerMaxPercentLoad) of the maximum permissible power at the grid connection point (ConnectionPowerLimit). Both are mandatory (M) and form an alternative requirement group; at least one must be supported.</p>
+
+          <p>Measured values carry a location suffix (GridConnectionPoint or FlexLoad), as they are captured at different locations. Setpoints carry no suffix, as they always act on the grid connection point.</p>
+
+          <p>On communication failure, the last limitation value is held and restored from non-volatile memory after an auxiliary power failure. The fallback data points (ActivePowerMaxLoadFallback, ActivePowerMaxPercentLoadFallback) let the flexibility manager define the value that then applies. The Health data point (mandatory) reports operational readiness; the periodically updated HeartbeatTimestamp can additionally confirm reachability.</p>
+
+          <p>Further data points are recommended and depend on the use case, for example the reactive power setpoints (ReactivePowerSetpoint, PowerFactorSetpoint) or the cumulative active energy drawn (EnergyMeasuredGridConnectionPoint). In particular, the voltage measurement should be provided, as this quantity can be important for control by the superordinate system. In a product declaration, read/write data points may map to the same logical endpoint or be split into separate setpoint and actual values. If a voltage measurement is implemented, one of the following variants shall be used:</p>
+          <ul>
+            <li>Single-phase devices provide the voltage of the first phase to neutral (VoltageMeasuredL1N).</li>
+            <li>Three-phase devices in star configuration provide the voltage of each phase to neutral (VoltageMeasuredL1N, VoltageMeasuredL2N, VoltageMeasuredL3N).</li>
+            <li>Three-phase devices in delta configuration provide the line-to-line voltages between phases (VoltageMeasuredL1L2, VoltageMeasuredL1L3, VoltageMeasuredL2L3).</li>
+          </ul>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <p><b>Steuerndes Funktionsprofil für die dynamische Begrenzung des Bezugs am Netzanschlusspunkt</b></p>
+
+          <p>Dieses Funktionsprofil wird von einem Flexibilitätsmanager, zum Beispiel mit einem Netzleitsystem (SCADA), verwendet, um die AC-seitige Wirkleistungsaufnahme am Netzanschlusspunkt dynamisch zu begrenzen. Die geregelte Grösse ist die Wirkleistung am Netzanschlusspunkt, also die für das Netz relevante Grösse. Die Ansteuerung erfolgt typischerweise über eine übergeordnete Steuereinheit wie ein Energy Management System (EMS), über Protokolle wie Modbus TCP oder herstellerspezifische lokale oder Cloud-Schnittstellen.</p>
+
+          <p>Dieses Profil wird empfohlen, wenn eine Messung am Netzanschlusspunkt und eine übergeordnete Steuereinheit (EMS) vorhanden sind. Das EMS hält die Leistung am Netzanschlusspunkt innerhalb des Grenzwerts, indem es über mehrere Assets ausgleicht. Beispiel: In einem Ladepark mit grossem Batteriespeicher, der Leistungsspitzen abfedert, kann die Wirkleistung der flexiblen Last (ActivePowerMeasuredFlexLoad) hoch sein, während die Leistung am Netzanschlusspunkt (ActivePowerMeasuredGridConnectionPoint) tief bleibt. Die Begrenzung greift deshalb am Netzanschlusspunkt und nicht an den einzelnen flexiblen Lasten. Für eine einzelne, direkt gesteuerte Anlage ohne EMS oder Messung am Netzanschlusspunkt siehe das abgeleitete Profil FlexLoadCurtailment.</p>
+
+          <p>Die Begrenzung kann entweder als absoluter Wert in Kilowatt (ActivePowerMaxLoad) oder als Prozentwert (ActivePowerMaxPercentLoad) der maximal zulässigen Leistung am Netzanschlusspunkt (ConnectionPowerLimit) erfolgen. Beide sind Mandatory (M) und bilden eine alternative Anforderungsgruppe; mindestens einer muss unterstützt werden.</p>
+
+          <p>Messwerte tragen einen Ortssuffix (GridConnectionPoint oder FlexLoad), da sie an unterschiedlichen Orten erfasst werden. Sollwerte tragen keinen Suffix, da sie immer auf den Netzanschlusspunkt wirken.</p>
+
+          <p>Bei einem Kommunikationsausfall wird der zuletzt empfangene Begrenzungswert gehalten und nach einem Hilfsspannungsausfall aus einem nichtflüchtigen Speicher wiederhergestellt. Die Fallback-Datenpunkte (ActivePowerMaxLoadFallback, ActivePowerMaxPercentLoadFallback) erlauben es, den dann geltenden Wert explizit vorzugeben. Der Datenpunkt Health (Pflicht) zeigt die Betriebsbereitschaft an; der zyklisch aktualisierte HeartbeatTimestamp kann zusätzlich die Erreichbarkeit bestätigen.</p>
+
+          <p>Weitere Datenpunkte sind empfohlen und hängen vom Anwendungsfall ab, zum Beispiel die Blindleistungs-Sollwerte (ReactivePowerSetpoint, PowerFactorSetpoint) oder die kumulierte bezogene Wirkenergie (EnergyMeasuredGridConnectionPoint). Insbesondere die Spannungsmessung sollte vorgesehen werden, da diese Messgrösse für die Regelung durch das übergeordnete System wichtig sein kann. In einer Produktdeklaration können Lese-/Schreib-Datenpunkte auf denselben logischen Endpunkt abgebildet oder in getrennte Soll- und Istwerte aufgeteilt werden. Falls eine Spannungsmessung implementiert wird, ist eine der folgenden Varianten umzusetzen:</p>
+          <ul>
+            <li>Einphasige Geräte geben die Spannung der ersten Phase gegen Nullleiter an (VoltageMeasuredL1N).</li>
+            <li>Dreiphasige Geräte in Sternschaltung geben die Spannung jeder Phase gegen Nullleiter an (VoltageMeasuredL1N, VoltageMeasuredL2N, VoltageMeasuredL3N).</li>
+            <li>Dreiphasige Geräte in Dreiecksschaltung geben die verkettete Spannung zwischen den Phasen an (VoltageMeasuredL1L2, VoltageMeasuredL1L3, VoltageMeasuredL2L3).</li>
+          </ul>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <!-- Begrenzung vorgeben (setpoints at the grid connection point) -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxLoad</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Limit for the maximum active power drawn at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Grenzwert für die maximale bezogene Wirkleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxPercentLoad</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Limit for the maximum active power drawn, as a percentage of the maximum permissible power at the grid connection point (ConnectionPowerLimit) [0%...100%]</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Grenzwert für die maximale bezogene Wirkleistung als Prozentwert der maximal zulässigen Leistung am Netzanschlusspunkt (ConnectionPowerLimit) [0%...100%]</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxLoadFallback</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Fallback limit for the maximum active power drawn at the grid connection point if the controlling system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfall-Grenzwert für die maximale bezogene Wirkleistung am Netzanschlusspunkt, wenn das steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMaxPercentLoadFallback</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>Fallback limit for the maximum active power drawn, as a percentage of the maximum permissible power at the grid connection point, if the controlling system is unreachable</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Rückfall-Grenzwert für die maximale bezogene Wirkleistung als Prozentwert der maximal zulässigen Leistung am Netzanschlusspunkt, wenn das steuernde System nicht erreicht werden kann</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- Wirkung nachweisen und Betriebsbereitschaft (measurements and status) -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ConnectionPowerLimit</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Maximum permissible (contractual) load active power at the grid connection point (reference value for ActivePowerMaxPercentLoad)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Maximal zulässige (vertragliche) bezogene Wirkleistung am Netzanschlusspunkt (Referenzwert für ActivePowerMaxPercentLoad)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMeasuredGridConnectionPoint</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Measured total active power at the grid connection point, including any non-controllable loads</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene gesamte Wirkleistung am Netzanschlusspunkt, inklusive allfälliger nicht steuerbarer Lasten</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>Health</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Health status of the controlled system. Can be read by the control system to determine whether the controlled system is operationally ready</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Betriebsbereitschaft (Health) der gesteuerten Anlage. Kann vom Leitsystem abgefragt werden, um festzustellen, ob die gesteuerte Anlage einsatzbereit ist</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerMeasuredFlexLoad</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Measured active power of the controlled flexible load(s)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Wirkleistung der gesteuerten flexiblen Last(en)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HeartbeatTimestamp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <dateTime />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Timestamp of the last life sign of the controlled system, updated cyclically</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Zeitstempel des letzten Lebenszeichens der gesteuerten Anlage, wird zyklisch aktualisiert</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EnergyMeasuredGridConnectionPoint</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Measured cumulative active energy drawn at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessener Zählerstand der bezogenen Wirkenergie am Netzanschlusspunkt (kumuliert)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EnergyMeasuredFlexLoad</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Measured cumulative active energy drawn by the flexible load(s)</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessener Zählerstand der von der/den flexiblen Last(en) bezogenen Wirkenergie (kumuliert)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL1L2</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phases L1-L2</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phasen L1-L2</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL1L3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phases L1-L3</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phasen L1-L3</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL2L3</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phases L2-L3</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phasen L2-L3</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL1N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phase L1 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phase L1 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL2N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phase L2 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phase L2 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>VoltageMeasuredL3N</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>VOLTS</unit>
+        <legibleDescription>
+          <textElement>Measured voltage between phase L3 and neutral</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Spannung zwischen Phase L3 und Nullleiter</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <!-- Blindleistung am Netzanschlusspunkt (reactive power at the grid connection point) -->
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerSetpoint</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Setpoint for reactive power Q at the grid connection point (absolute value in kVAr), positive: inductive, negative: capacitive</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Sollwert für Blindleistung Q am Netzanschlusspunkt (absoluter Wert in kVAr), positiv: induktiv, negativ: kapazitiv</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>PowerFactorSetpoint</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Setpoint for the power factor cos&#966; [-0.9...0.9] at the grid connection point, &gt;0 inductive, &lt;0: capacitive. Alternative to ReactivePowerSetpoint</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Sollwert für den Leistungsfaktor cos&#966; [-0.9...0.9] am Netzanschlusspunkt, &gt;0: induktiv, &lt;0: kapazitiv. Alternative zu ReactivePowerSetpoint</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReactivePowerMeasuredGridConnectionPoint</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64 />
+        </dataType>
+        <unit>KILOVOLT_AMPERES_REACTIVE</unit>
+        <legibleDescription>
+          <textElement>Measured reactive power at the grid connection point</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Gemessene Blindleistung am Netzanschlusspunkt</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
