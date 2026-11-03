@@ -5,6 +5,14 @@ All notable changes to the JSON schema and OpenAPI specification will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 
+## [2.0.1] - 2026-11-03
+
+### Fixed
+
+- type of _municipality_number_ is `integer` as specified by OAS
+- removed format of _TariffComponentItem_ value, because `number` represents a floating-point number
+
+
 ## [2.0.0] - 2026-09-01
 
 Final release of the new specification.
