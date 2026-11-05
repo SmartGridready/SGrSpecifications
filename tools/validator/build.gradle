@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.bjornvester.xjc' version "${xjcPluginVersion}"
+    id 'com.github.bjornvester.xjc'
 }
 
 repositories {
@@ -30,8 +30,8 @@ application {
 }
 
 java {
-    sourceCompatibility = "${jdkVersion}"
-    targetCompatibility = "${jdkVersion}"
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 xjc {
