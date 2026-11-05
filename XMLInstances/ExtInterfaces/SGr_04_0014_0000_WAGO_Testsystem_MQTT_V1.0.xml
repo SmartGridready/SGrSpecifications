@@ -15,21 +15,28 @@
       <manufName>WAGO</manufName>
     </alternativeNames>
     <legibleDescription>
-      <textElement>The WAGO testsystem provides analog and digital outputs and inputs that allows automated and manual
-        testing of SmartGridready communication-handler implementations for modbus.</textElement>
+      <textElement>The WAGO testsystem provides analog and digital outputs and inputs that allow automated and manual
+        testing of SmartGridready communication-handler implementations for Modbus.</textElement>
       <language>en</language>
       <uri>https://www.wago.com/</uri>
     </legibleDescription>
     <legibleDescription>
-      <textElement>Das WAGO Testsystem stellt analoge und digitale Ausgänge und Eingänge zur Verfügung die
-        es ermöglichen einen SmartGridready Communication-Handler für Modbus zu testen.</textElement>
+      <textElement>Das WAGO Testsystem stellt analoge und digitale Ausgänge und Eingänge zur Verfügung, die
+        es ermöglichen, einen SmartGridready Communication-Handler für Modbus zu testen.</textElement>
       <language>de</language>
       <uri>
         https://www.wago.com/</uri>
     </legibleDescription>
     <legibleDescription>
-      <textElement>The WAGO testsystem provides analog and digital outputs and inputs that allows automated and manual
-        testing of SmartGridready communication-handler implementations for modbus.</textElement>
+      <textElement>Le système de test WAGO dispose de sorties et d'entrées analogiques et numériques qui permettent de tester,
+        de manière automatisée ou manuelle, les implémentations de gestionnaires de communication compatibles SmartGrid pour Modbus.</textElement>
+      <language>fr</language>
+      <uri>
+        https://www.wago.com/</uri>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>Il sistema di test WAGO offre uscite e ingressi analogici e digitali che consentono di eseguire test automatici e manuali
+        delle implementazioni di gestori di comunicazione compatibili con SmartGrid per Modbus.</textElement>
       <language>it</language>
       <uri>
         https://www.wago.com/</uri>
@@ -44,7 +51,7 @@
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>None</testState>
   </deviceInformation>
@@ -88,7 +95,7 @@
       <dataType>
         <boolean/>
       </dataType>
-      <defaultValue>true</defaultValue>
+      <defaultValue>false</defaultValue>
       <configurationDescription>
         <textElement>Message broker TLS.</textElement>
         <language>en</language>
@@ -149,23 +156,6 @@
         <label>Broker-Passwort</label>
       </configurationDescription>
     </configurationListElement>
-    <configurationListElement>
-      <name>device_id</name>
-      <dataType>
-        <string/>
-      </dataType>
-      <defaultValue>shellyht</defaultValue>
-      <configurationDescription>
-        <textElement>Device identifier used in MQTT topic.</textElement>
-        <language>en</language>
-        <label>Device ID</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Device-Identifier, in MQTT-Topic verwendet.</textElement>
-        <language>de</language>
-        <label>Device ID</label>
-      </configurationDescription>
-    </configurationListElement>
   </configurationList>
   <interfaceList>
     <messagingInterface>
@@ -203,7 +193,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -253,7 +243,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -303,7 +293,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -353,7 +343,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -403,7 +393,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -453,7 +443,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -503,7 +493,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -553,7 +543,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>An analog input for 0-24V</textElement>
-              <language>de</language>
+              <language>en</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
