@@ -14,6 +14,12 @@
       <author>WP Gruppe</author>
       <comment>Publikation</comment>
     </changeLog>
+    <changeLog>
+      <version>1.0.1</version>
+      <date>2026-11-05</date>
+      <author>Christian Rohrbach, casasmooth</author>
+      <comment>SG-Ready: ordinals of SGReadyOpModeCmd (4002/4003) and SGReadyState (5001) aligned with the Stiebel Eltron Modbus documentation</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -49,7 +55,7 @@
     <versionNumber>
       <primaryVersionNumber>1</primaryVersionNumber>
       <secondaryVersionNumber>0</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
     <testState>Tested</testState>
     <programmerHints>
@@ -1295,7 +1301,7 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
-                      <ordinal>65536</ordinal>
+                      <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
@@ -1303,7 +1309,7 @@
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
-                      <ordinal>1</ordinal>
+                      <ordinal>65536</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_FORCED</literal>
@@ -1363,9 +1369,11 @@
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
-                    this data point is mapped into the IO Registers via the mapping defined
-                    in ModbusAttributes layer6Deviation. The Register address given is the lower
-                    address of the IO registers.
+                    Written as one 32-bit value (bitOrder BigEndian) to the two consecutive holding registers
+                    4002 (SG READY INPUT 1, high word) and 4003 (SG READY INPUT 2, low word); the register
+                    address given is the lower one. Input 1 only = 65536 (operating state 3, HP_INTENSIFIED),
+                    Input 2 only = 1 (operating state 1, HP_LOCKED), both = 65537 (operating state 4, HP_FORCED),
+                    none = 0 (operating state 2, HP_NORMAL). The resulting state is reported by SGReadyState.
                   </textElement>
                   <language>en</language>
                 </programmerHints>
@@ -1387,19 +1395,19 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
-                      <ordinal>2</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_NORMAL</literal>
-                      <ordinal>0</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_INTENSIFIED</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_FORCED</literal>
+                      <literal>HP_NORMAL</literal>
+                      <ordinal>2</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_INTENSIFIED</literal>
                       <ordinal>3</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_FORCED</literal>
+                      <ordinal>4</ordinal>
                     </enumEntry>
                   </enum>
                 </dataType>
