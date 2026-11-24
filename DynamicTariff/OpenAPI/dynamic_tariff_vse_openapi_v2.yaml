@@ -5,7 +5,7 @@
 # Provided by SmartGridready: https://smartgridready.ch/loesungen/dynamischetarife
 # Author: Matthias Krebs (matthias.krebs@fhnw.ch)
 #
-# Version 2.0.0 (2026-09-01)
+# Version 2.0.1 (2026-11-03)
 #
 
 openapi: 3.0.3
@@ -16,7 +16,7 @@ info:
     Follows the VSE standard https://www.strom.ch/de/shop/dynamische-netznutzungstarife-im-verteilnetz-hdn-ch-2025.
 
     Use this template to implement your dynamic tariff API.
-  version: '2.0.0'
+  version: '2.0.1'
 servers:
   # TODO:
   # Replace this with your actual API server URL, including base path.
@@ -779,8 +779,7 @@ components:
           type: boolean
           description: Defines if municipality taxes are applicable.
         municipality_number:
-          type: number
-          format: integer
+          type: integer
           description: The municipality number from BFS (Hist. code with 5 digits).
         municipality_name:
           type: string
@@ -805,7 +804,6 @@ components:
           $ref: '#/components/schemas/TariffUnit'
         value:
           type: number
-          format: decimal
           description: The numeric price value without VAT-taxes.
       description: A tariff component value.
     TariffResponse:

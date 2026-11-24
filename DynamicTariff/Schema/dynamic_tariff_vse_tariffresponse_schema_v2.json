@@ -111,8 +111,7 @@
         },
         "municipality_number": {
           "description": "The municipality number from BFS",
-          "type": "number",
-          "format": "integer"
+          "type": "integer"
         },
         "municipality_name": {
           "description": "The municipality name",
